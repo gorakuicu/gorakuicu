@@ -1,0 +1,88 @@
+{
+  "name": "aikoicu",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint:css && turbo lint:es",
+    "lint:fix": "turbo lint:css:fix && turbo lint:es:fix",
+    "lint:es": "turbo lint:es",
+    "lint:es:fix": "turbo lint:es -- --fix",
+    "lint:css": "turbo lint:css --filter root",
+    "lint:css:fix": "turbo lint:css --filter root -- --fix",
+    "lint:cm": "commitlint --config commitlint.config.cjs --from HEAD",
+    "cm": "cz",
+    "cm:all": "git add . && cz && node ./scripts/push.js",
+    "cm:stage": "pnpm cm:all && pnpm stage",
+    "release": "node ./scripts/release.js",
+    "release:prod": "node ./scripts/release.js production",
+    "postinstall": "node scripts/ci.js || husky install; node scripts/ci.js || npx @evilmartians/lefthook install; node scripts/ci.js || npx @evilmartians/lefthook add pre-commit"
+  },
+  "dependencies": {
+    "dotenv": "16.0.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.6.3",
+    "@commitlint/config-conventional": "17.6.3",
+    "@evilmartians/lefthook": "1.4.0",
+    "@turbo/gen": "1.9.8",
+    "@types/node": "20.2.1",
+    "@typescript-eslint/eslint-plugin": "5.59.6",
+    "@typescript-eslint/parser": "5.59.6",
+    "commitizen": "4.3.0",
+    "cross-env": "7.0.3",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-import-resolver-typescript": "3.5.5",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-import-newlines": "1.3.1",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "husky": "8.0.3",
+    "open": "9.1.0",
+    "prettier": "2.8.8",
+    "prettier-plugin-tailwindcss": "0.3.0",
+    "stylelint": "15.6.2",
+    "stylelint-a11y": "1.2.3",
+    "stylelint-codeguide": "0.1.4",
+    "stylelint-config-clean-order": "5.0.1",
+    "stylelint-config-prettier": "9.0.5",
+    "stylelint-config-standard": "33.0.0",
+    "stylelint-css-modules": "1.2.2",
+    "stylelint-css-modules-no-global-scoped-selector": "1.0.2",
+    "stylelint-csstree-validator": "2.1.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.7.0",
+    "stylelint-group-selectors": "1.0.9",
+    "stylelint-high-performance-animation": "1.8.0",
+    "stylelint-images": "2.0.1",
+    "stylelint-prettier": "3.0.0",
+    "stylelint-selector-bem-pattern": "2.1.1",
+    "stylelint-webpack-plugin": "4.1.1",
+    "turbo": "1.9.8",
+    "typescript": "5.0.4"
+  },
+  "resolutions": {
+    "next": "~13.3.0"
+  },
+  "engines": {
+    "node": ">=18.15.0",
+    "npm": ">=9.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.5.1",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

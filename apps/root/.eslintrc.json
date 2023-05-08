@@ -1,0 +1,72 @@
+{
+  "extends": [
+    "../../.eslintrc.json"
+  ],
+  "ignorePatterns": [
+    "!**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "parserOptions": {
+        "project": [
+          "apps/docs/tsconfig(.*)?.json"
+        ],
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
+      "settings": {
+        "import/resolver": {
+          "alias": {
+            "map": [
+              [
+                "~",
+                "./src"
+              ]
+            ],
+            "extensions": [
+              ".ts",
+              ".js",
+              ".jsx",
+              ".json"
+            ]
+          }
+        },
+        "react": {
+          "version": "detect"
+        }
+      },
+      "rules": {
+        "react/no-unknown-property": [
+          2,
+          {
+            "ignore": [
+              "jsx",
+              "global"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "rules": {}
+    }
+  ]
+}

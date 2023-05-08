@@ -1,0 +1,17 @@
+min_version: 1.4.0
+
+pre-commit:
+  parallel: true
+  skip:
+    - ref: main
+    - ref: staging
+    - ref: testing
+  commands:
+    eslint:
+      glob: "*.{js,jsx,ts,tsx}"
+      run: pnpm lint:es:fix
+    stylelint:
+      glob: "*.{css}"
+      run: pnpm lint:css:fix
+    commitlint:
+      run: pnpm lint:cm

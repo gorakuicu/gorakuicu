@@ -1,0 +1,91 @@
+stages:
+  - dependencies
+  - lint
+  - test
+  - package_deploy
+  - deploy
+
+variables:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+
+.pnpm_common:
+  stage: deps
+  image: node:18-alpine
+  tags:
+    - nsfw-1
+  before_script:
+    - echo -en "\nDOMAIN=$DOMAIN\nSUBDOMAIN=$SUBDOMAIN\n" > .env
+    - cat "$ENV" >> .env
+    - source .env
+    - corepack enable
+    - corepack prepare pnpm@latest-8 --activate
+    - npm install -g pnpm
+    - node -v && npm -v && pnpm -v
+    - >
+      [ -d ~/.pnpm-store ] || mkdir -p ~/.pnpm-store
+    - pnpm config set store-dir ~/.pnpm-store
+    - pnpm install
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
+
+lint:
+  extends: .pnpm_common
+  stage: lint
+  script:
+    - pnpm lint
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: on_success
+      changes:
+        - '**/*.{js,jsx,ts,tsx,css}'
+        - '.eslintrc.json'
+        - '.eslintignore'
+        - '.stylelintrc.json'
+        - '.stylelintignore'
+        - 'prettier.config.js'
+        - '.prettierignore'
+        - 'package.json'
+        - 'pnpm-lock.yaml'
+        - 'tsconfig.json'
+        - '.gitlab-ci.yml'
+  when: on_success
+  timeout: 10 minutes
+
+# test:
+#   extends: .pnpm_common
+#   stage: lint
+#   script:
+#     - pnpm test
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+#       when: on_success
+#       changes:
+#         - '**/*.{js,jsx,ts,tsx,css}'
+#         - 'package.json'
+#         - 'pnpm-lock.yaml'
+#         - 'tsconfig.json'
+#         - '.gitlab-ci.yml'
+#   when: on_success
+#   timeout: 10 minutes
+
+package_deploy:
+  image: docker/compose
+  stage: package_deploy
+  tags:
+    - nsfw-1
+  before_script:
+    - echo -en "\nDOMAIN=$DOMAIN\nSUBDOMAIN=$SUBDOMAIN\n" > .env && cat "$ENV" >> .env && source .env
+    - docker info
+    - docker-compose version
+    - docker-compose config
+    - docker-compose ps
+  script:
+    - docker-compose --env-file .env up -d --build
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: on_success

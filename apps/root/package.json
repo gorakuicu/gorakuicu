@@ -1,0 +1,56 @@
+{
+  "name": "root",
+  "version": "1.0.2",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "pnpm lint:es && pnpm lint:css",
+    "lint:es": "next lint",
+    "lint:css": "stylelint --config ../../.stylelintrc.json --config-basedir ../../node_modules \"./src/**/*.css\"",
+    "analyze": "cross-env ANALYZE=true pnpm build"
+  },
+  "dependencies": {
+    "@heroicons/react": "2.0.18",
+    "@next/bundle-analyzer": "13.4.3",
+    "@svgr/webpack": "8.0.1",
+    "@tailwindcss/typography": "0.5.9",
+    "@tanstack/query-core": "4.29.7",
+    "@tanstack/react-query": "4.29.7",
+    "@tanstack/react-query-devtools": "4.29.7",
+    "@types/inline-style-prefixer": "5.0.0",
+    "@types/node": "20.2.1",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "autoprefixer": "10.4.14",
+    "clsx": "1.2.1",
+    "daisyui": "2.51.6",
+    "framer-motion": "10.12.12",
+    "inline-style-prefixer": "7.0.0",
+    "next-pwa": "5.6.0",
+    "next-themes": "0.2.1",
+    "popmotion": "11.0.5",
+    "postcss": "8.4.23",
+    "postcss-nesting": "11.2.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "4.8.0",
+    "tailwindcss": "3.3.2",
+    "@types/ws": "8.5.4",
+    "graphql-ws": "5.13.1",
+    "next": "~13.3.0",
+    "ws": "8.13.0"
+  },
+  "devDependencies": {
+  },
+  "peerDependencies": {
+    "next": "*"
+  },
+  "browserslist": [
+    ">0.2%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "packageManager": "pnpm@8.5.1"
+}
