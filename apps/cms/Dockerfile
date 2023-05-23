@@ -16,10 +16,10 @@ RUN turbo prune --scope=cms --docker
 
 FROM base AS installer
 WORKDIR /app
-COPY .gitignore tsconfig.json turbo.json .env.local package.json pnpm-lock.yaml ./
+COPY .gitignore tsconfig.json turbo.json .env.local package.json pnpm-lock.yaml ecosystem.config.js ./
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY --from=builder /app/scripts/ci.js ./scripts/ci.js
+COPY --from=builder /app/scripts/ci/is.js ./scripts/ci/is.js
 RUN pnpm install --frozen-lockfile --ignore-scripts
 COPY --from=builder /app/out/full/ .
 ENV NODE_ENV=production
@@ -30,6 +30,7 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
 COPY --from=installer --chown=nodejs:nodejs /app .
+ENV PATH=/app/node_modules/.bin:$PATH
 USER nodejs
 
-CMD pnpm start
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]

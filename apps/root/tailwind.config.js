@@ -50,6 +50,7 @@ module.exports = {
   },
   daisyui: {
     darkTheme: 'dark',
+    logs: false,
     themes: [
       {
         extend: {

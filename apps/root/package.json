@@ -7,8 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "pnpm lint:es && pnpm lint:css",
-    "lint:es": "next lint",
-    "lint:css": "stylelint --config ../../.stylelintrc.json --config-basedir ../../node_modules \"./src/**/*.css\"",
+    "lint:fix": "pnpm lint:es:fix && pnpm lint:css:fix",
+    "lint:es": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" .",
+    "lint:es:fix": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" . --fix",
+    "lint:css": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\"",
+    "lint:css:fix": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\" --fix",
+    "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md}\"",
     "analyze": "cross-env ANALYZE=true pnpm build"
   },
   "dependencies": {
@@ -23,11 +27,14 @@
     "@types/node": "20.2.1",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "@types/ws": "8.5.4",
     "autoprefixer": "10.4.14",
     "clsx": "1.2.1",
     "daisyui": "2.51.6",
     "framer-motion": "10.12.12",
+    "graphql-ws": "5.13.1",
     "inline-style-prefixer": "7.0.0",
+    "next": "~13.3.0",
     "next-pwa": "5.6.0",
     "next-themes": "0.2.1",
     "popmotion": "11.0.5",
@@ -37,12 +44,10 @@
     "react-dom": "18.2.0",
     "react-icons": "4.8.0",
     "tailwindcss": "3.3.2",
-    "@types/ws": "8.5.4",
-    "graphql-ws": "5.13.1",
-    "next": "~13.3.0",
     "ws": "8.13.0"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "13.4.3"
   },
   "peerDependencies": {
     "next": "*"

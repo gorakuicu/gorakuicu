@@ -36,7 +36,9 @@ const next = {
       use: ['@svgr/webpack'],
     });
 
-    config.plugins.push(new Stylelint());
+    if (process.env.NODE_ENV === 'development') {
+      config.plugins.push(new Stylelint());
+    }
 
     return config;
   },

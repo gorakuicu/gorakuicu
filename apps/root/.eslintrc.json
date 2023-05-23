@@ -1,6 +1,7 @@
 {
   "extends": [
-    "../../.eslintrc.json"
+    "../../.eslintrc.json",
+    "plugin:@next/next/recommended"
   ],
   "ignorePatterns": [
     "!**/*"
@@ -15,7 +16,7 @@
       ],
       "parserOptions": {
         "project": [
-          "apps/docs/tsconfig(.*)?.json"
+          "./tsconfig.json"
         ],
         "ecmaFeatures": {
           "jsx": true

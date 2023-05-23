@@ -24,5 +24,6 @@
 **/.turbo
 **/.keystone/admin
 **/keystone.db
-apps/cms/.keystone
+**/apps/cms/.keystone/**
+.keystone/**
 !**/*.{js,jsx,ts,tsx,md}

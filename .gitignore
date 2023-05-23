@@ -89,3 +89,5 @@
 **/nbproject
 
 .husky
+sw.js
+workbox-*.js

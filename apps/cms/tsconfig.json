@@ -16,9 +16,10 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "keystone.ts"
+    "./keystone.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./.keystone/**/*",
   ]
 }

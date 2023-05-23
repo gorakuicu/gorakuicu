@@ -6,14 +6,14 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "start": "turbo start",
-    "lint": "turbo lint:css && turbo lint:es",
-    "lint:fix": "turbo lint:css:fix && turbo lint:es:fix",
+    "lint": "formatter && turbo lint:css && turbo lint:es",
+    "lint:fix": "turbo lint:css:fix && turbo lint:es:fix && turbo formatter",
     "lint:es": "turbo lint:es",
     "lint:es:fix": "turbo lint:es -- --fix",
     "lint:css": "turbo lint:css --filter root",
     "lint:css:fix": "turbo lint:css --filter root -- --fix",
     "lint:cm": "commitlint --config commitlint.config.cjs --from HEAD",
-    "formatter": "prettier --write .",
+    "formatter": "turbo formatter",
     "cm": "cz",
     "cm:all": "git add . && cz && node ./scripts/git/push.js",
     "cm:stage": "pnpm cm:all && pnpm stage",
@@ -22,7 +22,8 @@
     "postinstall": "node scripts/ci/is.js || husky install; node scripts/ci/is.js || npx @evilmartians/lefthook install; node scripts/ci/is.js || npx @evilmartians/lefthook add pre-commit"
   },
   "dependencies": {
-    "dotenv": "16.0.3"
+    "dotenv": "16.0.3",
+    "pm2": "^5.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.3",

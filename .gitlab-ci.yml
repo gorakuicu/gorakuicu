@@ -80,12 +80,48 @@ package_deploy:
     - nsfw-1
   before_script:
     - echo -en "\nDOMAIN=$DOMAIN\nSUBDOMAIN=$SUBDOMAIN\n" > .env.local && cat "$ENV" >> .env.local && source .env.local
+    - cp .env.local .env
     - docker info
     - docker-compose version
     - docker-compose config
     - docker-compose ps
+    - sh ./scripts/ci/notify.sh "🚀 DEPLOY"
   script:
     - docker-compose --env-file .env.local up -d --build
+  after_script:
+    - >
+      if [[ $CI_JOB_STATUS == 'success' ]]; then
+        sh ./scripts/ci/notify.sh "✅ DEPLOYED"
+      elif [[ $CI_JOB_STATUS == 'canceled' ]]; then
+        sh ./scripts/ci/notify.sh "⚠️ DEPLOYED"
+      elif [[ $CI_JOB_STATUS == 'failed' ]]; then
+        sh ./scripts/ci/notify.sh "❌ DEPLOYED"
+        exit 1
+      else
+        sh ./scripts/ci/notify.sh "❓ UNKNOWN CI_JOB_STATUS"
+        exit 1
+      fi
+  environment:
+    name: production
+    url: https://aiko.icu
+    on_stop: stop
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success
+
+# stop
+stop:
+  stage: package_deploy
+  image: docker/compose
+  tags:
+    - nsfw-1
+  script:
+    - docker-compose --env-file .env.local down
+    - sh ./scripts/ci/notify.sh "✋ STOPPED"
+  when: manual
+  environment:
+    name: production
+    action: stop
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual

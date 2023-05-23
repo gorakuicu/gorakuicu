@@ -3,8 +3,8 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "eslint.workingDirectories": [
     {
-      "pattern": "apps/*/"
-    },
+      "mode": "auto"
+    }
   ],
   "tailwindCSS.experimental.classRegex": [
     [
@@ -13,7 +13,4 @@
     ],
     "(?:enter|leave)(?:From|To)?=\\s*(?:\"|')([^(?:\"|')]*)"
   ],
-  "yaml.schemas": {
-    "https://gitlab.com/sbenv/veroxis/docker-seq/-/raw/HEAD/docker-seq.schema.json": "untitled:Untitled-1"
-  }
 }

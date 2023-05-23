@@ -15,7 +15,7 @@
       ],
       "parserOptions": {
         "project": [
-          "apps/docs/tsconfig(.*)?.json"
+          "./tsconfig.json"
         ],
         "ecmaFeatures": {
           "jsx": true
