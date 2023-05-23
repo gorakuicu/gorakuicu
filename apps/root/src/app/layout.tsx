@@ -1,8 +1,33 @@
 import '../styles/globals.css';
 
+import { Fira_Sans, Inter, Lekton } from 'next/font/google';
 import React from 'react';
 
 import Providers from '~/utils/providers';
+
+const firaCode = Fira_Sans<'--code-font'>({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  style: ['normal'],
+  display: 'swap',
+  variable: '--code-font',
+});
+
+const lekton = Lekton({
+  weight: ['700'],
+  subsets: ['latin'],
+  style: ['normal'],
+  display: 'swap',
+  variable: '--display-font',
+});
+
+const inter = Inter({
+  weight: ['400', '500', '700', '900'],
+  subsets: ['latin'],
+  style: ['normal'],
+  display: 'swap',
+  variable: '--body-font',
+});
 
 export const metadata = {
   title: 'aikoicu - NSFW',
@@ -12,7 +37,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html
+      suppressHydrationWarning
+      className={`${inter.variable} ${lekton.variable} ${firaCode.variable}`}
+      lang="en"
+    >
       <head>
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
         <meta content="width=device-width" name="viewport" />
@@ -55,14 +84,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           title="aiko.icu"
           type="application/search+xml"
         />
-        {/* eslint-disable-next-line react/no-danger */}
         <script
           dangerouslySetInnerHTML={{
             __html: 'document.documentElement.setAttribute("data-fr-theme", "dark")',
           }}
         />
+        <noscript>
+          <iframe
+            height="0"
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}`}
+            style={{ display: 'none', visibility: 'hidden' }}
+            title="Google Tag Manager"
+            width="0"
+          />
+        </noscript>
       </head>
-      <body>
+      <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

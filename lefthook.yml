@@ -7,6 +7,9 @@ pre-commit:
     - ref: staging
     - ref: testing
   commands:
+    formatter:
+      glob: "*.{js,jsx,ts,tsx,css}"
+      run: pnpm formatter
     eslint:
       glob: "*.{js,jsx,ts,tsx}"
       run: pnpm lint:es:fix

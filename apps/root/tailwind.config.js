@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 const customColors = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './src/styles/theme/colors.json'), 'utf8'),
@@ -16,6 +17,10 @@ const colors = {
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -25,12 +30,16 @@ module.exports = {
   theme: {
     screens,
     fontFamily: {
-      sans: ['Inter', 'sans-serif', 'system-ui'],
-      serif: ['Inter', 'sans-serif', 'system-ui'],
-      mono: ['Inter', 'sans-serif', 'system-ui'],
+      sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      serif: ['Lekton', ...defaultTheme.fontFamily.serif],
+      mono: ['Fira Sans', ...defaultTheme.fontFamily.mono],
     },
     extend: {
       colors,
+      fontFamily: {
+        title: ['Lekton', ...defaultTheme.fontFamily.sans],
+        text: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
       zIndex: {
         '-1': '-1',
         1: '1',
@@ -54,7 +63,11 @@ module.exports = {
           '--btn-focus-scale': '0.95', // scale transform of button when you focus on it
           '--border-btn': '1px', // border width of buttons
           '--tab-border': '1px', // border width of tabs
-          '--tab-radius': '1rem', // border radius of tabs
+          '--tab-radius': '1rem', // border radius of tabs,
+          fontFamily: {
+            title: ['Lekton', ...defaultTheme.fontFamily.sans],
+            text: ['Inter', ...defaultTheme.fontFamily.sans],
+          },
         },
       },
     ],

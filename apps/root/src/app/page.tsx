@@ -7,9 +7,12 @@ import Spinner from '~/features/common/Spinner/Spinner';
 import ProductCardList from '~/features/products/ProductCardList';
 import { IProductCardListItemProps } from '~/features/products/ProductCardListItem';
 import Welcome from '~/features/welcome/Welcome';
+import { useGoogleTag } from '~/hooks/useGoogleTag';
 import { acceptNSFW, checkNSFW } from '~/utils/checkNSFW';
 
 export default function Home() {
+  useGoogleTag();
+
   const [acceptedNSFW, setAcceptedNSFW] = useState<boolean>(checkNSFW());
   const mock: IProductCardListItemProps[] = [
     {

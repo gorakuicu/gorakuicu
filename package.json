@@ -13,12 +13,13 @@
     "lint:css": "turbo lint:css --filter root",
     "lint:css:fix": "turbo lint:css --filter root -- --fix",
     "lint:cm": "commitlint --config commitlint.config.cjs --from HEAD",
+    "formatter": "prettier --write .",
     "cm": "cz",
-    "cm:all": "git add . && cz && node ./scripts/push.js",
+    "cm:all": "git add . && cz && node ./scripts/git/push.js",
     "cm:stage": "pnpm cm:all && pnpm stage",
-    "release": "node ./scripts/release.js",
-    "release:prod": "node ./scripts/release.js production",
-    "postinstall": "node scripts/ci.js || husky install; node scripts/ci.js || npx @evilmartians/lefthook install; node scripts/ci.js || npx @evilmartians/lefthook add pre-commit"
+    "release": "node ./scripts/git/release.js",
+    "release:prod": "node ./scripts/git/release.js production",
+    "postinstall": "node scripts/ci/is.js || husky install; node scripts/ci/is.js || npx @evilmartians/lefthook install; node scripts/ci/is.js || npx @evilmartians/lefthook add pre-commit"
   },
   "dependencies": {
     "dotenv": "16.0.3"
@@ -27,6 +28,7 @@
     "@commitlint/cli": "17.6.3",
     "@commitlint/config-conventional": "17.6.3",
     "@evilmartians/lefthook": "1.4.0",
+    "@size-limit/preset-app": "^8.2.4",
     "@turbo/gen": "1.9.8",
     "@types/node": "20.2.1",
     "@typescript-eslint/eslint-plugin": "5.59.6",
@@ -84,5 +86,26 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "size-limit": [
+    {
+      "path": "out",
+      "limit": "1.5 MB"
+    },
+    {
+      "path": "out",
+      "limit": "1.5 MB",
+      "running": "next start"
+    },
+    {
+      "path": "out",
+      "limit": "1.5 MB",
+      "running": "next build"
+    },
+    {
+      "path": "out",
+      "limit": "1.5 MB",
+      "running": "next build && next start"
+    }
+  ]
 }

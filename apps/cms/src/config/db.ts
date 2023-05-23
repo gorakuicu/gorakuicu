@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config({ path: '../../.env' });
+dotenv.config({ path: '../../.env.local' });
 
 import { BaseKeystoneTypeInfo, DatabaseConfig } from '@keystone-6/core/types';
 

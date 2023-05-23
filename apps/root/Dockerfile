@@ -16,7 +16,7 @@ RUN turbo prune --scope=root --docker
 
 FROM base AS installer
 WORKDIR /app
-COPY .gitignore tsconfig.json turbo.json .env package.json pnpm-lock.yaml ./
+COPY .gitignore tsconfig.json turbo.json .env.local package.json pnpm-lock.yaml ./
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=builder /app/scripts/ci.js ./scripts/ci.js

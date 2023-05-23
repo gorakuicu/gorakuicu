@@ -1,4 +1,15 @@
-const config = require('./config');
+require('dotenv').config({ path: '../../.env.local' });
+const Stylelint = require('stylelint-webpack-plugin');
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
+});
 
 const next = {
   reactStrictMode: true,
@@ -7,7 +18,34 @@ const next = {
     appDir: true,
   },
   compiler: { removeConsole: process.env.NODE_ENV !== 'development' },
-  ...config,
+  rewrites: async function proxy() {
+    return [
+      {
+        source: '/cms/:path*',
+        destination:
+          process.env.NODE_ENV === 'development'
+            ? 'http://localhost:7777/api/:path*'
+            : 'https://cms.aiko.icu/api/:path*',
+      },
+    ];
+  },
+  webpack: function webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+
+    config.plugins.push(new Stylelint());
+
+    return config;
+  },
+  env: {
+    NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID:
+      process.env.NODE_ENV === 'production'
+        ? process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID
+        : 'GTM-XXXXXXX',
+  },
 };
 
-module.exports = next;
+module.exports = withBundleAnalyzer(withPWA(next));

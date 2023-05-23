@@ -15,9 +15,9 @@ variables:
   tags:
     - nsfw-1
   before_script:
-    - echo -en "\nDOMAIN=$DOMAIN\nSUBDOMAIN=$SUBDOMAIN\n" > .env
-    - cat "$ENV" >> .env
-    - source .env
+    - echo -en "\nDOMAIN=$DOMAIN\nSUBDOMAIN=$SUBDOMAIN\n" > .env.local
+    - cat "$ENV" >> .env.local
+    - source .env.local
     - corepack enable
     - corepack prepare pnpm@latest-8 --activate
     - npm install -g pnpm
@@ -79,13 +79,13 @@ package_deploy:
   tags:
     - nsfw-1
   before_script:
-    - echo -en "\nDOMAIN=$DOMAIN\nSUBDOMAIN=$SUBDOMAIN\n" > .env && cat "$ENV" >> .env && source .env
+    - echo -en "\nDOMAIN=$DOMAIN\nSUBDOMAIN=$SUBDOMAIN\n" > .env.local && cat "$ENV" >> .env.local && source .env.local
     - docker info
     - docker-compose version
     - docker-compose config
     - docker-compose ps
   script:
-    - docker-compose --env-file .env up -d --build
+    - docker-compose --env-file .env.local up -d --build
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: on_success

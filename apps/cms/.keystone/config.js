@@ -41,7 +41,7 @@ var import_dotenv = __toESM(require("dotenv"));
 var import_auth = require("@keystone-6/auth");
 var import_session = require("@keystone-6/core/session");
 var import_crypto = require("crypto");
-import_dotenv.default.config({ path: "../../.env" });
+import_dotenv.default.config({ path: "../../.env.local" });
 var { withAuth } = (0, import_auth.createAuth)({
   listKey: "User",
   identityField: "email",
@@ -55,7 +55,7 @@ var { withAuth } = (0, import_auth.createAuth)({
 });
 var session = (0, import_session.statelessSessions)({
   maxAge: 60 * 60 * 24 * 30,
-  secret: process.env.SESSION_SECRET || process.env.NODE_ENV !== "production" && (0, import_crypto.randomBytes)(32).toString("hex"),
+  secret: process.env.SESSION_SECRET || process.env.NODE_ENV !== "production" && (0, import_crypto.randomBytes)(32).toString("hex") || "",
   // secure: process.env.NODE_ENV === 'production',
   secure: false,
   sameSite: "lax"
@@ -63,7 +63,7 @@ var session = (0, import_session.statelessSessions)({
 
 // src/config/db.ts
 var import_dotenv2 = __toESM(require("dotenv"));
-import_dotenv2.default.config({ path: "../../.env" });
+import_dotenv2.default.config({ path: "../../.env.local" });
 var DATABASE_LOCAL = process?.env?.DATABASE_LOCAL === "1";
 var DATABASE_URL = DATABASE_LOCAL ? process?.env?.DATABASE_LOCAL_URL : process?.env?.DATABASE_URL;
 var DATABASE_SHADOW_URL = DATABASE_LOCAL ? process?.env?.DATABASE_LOCAL_SHADOW_URL : process?.env?.DATABASE_SHADOW_URL;
@@ -123,7 +123,7 @@ var server = {
 
 // src/config/storage.ts
 var import_dotenv3 = __toESM(require("dotenv"));
-import_dotenv3.default.config({ path: "../../.env" });
+import_dotenv3.default.config({ path: "../../.env.local" });
 var S3_ACCESS_KEY = process?.env?.S3_ACCESS_KEY;
 var S3_SECRET_KEY = process?.env?.S3_SECRET_KEY;
 var S3_ENDPOINT = process?.env?.S3_REGION + "." + process?.env?.S3_DOMAIN;
@@ -195,7 +195,7 @@ var lists = {
 };
 
 // keystone.ts
-import_dotenv4.default.config({ path: "../../.env" });
+import_dotenv4.default.config({ path: "../../.env.local" });
 var keystone_default = withAuth(
   (0, import_core2.config)({
     lists,

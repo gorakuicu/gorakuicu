@@ -2,9 +2,9 @@
 /* stylelint-disable csstree/validator */
 
 @import url('./normalize.css');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ledger&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lekton:wght@400,500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -34,6 +34,11 @@ body {
   width: 100vw;
   height: 100%;
   min-height: 100vh;
+
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
 
   background-color: hsl(181deg 0% 0% / 100%);
   background-image: radial-gradient(at 82% 25%, hsl(258deg 81% 60% / 32%) 0, transparent 50%),

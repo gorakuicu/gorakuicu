@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config({ path: '../../.env' });
+dotenv.config({ path: '../../.env.local' });
 
 import { createAuth } from '@keystone-6/auth';
 import { statelessSessions } from '@keystone-6/core/session';
@@ -21,7 +21,8 @@ const session = statelessSessions({
   maxAge: 60 * 60 * 24 * 30,
   secret:
     process.env.SESSION_SECRET ||
-    (process.env.NODE_ENV !== 'production' && randomBytes(32).toString('hex')),
+    (process.env.NODE_ENV !== 'production' && randomBytes(32).toString('hex')) ||
+    '',
   // secure: process.env.NODE_ENV === 'production',
   secure: false,
   sameSite: 'lax',
