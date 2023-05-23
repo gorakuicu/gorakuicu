@@ -6,4 +6,5 @@
 - [x] nginx cms
 - [x] docker-compose
 - [x] ci
+- [ ] pnpm cache in docker
 - [ ] tests
