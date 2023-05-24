@@ -27,3 +27,4 @@
 **/apps/cms/.keystone/**
 .keystone/**
 !**/*.{js,jsx,ts,tsx,md}
+.env*.example

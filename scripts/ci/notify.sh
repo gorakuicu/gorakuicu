@@ -8,7 +8,7 @@ ENV_URL="${CI_ENVIRONMENT_URL:-}"
 URL="https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN:-}/sendMessage"
 
 TEXT="*$1* ${CI_PROJECT_NAME:-}/${CI_COMMIT_REF_SLUG:-}
-📦 ${CI_COMMIT_SHA:-}
+📦 ${CI_COMMIT_SHORT_SHA:-}
 📝 ${CI_COMMIT_MESSAGE:-} ${CI_COMMIT_DESCRIPTION:-}
 🫳 ${CI_PIPELINE_SOURCE:-} (${GITLAB_USER_EMAIL:-})
 🏃‍♂️ ${CI_PROJECT_URL:-}/pipelines/${CI_PIPELINE_ID:-}/

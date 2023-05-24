@@ -91,3 +91,4 @@
 .husky
 sw.js
 workbox-*.js
+!.env*.example
