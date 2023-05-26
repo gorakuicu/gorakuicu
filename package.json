@@ -25,6 +25,7 @@
     "versions": "node ./scripts/check-versions.js",
     "turbo:prune": "FORCE_COLOR=1 turbo turbo:prune",
     "size-limit": "pnpm turbo:prune && pnpm dlx size-limit",
+    "preinstall": "npx -y only-allow pnpm",
     "postinstall": "node scripts/ci/is.js || husky install; node scripts/ci/is.js || npx @evilmartians/lefthook install; node scripts/ci/is.js || npx @evilmartians/lefthook add pre-commit"
   },
   "dependencies": {
@@ -88,7 +89,7 @@
   },
   "engines": {
     "node": ">=18.16.0",
-    "npm": ">=9.0",
+    "npm": "please-use-pnpm",
     "pnpm": ">=8.0.0"
   },
   "packageManager": "pnpm@8.5.1",

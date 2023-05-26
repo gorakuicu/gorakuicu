@@ -18,7 +18,8 @@
     "lint:fix": "pnpm formatter && pnpm lint:ts && pnpm lint:es:fix && pnpm lint:css:fix",
     "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "turbo:prune": "turbo prune --scope=root --docker",
-    "analyze": "cross-env ANALYZE=true pnpm build"
+    "analyze": "cross-env ANALYZE=true pnpm build",
+    "preinstall": "npx -y only-allow pnpm"
   },
   "dependencies": {
     "@heroicons/react": "2.0.18",

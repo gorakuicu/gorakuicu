@@ -15,6 +15,7 @@
     "lint:fix": "pnpm formatter && pnpm lint:ts && pnpm lint:es:fix && pnpm lint:css:fix",
     "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "turbo:prune": "turbo prune --scope=cms --docker",
+    "preinstall": "npx -y only-allow pnpm",
     "postinstall": "node ../../scripts/ci/is.js || keystone build --no-ui --frozen"
   },
   "dependencies": {
