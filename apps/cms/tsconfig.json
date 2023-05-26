@@ -1,8 +1,14 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "composite": true,
     "module": "commonjs",
+    "moduleResolution": "nodenext",
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -13,13 +19,6 @@
       }
     ]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "./keystone.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "./.keystone/**/*",
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.json", "./keystone.ts"],
+  "exclude": ["node_modules", "./.keystone/**/*"]
 }

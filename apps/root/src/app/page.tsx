@@ -1,5 +1,6 @@
 'use client';
 
+import { DefaultSeo } from 'next-seo';
 import { Suspense, useState } from 'react';
 
 import Modal from '~/features/common/Modal/Modal';
@@ -8,6 +9,7 @@ import ProductCardList from '~/features/products/ProductCardList';
 import { IProductCardListItemProps } from '~/features/products/ProductCardListItem';
 import Welcome from '~/features/welcome/Welcome';
 import { useGoogleTag } from '~/hooks/useGoogleTag';
+import SEO from '~/next-seo.config';
 import { acceptNSFW, checkNSFW } from '~/utils/checkNSFW';
 
 export default function Home() {
@@ -47,6 +49,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen w-full flex-grow flex-col p-4 sm:p-6 md:p-8">
+      <DefaultSeo {...SEO} />
       <label className="btn hidden" htmlFor="check-nsfw">
         Check NSFW
       </label>

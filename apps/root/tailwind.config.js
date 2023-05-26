@@ -5,6 +5,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const customColors = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './src/styles/theme/colors.json'), 'utf8'),
 );
+
 const screens = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './src/styles/theme/screens.json'), 'utf8'),
 );

@@ -1,3 +1,5 @@
 packages:
   - "apps/*"
+  - "!apps/shared"
   - "packages/*"
+  - "!packages/shared"

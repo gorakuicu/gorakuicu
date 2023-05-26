@@ -1,23 +1,15 @@
 {
   "extends": [
     "../../.eslintrc.json",
-    "plugin:@next/next/recommended"
+    "plugin:@next/next/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
   ],
-  "ignorePatterns": [
-    "!**/*"
-  ],
+  "ignorePatterns": ["!**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx"
-      ],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": [
-          "./tsconfig.json"
-        ],
+        "project": ["./tsconfig.json"],
         "ecmaFeatures": {
           "jsx": true
         }
@@ -25,18 +17,8 @@
       "settings": {
         "import/resolver": {
           "alias": {
-            "map": [
-              [
-                "~",
-                "./src"
-              ]
-            ],
-            "extensions": [
-              ".ts",
-              ".js",
-              ".jsx",
-              ".json"
-            ]
+            "map": [["~", "./src"]],
+            "extensions": [".ts", ".js", ".jsx", ".json"]
           }
         },
         "react": {
@@ -47,26 +29,17 @@
         "react/no-unknown-property": [
           2,
           {
-            "ignore": [
-              "jsx",
-              "global"
-            ]
+            "ignore": ["jsx", "global"]
           }
         ]
       }
     },
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.ts", "*.tsx"],
       "rules": {}
     },
     {
-      "files": [
-        "*.js",
-        "*.jsx"
-      ],
+      "files": ["*.js", "*.jsx"],
       "rules": {}
     }
   ]

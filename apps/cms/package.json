@@ -4,25 +4,33 @@
   "private": true,
   "scripts": {
     "dev": "keystone dev",
-    "start": "keystone start",
     "build": "keystone build",
-    "lint": "pnpm lint:es && pnpm lint:css",
-    "lint:fix": "pnpm lint:es:fix && pnpm lint:css:fix",
+    "start": "keystone start",
+    "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint:css",
+    "lint:ts": "tsc --pretty --project tsconfig.json --noEmit",
     "lint:es": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" .",
     "lint:es:fix": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" . --fix",
     "lint:css": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\"",
     "lint:css:fix": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\" --fix",
-    "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md}\"",
-    "postinstall": "keystone build --no-ui --frozen"
+    "lint:fix": "pnpm formatter && pnpm lint:ts && pnpm lint:es:fix && pnpm lint:css:fix",
+    "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
+    "turbo:prune": "turbo prune --scope=cms --docker",
+    "postinstall": "node ../../scripts/ci/is.js || keystone build --no-ui --frozen"
   },
   "dependencies": {
     "@keystone-6/auth": "7.0.0",
-    "@keystone-6/core": "5.2.0",
+    "@keystone-6/core": "5.3.0",
     "@keystone-6/fields-document": "8.0.0",
+    "@prisma/client": "4.14.1",
     "@types/ws": "8.5.4",
     "graphql-ws": "5.13.1",
     "next": "~13.3.0",
-    "ws": "8.13.0"
+    "prisma": "4.14.1",
+    "ws": "8.13.0",
+    "typescript": "5.0.4"
+  },
+  "_moduleAliases": {
+    "~/": "./src/"
   },
   "packageManager": "pnpm@8.5.1"
 }

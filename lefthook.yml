@@ -2,19 +2,22 @@ min_version: 1.4.0
 
 pre-commit:
   parallel: true
-  skip:
-    - ref: main
-    - ref: staging
-    - ref: testing
+  # skip:
+  #   - ref: main
+  #   - ref: staging
+  #   - ref: testing
   commands:
+    types:
+      glob: '*.{ts,tsx}'
+      run: pnpm lint:ts
     formatter:
-      glob: "*.{js,jsx,ts,tsx,css}"
-      run: pnpm formatter
+      glob: '*.{js,jsx,ts,tsx,css,json,md,yml}'
+      run: pnpm formatter {staged_files} && git add {staged_files}
     eslint:
-      glob: "*.{js,jsx,ts,tsx}"
-      run: pnpm lint:es:fix
+      glob: '*.{js,jsx,ts,tsx}'
+      run: pnpm lint:es:fix --no-error-on-unmatched-pattern --quiet {staged_files}
     stylelint:
-      glob: "*.{css}"
-      run: pnpm lint:css:fix
+      glob: '*.{css}'
+      run: pnpm lint:css:fix {staged_files}
     commitlint:
       run: pnpm lint:cm

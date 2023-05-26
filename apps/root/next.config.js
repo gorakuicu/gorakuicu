@@ -1,5 +1,7 @@
-require('dotenv').config({ path: '../../.env.local' });
-const Stylelint = require('stylelint-webpack-plugin');
+require('dotenv').config({ path: '../../.env' });
+require('module-alias/register');
+const Stylelint =
+  process.env.NODE_ENV === 'development' ? require('stylelint-webpack-plugin') : () => {};
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',

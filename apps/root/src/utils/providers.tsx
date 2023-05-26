@@ -1,15 +1,15 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ThemeProvider } from 'next-themes';
 import React, { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 
+import useQueryClient from '~/hooks/useQueryClient';
+
 export default function Providers({ children }: { children: React.ReactNode }) {
-  const [client] = React.useState(
-    new QueryClient({ defaultOptions: { queries: { staleTime: 5000 } } }),
-  );
+  const client = useQueryClient();
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">

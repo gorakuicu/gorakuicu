@@ -1,2 +1,7 @@
-**/node_modules/
-.env*.example
+**/node_modules
+**/.env*.example
+**/npm-debug.log
+**/.git
+**/.gitignore
+**/.DS_Store
+**/*.log

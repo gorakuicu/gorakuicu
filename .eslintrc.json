@@ -18,6 +18,7 @@
     "@typescript-eslint",
     "jsx-a11y",
     "simple-import-sort",
+    "no-loops",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -36,6 +37,7 @@
     }
   },
   "rules": {
+    "no-loops/no-loops": 2,
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
@@ -76,25 +78,13 @@
       },
       {
         "blankLine": "always",
-        "prev": [
-          "const",
-          "let",
-          "var"
-        ],
+        "prev": ["const", "let", "var"],
         "next": "*"
       },
       {
         "blankLine": "any",
-        "prev": [
-          "const",
-          "let",
-          "var"
-        ],
-        "next": [
-          "const",
-          "let",
-          "var"
-        ]
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
       }
     ]
   }

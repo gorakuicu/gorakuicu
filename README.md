@@ -1,10 +1,11 @@
 # TODO
 
 - [x] linters
+- [x] tests
 - [x] commitizen + commitlint
 - [x] lefthook
 - [x] nginx cms
 - [x] docker-compose
 - [x] ci
-- [ ] pnpm cache in docker
-- [ ] tests
+- [x] pnpm cache in docker
+- [x] reduce the size of the docker image

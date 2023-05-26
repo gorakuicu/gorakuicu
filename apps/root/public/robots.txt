@@ -1,4 +1,10 @@
+# *
 User-agent: *
 Allow: /
+Disallow: /admin
 
-Sitemap: https://aiko.icu/sitemap.xml
+# Host
+Host: aiko.icu
+
+# Sitemaps
+Sitemap: aiko.icu/sitemap.xml

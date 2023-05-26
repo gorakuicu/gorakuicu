@@ -1,8 +1,7 @@
-version: "3.7"
+version: '3.7'
 
 volumes:
   db-data:
-  pnpm-store:
 
 networks:
   aikoicu:
@@ -12,11 +11,10 @@ networks:
 
 services:
   aikoicu-db:
-    image: postgres:15.2-alpine
+    image: postgres:15.3-alpine3.18
     container_name: aikoicu-db
     restart: always
     environment:
-      DOCKER_BUILDKIT: 1
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       POSTGRES_DB: $POSTGRES_DB
@@ -39,7 +37,7 @@ services:
       - traefik.docker.network=proxy
 
   aikoicu-redis:
-    image: redis:7.2-rc1-alpine
+    image: redis:7.2-rc1-alpine3.18
     container_name: aikoicu-redis
     depends_on:
       - aikoicu-db
@@ -63,26 +61,22 @@ services:
       dockerfile: ./apps/root/Dockerfile
       context: .
       args:
-        DOCKER_BUILDKIT: 1
+        PNPM_VERSION: ${PNPM_VERSION:-latest}
       cache_from:
         - aikoicu-root
     networks:
       - proxy
       - aikoicu
-    volumes:
-      - pnpm-store:/root/.pnpm-store
     restart: unless-stopped
 
-  aikoicu-proxy:
-    image: aikoicu-proxy
-    container_name: aikoicu-proxy
+  aikoicu-root-proxy:
+    image: aikoicu-root-proxy
+    container_name: aikoicu-root-proxy
     build:
       dockerfile: Dockerfile
       context: ./apps/root/nginx
-      args:
-        DOCKER_BUILDKIT: 1
       cache_from:
-        - aikoicu-proxy
+        - aikoicu-root-proxy
     environment:
       - DOMAIN
       - SUBDOMAIN
@@ -106,18 +100,17 @@ services:
   aikoicu-cms:
     image: aikoicu-cms
     container_name: aikoicu-cms
+    env_file: .env
     build:
       dockerfile: ./apps/cms/Dockerfile
       context: .
       args:
-        DOCKER_BUILDKIT: 1
+        PNPM_VERSION: ${PNPM_VERSION:-latest}
       cache_from:
         - aikoicu-cms
     networks:
       - proxy
       - aikoicu
-    volumes:
-      - pnpm-store:/root/.pnpm-store
     restart: unless-stopped
 
   aikoicu-cms-proxy:
@@ -126,8 +119,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./apps/cms/nginx
-      args:
-        DOCKER_BUILDKIT: 1
       cache_from:
         - aikoicu-cms-proxy
     environment:

@@ -5,37 +5,43 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config ./next-sitemap.js",
     "start": "next start",
-    "lint": "pnpm lint:es && pnpm lint:css",
-    "lint:fix": "pnpm lint:es:fix && pnpm lint:css:fix",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint:css",
+    "lint:ts": "tsc --pretty --project tsconfig.json --noEmit",
     "lint:es": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" .",
     "lint:es:fix": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" . --fix",
     "lint:css": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\"",
     "lint:css:fix": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\" --fix",
-    "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md}\"",
+    "lint:fix": "pnpm formatter && pnpm lint:ts && pnpm lint:es:fix && pnpm lint:css:fix",
+    "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
+    "turbo:prune": "turbo prune --scope=root --docker",
     "analyze": "cross-env ANALYZE=true pnpm build"
   },
   "dependencies": {
     "@heroicons/react": "2.0.18",
-    "@next/bundle-analyzer": "13.4.3",
+    "@next/bundle-analyzer": "13.4.4",
     "@svgr/webpack": "8.0.1",
     "@tailwindcss/typography": "0.5.9",
     "@tanstack/query-core": "4.29.7",
     "@tanstack/react-query": "4.29.7",
     "@tanstack/react-query-devtools": "4.29.7",
     "@types/inline-style-prefixer": "5.0.0",
-    "@types/node": "20.2.1",
-    "@types/react": "18.2.6",
+    "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
     "@types/ws": "8.5.4",
     "autoprefixer": "10.4.14",
     "clsx": "1.2.1",
     "daisyui": "2.51.6",
-    "framer-motion": "10.12.12",
+    "framer-motion": "10.12.16",
     "graphql-ws": "5.13.1",
     "inline-style-prefixer": "7.0.0",
     "next": "~13.3.0",
     "next-pwa": "5.6.0",
+    "next-seo": "6.0.0",
+    "next-sitemap": "4.1.3",
     "next-themes": "0.2.1",
     "popmotion": "11.0.5",
     "postcss": "8.4.23",
@@ -44,10 +50,17 @@
     "react-dom": "18.2.0",
     "react-icons": "4.8.0",
     "tailwindcss": "3.3.2",
-    "ws": "8.13.0"
+    "@normy/react-query": "0.7.0",
+    "ws": "8.13.0",
+    "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "13.4.3"
+    "@next/eslint-plugin-next": "13.4.4",
+    "@tanstack/eslint-plugin-query": "4.29.9",
+    "@testing-library/react": "14.0.0",
+    "@vitejs/plugin-react": "4.0.0",
+    "jsdom": "22.0.0",
+    "vitest": "0.31.1"
   },
   "peerDependencies": {
     "next": "*"
@@ -57,5 +70,8 @@
     "last 2 versions",
     "not dead"
   ],
+  "_moduleAliases": {
+    "~/": "./src/"
+  },
   "packageManager": "pnpm@8.5.1"
 }
