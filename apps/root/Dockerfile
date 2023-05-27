@@ -25,6 +25,11 @@ COPY --from=builder /app/scripts/ci/is.js ./scripts/ci/is.js
 RUN --mount=type=cache,id=pnpm_deps,target=/.pnpm-store \
   pnpm install --frozen-lockfile --prod
 COPY --from=builder /app/out/full/ .
+RUN (rm -rf ./**/root/*cypress* || true) && \
+  (rm -rf ./**/root/*test* || true) && \
+  (rm -rf ./**/root/*tests* || true) && \
+  (rm -rf ./**/root/*spec* || true) && \
+  (rm -rf ./**/root/*specs* || true)
 RUN --mount=type=cache,id=turbo_build,target=/app/.turbo \
   pnpm build --filter=root... --no-update-notifier
 COPY --from=builder /app/scripts/ci/node_prune.sh ./scripts/ci/node_prune.sh

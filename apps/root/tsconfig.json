@@ -12,11 +12,22 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
+    "experimentalDecorators": true,
+    "sourceMap": false,
     "jsx": "preserve",
     "plugins": [
       {
         "name": "next"
       }
+    ],
+    "types": [
+      "next",
+      "next/types/global",
+      "next/image-types/global",
+      "@types/node",
+      "@types/react",
+      "node",
+      "./src/types"
     ]
   },
   "include": [
@@ -29,5 +40,5 @@
     "next-sitemap.js",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "vitest.config.js"]
+  "exclude": ["node_modules"]
 }

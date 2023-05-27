@@ -84,6 +84,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           title="aiko.icu"
           type="application/search+xml"
         />
+      </head>
+      <body className={inter.className}>
         <script
           dangerouslySetInnerHTML={{
             __html: 'document.documentElement.setAttribute("data-fr-theme", "dark")',
@@ -98,8 +100,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             width="0"
           />
         </noscript>
-      </head>
-      <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,7 +1,12 @@
 require('dotenv').config({ path: '../../.env' });
 require('module-alias/register');
+
 const Stylelint =
   process.env.NODE_ENV === 'development' ? require('stylelint-webpack-plugin') : () => {};
+const StatoscopeWebpackPlugin =
+  process.env.NODE_ENV === 'development' && process.env.ANALYZE
+    ? require('@statoscope/webpack-plugin').default
+    : () => {};
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -18,8 +23,14 @@ const next = {
   swcMinify: true,
   experimental: {
     appDir: true,
+    swcTraceProfiling: true,
   },
-  compiler: { removeConsole: process.env.NODE_ENV !== 'development' },
+  compiler: {
+    removeConsole: {
+      exclude: ['error', 'warn', 'info'],
+    },
+    reactRemoveProperties: true,
+  },
   rewrites: async function proxy() {
     return [
       {
@@ -40,6 +51,7 @@ const next = {
 
     if (process.env.NODE_ENV === 'development') {
       config.plugins.push(new Stylelint());
+      if (process.env.ANALYZE) config.plugins.push(new StatoscopeWebpackPlugin());
     }
 
     return config;

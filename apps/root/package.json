@@ -7,8 +7,10 @@
     "build": "next build",
     "postbuild": "next-sitemap --config ./next-sitemap.js",
     "start": "next start",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
+    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "component": "cypress open --component",
+    "component:headless": "cypress run --component",
     "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint:css",
     "lint:ts": "tsc --pretty --project tsconfig.json --noEmit",
     "lint:es": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" .",
@@ -18,12 +20,12 @@
     "lint:fix": "pnpm formatter && pnpm lint:ts && pnpm lint:es:fix && pnpm lint:css:fix",
     "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "turbo:prune": "turbo prune --scope=root --docker",
-    "analyze": "cross-env ANALYZE=true pnpm build",
-    "preinstall": "npx -y only-allow pnpm"
+    "analyze": "cross-env ANALYZE=true pnpm build"
   },
   "dependencies": {
     "@heroicons/react": "2.0.18",
     "@next/bundle-analyzer": "13.4.4",
+    "@normy/react-query": "0.7.0",
     "@svgr/webpack": "8.0.1",
     "@tailwindcss/typography": "0.5.9",
     "@tanstack/query-core": "4.29.7",
@@ -51,17 +53,16 @@
     "react-dom": "18.2.0",
     "react-icons": "4.8.0",
     "tailwindcss": "3.3.2",
-    "@normy/react-query": "0.7.0",
-    "ws": "8.13.0",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "ws": "8.13.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "13.4.4",
     "@tanstack/eslint-plugin-query": "4.29.9",
     "@testing-library/react": "14.0.0",
-    "@vitejs/plugin-react": "4.0.0",
-    "jsdom": "22.0.0",
-    "vitest": "0.31.1"
+    "@types/jest": "29.5.1",
+    "cypress": "12.13.0",
+    "jsdom": "22.0.0"
   },
   "peerDependencies": {
     "next": "*"

@@ -6,6 +6,7 @@
     "dev": "keystone dev",
     "build": "keystone build",
     "start": "keystone start",
+    "test": "jest --runInBand",
     "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint:css",
     "lint:ts": "tsc --pretty --project tsconfig.json --noEmit",
     "lint:es": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" .",
@@ -15,7 +16,7 @@
     "lint:fix": "pnpm formatter && pnpm lint:ts && pnpm lint:es:fix && pnpm lint:css:fix",
     "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "turbo:prune": "turbo prune --scope=cms --docker",
-    "preinstall": "npx -y only-allow pnpm",
+    "analyze": "cross-env ANALYZE=true pnpm build",
     "postinstall": "node ../../scripts/ci/is.js || keystone build --no-ui --frozen"
   },
   "dependencies": {
