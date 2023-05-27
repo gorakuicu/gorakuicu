@@ -44,7 +44,10 @@ ENV PNPM_HOME=/.pnpm-store PATH=:/.pnpm-store:/.pnpm-store/bin:/.pnpm-store/glob
 RUN addgroup --system --gid 1001 nodejs && \
   adduser --system --uid 1001 nodejs && \
   npm install --global pnpm@${PNPM_VERSION} && npm cache clean --force
-COPY --from=installer --chown=nodejs:nodejs /app .
+# COPY --from=installer --chown=nodejs:nodejs /app .
+# COPY --from=installer --chown=nodejs:nodejs --chmod=700 /app/node_modules /app/node_modules
+COPY --from=installer /app .
+RUN chown -R nodejs:nodejs /app && chmod -R 700 /app/node_modules
 ENV PATH=/app/node_modules/.bin:$PATH
 USER nodejs
 

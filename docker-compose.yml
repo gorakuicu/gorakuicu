@@ -6,50 +6,50 @@ networks:
   proxy:
     external: true
 
+volumes:
+  aikoicu-db:
+
 services:
   aikoicu-db:
-    image: postgres:15.3-alpine3.18
+    image: postgres:15.3-alpine
     container_name: aikoicu-db
     restart: always
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       POSTGRES_DB: $POSTGRES_DB
-      POSTGRES_HOST: $POSTGRES_HOST
-      POSTGRES_PORT: $POSTGRES_PORT
     ports:
-      - ${POSTGRES_PORT}:${POSTGRES_PORT}
-    # user: postgres
+      - ${POSTGRES_PORT}:5432
     volumes:
-      - /mnt/cloud/aikoicu/db:/var/lib/postgresql/data:rw
+      - aikoicu-db:/var/lib/postgresql/data
     networks:
       - aikoicu
     labels:
       - traefik.tcp.routers.aikoicu-db.entrypoints=postgres
       - traefik.tcp.routers.aikoicu-db.rule=HostSNI(`${CMS_SUBDOMAIN}${DOMAIN}`)
       - traefik.tcp.routers.aikoicu-db.tls=true
-      - traefik.tcp.routers.aikoicu-db.tls.certresolver=letsencrypt_aikoicu
+      - traefik.tcp.routers.aikoicu-db.tls.certresolver=${CERT_RESOLVER}
       - traefik.tcp.routers.aikoicu-db.service=aikoicu-db
       - traefik.tcp.services.aikoicu-db.loadbalancer.server.port=5432
       - traefik.docker.network=proxy
 
-  aikoicu-redis:
-    image: redis:7.2-rc1-alpine3.18
-    container_name: aikoicu-redis
-    depends_on:
-      - aikoicu-db
-    restart: always
-    ports:
-      - 6379
-    volumes:
-      - /mnt/cloud/aikoicu/db:/data:rw
-    networks:
-      - aikoicu
-    labels:
-      - traefik.tcp.routers.aikoicu-redis.rule=HostSNI(`${CMS_SUBDOMAIN}${DOMAIN}`)
-      - traefik.tcp.routers.aikoicu-redis.entryPoints=redis
-      - traefik.tcp.routers.aikoicu-redis.service=redis
-      - traefik.tcp.services.aikoicu-redis.loadbalancer.server.port=6379
+  # aikoicu-redis:
+  #   image: redis:7.2-rc1-alpine3.18
+  #   container_name: aikoicu-redis
+  #   depends_on:
+  #     - aikoicu-db
+  #   restart: always
+  #   ports:
+  #     - 6379
+  #   volumes:
+  #     - aikoicu-redis:/data
+  #   networks:
+  #     - aikoicu
+  #   labels:
+  #     - traefik.tcp.routers.aikoicu-redis.rule=HostSNI(`${CMS_SUBDOMAIN}${DOMAIN}`)
+  #     - traefik.tcp.routers.aikoicu-redis.entryPoints=redis
+  #     - traefik.tcp.routers.aikoicu-redis.service=redis
+  #     - traefik.tcp.services.aikoicu-redis.loadbalancer.server.port=6379
 
   aikoicu-root:
     image: aikoicu-root

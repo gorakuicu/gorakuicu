@@ -80,6 +80,7 @@
 **/.tmp
 **/*.log
 **/*.sql
+!**/db/entrypoint/**/*.sql
 **/*.sqlite
 **/*.sqlite3
 
