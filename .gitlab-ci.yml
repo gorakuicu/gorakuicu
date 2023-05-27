@@ -87,7 +87,10 @@ package_deploy:
     - docker-compose config
     - docker-compose ps
   script:
-    - docker-compose --env-file .env up -d --build
+    - docker-compose --env-file .env build
+    - docker-compose --env-file .env stop
+    - docker-compose --env-file .env down
+    - docker-compose --env-file .env up -d
   after_script:
     - apk add --no-cache curl
     - >

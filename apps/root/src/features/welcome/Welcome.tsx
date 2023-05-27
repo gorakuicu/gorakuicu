@@ -69,9 +69,7 @@ export default function Header() {
         <Link href="/">
           <SiteName />
         </Link>
-        <IridescentText
-          strings={['Boobs will save the world.', '***REMOVED***NSFW content.']}
-        />
+        <IridescentText strings={['Boobs will save the world.', '🫦 NSFW content.']} />
         <ContactIconList contacts={contacts} />
       </div>
       {!isMD && (
