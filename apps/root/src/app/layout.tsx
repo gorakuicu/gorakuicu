@@ -44,7 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-        <meta content="width=device-width" name="viewport" />
+        <meta
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+          name="viewport"
+        />
         <meta content="#1f2937" name="theme-color" />
         <meta
           key="apple-mobile-web-app-title"
@@ -58,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
         <link href="/favicon-128x128.png" rel="icon" sizes="128x128" type="image/png" />
         <link href="/favicon-16x16.png?v=2" rel="icon" sizes="16x16" type="image/png" />
-        <link href="/site.webmanifest?v=2" rel="manifest" />
+        <link href="/manifest.json" rel="manifest" />
         <link color="#9750dd" href="/safari-pinned-tab.svg?v=2" rel="mask-icon" />
         <link href="/favicon.ico?v=2" rel="shortcut icon" />
         <meta content="#9750dd" name="msapplication-TileColor" />

@@ -34,6 +34,9 @@ server {
       application/vnd.ms-fontobject
       image/svg+xml;
 
+  add_header Cross-Origin-Opener-Policy same-origin;
+  add_header Cross-Origin-Embedder-Policy require-corp;
+
   location / {
     proxy_cache STATIC;
     proxy_cache_valid 60m;

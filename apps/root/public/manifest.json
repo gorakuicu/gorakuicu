@@ -4,7 +4,7 @@
     "description": "NFSW aiko icu",
     "theme_color": "#1f2937",
     "background_color": "#1f2937",
-    "start_url": "https://aiko.icu/",
+    "start_url": "/",
     "display": "standalone",
     "icons": [
         {
