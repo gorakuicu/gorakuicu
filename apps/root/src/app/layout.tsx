@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 
+import clsx from 'clsx';
 import { Fira_Sans, Inter, Lekton } from 'next/font/google';
 import React from 'react';
 
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       suppressHydrationWarning
-      className={`${inter.variable} ${lekton.variable} ${firaCode.variable}`}
+      className={`'dark' ${inter.variable} ${lekton.variable} ${firaCode.variable}`}
       lang="en"
     >
       <head>
@@ -88,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/search+xml"
         />
       </head>
-      <body className={inter.className}>
+      <body className={clsx(inter.className, 'background_gradient_assets')}>
         <script
           dangerouslySetInnerHTML={{
             __html: 'document.documentElement.setAttribute("data-fr-theme", "dark")',

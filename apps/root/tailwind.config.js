@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
 
 const customColors = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './src/styles/theme/colors.json'), 'utf8'),
@@ -11,7 +11,7 @@ const screens = JSON.parse(
 );
 
 const colors = {
-  ...require('daisyui/src/colors/themes')['[data-theme=dark]'],
+  ...require('daisyui/src/theming/themes')['[data-theme=dark]'],
   ...customColors,
 };
 
@@ -31,15 +31,15 @@ module.exports = {
   theme: {
     screens,
     fontFamily: {
-      sans: ['Inter', ...defaultTheme.fontFamily.sans],
-      serif: ['Lekton', ...defaultTheme.fontFamily.serif],
-      mono: ['Fira Sans', ...defaultTheme.fontFamily.mono],
+      sans: ['Inter'],
+      serif: ['Lekton'],
+      mono: ['Fira Sans'],
     },
     extend: {
       colors,
       fontFamily: {
-        title: ['Lekton', ...defaultTheme.fontFamily.sans],
-        text: ['Inter', ...defaultTheme.fontFamily.sans],
+        title: ['Lekton'],
+        text: ['Inter'],
       },
       zIndex: {
         '-1': '-1',
@@ -67,12 +67,38 @@ module.exports = {
           '--tab-border': '1px', // border width of tabs
           '--tab-radius': '1rem', // border radius of tabs,
           fontFamily: {
-            title: ['Lekton', ...defaultTheme.fontFamily.sans],
-            text: ['Inter', ...defaultTheme.fontFamily.sans],
+            title: ['Lekton'],
+            text: ['Inter'],
           },
         },
       },
     ],
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('daisyui'),
+    plugin(function ({ addUtilities, theme }) {
+      function extractVars(obj, group = '', prefix) {
+        return Object.keys(obj).reduce((vars, key) => {
+          const value = obj[key];
+          const cssVariable =
+            key === 'DEFAULT' ? `--${prefix}${group}` : `--${prefix}${group}-${key}`;
+
+          const newVars =
+            typeof value === 'string'
+              ? { [cssVariable]: value }
+              : extractVars(value, `-${key}`, prefix);
+
+          return { ...vars, ...newVars };
+        }, {});
+      }
+
+      addUtilities({
+        ':root': {
+          ...extractVars(theme('colors'), '', 'color'),
+          ...extractVars(theme('boxShadow'), '', 'box-shadow'),
+        },
+      });
+    }),
+  ],
 };

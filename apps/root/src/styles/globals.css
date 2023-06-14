@@ -49,3 +49,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.background_gradient_assets {
+  background-image: url('/assets/gradient.svg');
+  background-repeat: repeat;
+  background-position: -35vw -80vh;
+  background-size: 180vw;
+}

@@ -14,51 +14,51 @@ export default function Header() {
 
   const contacts: IContactIcon[] = [
     {
-      svg: '/icons/onlyfans.svg',
+      svg: '/assets/icons/onlyfans.svg',
       href: 'https://onlyfans.com/aikoicu',
     },
     {
-      svg: '/icons/tumblr.svg',
+      svg: '/assets/icons/tumblr.svg',
       href: 'https://aikoicu.tumblr.com/',
     },
     {
-      svg: '/icons/twitter.svg',
+      svg: '/assets/icons/twitter.svg',
       href: 'https://twitter.com/aikoicu',
     },
     {
-      svg: '/icons/reddit.svg',
+      svg: '/assets/icons/reddit.svg',
       href: 'https://www.reddit.com/user/aikoicu',
     },
     {
-      svg: '/icons/pinterest.svg',
+      svg: '/assets/icons/pinterest.svg',
       href: 'https://www.pinterest.com/aikoicu/',
     },
     {
-      svg: '/icons/facebook.svg',
+      svg: '/assets/icons/facebook.svg',
       href: 'https://www.facebook.com/aikoicu',
     },
     {
-      svg: '/icons/telegram.svg',
+      svg: '/assets/icons/telegram.svg',
       href: 'https://t.me/aikoicu',
     },
     {
-      svg: '/icons/instagram.svg',
+      svg: '/assets/icons/instagram.svg',
       href: 'https://www.instagram.com/aikoicu/',
     },
     {
-      svg: '/icons/deviantart.svg',
+      svg: '/assets/icons/deviantart.svg',
       href: 'https://www.deviantart.com/aikoicu',
     },
     {
-      svg: '/icons/pillowfort.svg',
+      svg: '/assets/icons/pillowfort.svg',
       href: 'https://www.pillowfort.social/aikoicu',
     },
     {
-      svg: '/icons/newgrounds.svg',
+      svg: '/assets/icons/newgrounds.svg',
       href: 'https://aikoicu.newgrounds.com/',
     },
     {
-      svg: '/icons/mastodon.svg',
+      svg: '/assets/icons/mastodon.svg',
       href: 'https://mastodon.social/@aikoicu',
     },
   ];

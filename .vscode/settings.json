@@ -13,4 +13,8 @@
     ],
     "(?:enter|leave)(?:From|To)?=\\s*(?:\"|')([^(?:\"|')]*)"
   ],
+  "cSpell.words": [
+    "clsx",
+    "nextui"
+  ],
 }
