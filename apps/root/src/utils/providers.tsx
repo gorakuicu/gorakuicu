@@ -6,8 +6,8 @@ import { ThemeProvider } from 'next-themes';
 import React, { useMemo } from 'react';
 import { IconContext } from 'react-icons';
 
-import ScrollProgress from '~/features/common/ScrollProgress';
-import useQueryClient from '~/hooks/useQueryClient';
+import ScrollProgress from '@/features/common/ScrollProgress';
+import useQueryClient from '@/hooks/useQueryClient';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const client = useQueryClient();

@@ -207,6 +207,9 @@ importers:
 
   apps/root:
     dependencies:
+      '@headlessui/react':
+        specifier: 1.7.15
+        version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
         specifier: 2.0.18
         version: 2.0.18(react@18.2.0)
@@ -249,6 +252,9 @@ importers:
       clsx:
         specifier: 1.2.1
         version: 1.2.1
+      cross-env:
+        specifier: 7.0.3
+        version: 7.0.3
       daisyui:
         specifier: 3.1.0
         version: 3.1.0(postcss@8.4.24)(ts-node@10.9.1)
@@ -3923,6 +3929,18 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: true
 
+  /@headlessui/react@1.7.15(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-OTO0XtoRQ6JPB1cKNFYBZv2Q0JMqMGNhYP1CjPvcJvjz8YGokz8oAj89HIYZGN0gZzn/4kk9iUpmMF4Q21Gsqw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@heroicons/react@2.0.18(react@18.2.0):
     resolution: {integrity: sha512-7TyMjRrZZMBPa+/5Y8lN0iyvUU/01PeMGX2+RE7cQWpEUIcb4QotzUObFkJDejj/HUH4qjP/eQ0gzzKs2f+6Yw==}
     peerDependencies:
@@ -7400,7 +7418,6 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-    dev: true
 
   /cross-fetch@3.1.5:
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
@@ -15893,6 +15910,7 @@ time:
   /@commitlint/cli@17.6.5: '2023-05-30T07:51:38.965Z'
   /@commitlint/config-conventional@17.6.5: '2023-05-30T07:51:38.884Z'
   /@evilmartians/lefthook@1.4.1: '2023-05-22T09:39:03.422Z'
+  /@headlessui/react@1.7.15: '2023-06-01T10:41:43.429Z'
   /@heroicons/react@2.0.18: '2023-05-09T19:41:26.731Z'
   /@keystone-6/auth@7.0.0: '2023-02-24T02:33:31.310Z'
   /@keystone-6/core@5.3.1: '2023-06-08T06:42:57.418Z'

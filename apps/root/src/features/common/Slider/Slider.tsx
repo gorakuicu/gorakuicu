@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { wrap } from 'popmotion';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import uuid from '~/utils/uuid';
+import uuid from '@/utils/uuid';
 
 import css from './Slider.module.css';
 

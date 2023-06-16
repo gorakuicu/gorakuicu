@@ -4,14 +4,16 @@ import clsx from 'clsx';
 import { Fira_Sans, Inter, Lekton } from 'next/font/google';
 import React from 'react';
 
-import Providers from '~/utils/providers';
+import { evnNotForGoogleTag } from '@/hooks/useGoogleTag';
+import Providers from '@/utils/providers';
+import { addGlassStyle } from '@/utils/styles';
 
-const firaCode = Fira_Sans<'--code-font'>({
+const firaCode = Fira_Sans({
   weight: ['400', '700'],
   subsets: ['latin'],
   style: ['normal'],
   display: 'swap',
-  variable: '--code-font',
+  variable: '--font-code',
 });
 
 const lekton = Lekton({
@@ -19,7 +21,7 @@ const lekton = Lekton({
   subsets: ['latin'],
   style: ['normal'],
   display: 'swap',
-  variable: '--display-font',
+  variable: '--font-label',
 });
 
 const inter = Inter({
@@ -27,7 +29,7 @@ const inter = Inter({
   subsets: ['latin'],
   style: ['normal'],
   display: 'swap',
-  variable: '--body-font',
+  variable: '--font-common',
 });
 
 export const metadata = {
@@ -96,13 +98,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <noscript>
-          <iframe
-            height="0"
-            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}`}
-            style={{ display: 'none', visibility: 'hidden' }}
-            title="Google Tag Manager"
-            width="0"
-          />
+          {!evnNotForGoogleTag && (
+            <iframe
+              height="0"
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}`}
+              style={{ display: 'none', visibility: 'hidden' }}
+              title="Google Tag Manager"
+              width="0"
+            />
+          )}
+          <span
+            className={addGlassStyle(
+              'fixed left-2/4 top-2/4 z-50 -translate-x-2/4 translate-y-2/4 rounded-3xl p-2 text-center align-middle text-red-500 shadow-sm',
+            )}
+          >
+            This website requires JavaScript to be enabled to function properly.
+          </span>
         </noscript>
         <Providers>{children}</Providers>
       </body>

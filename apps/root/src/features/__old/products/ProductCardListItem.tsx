@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
-import useBreakpoints from '~/hooks/useBreakpoints';
+import useBreakpoints from '@/hooks/useBreakpoints';
+import { addGlassStyle } from '@/utils/styles';
 
 import ImageGlow from '../common/ImageGlow';
 
@@ -53,7 +54,11 @@ export default function ProductCardListItem({
       }}
     >
       <ImageGlow alt={alt} className="h-auto max-w-full" src={src} />
-      <div className="card-body z-1 border-t-1 border-base-100 absolute bottom-0 mt-auto w-full rounded-ee-3xl rounded-es-3xl border-opacity-20 bg-black bg-opacity-40 p-4 backdrop-blur-sm backdrop-saturate-100 backdrop-filter">
+      <div
+        className={addGlassStyle(
+          'card-body z-1 absolute bottom-0 mt-auto w-full rounded-ee-3xl rounded-es-3xl p-4',
+        )}
+      >
         {title ||
           description ||
           (price && (

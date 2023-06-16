@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-import useBreakpoints from '~/hooks/useBreakpoints';
+import useBreakpoints from '@/hooks/useBreakpoints';
 
 import IridescentText from '../common/IridescentText';
 import Slider from '../common/Slider/Slider';

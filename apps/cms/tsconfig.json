@@ -4,11 +4,11 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "~/*": ["./*"]
+      "@/*": ["./*"]
     },
     "composite": true,
     "module": "commonjs",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,

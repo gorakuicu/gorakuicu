@@ -1,70 +1,49 @@
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-interface IMenuItem {
-  label: string;
-  href: string;
-  active: boolean;
-}
+import DropdownLinks from '@/features/common/DropdownLinks';
+import Href from '@/features/common/Href';
+import GradientText from '@/features/single/GradientText';
+import { addGlassStyle } from '@/utils/styles';
 
-interface ISocialItem {
-  alt: string;
-  href: string;
-  src?: string;
-  icon?: React.ReactNode;
+import type { ILink } from '../DropdownLinks';
+
+interface IMenuItem extends ILink {
+  children?: ILink[];
 }
 
 interface INavbarProps {
   label?: string;
   menu?: IMenuItem[];
-  social?: ISocialItem[];
 }
 
-export default function Navbar({ label = 'aikoicu', menu = [], social = [] }: INavbarProps) {
+export default function Navbar({ menu = [] }: INavbarProps) {
   return (
     <>
-      <nav className="border-1 border-neutral-focus fixed left-0 right-0 top-8 z-10 mx-auto flex w-4/5 justify-around rounded-3xl py-4 shadow-xl backdrop-blur-3xl">
-        <div className="flex items-center">
+      <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -16 }}>
+        <nav
+          className={addGlassStyle(
+            'fixed left-0 right-0 top-4 z-10 mx-auto flex w-3/5 items-center justify-between rounded-3xl bg-white px-20 py-4 shadow-sm',
+          )}
+        >
           <Link className="cursor-pointer" href="#">
-            <h3 className="text-2xl font-medium text-blue-500">{label}</h3>
+            <GradientText animate={false} as="h3" size="text-3xl" />
           </Link>
-        </div>
 
-        <div className="hidden items-center space-x-8 lg:flex">
-          {menu.map(({ href, label, active }) => (
-            <Link
-              key={label}
-              className={`flex cursor-pointer transition-colors duration-300 ${
-                active ? 'text-blue-500' : 'text-gray-600 hover:text-blue-500'
-              }`}
-              href={href}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-
-        <div className="flex items-center space-x-5">
-          {social.map(({ alt, href, src, icon }) => (
-            <Link
-              key={alt}
-              className="flex cursor-pointer text-gray-600 transition-colors duration-300 hover:text-blue-500"
-              href={href}
-            >
-              {src ? (
-                <Image alt={alt} height={24} src={src} width={24} />
-              ) : (
-                <div className="flex h-6 w-6 items-center justify-center">{icon}</div>
-              )}
-            </Link>
-          ))}
-        </div>
-      </nav>
-      <div
-        style={{
-          height: 'calc(100vh - 31rem)',
-        }}
-      />
+          <ul className="hidden items-center space-x-8 lg:flex">
+            {menu.map(({ href, label, active = false, children }) => (
+              <li key={label}>
+                {children ? (
+                  <DropdownLinks hover active={active} label={label} links={children} />
+                ) : (
+                  <Href active={active} href={href} label={label} />
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </motion.div>
+      <div className="h-24" />
     </>
   );
 }

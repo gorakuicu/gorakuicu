@@ -8,9 +8,9 @@ export default function ScrollProgress() {
     const updateScrollPercent = () => {
       if (!document) return;
 
-      const winScroll = document?.body?.scrollTop || document?.documentElement?.scrollTop;
+      const winScroll = document?.body?.scrollTop || document?.documentElement?.scrollTop || 0;
       const height =
-        document?.documentElement?.scrollHeight - document?.documentElement?.clientHeight;
+        document?.documentElement?.scrollHeight - document?.documentElement?.clientHeight || 1;
       const scrolled = winScroll / height;
 
       setPercent(Math.round(scrolled * 100));
@@ -25,8 +25,9 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      animate={{ width: `${percent}%` }}
+      animate={{ width: `${percent || 0}%` }}
       className="bg-primary-focus fixed inset-x-0 top-0 z-50 h-0.5"
+      initial={{ width: '0%' }}
       style={{
         backgroundImage: 'linear-gradient(to right, #4F46E577, #D53CF577)',
       }}

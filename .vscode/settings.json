@@ -8,13 +8,15 @@
   ],
   "tailwindCSS.experimental.classRegex": [
     [
-      "clsx\\(([^)]*)\\)",
+      "clsx\\(([^)]*\\n*[^)]*)\\)",
+      "addGlassStyle\\(([^)]*\\n*[^)]*)\\)",
       "(?:'|\"|`)([^']*)(?:'|\"|`)"
     ],
     "(?:enter|leave)(?:From|To)?=\\s*(?:\"|')([^(?:\"|')]*)"
   ],
   "cSpell.words": [
     "clsx",
+    "headlessui",
     "nextui"
   ],
 }

@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 
-import uuid from '~/utils/uuid';
+import uuid from '@/utils/uuid';
 
 export interface IIridescentText {
   strings: string[];

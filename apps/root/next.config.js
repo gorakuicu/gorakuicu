@@ -26,9 +26,14 @@ const next = {
     swcTraceProfiling: true,
   },
   compiler: {
-    removeConsole: {
-      exclude: ['error', 'warn', 'info'],
-    },
+    ...(process.env.NODE_ENV === 'development'
+      ? {}
+      : {
+          removeDebugger: true,
+          removeConsole: {
+            exclude: ['error', 'info'],
+          },
+        }),
     reactRemoveProperties: true,
   },
   headers:

@@ -16,7 +16,7 @@
     "lib": ["dom", "esnext"],
     "declaration": true,
     "sourceMap": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,

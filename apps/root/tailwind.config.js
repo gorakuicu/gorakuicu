@@ -31,15 +31,15 @@ module.exports = {
   theme: {
     screens,
     fontFamily: {
-      sans: ['Inter'],
-      serif: ['Lekton'],
-      mono: ['Fira Sans'],
+      sans: ['var(--font-label)'],
+      serif: ['var(--font-common)'],
+      mono: ['var(--font-code)'],
     },
     extend: {
       colors,
       fontFamily: {
-        title: ['Lekton'],
-        text: ['Inter'],
+        title: ['var(--font-label)'],
+        text: ['var(--font-common)'],
       },
       zIndex: {
         '-1': '-1',

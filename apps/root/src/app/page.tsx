@@ -1,14 +1,16 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { DefaultSeo } from 'next-seo';
 import { Suspense, useState } from 'react';
 
-import Modal from '~/features/common/Modal';
-import Navbar from '~/features/common/Navbar/Navbar';
-import Spinner from '~/features/common/Spinner';
-import { useGoogleTag } from '~/hooks/useGoogleTag';
-import SEO from '~/next-seo.config';
-import { acceptNSFW, checkNSFW } from '~/utils/checkNSFW';
+import { useGoogleTag } from '@/hooks/useGoogleTag';
+import SEO from '@/next-seo.config';
+import { acceptNSFW, checkNSFW } from '@/utils/checkNSFW';
+
+const Modal = dynamic(() => import('@/features/common/Modal'));
+const Navbar = dynamic(() => import('@/features/common/Navbar/Navbar'));
+const Spinner = dynamic(() => import('@/features/common/Spinner'));
 
 export default function Home() {
   useGoogleTag();
@@ -26,14 +28,51 @@ export default function Home() {
       {
         active: false,
         href: '#',
-        label: 'About',
+        label: 'Arts',
+        children: [
+          {
+            active: false,
+            href: '#',
+            label: 'Free',
+          },
+          {
+            active: false,
+            href: '#',
+            label: 'NFT',
+          },
+          {
+            active: false,
+            href: '#',
+            label: 'Paid',
+          },
+          {
+            active: false,
+            href: '#',
+            label: 'Commissions',
+          },
+        ],
       },
-    ],
-    social: [
       {
-        alt: 'Twitter',
-        href: 'https://twitter.com/aikoicu',
-        src: '/assets/twitter.svg',
+        active: false,
+        href: '#',
+        label: 'Links',
+        children: [
+          {
+            active: false,
+            href: '#',
+            label: 'Social Media',
+          },
+          {
+            active: false,
+            href: '#',
+            label: 'Contacts',
+          },
+          {
+            active: false,
+            href: '#',
+            label: 'Communities',
+          },
+        ],
       },
     ],
   };
@@ -48,7 +87,13 @@ export default function Home() {
         </label>
         <Modal
           blur
-          description="Are you 18+?"
+          description={
+            <>
+              This resource contains sensitive content.
+              <br />
+              Do you want to continue?
+            </>
+          }
           id="check-nsfw"
           opened={!acceptedNSFW}
           submit={{
@@ -61,7 +106,12 @@ export default function Home() {
           title="NSFW"
         />
         <Suspense fallback={<Spinner />}>
-          <div className="flex min-h-screen flex-col items-center justify-between">1</div>
+          <div
+            className="flex min-h-screen flex-col items-center justify-between"
+            style={{
+              height: 10000,
+            }}
+          />
         </Suspense>
       </main>
     </>

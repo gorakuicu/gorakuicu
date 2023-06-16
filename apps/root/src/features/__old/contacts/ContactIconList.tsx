@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { memo } from 'react';
 
-import uuid from '~/utils/uuid';
+import uuid from '@/utils/uuid';
 
 import ContactIcon, { IContactIcon } from './ContactIcon';
 

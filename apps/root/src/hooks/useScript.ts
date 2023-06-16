@@ -7,10 +7,16 @@ export interface ScriptStatus {
   error: 'error';
 }
 
-export function useScript(src: string, delay?: number): ScriptStatus[keyof ScriptStatus] {
+export function useScript(
+  src: string,
+  delay?: number,
+  doNotRun?: boolean,
+): ScriptStatus[keyof ScriptStatus] {
   const [status, setStatus] = useState<ScriptStatus[keyof ScriptStatus]>(src ? 'loading' : 'idle');
 
   useEffect(() => {
+    if (doNotRun) return;
+
     if (!src) {
       setStatus('idle');
 

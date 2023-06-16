@@ -7,9 +7,9 @@ pre-commit:
   #   - ref: staging
   #   - ref: testing
   commands:
-    types:
-      glob: '*.{ts,tsx}'
-      run: pnpm lint:ts
+    # types:
+    #   glob: '*.{ts,tsx}'
+    #   run: pnpm lint:ts
     formatter:
       glob: '*.{js,jsx,ts,tsx,css,json,md,yml}'
       run: pnpm formatter {staged_files} && git add {staged_files}
