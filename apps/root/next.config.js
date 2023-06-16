@@ -45,6 +45,9 @@ const next = {
           },
         ]
       : undefined,
+  images: {
+    domains: ['creativecommons.org', 'licensebuttons.net', 'img.shields.io'],
+  },
   rewrites: async function proxy() {
     return [
       {

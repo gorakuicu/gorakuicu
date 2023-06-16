@@ -33,7 +33,6 @@ body {
 
   width: 100vw;
   height: 100%;
-  min-height: 100vh;
 
   font-family: Inter, sans-serif;
   font-size: 16px;
@@ -43,6 +42,10 @@ body {
   background-color: hsl(181deg 0% 0% / 100%);
   background-image: radial-gradient(at 82% 25%, hsl(258deg 81% 60% / 32%) 0, transparent 50%),
     radial-gradient(at 7% 79%, hsl(268deg 79% 64% / 38%) 0, transparent 50%);
+}
+
+main {
+  min-height: calc(100vh - 386px);
 }
 
 a {

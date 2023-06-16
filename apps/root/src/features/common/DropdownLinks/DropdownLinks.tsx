@@ -95,3 +95,5 @@ export default function DropdownLinks({
     </Menu>
   );
 }
+
+DropdownLinks.displayName = 'DropdownLinks';

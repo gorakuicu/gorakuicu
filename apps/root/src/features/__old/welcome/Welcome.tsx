@@ -1,67 +1,16 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
+import { contacts } from '@/constants/contacts';
 import useBreakpoints from '@/hooks/useBreakpoints';
 
 import IridescentText from '../common/IridescentText';
 import Slider from '../common/Slider/Slider';
-import { IContactIcon } from '../contacts/ContactIcon';
-import ContactIconList from '../contacts/ContactIconList';
+import LinkIconList from '../contacts/LinkIconList';
 import SiteName from './SiteName';
 
 export default function Header() {
   const { isMD } = useBreakpoints();
-
-  const contacts: IContactIcon[] = [
-    {
-      svg: '/assets/icons/onlyfans.svg',
-      href: 'https://onlyfans.com/aikoicu',
-    },
-    {
-      svg: '/assets/icons/tumblr.svg',
-      href: 'https://aikoicu.tumblr.com/',
-    },
-    {
-      svg: '/assets/icons/twitter.svg',
-      href: 'https://twitter.com/aikoicu',
-    },
-    {
-      svg: '/assets/icons/reddit.svg',
-      href: 'https://www.reddit.com/user/aikoicu',
-    },
-    {
-      svg: '/assets/icons/pinterest.svg',
-      href: 'https://www.pinterest.com/aikoicu/',
-    },
-    {
-      svg: '/assets/icons/facebook.svg',
-      href: 'https://www.facebook.com/aikoicu',
-    },
-    {
-      svg: '/assets/icons/telegram.svg',
-      href: 'https://t.me/aikoicu',
-    },
-    {
-      svg: '/assets/icons/instagram.svg',
-      href: 'https://www.instagram.com/aikoicu/',
-    },
-    {
-      svg: '/assets/icons/deviantart.svg',
-      href: 'https://www.deviantart.com/aikoicu',
-    },
-    {
-      svg: '/assets/icons/pillowfort.svg',
-      href: 'https://www.pillowfort.social/aikoicu',
-    },
-    {
-      svg: '/assets/icons/newgrounds.svg',
-      href: 'https://aikoicu.newgrounds.com/',
-    },
-    {
-      svg: '/assets/icons/mastodon.svg',
-      href: 'https://mastodon.social/@aikoicu',
-    },
-  ];
 
   return (
     <div className="my-40 flex w-full flex-row gap-8 lg:w-8/12">
@@ -70,7 +19,7 @@ export default function Header() {
           <SiteName />
         </Link>
         <IridescentText strings={['Boobs will save the world.', '🫦 NSFW content.']} />
-        <ContactIconList contacts={contacts} />
+        <LinkIconList contacts={contacts} />
       </div>
       {!isMD && (
         <div className="w-full flex-col lg:w-1/2">

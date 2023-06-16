@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
+import type { ILink } from '@/features/common/DropdownLinks';
 import DropdownLinks from '@/features/common/DropdownLinks';
 import Href from '@/features/common/Href';
 import GradientText from '@/features/single/GradientText';
 import { addGlassStyle } from '@/utils/styles';
-
-import type { ILink } from '../DropdownLinks';
 
 interface IMenuItem extends ILink {
   children?: ILink[];
@@ -26,7 +25,7 @@ export default function Navbar({ menu = [] }: INavbarProps) {
             'fixed left-0 right-0 top-4 z-10 mx-auto flex w-3/5 items-center justify-between rounded-3xl bg-white px-20 py-4 shadow-sm',
           )}
         >
-          <Link className="cursor-pointer" href="#">
+          <Link className="cursor-pointer" href="/">
             <GradientText animate={false} as="h3" size="text-3xl" />
           </Link>
 
@@ -47,3 +46,5 @@ export default function Navbar({ menu = [] }: INavbarProps) {
     </>
   );
 }
+
+Navbar.displayName = 'Navbar';

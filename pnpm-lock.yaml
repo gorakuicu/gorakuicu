@@ -210,9 +210,6 @@ importers:
       '@headlessui/react':
         specifier: 1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
-      '@heroicons/react':
-        specifier: 2.0.18
-        version: 2.0.18(react@18.2.0)
       '@next/bundle-analyzer':
         specifier: 13.4.5
         version: 13.4.5
@@ -243,6 +240,9 @@ importers:
       '@types/react-dom':
         specifier: 18.2.4
         version: 18.2.4
+      '@types/react-linkify':
+        specifier: 1.0.1
+        version: 1.0.1
       '@types/ws':
         specifier: 8.5.5
         version: 8.5.5
@@ -300,6 +300,12 @@ importers:
       react-icons:
         specifier: 4.9.0
         version: 4.9.0(react@18.2.0)
+      react-linkify:
+        specifier: 1.0.0-alpha
+        version: 1.0.0-alpha
+      react-tiny-linkify:
+        specifier: 1.1.1
+        version: 1.1.1(react@18.2.0)
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2(ts-node@10.9.1)
@@ -3941,14 +3947,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@heroicons/react@2.0.18(react@18.2.0):
-    resolution: {integrity: sha512-7TyMjRrZZMBPa+/5Y8lN0iyvUU/01PeMGX2+RE7cQWpEUIcb4QotzUObFkJDejj/HUH4qjP/eQ0gzzKs2f+6Yw==}
-    peerDependencies:
-      react: '>= 16'
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
     engines: {node: '>=10.10.0'}
@@ -5756,6 +5754,12 @@ packages:
     resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
       '@types/react': 18.2.11
+
+  /@types/react-linkify@1.0.1:
+    resolution: {integrity: sha512-qPxYwjB41ezoKdLXs0MrQ1FnhF3apyyxf3J7WVQQCBu/GyZQAW7Y3TY4317jdh0450QJ4fLqj0rnhIJvFZOamQ==}
+    dependencies:
+      '@types/react': 18.2.11
+    dev: false
 
   /@types/react-transition-group@4.4.6:
     resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
@@ -10867,6 +10871,12 @@ packages:
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
+  /linkify-it@2.2.0:
+    resolution: {integrity: sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==}
+    dependencies:
+      uc.micro: 1.0.6
+    dev: false
+
   /listr2@3.14.0(enquirer@2.3.6):
     resolution: {integrity: sha512-TyWI8G99GX9GjE54cJ+RrNMcIFBfwMPxc3XTFiAYGN4s10hWROGtOg7+O6u6LE3mNkyld7RSLE6nrKBvTfcs3g==}
     engines: {node: '>=10.0.0'}
@@ -12973,6 +12983,13 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
+  /react-linkify@1.0.0-alpha:
+    resolution: {integrity: sha512-7gcIUvJkAXXttt1fmBK9cwn+1jTa4hbKLGCZ9J1U6EOkyb2/+LKL1Z28d9rtDLMnpvImlNlLPdTPooorl5cpmg==}
+    dependencies:
+      linkify-it: 2.2.0
+      tlds: 1.239.0
+    dev: false
+
   /react-popper@2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-e1hj8lL3uM+sgSR4Lxzn5h1GxBlpa4CQz0XLF8kx4MDrDRWY0Ena4c97PUeSX9i5W3UAfDP0z0FXCTQkoXUl3Q==}
     peerDependencies:
@@ -13058,6 +13075,14 @@ packages:
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.5.3
+    dev: false
+
+  /react-tiny-linkify@1.1.1(react@18.2.0):
+    resolution: {integrity: sha512-NlR6HL24ljfb5r44wVkpYSQ03CwAYndVvRVIRFPRr0k3o4QuQBEr53VqaLLg+6WpyfokX01MefhHmqvY0Ajq+w==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-transition-group@4.4.5(react-dom@18.2.0)(react@18.2.0):
@@ -14732,6 +14757,11 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /tlds@1.239.0:
+    resolution: {integrity: sha512-lhiymAloYTizXVGDVnplwjQK2YkiB30k5bbeZlyZ6u2vbG4q7re+fwTlOeliCcfiqvmK3yv9savLIFzfKjAVQg==}
+    hasBin: true
+    dev: false
+
   /tmp@0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}
     engines: {node: '>=0.6.0'}
@@ -15054,6 +15084,10 @@ packages:
     resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  /uc.micro@1.0.6:
+    resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
+    dev: false
 
   /uglify-js@3.17.4:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
@@ -15911,7 +15945,6 @@ time:
   /@commitlint/config-conventional@17.6.5: '2023-05-30T07:51:38.884Z'
   /@evilmartians/lefthook@1.4.1: '2023-05-22T09:39:03.422Z'
   /@headlessui/react@1.7.15: '2023-06-01T10:41:43.429Z'
-  /@heroicons/react@2.0.18: '2023-05-09T19:41:26.731Z'
   /@keystone-6/auth@7.0.0: '2023-02-24T02:33:31.310Z'
   /@keystone-6/core@5.3.1: '2023-06-08T06:42:57.418Z'
   /@keystone-6/fields-document@8.0.0: '2023-04-27T05:18:52.399Z'
@@ -15933,6 +15966,7 @@ time:
   /@types/jest@29.5.2: '2023-05-31T15:32:52.046Z'
   /@types/node@20.3.0: '2023-06-10T20:32:52.872Z'
   /@types/react-dom@18.2.4: '2023-05-05T15:32:49.921Z'
+  /@types/react-linkify@1.0.1: '2021-07-07T17:41:30.995Z'
   /@types/react@18.2.11: '2023-06-10T15:02:52.321Z'
   /@types/ws@8.5.5: '2023-06-08T20:03:44.573Z'
   /@typescript-eslint/eslint-plugin@5.59.11: '2023-06-12T18:01:42.887Z'
@@ -15981,6 +16015,8 @@ time:
   /prisma@4.15.0: '2023-05-30T14:19:28.857Z'
   /react-dom@18.2.0: '2022-06-14T19:46:48.370Z'
   /react-icons@4.9.0: '2023-05-28T14:32:49.882Z'
+  /react-linkify@1.0.0-alpha: '2019-05-30T06:58:40.835Z'
+  /react-tiny-linkify@1.1.1: '2022-01-14T06:50:58.588Z'
   /react@18.2.0: '2022-06-14T19:46:38.369Z'
   /start-server-and-test@2.0.0: '2023-02-27T12:57:17.443Z'
   /stylelint-a11y@1.2.3: '2020-02-13T13:04:52.535Z'

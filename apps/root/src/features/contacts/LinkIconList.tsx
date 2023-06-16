@@ -6,12 +6,12 @@ import uuid from '@/utils/uuid';
 
 import ContactIcon, { IContactIcon } from './ContactIcon';
 
-export interface IContactIconList {
+export interface ILinkIconList {
   contacts: IContactIcon[];
   className?: string;
 }
 
-const ContactIconList: React.FC<IContactIconList> = ({ contacts, className = '' }) => {
+const LinkIconList: React.FC<ILinkIconList> = ({ contacts, className = '' }) => {
   if (!contacts?.length) return null;
 
   const classNames = clsx(
@@ -42,11 +42,9 @@ const ContactIconList: React.FC<IContactIconList> = ({ contacts, className = '' 
         },
       }}
     >
-      {contacts?.map((icon) => (
-        <ContactIcon key={uuid()} {...icon} />
-      ))}
+      {contacts?.length > 0 && contacts?.map((icon) => <ContactIcon key={uuid()} {...icon} />)}
     </motion.ul>
   );
 };
 
-export default memo(ContactIconList);
+export default memo(LinkIconList);
