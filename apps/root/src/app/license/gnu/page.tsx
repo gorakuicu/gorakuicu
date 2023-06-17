@@ -1,10 +1,14 @@
-import linkify from 'react-tiny-linkify';
-
+import Href from '@/features/common/Href';
+import Linkify from '@/features/common/Linkify';
 import Structure from '@/features/layout/Structure';
 
 export default function License() {
   return (
-    <Structure>
+    <Structure className="gap-4">
+      <small className="mb-8 text-center">
+        License for aiko.icu resource code in{' '}
+        <Href href="https://github.com/aikoicu/aikoicu">repository</Href>
+      </small>
       <h1 className="text-center text-4xl font-bold">GNU Affero General Public License</h1>
       <div className="my-12 flex justify-between gap-4">
         <span className="w-1/3">
@@ -13,7 +17,7 @@ export default function License() {
         </span>
         <i className="w-1/3">
           Version 3, 19 November 2007 Copyright © 2007 Free Software Foundation, Inc.{' '}
-          <a href="http://fsf.org/">http://fsf.org/</a>
+          <Linkify>http://fsf.org/</Linkify>
         </i>
       </div>
       <h2 className="mb-4 mt-8 text-center text-2xl font-bold">Preamble</h2>
@@ -32,9 +36,12 @@ export default function License() {
       want it, that you can change the software or use pieces of it in new free programs, and that
       you know you can do these things.
       <br className="my-2" />
-      Developers that use our General Public Licenses protect your rights with two steps: **(1)**
-      assert copyright on the software, and **(2)** offer you this License which gives you legal
-      permission to copy, distribute and/or modify the software.
+      Developers that use our General Public Licenses protect your rights with two steps:
+      <br className="my-2" />
+      1. assert copyright on the software, and
+      <br className="my-2" />
+      2. offer you this License which gives you legal permission to copy, distribute and/or modify
+      the software.
       <br className="my-2" />
       A secondary benefit of defending all users&apos; freedom is that improvements made in
       alternate versions of the program, if they receive widespread use, become available for other
@@ -83,11 +90,14 @@ export default function License() {
       is not conveying.
       <br className="my-2" />
       An interactive user interface displays “Appropriate Legal Notices” to the extent that it
-      includes a convenient and prominently visible feature that **(1)** displays an appropriate
-      copyright notice, and **(2)** tells the user that there is no warranty for the work (except to
-      the extent that warranties are provided), that licensees may convey the work under this
-      License, and how to view a copy of this License. If the interface presents a list of user
-      commands or options, such as a menu, a prominent item in the list meets this criterion.
+      includes a convenient and prominently visible feature that
+      <br className="my-2" />
+      1. displays an appropriate copyright notice, and
+      <br className="my-2" />
+      2. tells the user that there is no warranty for the work (except to the extent that warranties
+      are provided), that licensees may convey the work under this License, and how to view a copy
+      of this License. If the interface presents a list of user commands or options, such as a menu,
+      a prominent item in the list meets this criterion.
       <h3 className="my-4 text-xl font-bold">1. Source Code</h3>
       The “source code” for a work means the preferred form of the work for making modifications to
       it. “Object code” means any non-source form of a work.
@@ -97,13 +107,14 @@ export default function License() {
       programming language, one that is widely used among developers working in that language.
       <br className="my-2" />
       The “System Libraries” of an executable work include anything, other than the work as a whole,
-      that **(a)** is included in the normal form of packaging a Major Component, but which is not
-      part of that Major Component, and **(b)** serves only to enable use of the work with that
-      Major Component, or to implement a Standard Interface for which an implementation is available
-      to the public in source code form. A “Major Component”, in this context, means a major
-      essential component (kernel, window system, and so on) of the specific operating system (if
-      any) on which the executable work runs, or a compiler used to produce the work, or an object
-      code interpreter used to run it.
+      that <br className="my-2" />
+      a. is included in the normal form of packaging a Major Component, but which is not part of
+      that Major Component, and <br className="my-2" />
+      b. serves only to enable use of the work with that Major Component, or to implement a Standard
+      Interface for which an implementation is available to the public in source code form. A “Major
+      Component”, in this context, means a major essential component (kernel, window system, and so
+      on) of the specific operating system (if any) on which the executable work runs, or a compiler
+      used to produce the work, or an object code interpreter used to run it.
       <br className="my-2" />
       The “Corresponding Source” for a work in object code form means all the source code needed to
       generate, install, and (for an executable work) run the object code and to modify the work,
@@ -199,11 +210,13 @@ export default function License() {
       b) Convey the object code in, or embodied in, a physical product (including a physical
       distribution medium), accompanied by a written offer, valid for at least three years and valid
       for as long as you offer spare parts or customer support for that product model, to give
-      anyone who possesses the object code either **(1)** a copy of the Corresponding Source for all
-      the software in the product that is covered by this License, on a durable physical medium
-      customarily used for software interchange, for a price no more than your reasonable cost of
-      physically performing this conveying of source, or **(2)** access to copy the Corresponding
-      Source from a network server at no charge.
+      anyone who possesses the object code either
+      <br className="my-2" />
+      1. a copy of the Corresponding Source for all the software in the product that is covered by
+      this License, on a durable physical medium customarily used for software interchange, for a
+      price no more than your reasonable cost of physically performing this conveying of source, or
+      <br className="my-2" />
+      2. access to copy the Corresponding Source from a network server at no charge.
       <br className="my-2" />
       c) Convey individual copies of the object code with a copy of the written offer to provide the
       Corresponding Source. This alternative is allowed only occasionally and noncommercially, and
@@ -225,16 +238,19 @@ export default function License() {
       <br className="my-2" />
       A separable portion of the object code, whose source code is excluded from the Corresponding
       Source as a System Library, need not be included in conveying the object code work.
+      <br className="my-2" />A “User Product” is either
       <br className="my-2" />
-      A “User Product” is either **(1)** a “consumer product”, which means any tangible personal
-      property which is normally used for personal, family, or household purposes, or **(2)**
-      anything designed or sold for incorporation into a dwelling. In determining whether a product
-      is a consumer product, doubtful cases shall be resolved in favor of coverage. For a particular
-      product received by a particular user, “normally used” refers to a typical or common use of
-      that class of product, regardless of the status of the particular user or of the way in which
-      the particular user actually uses, or expects or is expected to use, the product. A product is
-      a consumer product regardless of whether the product has substantial commercial, industrial or
-      non-consumer uses, unless such uses represent the only significant mode of use of the product.
+      1. a “consumer product”, which means any tangible personal property which is normally used for
+      personal, family, or household purposes, or
+      <br className="my-2" />
+      2. anything designed or sold for incorporation into a dwelling. In determining whether a
+      product is a consumer product, doubtful cases shall be resolved in favor of coverage. For a
+      particular product received by a particular user, “normally used” refers to a typical or
+      common use of that class of product, regardless of the status of the particular user or of the
+      way in which the particular user actually uses, or expects or is expected to use, the product.
+      A product is a consumer product regardless of whether the product has substantial commercial,
+      industrial or non-consumer uses, unless such uses represent the only significant mode of use
+      of the product.
       <br className="my-2" />
       “Installation Information” for a User Product means any methods, procedures, authorization
       keys, or other information required to install and execute modified versions of a covered work
@@ -326,10 +342,11 @@ export default function License() {
       third paragraph of section 11).
       <br className="my-2" />
       However, if you cease all violation of this License, then your license from a particular
-      copyright holder is reinstated **(a)** provisionally, unless and until the copyright holder
-      explicitly and finally terminates your license, and **(b)** permanently, if the copyright
-      holder fails to notify you of the violation by some reasonable means prior to 60 days after
-      the cessation.
+      copyright holder is reinstated <br className="my-2" />
+      a. provisionally, unless and until the copyright holder explicitly and finally terminates your
+      license, and <br className="my-2" />
+      b. permanently, if the copyright holder fails to notify you of the violation by some
+      reasonable means prior to 60 days after the cessation.
       <br className="my-2" />
       Moreover, your license from a particular copyright holder is reinstated permanently if the
       copyright holder notifies you of the violation by some reasonable means, this is the first
@@ -397,11 +414,16 @@ export default function License() {
       If you convey a covered work, knowingly relying on a patent license, and the Corresponding
       Source of the work is not available for anyone to copy, free of charge and under the terms of
       this License, through a publicly available network server or other readily accessible means,
-      then you must either **(1)** cause the Corresponding Source to be so available, or **(2)**
-      arrange to deprive yourself of the benefit of the patent license for this particular work, or
-      **(3)** arrange, in a manner consistent with the requirements of this License, to extend the
-      patent license to downstream recipients. “Knowingly relying” means you have actual knowledge
-      that, but for the patent license, your conveying the covered work in a country, or your
+      then you must either
+      <br className="my-2" />
+      1. cause the Corresponding Source to be so available, or
+      <br className="my-2" />
+      2. arrange to deprive yourself of the benefit of the patent license for this particular work,
+      or
+      <br className="my-2" />
+      3. arrange, in a manner consistent with the requirements of this License, to extend the patent
+      license to downstream recipients. “Knowingly relying” means you have actual knowledge that,
+      but for the patent license, your conveying the covered work in a country, or your
       recipient&apos;s use of the covered work in a country, would infringe one or more identifiable
       patents in that country that you have reason to believe are valid.
       <br className="my-2" />
@@ -410,16 +432,17 @@ export default function License() {
       the parties receiving the covered work authorizing them to use, propagate, modify or convey a
       specific copy of the covered work, then the patent license you grant is automatically extended
       to all recipients of the covered work and works based on it.
+      <br className="my-2" />A patent license is “discriminatory” if it does not include within the
+      scope of its coverage, prohibits the exercise of, or is conditioned on the non-exercise of one
+      or more of the rights that are specifically granted under this License. You may not convey a
+      covered work if you are a party to an arrangement with a third party that is in the business
+      of distributing software, under which you make payment to the third party based on the extent
+      of your activity of conveying the work, and under which the third party grants, to any of the
+      parties who would receive the covered work from you, a discriminatory patent license{' '}
       <br className="my-2" />
-      A patent license is “discriminatory” if it does not include within the scope of its coverage,
-      prohibits the exercise of, or is conditioned on the non-exercise of one or more of the rights
-      that are specifically granted under this License. You may not convey a covered work if you are
-      a party to an arrangement with a third party that is in the business of distributing software,
-      under which you make payment to the third party based on the extent of your activity of
-      conveying the work, and under which the third party grants, to any of the parties who would
-      receive the covered work from you, a discriminatory patent license **(a)** in connection with
-      copies of the covered work conveyed by you (or copies made from those copies), or **(b)**
-      primarily for and in connection with specific products or compilations that contain the
+      a. in connection with copies of the covered work conveyed by you (or copies made from those
+      copies), or <br className="my-2" />
+      b. primarily for and in connection with specific products or compilations that contain the
       covered work, unless you entered into that arrangement, or that patent license was granted,
       prior to 28 March 2007.
       <br className="my-2" />
@@ -505,9 +528,9 @@ export default function License() {
       unless a warranty or assumption of liability accompanies a copy of the Program in return for a
       fee.
       <br className="my-2" />
-      _END OF TERMS AND CONDITIONS_
+      <i>END OF TERMS AND CONDITIONS</i>
       <br className="my-2" />
-      ### How to Apply These Terms to Your New Programs
+      <h3 className="my-4 text-xl font-bold">How to Apply These Terms to Your New Programs</h3>
       <br className="my-2" />
       If you develop a new program, and you want it to be of the greatest possible use to the
       public, the best way to achieve this is to make it free software which everyone can
@@ -517,7 +540,7 @@ export default function License() {
       start of each source file to most effectively state the exclusion of warranty; and each file
       should have at least the “copyright” line and a pointer to where the full notice is found.
       <br className="my-2" />
-      aikoicu | aiko.icu - nsfw image board Copyright (C) 2023-* Maxx Borer
+      aikoicu | aiko.icu - nsfw image board Copyright © 2023-* aikoicu, Maxx Borer
       <br className="my-2" />
       This program is free software: you can redistribute it and/or modify it under the terms of the
       GNU Affero General Public License as published by the Free Software Foundation, either version
@@ -528,9 +551,10 @@ export default function License() {
       the GNU Affero General Public License for more details.
       <br className="my-2" />
       <span className="inline-block">
-        {linkify(
-          'You should have received a copy of the GNU Affero General Public License along with this program. If not, see http://www.gnu.org/licenses/.',
-        )}
+        <Linkify>
+          You should have received a copy of the GNU Affero General Public License along with this
+          program. If not, see http://www.gnu.org/licenses/.
+        </Linkify>
       </span>
       <br className="my-2" />
       Also add information on how to contact you by electronic and paper mail.
@@ -545,7 +569,7 @@ export default function License() {
         You should also get your employer (if you work as a programmer) or school, if any, to sign a
         “copyright disclaimer” for the program, if necessary. For more information on this, and how
         to
-        {linkify('apply and follow the GNU AGPL, see http://www.gnu.org/licenses/')}
+        <Linkify>apply and follow the GNU AGPL, see http://www.gnu.org/licenses/</Linkify>
       </span>
     </Structure>
   );

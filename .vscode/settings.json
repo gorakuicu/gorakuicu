@@ -15,13 +15,16 @@
     "(?:enter|leave)(?:From|To)?=\\s*(?:\"|')([^(?:\"|')]*)"
   ],
   "cSpell.words": [
+    "aiko",
     "aikoicu",
     "clsx",
     "Fira",
     "headlessui",
     "Lekton",
+    "Maxx",
     "msapplication",
     "mstile",
     "nextui"
   ],
+  "svg.preview.background": "dark-transparent",
 }

@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-head-element */
 import { metadata } from '@/constants/metadata';
 import colors from '@/styles/theme/colors.json';
 
 export default function Head() {
   return (
+    // eslint-disable-next-line @next/next/no-head-element
     <head>
       <link href={`${metadata.url}`} rel="canonical" />
       <link

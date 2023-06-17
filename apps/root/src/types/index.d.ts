@@ -9,3 +9,13 @@ declare global {
     }
   }
 }
+
+declare module '*.svg' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.mdx' {
+  const content: string;
+  export default content;
+}

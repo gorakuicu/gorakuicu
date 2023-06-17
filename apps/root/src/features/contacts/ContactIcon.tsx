@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { prefix } from 'inline-style-prefixer';
 import { memo } from 'react';
 
+import Href from '../common/Href';
+
 export interface IContactIcon {
   svg: string;
   href: string;
@@ -26,10 +28,10 @@ const ContactIcon: React.FC<IContactIcon> = ({ svg, href, className = '', ...pro
       {...props}
     >
       <div className="transitiona-all animate-tilt absolute -inset-px rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-20 blur-lg duration-1000 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200" />
-      <a
+      <Href
         className="bg-base-content font-pj relative inline-flex items-center justify-center rounded-xl px-4 py-2 text-lg font-bold text-white transition-all duration-200 focus:outline-none"
         href={href}
-        role="button"
+        showIcon={false}
         style={prefix({
           background: 'rgba(255, 255, 255, 0.21)',
           borderRadius: '16px',
@@ -38,7 +40,6 @@ const ContactIcon: React.FC<IContactIcon> = ({ svg, href, className = '', ...pro
           border: '1px solid rgba(255, 255, 255, 0.19)',
           width: '100%',
         })}
-        title={href}
       >
         <div
           style={prefix({
@@ -51,7 +52,7 @@ const ContactIcon: React.FC<IContactIcon> = ({ svg, href, className = '', ...pro
             backgroundRepeat: 'no-repeat',
           })}
         />
-      </a>
+      </Href>
     </motion.li>
   );
 };

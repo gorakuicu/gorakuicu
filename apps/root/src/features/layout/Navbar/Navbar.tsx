@@ -22,7 +22,7 @@ export default function Navbar({ menu = [] }: INavbarProps) {
       <motion.div animate={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: -16 }}>
         <nav
           className={addGlassStyle(
-            'fixed left-0 right-0 top-4 z-10 mx-auto flex w-3/5 items-center justify-between rounded-3xl bg-white px-20 py-4 shadow-sm',
+            'fixed left-0 right-0 top-4 z-10 mx-auto flex w-4/6 items-center justify-between rounded-3xl bg-white px-20 py-4 shadow-sm',
           )}
         >
           <Link className="cursor-pointer" href="/">
@@ -30,12 +30,14 @@ export default function Navbar({ menu = [] }: INavbarProps) {
           </Link>
 
           <ul className="hidden items-center space-x-8 lg:flex">
-            {menu.map(({ href, label, active = false, children }) => (
+            {menu.map(({ href = '#', label, active = false, children }) => (
               <li key={label}>
                 {children ? (
                   <DropdownLinks hover active={active} label={label} links={children} />
                 ) : (
-                  <Href active={active} href={href} label={label} />
+                  <Href active={active} href={href}>
+                    {label}
+                  </Href>
                 )}
               </li>
             ))}

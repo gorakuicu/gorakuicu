@@ -18,6 +18,15 @@ const withPWA = require('next-pwa')({
   register: true,
 });
 
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    providerImportSource: '@mdx-js/react',
+  },
+});
+
 const next = {
   reactStrictMode: true,
   swcMinify: true,
@@ -36,6 +45,7 @@ const next = {
         }),
     reactRemoveProperties: true,
   },
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   headers:
     process.env.NODE_ENV === 'development'
       ? () => [
@@ -46,6 +56,7 @@ const next = {
         ]
       : undefined,
   images: {
+    dangerouslyAllowSVG: true,
     domains: ['creativecommons.org', 'licensebuttons.net', 'img.shields.io'],
   },
   rewrites: async function proxy() {
@@ -60,12 +71,6 @@ const next = {
     ];
   },
   webpack: function webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
-    });
-
     if (process.env.NODE_ENV === 'development') {
       // config.plugins.push(new Stylelint());
       if (process.env.ANALYZE) config.plugins.push(new StatoscopeWebpackPlugin());
@@ -81,4 +86,4 @@ const next = {
   },
 };
 
-module.exports = withBundleAnalyzer(withPWA(next));
+module.exports = withBundleAnalyzer(withPWA(withMDX(next)));

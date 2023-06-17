@@ -5,18 +5,18 @@ import { IContactIcon } from '@/features/contacts/ContactIcon';
 import LinkIconList from '@/features/contacts/LinkIconList';
 
 export interface ILink {
-  label: string;
-  url: string;
+  title: string;
+  href: string;
 }
 
 export interface ILinkGroup {
-  title: string;
-  children: ILink[];
+  title?: string;
+  children?: ILink[];
 }
 
 export interface IFooterProps {
   brand?: string;
-  label?: string;
+  title?: string;
   currentYear?: number;
   social?: IContactIcon[];
   links?: ILinkGroup[];
@@ -24,7 +24,7 @@ export interface IFooterProps {
 
 export default function Footer({
   brand = 'aikoicu',
-  label = "Let's keep in touch!",
+  title = "Let's keep in touch!",
   currentYear = new Date().getFullYear(),
   social = contacts,
   links = [],
@@ -34,7 +34,7 @@ export default function Footer({
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full px-4 lg:w-6/12">
-            <h4 className="text-blueGray-700 text-3xl font-semibold">{label}</h4>
+            <h4 className="text-blueGray-700 text-3xl font-semibold">{title}</h4>
             <div className="mb-6 mt-6 lg:mb-0">
               <LinkIconList className="h-24 w-3/5" contacts={social} />
             </div>
@@ -48,14 +48,15 @@ export default function Footer({
                       {title}
                     </span>
                     <ul className="list-unstyled">
-                      {children?.length > 0 &&
-                        children.map(({ url, label }) => (
-                          <li key={url + '_' + label}>
+                      {children &&
+                        children?.length > 0 &&
+                        children.map(({ href, title }) => (
+                          <li key={href + '_' + title}>
                             <a
-                              className="text-blueGray-600 hover:text-blueGray-800 block pb-2 text-sm font-semibold"
-                              href={url}
+                              className="text-blueGray-600 hover:text-accent block pb-2 text-sm font-semibold"
+                              href={href}
                             >
-                              {label}
+                              {title}
                             </a>
                           </li>
                         ))}

@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import ChevronDown from 'public/assets/icons/common/chevron-down.svg';
 import { Fragment, lazy, Suspense, useCallback, useMemo, useState } from 'react';
 
+import ChevronDown from '@/assets/ChevronDown';
 import { addGlassStyle } from '@/utils/styles';
 
 const Menu = lazy(() => import('@headlessui/react').then((module) => ({ default: module.Menu })));
@@ -19,8 +19,8 @@ const Transition = lazy(() =>
 );
 
 export interface ILink {
-  label: string;
-  href: string;
+  label?: string;
+  href?: string;
   active?: boolean;
 }
 
@@ -35,7 +35,7 @@ export interface IDropdownLinksProps {
 const DefaultTrigger = ({ label = '' }: { label?: string }) => (
   <MenuButton className="inline-flex w-full items-center justify-center gap-x-1">
     {label}
-    <ChevronDown color="rgba(255, 255, 255, 0.5)" height={16} width={16} />
+    <ChevronDown color="rgba(255, 255, 255, 0.5)" />
   </MenuButton>
 );
 

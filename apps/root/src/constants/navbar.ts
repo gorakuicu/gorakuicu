@@ -3,55 +3,54 @@ export const navbarData = {
   menu: [
     {
       active: true,
-      href: '#',
+      href: '/',
       label: 'Home',
     },
     {
       active: false,
-      href: '#',
+      href: '/arts',
       label: 'Arts',
       children: [
         {
           active: false,
-          href: '#',
+          href: '/arts?free=true',
           label: 'Free',
         },
         {
           active: false,
-          href: '#',
+          href: '/arts?nft=true',
           label: 'NFT',
         },
         {
           active: false,
-          href: '#',
+          href: '/arts?paid=true',
           label: 'Paid',
         },
         {
           active: false,
-          href: '#',
+          href: '/commissions',
           label: 'Commissions',
         },
       ],
     },
     {
       active: false,
-      href: '#',
       label: 'Links',
       children: [
         {
           active: false,
-          href: '#',
+          href: '/links#social-media',
           label: 'Social Media',
         },
         {
           active: false,
-          href: '#',
-          label: 'Contacts',
+          href: '/links#communities',
+          label: 'Communities',
         },
         {
           active: false,
-          href: '#',
-          label: 'Communities',
+          href: '/links#contacts',
+          label: 'Contacts',
         },
       ],
     },
