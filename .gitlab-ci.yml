@@ -19,7 +19,7 @@ variables:
     - cat "$ENV" >> .env
     - source .env
     - corepack enable
-    - corepack prepare pnpm@latest-8 --activate
+    - corepack prepare pnpm@8.6.0 --activate
     - npm install -g pnpm
     - node -v && npm -v && pnpm -v
     - >
