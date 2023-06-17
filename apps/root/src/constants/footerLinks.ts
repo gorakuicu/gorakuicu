@@ -27,6 +27,8 @@ export const footerLinks: ILinkGroup[] = [
       {
         title: 'Commissions',
         href: '/commissions',
+        disabled: true,
+        tooltip: 'Coming soon',
       },
     ],
   },
@@ -51,11 +53,11 @@ export const footerLinks: ILinkGroup[] = [
     title: 'Other Links',
     children: [
       {
-        title: 'License CC (products)',
+        title: 'License CC',
         href: '/license/cc',
       },
       {
-        title: 'License GNU (code)',
+        title: 'License GNU',
         href: '/license/gnu',
       },
       {

@@ -1,17 +1,32 @@
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
+import { useOnScreen } from '@/hooks/useOnScreen';
 import uuid from '@/utils/uuid';
 
 import ContactIcon, { IContactIcon } from './ContactIcon';
 
 export interface ILinkIconList {
+  ref?: React.Ref<HTMLUListElement>;
+  animateWhenVisible?: boolean;
   contacts: IContactIcon[];
   className?: string;
 }
 
-const LinkIconList: React.FC<ILinkIconList> = ({ contacts, className = '' }) => {
+const LinkIconList: React.FC<ILinkIconList> = ({
+  contacts,
+  className = '',
+  animateWhenVisible,
+}) => {
+  const [ref, visible] = useOnScreen<HTMLUListElement>();
+
+  const animate = useMemo(() => {
+    if (!animateWhenVisible) return 'visible';
+
+    return visible ? 'visible' : 'hidden';
+  }, [visible]);
+
   if (!contacts?.length) return null;
 
   const classNames = clsx(
@@ -27,7 +42,8 @@ const LinkIconList: React.FC<ILinkIconList> = ({ contacts, className = '' }) => 
 
   return (
     <motion.ul
-      animate="visible"
+      ref={ref}
+      animate={animate}
       className={classNames}
       initial="hidden"
       variants={{

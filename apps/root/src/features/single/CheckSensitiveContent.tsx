@@ -1,18 +1,28 @@
+'use client';
+
 import dynamic from 'next/dynamic';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import Spinner from '@/features/common/Spinner';
-import { acceptNSFW, checkNSFW } from '@/utils/checkNSFW';
+import { acceptSensitive, checkSensitive } from '@/utils/checkSensitive';
 
 const Modal = dynamic(() => import('@/features/common/Modal'));
 
 export default function CheckSensitiveContent() {
-  const [acceptedNSFW, setAcceptedNSFW] = useState<boolean>(checkNSFW());
+  const [acceptedSensitive, setAcceptedSensitive] = useState<boolean>(checkSensitive());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAcceptedSensitive(checkSensitive());
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Suspense fallback={<Spinner />}>
-      <label className="btn hidden" htmlFor="check-nsfw">
-        Check NSFW
+      <label className="btn hidden" htmlFor="check-sensitive">
+        Check Sensitive
       </label>
       <Modal
         blur
@@ -23,16 +33,16 @@ export default function CheckSensitiveContent() {
             Do you want to continue?
           </>
         }
-        id="check-nsfw"
-        opened={!acceptedNSFW}
+        id="check-sensitive"
+        opened={!acceptedSensitive}
         submit={{
           label: 'Yes',
           action: () => {
-            acceptNSFW();
-            setAcceptedNSFW(true);
+            acceptSensitive();
+            setAcceptedSensitive(true);
           },
         }}
-        title="NSFW"
+        title="Sensitive"
       />
     </Suspense>
   );

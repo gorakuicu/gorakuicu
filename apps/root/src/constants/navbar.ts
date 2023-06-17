@@ -30,6 +30,8 @@ export const navbarData = {
           active: false,
           href: '/commissions',
           label: 'Commissions',
+          disabled: true,
+          tooltip: 'Coming soon',
         },
       ],
     },

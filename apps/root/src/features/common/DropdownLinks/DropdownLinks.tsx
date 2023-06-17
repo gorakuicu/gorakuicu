@@ -1,8 +1,11 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import { Fragment, lazy, Suspense, useCallback, useMemo, useState } from 'react';
 
 import ChevronDown from '@/assets/ChevronDown';
 import { addGlassStyle } from '@/utils/styles';
+
+import Tooltip from '../Tooltip/Tooltip';
 
 const Menu = lazy(() => import('@headlessui/react').then((module) => ({ default: module.Menu })));
 const MenuButton = lazy(() =>
@@ -22,6 +25,8 @@ export interface ILink {
   label?: string;
   href?: string;
   active?: boolean;
+  disabled?: boolean;
+  tooltip?: string;
 }
 
 export interface IDropdownLinksProps {
@@ -77,18 +82,39 @@ export default function DropdownLinks({
               'z-100 z-100 absolute left-2/4 mt-1 w-56  -translate-x-1/2 transform rounded-3xl p-2 shadow-sm',
             )}
           >
-            {links.map(({ href = '#', label = '', active = false }) => (
-              <MenuItem key={href + label} as={Fragment} className="flex flex-col">
-                {() => (
-                  <Link
-                    className={`w-full rounded-2xl p-2 bg-blend-difference hover:bg-gray-100 hover:bg-opacity-30`}
-                    href={href}
-                  >
-                    {label}
-                  </Link>
-                )}
-              </MenuItem>
-            ))}
+            {links.map(
+              ({ href = '#', label = '', disabled = false, tooltip = '', active = false }) => (
+                <MenuItem key={href + label} as={Fragment} className="flex flex-col">
+                  {() => {
+                    const Tag = (disabled ? 'div' : Link) as React.ElementType;
+                    const Component = () => (
+                      <Tag
+                        className={clsx('flex w-full rounded-2xl p-2 bg-blend-difference', {
+                          'hover:bg-gray-100': !disabled,
+                          'hover:bg-opacity-30': !disabled,
+                          'cursor-not-allowed': disabled,
+                          'text-gray-500': disabled,
+                          'hover:text-gray-500': disabled,
+                        })}
+                        {...(disabled ? {} : { href })}
+                      >
+                        {label}
+                      </Tag>
+                    );
+
+                    if (tooltip) {
+                      return (
+                        <Tooltip content={tooltip}>
+                          <Component />
+                        </Tooltip>
+                      );
+                    }
+
+                    return <Component />;
+                  }}
+                </MenuItem>
+              ),
+            )}
           </MenuItems>
         </Transition>
       </Suspense>
