@@ -49,21 +49,21 @@ server {
     proxy_pass http://aikoicu-root;
   }
 
-  location ^@ /static/ {
+  location ^~ /static/ {
     proxy_cache STATIC;
     proxy_cache_valid 1y;
     proxy_pass http://aikoicu-root;
     add_header X-Cache-Status $upstream_cache_status;
   }
 
-  location @ ^/_next {
+  location ~ ^/_next {
     proxy_cache STATIC;
     proxy_cache_valid 1y;
     proxy_pass http://aikoicu-root;
     add_header X-Cache-Status $upstream_cache_status;
   }
 
-  location @* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
     expires 1y;
     log_not_found off;
     access_log off;
@@ -74,7 +74,7 @@ server {
     add_header X-Cache-Status $upstream_cache_status;
   }
 
-  location @* \.(html|htm|txt)$ {
+  location ~* \.(html|htm|txt)$ {
     expires 30m;
     proxy_cache STATIC;
     proxy_pass http://aikoicu-root;
