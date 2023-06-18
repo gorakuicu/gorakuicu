@@ -1,13 +1,16 @@
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useCallback, useState } from 'react';
 
 export interface ITooltipProps {
+  className?: string;
   position?: 'top' | 'bottom' | 'left' | 'right';
   content?: React.ReactNode;
   children?: React.ReactNode;
 }
 
 export default function Tooltip({
+  className = '',
   position = 'top',
   content = null,
   children = null,
@@ -31,34 +34,44 @@ export default function Tooltip({
     left: 'top-1/2 left-full transform -translate-y-1/2 -translate-x-1/2',
   };
 
+  const cn = clsx(className, 'group relative inline-block cursor-pointer');
+
+  const processedContent = Array.isArray(content) ? (
+    <ul className="list-unstyled">
+      {content.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  ) : (
+    content
+  );
+
   return (
-    <span
-      className="group relative inline-block cursor-pointer"
-      onMouseEnter={handleShow}
-      onMouseLeave={handleHide}
-    >
+    <span className={cn} onMouseEnter={handleShow} onMouseLeave={handleHide}>
       {children}
-      <AnimatePresence>
-        {show && (
-          <motion.div
-            animate={{ opacity: 1, y: 0, x: '-50%' }}
-            className={`tooltip-content z-100 bg-primary pointer-events-none absolute w-28 rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 ${positionClasses[position]}`}
-            exit={{ opacity: 0, y: 8, x: '-50%' }}
-            initial={{ opacity: 0, y: 8, x: '-50%' }}
-            transition={{ duration: 0.2 }}
-          >
-            {content}
-            <svg
-              className={`absolute ${svgPositionClasses[position]} text-primary h-3 w-3`}
-              viewBox="0 0 255 255"
-              x="0px"
-              y="0px"
+      {content && (
+        <AnimatePresence>
+          {show && (
+            <motion.div
+              animate={{ opacity: 1, y: 0, x: '-50%' }}
+              className={`tooltip-content z-100 bg-primary pointer-events-none absolute w-max rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 ${positionClasses[position]}`}
+              exit={{ opacity: 0, y: 8, x: '-50%' }}
+              initial={{ opacity: 0, y: 8, x: '-50%' }}
+              transition={{ duration: 0.2 }}
             >
-              <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
-            </svg>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {processedContent}
+              <svg
+                className={`absolute ${svgPositionClasses[position]} text-primary h-3 w-3`}
+                viewBox="0 0 255 255"
+                x="0px"
+                y="0px"
+              >
+                <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
+              </svg>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </span>
   );
 }

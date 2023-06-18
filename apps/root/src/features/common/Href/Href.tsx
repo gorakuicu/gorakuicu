@@ -12,7 +12,7 @@ export interface IHrefProps {
   showIcon?: boolean;
   iconProps?: React.SVGProps<SVGSVGElement>;
   className?: string;
-  href?: string;
+  href?: string | boolean | undefined;
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }
@@ -33,7 +33,10 @@ export default function Href({
   ...props
 }: IHrefProps) {
   const externalReference = useMemo(
-    () => href.startsWith('http') || href.startsWith('mailto'),
+    () =>
+      href && typeof href === 'string'
+        ? href.startsWith('http') || href.startsWith('mailto')
+        : false,
     [href],
   );
   const cn = useMemo(() => clsx(getHrefClassName(active), className), [active]);
@@ -42,9 +45,9 @@ export default function Href({
 
   return (
     <Tag
-      aria-label={href}
+      aria-label={typeof href === 'string' ? href : undefined}
       className={cn}
-      href={href}
+      href={typeof href === 'string' ? href : '#'}
       id={id}
       {...(externalReference ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       {...props}

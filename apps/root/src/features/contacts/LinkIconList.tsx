@@ -52,7 +52,7 @@ const LinkIconList: React.FC<ILinkIconList> = ({
           scale: 1,
           transition: {
             delayChildren: 0.1,
-            staggerChildren: 0.08,
+            staggerChildren: 0.02,
           },
         },
       }}

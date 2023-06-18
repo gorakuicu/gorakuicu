@@ -48,12 +48,12 @@ export default function Cookie() {
           <div className="drop-shadow-lg">
             <p className="shadow-black">
               This website uses cookies. See our{' '}
-              <Href className="font-bold text-white hover:text-black" href="/privacy">
-                Privacy Policy
-              </Href>
-              ,{' '}
               <Href className="font-bold text-white hover:text-black" href="/terms">
                 Terms of Service
+              </Href>
+              ,{' '}
+              <Href className="font-bold text-white hover:text-black" href="/privacy">
+                Privacy Policy
               </Href>
               ,{' '}
               <Href className="font-bold text-white hover:text-black" href="/cookie">

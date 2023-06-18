@@ -7,7 +7,7 @@ import Href from '../common/Href';
 
 export interface IContactIcon {
   svg: string;
-  href: string;
+  href?: string | undefined | boolean;
   className?: string;
   name?: string;
   notList?: boolean;
@@ -16,13 +16,34 @@ export interface IContactIcon {
 
 const ContactIcon: React.FC<IContactIcon> = ({
   svg,
-  href,
+  href = '',
   className = '',
   notList = false,
   ...props
 }) => {
   const classNames = clsx(className, 'group', 'relative', 'w-14');
   const Tag = notList ? motion.span : motion.li;
+
+  const commonProps = {
+    className:
+      'bg-base-content font-pj relative inline-flex items-center justify-center rounded-xl px-4 py-2 text-lg font-bold text-white transition-all duration-200 focus:outline-none',
+    style: prefix({
+      background: 'rgba(255, 255, 255, 0.21)',
+      borderRadius: '16px',
+      boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+      backdropFilter: 'blur(5.3px)',
+      border: '1px solid rgba(255, 255, 255, 0.19)',
+      width: '100%',
+    }),
+  };
+
+  const LinkComponent = href
+    ? ({ children }: { children: React.ReactNode }) => (
+        <Href href={href} showIcon={false} {...commonProps}>
+          {children}
+        </Href>
+      )
+    : ({ children }: { children: React.ReactNode }) => <span {...commonProps}>{children}</span>;
 
   return (
     <Tag
@@ -38,19 +59,7 @@ const ContactIcon: React.FC<IContactIcon> = ({
       {...props}
     >
       <span className="animate-tilt absolute -inset-px rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-20 blur-lg transition-all duration-1000 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200" />
-      <Href
-        className="bg-base-content font-pj relative inline-flex items-center justify-center rounded-xl px-4 py-2 text-lg font-bold text-white transition-all duration-200 focus:outline-none"
-        href={href}
-        showIcon={false}
-        style={prefix({
-          background: 'rgba(255, 255, 255, 0.21)',
-          borderRadius: '16px',
-          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-          backdropFilter: 'blur(5.3px)',
-          border: '1px solid rgba(255, 255, 255, 0.19)',
-          width: '100%',
-        })}
-      >
+      <LinkComponent>
         <span
           style={prefix({
             filter: 'invert(1)',
@@ -62,7 +71,7 @@ const ContactIcon: React.FC<IContactIcon> = ({
             backgroundRepeat: 'no-repeat',
           })}
         />
-      </Href>
+      </LinkComponent>
     </Tag>
   );
 };

@@ -9,9 +9,12 @@ import {
   socialLinks,
   supportLinks,
 } from '@/constants/links';
-import Href from '@/features/common/Href/Href';
+import CopyToClipboard from '@/features/common/CopyToClipboard';
+import Href from '@/features/common/Href';
+import Tooltip from '@/features/common/Tooltip';
 import ContactIcon, { IContactIcon } from '@/features/contacts/ContactIcon';
 import Structure from '@/features/layout/Structure';
+import uuid from '@/utils/uuid';
 
 interface ILinkGroup {
   title: string;
@@ -49,24 +52,33 @@ export default function Cookie() {
     <Structure className="gap-4">
       <h1 className="my-8 text-center text-4xl font-bold">Links</h1>
 
-      <div className="flex flex-row gap-4">
+      <div className="grid-cols-2 gap-4">
         {links?.length > 0 &&
-          links.map((link) => (
-            <div key={link.title} className="list-unstyled mb-8 flex w-2/4 flex-col gap-4">
-              <h2 className="text-2xl font-bold">{link.title}</h2>
+          links.map(({ title = '', links = [] }) => (
+            <div key={title} className="list-unstyled mb-8 flex w-2/4 flex-col gap-4">
+              <h2 className="text-2xl font-bold">{title}</h2>
 
-              {link.links?.length > 0 &&
-                link.links.map((link) => (
-                  <div
-                    key={link.href}
-                    className="flex items-center gap-4"
-                    id={link?.name ? link?.name?.replace(' ', '-').toLowerCase() : ''}
-                  >
-                    <ContactIcon notList href={link.href} svg={link.svg} />
-                    <Href href={link.href}>
-                      <h3 className="text-md font-semibold">{link.name}</h3>
-                    </Href>
-                  </div>
+              {links?.length > 0 &&
+                links.map(({ href = '#', svg = '', name = '', tooltip = '', copy = '' }) => (
+                  <CopyToClipboard key={uuid()} data={copy}>
+                    <Tooltip content={tooltip}>
+                      <div
+                        className="flex items-center gap-4"
+                        id={name ? name?.replace(' ', '-').toLowerCase() : ''}
+                      >
+                        <ContactIcon notList href={!copy && href} svg={svg} />
+                        {copy ? (
+                          <span>
+                            <h3 className="text-md font-semibold">{name}</h3>
+                          </span>
+                        ) : (
+                          <Href href={href}>
+                            <h3 className="text-md font-semibold">{name}</h3>
+                          </Href>
+                        )}
+                      </div>
+                    </Tooltip>
+                  </CopyToClipboard>
                 ))}
             </div>
           ))}

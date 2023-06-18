@@ -24,11 +24,6 @@ export const socialLinks: IContactIcon[] = [
     href: 'https://www.pinterest.com/aikoicu/',
   },
   {
-    name: 'Facebook',
-    svg: '/assets/icons/links/facebook.svg',
-    href: 'https://www.facebook.com/aikoicu',
-  },
-  {
     name: 'Instagram',
     svg: '/assets/icons/links/instagram.svg',
     href: 'https://www.instagram.com/aikoicu/',
@@ -83,11 +78,6 @@ export const contactLinks: IContactIcon[] = [
 
 export const supportLinks: IContactIcon[] = [
   {
-    name: 'PayPal',
-    svg: '/assets/icons/links/paypal.svg',
-    href: 'https://www.paypal.me/aikoicu',
-  },
-  {
     name: 'Buy Me a Coffee',
     svg: '/assets/icons/links/buymeacoffee.svg',
     href: 'https://bmc.link/aikoicul',
@@ -101,6 +91,20 @@ export const supportLinks: IContactIcon[] = [
     name: 'Boosty',
     svg: '/assets/icons/links/boosty.svg',
     href: 'https://boosty.to/aikoicu',
+  },
+  {
+    name: 'bc1q2kt3ww49zjszp32x87ezw05sjqjjty0d7zfux4',
+    svg: '/assets/icons/links/btc.svg',
+    href: '/contacts#support',
+    copy: 'bc1q2kt3ww49zjszp32x87ezw05sjqjjty0d7zfux4',
+    tooltip: ['Native SegWit (Bech32)', 'Click to copy address'],
+  },
+  {
+    name: '0xe6bc81f20c66c6baBe127e7E80b89832DdDf5C02',
+    svg: '/assets/icons/links/eth.svg',
+    href: '/contacts#support',
+    copy: '0xe6bc81f20c66c6baBe127e7E80b89832DdDf5C02',
+    tooltip: ['Ethereum (ERC20)', 'Click to copy address'],
   },
 ];
 
