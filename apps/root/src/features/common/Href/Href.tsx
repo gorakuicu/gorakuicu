@@ -6,6 +6,8 @@ import React from 'react';
 import ArrowTRSquare from '@/assets/ArrowTRSquare';
 
 export interface IHrefProps {
+  ref?: React.Ref<HTMLAnchorElement>;
+  id?: string;
   active?: boolean;
   showIcon?: boolean;
   iconProps?: React.SVGProps<SVGSVGElement>;
@@ -21,6 +23,7 @@ export const getHrefClassName = (active: boolean) =>
   }`;
 
 export default function Href({
+  id = '',
   active = false,
   showIcon = true,
   iconProps = {},
@@ -29,15 +32,20 @@ export default function Href({
   children = null,
   ...props
 }: IHrefProps) {
-  const externalReference = useMemo(() => href.startsWith('http'), [href]);
+  const externalReference = useMemo(
+    () => href.startsWith('http') || href.startsWith('mailto'),
+    [href],
+  );
   const cn = useMemo(() => clsx(getHrefClassName(active), className), [active]);
   const cnIcon = clsx('ml-1', iconProps.className);
   const Tag = useMemo(() => (externalReference ? 'a' : Link), [externalReference]);
 
   return (
     <Tag
+      aria-label={href}
       className={cn}
       href={href}
+      id={id}
       {...(externalReference ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       {...props}
     >

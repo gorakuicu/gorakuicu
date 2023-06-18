@@ -1,6 +1,16 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { Fragment, lazy, Suspense, useCallback, useMemo, useState } from 'react';
+import {
+  FC,
+  forwardRef,
+  Fragment,
+  lazy,
+  Suspense,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import ChevronDown from '@/assets/ChevronDown';
 import { addGlassStyle } from '@/utils/styles';
@@ -22,7 +32,7 @@ const Transition = lazy(() =>
 );
 
 export interface ILink {
-  label?: string;
+  title?: string;
   href?: string;
   active?: boolean;
   disabled?: boolean;
@@ -32,25 +42,32 @@ export interface ILink {
 export interface IDropdownLinksProps {
   hover?: boolean;
   active?: boolean;
-  label?: string;
-  trigger?: React.FC<{ label: string }>;
+  title?: string;
+  trigger?: FC<{ title: string }> | React.ElementType;
   links?: ILink[];
 }
 
-const DefaultTrigger = ({ label = '' }: { label?: string }) => (
-  <MenuButton className="inline-flex w-full items-center justify-center gap-x-1">
-    {label}
+const DefaultTrigger = forwardRef(({ title = '' }: { title?: string }, ref) => (
+  <MenuButton
+    ref={ref as React.RefObject<HTMLButtonElement>}
+    className="inline-flex w-full items-center justify-center gap-x-1"
+  >
+    {title}
     <ChevronDown color="rgba(255, 255, 255, 0.5)" />
   </MenuButton>
-);
+));
+
+DefaultTrigger.displayName = 'DefaultTrigger';
 
 export default function DropdownLinks({
   hover = false,
   active = false,
   trigger: Trigger = DefaultTrigger,
-  label = '',
+  title = '',
   links = [],
 }: IDropdownLinksProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
   const [opened, setOpened] = useState<boolean>(false);
 
   const open = useCallback(() => setOpened(true), []);
@@ -62,9 +79,9 @@ export default function DropdownLinks({
   );
 
   return (
-    <Menu as="div" className="relative inline-block text-left" {...handlers}>
+    <Menu ref={ref} as="div" className="relative inline-block text-left" {...handlers}>
       <div>
-        <Trigger label={label} />
+        <Trigger title={title} />
       </div>
       <Suspense fallback={<div />}>
         <Transition
@@ -83,8 +100,8 @@ export default function DropdownLinks({
             )}
           >
             {links.map(
-              ({ href = '#', label = '', disabled = false, tooltip = '', active = false }) => (
-                <MenuItem key={href + label} as={Fragment} className="flex flex-col">
+              ({ href = '#', title = '', disabled = false, tooltip = '', active = false }) => (
+                <MenuItem key={href + title} as={Fragment} className="flex flex-col">
                   {() => {
                     const Tag = (disabled ? 'div' : Link) as React.ElementType;
                     const Component = () => (
@@ -98,7 +115,7 @@ export default function DropdownLinks({
                         })}
                         {...(disabled ? {} : { href })}
                       >
-                        {label}
+                        {title}
                       </Tag>
                     );
 

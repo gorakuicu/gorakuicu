@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import { DefaultSeo } from 'next-seo';
 import { Suspense } from 'react';
 
-import { footerLinks } from '@/constants/footerLinks';
-import { navbarData } from '@/constants/navbar';
+import { internalLinks } from '@/constants/links';
+import { navbarLinks } from '@/constants/links';
 import Cookie from '@/features/common/Cookie';
 import Spinner from '@/features/common/Spinner';
 import Footer from '@/features/layout/Footer';
@@ -24,13 +24,13 @@ export default function Structure({ children, className }: StructureProps) {
 
   return (
     <>
-      <Navbar {...navbarData} />
+      <Navbar {...navbarLinks} />
       <main className={clsx('mx-auto flex w-4/6 flex-grow flex-col p-4 sm:p-6 md:p-8', className)}>
         <DefaultSeo {...SEO} />
         <CheckSensitiveContent />
         <Suspense fallback={<Spinner />}>{children}</Suspense>
       </main>
-      <Footer links={footerLinks} />
+      <Footer links={internalLinks} />
       <Cookie />
     </>
   );

@@ -9,14 +9,24 @@ export interface IContactIcon {
   svg: string;
   href: string;
   className?: string;
+  name?: string;
+  notList?: boolean;
   [key: string]: any;
 }
 
-const ContactIcon: React.FC<IContactIcon> = ({ svg, href, className = '', ...props }) => {
+const ContactIcon: React.FC<IContactIcon> = ({
+  svg,
+  href,
+  className = '',
+  notList = false,
+  ...props
+}) => {
   const classNames = clsx(className, 'group', 'relative', 'w-14');
+  const Tag = notList ? motion.span : motion.li;
 
   return (
-    <motion.li
+    <Tag
+      aria-label={props.href}
       className={classNames}
       variants={{
         hidden: { y: -10, opacity: 0 },
@@ -27,7 +37,7 @@ const ContactIcon: React.FC<IContactIcon> = ({ svg, href, className = '', ...pro
       }}
       {...props}
     >
-      <div className="transitiona-all animate-tilt absolute -inset-px rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-20 blur-lg duration-1000 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200" />
+      <span className="animate-tilt absolute -inset-px rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-20 blur-lg transition-all duration-1000 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200" />
       <Href
         className="bg-base-content font-pj relative inline-flex items-center justify-center rounded-xl px-4 py-2 text-lg font-bold text-white transition-all duration-200 focus:outline-none"
         href={href}
@@ -41,7 +51,7 @@ const ContactIcon: React.FC<IContactIcon> = ({ svg, href, className = '', ...pro
           width: '100%',
         })}
       >
-        <div
+        <span
           style={prefix({
             filter: 'invert(1)',
             height: 24,
@@ -53,7 +63,7 @@ const ContactIcon: React.FC<IContactIcon> = ({ svg, href, className = '', ...pro
           })}
         />
       </Href>
-    </motion.li>
+    </Tag>
   );
 };
 

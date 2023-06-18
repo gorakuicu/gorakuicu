@@ -8,12 +8,12 @@ import Href from '@/features/common/Href';
 import GradientText from '@/features/single/GradientText';
 import { addGlassStyle } from '@/utils/styles';
 
-interface IMenuItem extends ILink {
+export interface IMenuItem extends ILink {
   children?: ILink[];
 }
 
 interface INavbarProps {
-  label?: string;
+  title?: string;
   menu?: IMenuItem[];
 }
 
@@ -37,13 +37,13 @@ export default function Navbar({ menu = [] }: INavbarProps) {
           </Link>
 
           <ul className="hidden items-center space-x-8 lg:flex">
-            {menu.map(({ href = '#', label, active = false, children }) => (
-              <li key={label}>
+            {menu.map(({ href = '#', title, active = false, children }) => (
+              <li key={title}>
                 {children ? (
-                  <DropdownLinks hover active={active} label={label} links={children} />
+                  <DropdownLinks hover active={active} links={children} title={title} />
                 ) : (
                   <Href active={active} href={href}>
-                    {label}
+                    {title}
                   </Href>
                 )}
               </li>

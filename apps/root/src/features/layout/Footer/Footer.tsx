@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
-import { contacts } from '@/constants/contacts';
+import { externalLinks } from '@/constants/links';
 import Href from '@/features/common/Href';
 import Tooltip from '@/features/common/Tooltip';
 import { IContactIcon } from '@/features/contacts/ContactIcon';
@@ -15,6 +15,7 @@ export interface ILink {
 }
 
 export interface ILinkGroup {
+  href?: string;
   title?: string;
   children?: ILink[];
 }
@@ -31,7 +32,7 @@ export default function Footer({
   brand = 'aikoicu',
   title = "Let's keep in touch!",
   currentYear = new Date().getFullYear(),
-  social = contacts,
+  social = externalLinks,
   links = [],
 }: IFooterProps) {
   const years = useMemo(() => {
@@ -53,47 +54,60 @@ export default function Footer({
           <div className="w-full px-4 lg:w-6/12">
             <div className="items-top mb-6 flex flex-wrap">
               {links?.length > 0 &&
-                links.map(({ title, children }) => (
-                  <div key={title} className="ml-auto w-full px-4 lg:w-4/12">
-                    <span className="text-blueGray-500 mb-2 block text-sm font-bold uppercase">
-                      {title}
-                    </span>
-                    <ul className="list-unstyled">
-                      {children &&
-                        children?.length > 0 &&
-                        children.map(({ href, title, disabled, tooltip }) => {
-                          const Tag = disabled ? 'span' : Href;
-                          const Component = () => (
-                            <Tag
-                              className={clsx(
-                                'text-blueGray-600 hover:text-accent block pb-2 text-sm',
-                                {
-                                  'cursor-not-allowed': disabled,
-                                  'text-gray-500': disabled,
-                                  'hover:text-gray-500': disabled,
-                                },
-                              )}
-                              {...(disabled ? {} : { href })}
-                            >
-                              {title}
-                            </Tag>
-                          );
+                links.map(({ href, title, children }) => {
+                  if (href) {
+                    return (
+                      <Href
+                        key={href + '_' + title}
+                        className="text-blueGray-500 mb-2 block text-sm font-bold uppercase"
+                      >
+                        {title}
+                      </Href>
+                    );
+                  }
 
-                          return (
-                            <li key={href + '_' + title}>
-                              {tooltip ? (
-                                <Tooltip content={tooltip}>
+                  return (
+                    <div key={title} className="ml-auto w-full px-4 lg:w-4/12">
+                      <span className="text-blueGray-500 mb-2 block text-sm font-bold uppercase">
+                        {title}
+                      </span>
+                      <ul className="list-unstyled">
+                        {children &&
+                          children?.length > 0 &&
+                          children.map(({ href, title, disabled, tooltip }) => {
+                            const Tag = disabled ? 'span' : Href;
+                            const Component = () => (
+                              <Tag
+                                className={clsx(
+                                  'text-blueGray-600 hover:text-accent block pb-2 text-sm',
+                                  {
+                                    'cursor-not-allowed': disabled,
+                                    'text-gray-500': disabled,
+                                    'hover:text-gray-500': disabled,
+                                  },
+                                )}
+                                {...(disabled ? {} : { href })}
+                              >
+                                {title}
+                              </Tag>
+                            );
+
+                            return (
+                              <li key={href + '_' + title}>
+                                {tooltip ? (
+                                  <Tooltip content={tooltip}>
+                                    <Component />
+                                  </Tooltip>
+                                ) : (
                                   <Component />
-                                </Tooltip>
-                              ) : (
-                                <Component />
-                              )}
-                            </li>
-                          );
-                        })}
-                    </ul>
-                  </div>
-                ))}
+                                )}
+                              </li>
+                            );
+                          })}
+                      </ul>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

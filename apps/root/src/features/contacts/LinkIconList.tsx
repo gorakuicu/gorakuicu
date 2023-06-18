@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { memo, useMemo } from 'react';
 
 import { useOnScreen } from '@/hooks/useOnScreen';
-import uuid from '@/utils/uuid';
 
 import ContactIcon, { IContactIcon } from './ContactIcon';
 
@@ -31,7 +30,7 @@ const LinkIconList: React.FC<ILinkIconList> = ({
 
   const classNames = clsx(
     className,
-    'columns-4',
+    'columns-3',
     'gap-2',
     'space-y-2',
     'sm:columns-6',
@@ -58,7 +57,10 @@ const LinkIconList: React.FC<ILinkIconList> = ({
         },
       }}
     >
-      {contacts?.length > 0 && contacts?.map((icon) => <ContactIcon key={uuid()} {...icon} />)}
+      {contacts?.length > 0 &&
+        contacts?.map(({ href = '#', svg = '', ...icon }) => (
+          <ContactIcon key={href + svg} href={href} svg={svg} {...icon} />
+        ))}
     </motion.ul>
   );
 };
