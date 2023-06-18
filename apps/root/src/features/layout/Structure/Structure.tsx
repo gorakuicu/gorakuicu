@@ -11,6 +11,7 @@ import Spinner from '@/features/common/Spinner';
 import Footer from '@/features/layout/Footer';
 import Navbar from '@/features/layout/Navbar';
 import CheckSensitiveContent from '@/features/single/CheckSensitiveContent';
+import ScrollBack from '@/features/single/ScrollBack';
 import { useGoogleTag } from '@/hooks/useGoogleTag';
 import SEO from '@/next-seo.config';
 
@@ -31,6 +32,7 @@ export default function Structure({ children, className }: StructureProps) {
         <Suspense fallback={<Spinner />}>{children}</Suspense>
       </main>
       <Footer links={internalLinks} />
+      <ScrollBack />
       <Cookie />
     </>
   );
