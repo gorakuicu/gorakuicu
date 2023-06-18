@@ -1,15 +1,15 @@
-import { metadata } from '@/constants/metadata';
+import { domain, url } from '@/constants/metadata';
 import colors from '@/styles/theme/colors.json';
 
 export default function Head() {
   return (
     // eslint-disable-next-line @next/next/no-head-element
     <head>
-      <link href={`${metadata.url}`} rel="canonical" />
+      <link href={`${url}`} rel="canonical" />
       <link
-        href={`${metadata.url}/search/search.xml`}
+        href={`${url}/search/search.xml`}
         rel="search"
-        title={metadata.domain}
+        title={domain}
         type="application/search+xml"
       />
       <link href="/apple-touch-icon.png?v=2" rel="apple-touch-icon" sizes="180x180" />
@@ -26,16 +26,16 @@ export default function Head() {
       <meta content="/mstile-144x144.png" name="msapplication-TileImage" />
       <meta content="/mstile-310x310.png" name="msapplication-square310x310logo" />
       <meta content={colors['base-content']} name="theme-color" />
-      <meta key="application-name" content={metadata.domain} name="application-name" />
-      <meta content={`NSFW - ${metadata.domain}`} name="description" />
-      <meta content={metadata.domain} property="og:title" />
-      <meta content={`NSFW - ${metadata.domain}`} property="og:description" />
-      <meta content={`${metadata.url}/social.jpg`} property="og:image" />
+      <meta key="application-name" content={domain} name="application-name" />
+      <meta content={`NSFW - ${domain}`} name="description" />
+      <meta content={domain} property="og:title" />
+      <meta content={`NSFW - ${domain}`} property="og:description" />
+      <meta content={`${url}/social.jpg`} property="og:image" />
       <meta content="1000" property="og:image:width" />
       <meta content="1000" property="og:image:height" />
-      <meta content={metadata.domain} property="og:image:alt" />
-      <meta content={metadata.domain} property="og:site_name" />
-      <meta content={`${metadata.url}`} property="og:url" />
+      <meta content={domain} property="og:image:alt" />
+      <meta content={domain} property="og:site_name" />
+      <meta content={`${url}`} property="og:url" />
       <meta content="website" property="og:type" />
       <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
       <meta
@@ -43,11 +43,7 @@ export default function Head() {
         name="viewport"
       />
       <meta content={colors['base-content']} name="theme-color" />
-      <meta
-        key="apple-mobile-web-app-title"
-        content={metadata.domain}
-        name="apple-mobile-web-app-title"
-      />
+      <meta key="apple-mobile-web-app-title" content={domain} name="apple-mobile-web-app-title" />
     </head>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import clsx from 'clsx';
-import { DefaultSeo } from 'next-seo';
 import { Suspense } from 'react';
 
 import { internalLinks } from '@/constants/links';
@@ -13,7 +12,6 @@ import Navbar from '@/features/layout/Navbar';
 import CheckSensitiveContent from '@/features/single/CheckSensitiveContent';
 import ScrollBack from '@/features/single/ScrollBack';
 import { useGoogleTag } from '@/hooks/useGoogleTag';
-import SEO from '@/next-seo.config';
 
 export interface StructureProps {
   children?: React.ReactNode;
@@ -27,7 +25,6 @@ export default function Structure({ children, className }: StructureProps) {
     <>
       <Navbar {...navbarLinks} />
       <main className={clsx('mx-auto flex w-4/6 flex-grow flex-col p-4 sm:p-6 md:p-8', className)}>
-        <DefaultSeo {...SEO} />
         <CheckSensitiveContent />
         <Suspense fallback={<Spinner />}>{children}</Suspense>
       </main>
