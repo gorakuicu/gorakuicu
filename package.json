@@ -28,6 +28,7 @@
     "turbo:prune": "FORCE_COLOR=1 turbo turbo:prune",
     "analyze": "cross-env ANALYZE=true NODE_ENV=production FORCE_COLOR=1 turbo build --cache-dir=./.turbo",
     "size-limit": "pnpm turbo:prune && pnpm dlx size-limit",
+    "rm:cache": "rm -rf **/.turbo; rm -rf **/.next",
     "preinstall": "npx -y only-allow pnpm",
     "postinstall": "node scripts/ci/is.js || husky install; node scripts/ci/is.js || npx @evilmartians/lefthook install; node scripts/ci/is.js || npx @evilmartians/lefthook add pre-commit"
   },

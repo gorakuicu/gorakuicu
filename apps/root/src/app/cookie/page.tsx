@@ -2,10 +2,9 @@
 
 import dynamic from 'next/dynamic';
 
-import Structure from '@/features/layout/Structure';
-
 // @ts-ignore
 const CookieMDX = dynamic(() => import('./cookie.mdx'));
+const Structure = dynamic(() => import('@/features/layout/Structure'));
 
 export default function Cookie() {
   return (

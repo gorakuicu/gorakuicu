@@ -19,14 +19,18 @@
     "aikoicu",
     "Boosty",
     "clsx",
+    "commitlint",
+    "evilmartians",
     "Fira",
     "headlessui",
+    "lefthook",
     "Lekton",
     "Maxx",
     "msapplication",
     "mstile",
     "nextui",
-    "onlyfans"
+    "onlyfans",
+    "preinstall"
   ],
   "svg.preview.background": "dark-transparent",
 }

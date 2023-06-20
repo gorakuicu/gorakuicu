@@ -1,10 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 
 import {
   communityLinks,
   contactLinks,
+  IExternalLink,
   // nftLinks,
   socialLinks,
   supportLinks,
@@ -12,13 +14,14 @@ import {
 import CopyToClipboard from '@/features/common/CopyToClipboard';
 import Href from '@/features/common/Href';
 import Tooltip from '@/features/common/Tooltip';
-import ContactIcon, { IContactIcon } from '@/features/contacts/ContactIcon';
-import Structure from '@/features/layout/Structure';
+import ContactIcon from '@/features/contacts/ContactIcon';
 import uuid from '@/utils/uuid';
+
+const Structure = dynamic(() => import('@/features/layout/Structure'));
 
 interface ILinkGroup {
   title: string;
-  links: IContactIcon[];
+  links: IExternalLink[];
 }
 
 export default function Cookie() {
@@ -59,27 +62,25 @@ export default function Cookie() {
               <h2 className="text-2xl font-bold">{title}</h2>
 
               {links?.length > 0 &&
-                links.map(({ href = '#', svg = '', name = '', tooltip = '', copy = '' }) => (
-                  <CopyToClipboard key={uuid()} data={copy}>
-                    <Tooltip content={tooltip}>
-                      <div
-                        className="flex items-center gap-4"
-                        id={name ? name?.replace(' ', '-').toLowerCase() : ''}
-                      >
-                        <ContactIcon notList href={!copy && href} svg={svg} />
-                        {copy ? (
-                          <span>
+                links.map(({ href = '#', svg = '', name = '', tooltip, copy }) => {
+                  const Tag = copy ? 'span' : Href;
+
+                  return (
+                    <CopyToClipboard key={uuid()} data={copy}>
+                      <Tooltip content={tooltip}>
+                        <div
+                          className="flex items-center gap-4"
+                          id={name ? name?.replace(' ', '-').toLowerCase() : ''}
+                        >
+                          <ContactIcon notList href={!copy && href} svg={svg} />
+                          <Tag href={href}>
                             <h3 className="text-md font-semibold">{name}</h3>
-                          </span>
-                        ) : (
-                          <Href href={href}>
-                            <h3 className="text-md font-semibold">{name}</h3>
-                          </Href>
-                        )}
-                      </div>
-                    </Tooltip>
-                  </CopyToClipboard>
-                ))}
+                          </Tag>
+                        </div>
+                      </Tooltip>
+                    </CopyToClipboard>
+                  );
+                })}
             </div>
           ))}
       </div>

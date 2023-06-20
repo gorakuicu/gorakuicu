@@ -1,9 +1,11 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 import Href from '@/features/common/Href';
-import Structure from '@/features/layout/Structure';
+
+const Structure = dynamic(() => import('@/features/layout/Structure'));
 
 export default function License() {
   return (

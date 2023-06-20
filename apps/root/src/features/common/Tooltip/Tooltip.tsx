@@ -20,6 +20,8 @@ export default function Tooltip({
   const handleShow = useCallback(() => setShow(true), []);
   const handleHide = useCallback(() => setShow(false), []);
 
+  if (!content) return <>{children}</>;
+
   const positionClasses = {
     top: 'bottom-full left-1/2 transform -translate-x-1/2 mb-1',
     right: 'top-1/2 left-full transform -translate-y-1/2 ml-1',

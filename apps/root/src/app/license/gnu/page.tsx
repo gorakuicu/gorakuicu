@@ -1,6 +1,9 @@
+import dynamic from 'next/dynamic';
+
 import Href from '@/features/common/Href';
 import Linkify from '@/features/common/Linkify';
-import Structure from '@/features/layout/Structure';
+
+const Structure = dynamic(() => import('@/features/layout/Structure'));
 
 export default function License() {
   return (

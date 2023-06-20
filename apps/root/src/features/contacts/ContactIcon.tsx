@@ -11,7 +11,6 @@ export interface IContactIcon {
   className?: string;
   name?: string;
   notList?: boolean;
-  [key: string]: any;
 }
 
 const ContactIcon: React.FC<IContactIcon> = ({
@@ -47,7 +46,6 @@ const ContactIcon: React.FC<IContactIcon> = ({
 
   return (
     <Tag
-      aria-label={props.href}
       className={classNames}
       variants={{
         hidden: { y: -10, opacity: 0 },

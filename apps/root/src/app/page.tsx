@@ -1,6 +1,8 @@
 'use client';
 
-import Structure from '@/features/layout/Structure';
+import dynamic from 'next/dynamic';
+
+const Structure = dynamic(() => import('@/features/layout/Structure'));
 
 export default function Home() {
   return (

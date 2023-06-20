@@ -2,7 +2,12 @@ import { IContactIcon } from '@/features/contacts/ContactIcon';
 import { ILinkGroup } from '@/features/layout/Footer';
 import { IMenuItem } from '@/features/layout/Navbar';
 
-export const socialLinks: IContactIcon[] = [
+export interface IExternalLink extends IContactIcon {
+  copy?: string;
+  tooltip?: string[] | string;
+}
+
+export const socialLinks: IExternalLink[] = [
   {
     name: 'OnlyFans',
     svg: '/assets/icons/links/onlyfans.svg',
@@ -35,7 +40,7 @@ export const socialLinks: IContactIcon[] = [
   },
 ];
 
-export const communityLinks: IContactIcon[] = [
+export const communityLinks: IExternalLink[] = [
   {
     name: 'Discord',
     svg: '/assets/icons/links/discord.svg',
@@ -68,7 +73,7 @@ export const communityLinks: IContactIcon[] = [
   },
 ];
 
-export const contactLinks: IContactIcon[] = [
+export const contactLinks: IExternalLink[] = [
   {
     name: 'Email',
     svg: '/assets/icons/links/email.svg',
@@ -76,7 +81,7 @@ export const contactLinks: IContactIcon[] = [
   },
 ];
 
-export const supportLinks: IContactIcon[] = [
+export const supportLinks: IExternalLink[] = [
   {
     name: 'Buy Me a Coffee',
     svg: '/assets/icons/links/buymeacoffee.svg',
@@ -108,9 +113,9 @@ export const supportLinks: IContactIcon[] = [
   },
 ];
 
-export const nftLinks: IContactIcon[] = [];
+export const nftLinks: IExternalLink[] = [];
 
-export const externalLinks: IContactIcon[] = [
+export const externalLinks: IExternalLink[] = [
   ...socialLinks,
   ...nftLinks,
   ...communityLinks,

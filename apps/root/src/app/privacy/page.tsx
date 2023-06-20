@@ -2,10 +2,9 @@
 
 import dynamic from 'next/dynamic';
 
-import Structure from '@/features/layout/Structure';
-
 // @ts-ignore
 const PrivacyMDX = dynamic(() => import('./privacy.mdx'));
+const Structure = dynamic(() => import('@/features/layout/Structure'));
 
 export default function Privacy() {
   return (
