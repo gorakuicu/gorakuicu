@@ -1,11 +1,15 @@
+import { prefix } from 'inline-style-prefixer';
+
 import { evnNotForGoogleTag } from '@/hooks/useGoogleTag';
 
 export default function Metrics() {
+  const setThemeScript = 'document.documentElement.setAttribute("data-fr-theme", "dark")';
+
   return (
     <>
       <script
         dangerouslySetInnerHTML={{
-          __html: 'document.documentElement.setAttribute("data-fr-theme", "dark")',
+          __html: setThemeScript,
         }}
       />
       <noscript>
@@ -13,7 +17,7 @@ export default function Metrics() {
           <iframe
             height="0"
             src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}`}
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={prefix({ display: 'none', visibility: 'hidden' })}
             title="Google Tag Manager"
             width="0"
           />

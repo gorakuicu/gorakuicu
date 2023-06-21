@@ -1,9 +1,8 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useMemo } from 'react';
-import React from 'react';
+import React, { memo } from 'react';
 
-import ArrowTRSquare from '@/assets/ArrowTRSquare';
+import ArrowTRSquareIcon from '@/assets/ArrowTRSquareIcon';
 
 export interface IHrefProps {
   ref?: React.Ref<HTMLAnchorElement>;
@@ -22,7 +21,7 @@ export const getHrefClassName = (active: boolean) =>
     active ? 'text-accent' : 'text-base-200 hover:text-primary'
   }`;
 
-export default function Href({
+const Href = ({
   id = '',
   active = false,
   showIcon = true,
@@ -31,31 +30,28 @@ export default function Href({
   href = '#',
   children = null,
   ...props
-}: IHrefProps) {
-  const externalReference = useMemo(
-    () =>
-      href && typeof href === 'string'
-        ? href.startsWith('http') || href.startsWith('mailto')
-        : false,
-    [href],
-  );
-  const cn = useMemo(() => clsx(getHrefClassName(active), className), [active]);
+}: IHrefProps) => {
+  const isHrefString = typeof href === 'string';
+  const externalReference = isHrefString && (href.startsWith('http') || href.startsWith('mailto'));
+  const cn = clsx(getHrefClassName(active), className);
   const cnIcon = clsx('ml-1', iconProps.className);
-  const Tag = useMemo(() => (externalReference ? 'a' : Link), [externalReference]);
+  const Tag: React.ElementType = externalReference ? 'a' : Link;
 
   return (
     <Tag
-      aria-label={typeof href === 'string' ? href : undefined}
+      aria-label={isHrefString ? href : undefined}
       className={cn}
-      href={typeof href === 'string' ? href : '#'}
+      href={isHrefString ? href : '#'}
       id={id}
       {...(externalReference ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       {...props}
     >
       {children}
       {externalReference && showIcon && (
-        <ArrowTRSquare height={16} width={16} {...iconProps} className={cnIcon} />
+        <ArrowTRSquareIcon height={16} width={16} {...iconProps} className={cnIcon} />
       )}
     </Tag>
   );
-}
+};
+
+export default memo(Href);

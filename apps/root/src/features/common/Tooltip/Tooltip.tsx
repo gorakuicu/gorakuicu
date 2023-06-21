@@ -2,7 +2,11 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useCallback, useState } from 'react';
 
+import TriangleIcon from '@/assets/TriangleIcon';
+import { keygen } from '@/utils/keygen';
+
 export interface ITooltipProps {
+  ref?: React.RefObject<HTMLDivElement> | null;
   className?: string;
   position?: 'top' | 'bottom' | 'left' | 'right';
   content?: React.ReactNode;
@@ -22,6 +26,21 @@ export default function Tooltip({
 
   if (!content) return <>{children}</>;
 
+  const processContent = (content: React.ReactNode) => {
+    if (Array.isArray(content)) {
+      return (
+        <ul className="list-unstyled">
+          {content.map((item, index) => (
+            <li key={keygen(item, index)}>{item}</li>
+          ))}
+        </ul>
+      );
+    } else {
+      return content;
+    }
+  };
+  const processedContent = processContent(content);
+
   const positionClasses = {
     top: 'bottom-full left-1/2 transform -translate-x-1/2 mb-1',
     right: 'top-1/2 left-full transform -translate-y-1/2 ml-1',
@@ -37,16 +56,7 @@ export default function Tooltip({
   };
 
   const cn = clsx(className, 'group relative inline-block cursor-pointer');
-
-  const processedContent = Array.isArray(content) ? (
-    <ul className="list-unstyled">
-      {content.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
-  ) : (
-    content
-  );
+  const tooltipClass = `tooltip-content z-100 bg-primary pointer-events-none absolute w-max rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 ${positionClasses[position]}`;
 
   return (
     <span className={cn} onMouseEnter={handleShow} onMouseLeave={handleHide}>
@@ -55,21 +65,17 @@ export default function Tooltip({
         <AnimatePresence>
           {show && (
             <motion.div
+              key="tooltip"
               animate={{ opacity: 1, y: 0, x: '-50%' }}
-              className={`tooltip-content z-100 bg-primary pointer-events-none absolute w-max rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 ${positionClasses[position]}`}
+              className={tooltipClass}
               exit={{ opacity: 0, y: 8, x: '-50%' }}
               initial={{ opacity: 0, y: 8, x: '-50%' }}
               transition={{ duration: 0.2 }}
             >
               {processedContent}
-              <svg
+              <TriangleIcon
                 className={`absolute ${svgPositionClasses[position]} text-primary h-3 w-3`}
-                viewBox="0 0 255 255"
-                x="0px"
-                y="0px"
-              >
-                <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
-              </svg>
+              />
             </motion.div>
           )}
         </AnimatePresence>

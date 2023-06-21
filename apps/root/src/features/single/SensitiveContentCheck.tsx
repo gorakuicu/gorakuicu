@@ -1,23 +1,24 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useState } from 'react';
 
 import Spinner from '@/features/common/Spinner';
+import { useInterval } from '@/hooks/useInterval';
 import { acceptSensitive, checkSensitive } from '@/utils/checkSensitive';
 
 const Modal = dynamic(() => import('@/features/common/Modal'));
 
-export default function CheckSensitiveContent() {
-  const [acceptedSensitive, setAcceptedSensitive] = useState<boolean>(checkSensitive());
+export default function SensitiveContentCheck() {
+  const [acceptedSensitive, setAcceptedSensitive] = useState<boolean>(checkSensitive() || false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  useInterval(
+    () => {
       setAcceptedSensitive(checkSensitive());
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
+    },
+    2000,
+    true,
+  );
 
   return (
     <Suspense fallback={<Spinner />}>

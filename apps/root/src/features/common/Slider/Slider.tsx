@@ -5,9 +5,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { prefix } from 'inline-style-prefixer';
 import Image from 'next/image';
 import { wrap } from 'popmotion';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
-import uuid from '@/utils/uuid';
+import { useInterval } from '@/hooks/useInterval';
+import { keygen } from '@/utils/keygen';
 
 import css from './Slider.module.css';
 
@@ -20,6 +21,34 @@ export interface ISlider {
   objectFit?: CSSStyleDeclaration['objectFit'];
 }
 
+// Move out functions that do not need to be recreated on each render
+const variants = {
+  enter: (direction: number) => ({ x: direction > 0 ? 100 : -100, opacity: 0.2 }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 100 : -100,
+    opacity: 0,
+  }),
+};
+
+const transition = {
+  x: {
+    type: 'spring',
+    stiffness: 300,
+    damping: 20,
+    duration: 0.5,
+  },
+  opacity: { duration: 0.1 },
+};
+
+const swipeConfidenceThreshold = 1000;
+const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
+
 export default function Slider({
   images,
   width = '100%',
@@ -31,23 +60,6 @@ export default function Slider({
   objectFit = 'cover',
   ...props
 }: ISlider & React.HTMLAttributes<HTMLDivElement>) {
-  const variants = {
-    enter: (direction: number) => ({ x: direction > 0 ? 100 : -100, opacity: 0.2 }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 100 : -100,
-      opacity: 0,
-    }),
-  };
-
-  const swipeConfidenceThreshold = 1000;
-  const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
-
   const [[page, direction], setPage] = useState<number[]>([0, 0]);
   const [autoplay, setAutoplay] = useState<boolean>(autoplayProp);
 
@@ -68,18 +80,23 @@ export default function Slider({
     'rounded-3xl',
   );
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    if (autoplay) {
-      interval = setInterval(() => paginate(1), delay);
-    }
-
-    return () => clearInterval(interval);
-  }, [autoplay, page]);
+  useInterval(
+    () => {
+      if (autoplay) paginate(1);
+    },
+    delay,
+    autoplay,
+  );
 
   const onMouseEnter = useCallback(() => autoplayProp && setAutoplay(false), []);
   const onMouseLeave = useCallback(() => setAutoplay(autoplayProp), [autoplayProp]);
+
+  // Add basic input data check for safety
+  if (!Array.isArray(images) || images.length === 0) {
+    console.error('[Slider] requires a non-empty array of images.');
+
+    return null;
+  }
 
   return (
     <div
@@ -96,7 +113,7 @@ export default function Slider({
     >
       <AnimatePresence custom={direction} initial={false}>
         <motion.div
-          key={page}
+          key={keygen(page)}
           animate="center"
           custom={direction}
           drag="x"
@@ -112,15 +129,7 @@ export default function Slider({
               objectFit,
             }) as React.CSSProperties
           }
-          transition={{
-            x: {
-              type: 'spring',
-              stiffness: 300,
-              damping: 20,
-              duration: 0.5,
-            },
-            opacity: { duration: 0.1 },
-          }}
+          transition={transition}
           variants={variants}
           onDragEnd={(_, { offset, velocity }) => {
             const swipe = swipePower(offset.x, velocity.x);
@@ -134,11 +143,11 @@ export default function Slider({
         >
           <Image
             fill
-            alt={images[imageIndex]}
+            alt={images?.[imageIndex]}
             className="rounded-3xl"
             draggable={false}
             priority={imageIndex === 0}
-            src={images[imageIndex]}
+            src={images?.[imageIndex]}
             style={prefix({ objectFit: 'cover' })}
           />
         </motion.div>
@@ -170,7 +179,7 @@ export default function Slider({
       <div className={css.dots}>
         {images.map((_, i) => (
           <div
-            key={uuid()}
+            key={keygen()}
             className={clsx(css.dot, { [css.dot__active]: i === imageIndex })}
             role="button"
             tabIndex={0}

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export interface CopyToClipboardProps {
   data?: string;
@@ -6,24 +6,46 @@ export interface CopyToClipboardProps {
 }
 
 export default function CopyToClipboard({ data = '', children = null }: CopyToClipboardProps) {
-  const [isCopied, setIsCopied] = useState(false);
+  const isUnmounted = useRef(false);
 
-  const copyToClipboard = useCallback(() => {
-    navigator.clipboard.writeText(data);
-    setIsCopied(true);
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState(false);
+
+  const message = useMemo(() => {
+    if (copied) return 'Copied';
+    if (error) return 'Failed to copy';
+
+    return '';
+  }, [copied, error]);
+
+  const copyToClipboard = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(data);
+      setCopied(true);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+      setError(true);
+    }
   }, [data]);
+
+  useEffect(() => {
+    return () => {
+      isUnmounted.current = true;
+    };
+  }, []);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
-    if (isCopied) {
+    if (copied || error) {
       timeout = setTimeout(() => {
-        setIsCopied(false);
+        setCopied(false);
+        setError(false);
       }, 2000);
     }
 
     return () => clearTimeout(timeout);
-  }, [isCopied]);
+  }, [copied]);
 
   if (!data) return <div className="inline-flex items-center">{children}</div>;
 
@@ -32,7 +54,9 @@ export default function CopyToClipboard({ data = '', children = null }: CopyToCl
       <span role="button" tabIndex={0} onClick={copyToClipboard} onKeyDown={() => {}}>
         {children}
       </span>
-      {isCopied && <p className="text-base-400 ml-4 w-full text-xs font-bold opacity-50">Copied</p>}
+      {(error || copied) && (
+        <p className="text-base-400 ml-4 w-full text-xs font-bold opacity-50">{message}</p>
+      )}
     </div>
   );
 }

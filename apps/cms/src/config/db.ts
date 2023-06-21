@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: '../../.env' });
-
 import { BaseKeystoneTypeInfo, DatabaseConfig } from '@keystone-6/core/types';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../.env' });
 
 const DATABASE_LOCAL = process?.env?.DATABASE_LOCAL === '1';
 const DATABASE_URL = DATABASE_LOCAL ? process?.env?.DATABASE_LOCAL_URL : process?.env?.DATABASE_URL;

@@ -1,14 +1,16 @@
 'use client';
 
+import { haveLocalStorage } from '@/utils/checkEnv';
+
 export function acceptCookie() {
-  if (typeof window !== 'undefined') {
+  if (haveLocalStorage()) {
     localStorage.setItem('allowCookie', 'true');
   }
 }
 
 export function checkCookie() {
-  if (typeof window !== 'undefined') {
-    return localStorage.getItem('allowCookie') === 'true';
+  if (haveLocalStorage()) {
+    return Boolean(localStorage.getItem('allowCookie'));
   }
 
   return false;

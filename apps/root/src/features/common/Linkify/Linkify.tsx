@@ -6,30 +6,30 @@ const urlPattern = /(https?:\/\/[^\s]+)/g;
 
 function Linkify({ children }: { children: React.ReactNode }) {
   if (React.Children.count(children) !== 1) {
-    throw new Error('Linkify expects only one child.');
+    throw new Error('[Linkify] expects exactly one child node.');
   }
 
-  const child = children;
+  const childText = children as string;
 
-  if (typeof child !== 'string') {
-    throw new Error('Linkify only supports string children.');
+  if (typeof childText !== 'string') {
+    throw new Error(`[Linkify] only supports string children. Received ${typeof childText}.`);
   }
 
-  const parts = child.split(urlPattern);
+  const textParts = childText.split(urlPattern);
 
-  const elements = parts.map((part, index) => {
-    if (urlPattern.test(part)) {
-      return (
-        <Href key={index} href={part}>
-          {part}
-        </Href>
-      );
-    }
+  const linkedTextElements = textParts.map((part, index) => {
+    const isUrl = urlPattern.test(part);
 
-    return part;
+    return isUrl ? (
+      <Href key={`${part}-${index}`} href={part}>
+        {part}
+      </Href>
+    ) : (
+      part
+    );
   });
 
-  return <>{elements}</>;
+  return <>{linkedTextElements}</>;
 }
 
 export default Linkify;

@@ -8,7 +8,7 @@ context('Utilities', () => {
   it('Cypress._ - call a lodash method', () => {
     // https://on.cypress.io/_
     cy.request('https://jsonplaceholder.cypress.io/users').then((response) => {
-      let ids = Cypress._.chain(response.body).map('id').take(3).value();
+      const ids = Cypress._.chain(response.body).map('id').take(3).value();
 
       expect(ids).to.deep.eq([1, 2, 3]);
     });
@@ -16,7 +16,7 @@ context('Utilities', () => {
 
   it('Cypress.$ - call a jQuery method', () => {
     // https://on.cypress.io/$
-    let $li = Cypress.$('.utility-jquery li:first');
+    const $li = Cypress.$('.utility-jquery li:first');
 
     cy.wrap($li).should('not.have.class', 'active').click().should('have.class', 'active');
   });
@@ -32,7 +32,7 @@ context('Utilities', () => {
         'anonymous',
       ).then((dataUrl) => {
         // create an <img> element and set its src to the dataUrl
-        let img = Cypress.$('<img />', { src: dataUrl });
+        const img = Cypress.$('<img />', { src: dataUrl });
 
         // need to explicitly return cy here since we are initially returning
         // the Cypress.Blob.imgSrcToDataURL promise to our test
@@ -83,7 +83,7 @@ context('Utilities', () => {
      */
     function waitOneSecond() {
       // return a promise that resolves after 1 second
-      return new Cypress.Promise((resolve, reject) => {
+      return new Cypress.Promise((resolve, _reject) => {
         setTimeout(() => {
           // set waited to true
           waited = true;

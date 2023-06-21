@@ -22,6 +22,7 @@ context('Cypress APIs', () => {
           method = method || 'log';
 
           // log the subject to the console
+          // eslint-disable-next-line no-console
           console[method]('The subject is', subject);
 
           // whatever we return becomes the new subject
@@ -33,8 +34,8 @@ context('Cypress APIs', () => {
 
       cy.get('button')
         .console('info')
-        .then(($button) => {
-          // subject is still $button
+        .then((_button) => {
+          // subject is still _button
         });
     });
   });
@@ -76,7 +77,7 @@ context('Cypress APIs', () => {
 
     it('Get and set configuration options', () => {
       // https://on.cypress.io/config
-      let myConfig = Cypress.config();
+      const myConfig = Cypress.config();
 
       expect(myConfig).to.have.property('animationDistanceThreshold', 5);
       expect(myConfig).to.have.property('baseUrl', null);
@@ -106,8 +107,8 @@ context('Cypress APIs', () => {
 
     // https://on.cypress.io/dom
     it('.isHidden() - determine if a DOM element is hidden', () => {
-      let hiddenP = Cypress.$('.dom-p p.hidden').get(0);
-      let visibleP = Cypress.$('.dom-p p.visible').get(0);
+      const hiddenP = Cypress.$('.dom-p p.hidden').get(0);
+      const visibleP = Cypress.$('.dom-p p.visible').get(0);
 
       // our first paragraph has css class 'hidden'
       expect(Cypress.dom.isHidden(hiddenP)).to.be.true;

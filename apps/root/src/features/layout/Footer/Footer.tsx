@@ -1,11 +1,11 @@
-import clsx from 'clsx';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { externalLinks } from '@/constants/links';
-import Href from '@/features/common/Href';
-import Tooltip from '@/features/common/Tooltip';
 import { IContactIcon } from '@/features/contacts/ContactIcon';
 import LinkIconList from '@/features/contacts/LinkIconList';
+import { keygen } from '@/utils/keygen';
+
+import LinkList from './components/LinkList';
 
 export interface ILink {
   title: string;
@@ -35,11 +35,7 @@ export default function Footer({
   social = externalLinks,
   links = [],
 }: IFooterProps) {
-  const years = useMemo(() => {
-    if (currentYear === 2023) return currentYear;
-
-    return `${currentYear} - 2023`;
-  }, [currentYear]);
+  const years = currentYear === 2023 ? currentYear : `${currentYear} - 2023`;
 
   return (
     <footer className="border-t-1 border-base-100 sticky bottom-0 border-opacity-20 bg-white bg-opacity-20 pb-6 pt-8 backdrop-blur-md backdrop-saturate-100 backdrop-filter">
@@ -54,59 +50,10 @@ export default function Footer({
           <div className="w-full px-4 lg:w-6/12">
             <div className="items-top mb-6 flex flex-wrap">
               {links?.length > 0 &&
-                links.map(({ href, title, children }) => {
-                  if (href) {
-                    return (
-                      <Href
-                        key={href + '_' + title}
-                        className="text-blueGray-500 mb-2 block text-sm font-bold uppercase"
-                      >
-                        {title}
-                      </Href>
-                    );
-                  }
+                links.map(({ title, children }) => {
+                  const key = keygen(title, children?.length);
 
-                  return (
-                    <div key={title} className="ml-auto w-full px-4 lg:w-4/12">
-                      <span className="text-blueGray-500 mb-2 block text-sm font-bold uppercase">
-                        {title}
-                      </span>
-                      <ul className="list-unstyled">
-                        {children &&
-                          children?.length > 0 &&
-                          children.map(({ href, title, disabled, tooltip }) => {
-                            const Tag = disabled ? 'span' : Href;
-                            const Component = () => (
-                              <Tag
-                                className={clsx(
-                                  'text-blueGray-600 hover:text-accent block pb-2 text-sm',
-                                  {
-                                    'cursor-not-allowed': disabled,
-                                    'text-gray-500': disabled,
-                                    'hover:text-gray-500': disabled,
-                                  },
-                                )}
-                                {...(disabled ? {} : { href })}
-                              >
-                                {title}
-                              </Tag>
-                            );
-
-                            return (
-                              <li key={href + '_' + title}>
-                                {tooltip ? (
-                                  <Tooltip content={tooltip}>
-                                    <Component />
-                                  </Tooltip>
-                                ) : (
-                                  <Component />
-                                )}
-                              </li>
-                            );
-                          })}
-                      </ul>
-                    </div>
-                  );
+                  return <LinkList key={key} nested={children} title={title} />;
                 })}
             </div>
           </div>

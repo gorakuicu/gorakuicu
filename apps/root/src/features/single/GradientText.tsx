@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useMemo } from 'react';
 
@@ -14,29 +15,28 @@ const sizeByAs = {
 
 interface ISiteNameProps {
   title?: string;
-  from?: string;
-  to?: string;
   size?: string;
   animate?: boolean;
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  as?: keyof typeof sizeByAs;
 }
+
+const animate = { animate: { opacity: 1, y: 0 }, initial: { opacity: 0, y: -16 } };
 
 export default function GradientText({
   title = 'aikoicu',
   size: sizeProp,
-  animate = true,
+  animate: needAnimate = true,
   as = 'h1',
 }: ISiteNameProps) {
-  const Component = useMemo(() => motion[as], [as]);
+  const Component = motion[as];
+  const size = useMemo(() => sizeProp || sizeByAs[as], [sizeProp, as]);
+  const motionProps = useMemo(() => {
+    return needAnimate ? animate : false;
+  }, [needAnimate]);
 
-  const size = useMemo(() => sizeProp || sizeByAs[as], [as, sizeProp]);
-
-  const motionProps = useMemo(
-    () => (animate ? { animate: { opacity: 1, y: 0 }, initial: { opacity: 0, y: -16 } } : {}),
-    [animate],
+  const className = clsx(
+    `${size} from-primary to-accent w-max bg-gradient-to-r bg-clip-text font-extrabold text-transparent`,
   );
-
-  const className = `${size} from-primary to-accent w-max bg-gradient-to-r bg-clip-text font-extrabold text-transparent`;
 
   return (
     <Component className={className} {...motionProps}>

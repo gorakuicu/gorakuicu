@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
-import { memo, useMemo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { memo } from 'react';
 
+import ContactIcon, { IContactIcon } from '@/features/contacts/ContactIcon';
 import { useOnScreen } from '@/hooks/useOnScreen';
-
-import ContactIcon, { IContactIcon } from './ContactIcon';
+import { keygen } from '@/utils/keygen';
 
 export interface ILinkIconList {
   ref?: React.Ref<HTMLUListElement>;
@@ -13,20 +13,26 @@ export interface ILinkIconList {
   className?: string;
 }
 
+const variants = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.1,
+      staggerChildren: 0.02,
+    },
+  },
+};
+
 const LinkIconList: React.FC<ILinkIconList> = ({
   contacts,
   className = '',
   animateWhenVisible,
 }) => {
-  const [ref, visible] = useOnScreen<HTMLUListElement>();
+  const [ref, visible] = useOnScreen<HTMLUListElement>(true);
 
-  const animate = useMemo(() => {
-    if (!animateWhenVisible) return 'visible';
-
-    return visible ? 'visible' : 'hidden';
-  }, [visible]);
-
-  if (!contacts?.length) return null;
+  const animate = animateWhenVisible && visible ? 'visible' : 'hidden';
 
   const classNames = clsx(
     className,
@@ -39,29 +45,23 @@ const LinkIconList: React.FC<ILinkIconList> = ({
     'xl:columns-6',
   );
 
+  if (!contacts?.length) return null;
+
   return (
-    <motion.ul
-      ref={ref}
-      animate={animate}
-      className={classNames}
-      initial="hidden"
-      variants={{
-        hidden: { opacity: 1, scale: 0 },
-        visible: {
-          opacity: 1,
-          scale: 1,
-          transition: {
-            delayChildren: 0.1,
-            staggerChildren: 0.02,
-          },
-        },
-      }}
-    >
-      {contacts?.length > 0 &&
-        contacts?.map(({ href = '#', svg = '', ...icon }) => (
-          <ContactIcon key={href + svg} href={href} svg={svg} {...icon} />
+    <AnimatePresence initial={false} mode="wait">
+      <motion.ul
+        key="link-icon-list"
+        ref={ref}
+        animate={animate}
+        className={classNames}
+        initial="hidden"
+        variants={variants}
+      >
+        {contacts.map(({ href = '#', svg = '', ...icon }) => (
+          <ContactIcon key={keygen(href, svg)} href={href} svg={svg} {...icon} />
         ))}
-    </motion.ul>
+      </motion.ul>
+    </AnimatePresence>
   );
 };
 

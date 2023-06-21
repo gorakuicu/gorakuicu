@@ -1,9 +1,10 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import uuid from '@/utils/uuid';
+import { useInterval } from '@/hooks/useInterval';
+import { keygen } from '@/utils/keygen';
 
 export interface IIridescentText {
   strings: string[];
@@ -12,23 +13,24 @@ export interface IIridescentText {
 
 export default function IridescentText({ strings, speed = 2500 }: IIridescentText) {
   const [index, setIndex] = useState(0);
+  const [keys, setKeys] = useState<string[]>([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const nextIndex = index + 1;
+    if (strings?.length) setKeys(strings.map(() => keygen()));
+  }, [strings]);
 
-      setIndex(nextIndex === strings.length ? 0 : nextIndex);
-    }, speed);
-
-    return () => clearInterval(interval);
-  }, [index]);
-
-  const key = useMemo(() => `${uuid()}___${index}`, [index]);
+  useInterval(
+    () => {
+      if (strings?.length) setIndex((prevIndex) => (prevIndex + 1) % strings?.length);
+    },
+    speed,
+    true,
+  );
 
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={key}
+        key={keys[index]}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -4, opacity: 0 }}
         initial={{ y: -2, opacity: 0 }}

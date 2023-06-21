@@ -2,17 +2,16 @@
 
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 
-import { internalLinks } from '@/constants/links';
-import { navbarLinks } from '@/constants/links';
+import { internalLinks, navbarLinks } from '@/constants/links';
 import Spinner from '@/features/common/Spinner/Spinner';
 import Footer from '@/features/layout/Footer';
 import Navbar from '@/features/layout/Navbar';
 import { useGoogleTag } from '@/hooks/useGoogleTag';
 
 const Cookie = dynamic(() => import('@/features/common/Cookie'));
-const CheckSensitiveContent = dynamic(() => import('@/features/single/CheckSensitiveContent'));
+const SensitiveContentCheck = dynamic(() => import('@/features/single/SensitiveContentCheck'));
 const ScrollBack = dynamic(() => import('@/features/single/ScrollBack'));
 
 export interface StructureProps {
@@ -27,7 +26,7 @@ export default function Structure({ children, className }: StructureProps) {
     <Suspense fallback={<Spinner />}>
       <Navbar {...navbarLinks} />
       <main className={clsx('mx-auto flex w-4/6 flex-grow flex-col p-4 sm:p-6 md:p-8', className)}>
-        <CheckSensitiveContent />
+        <SensitiveContentCheck />
         <Suspense fallback={<Spinner />}>{children}</Suspense>
       </main>
       <Footer links={internalLinks} />

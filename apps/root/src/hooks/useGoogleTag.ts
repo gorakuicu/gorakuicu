@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 
-import { useScript } from './useScript';
+import { useScript } from '@/hooks/useScript';
+import { haveWindow } from '@/utils/checkEnv';
 
 declare global {
   interface Window {
@@ -12,7 +13,7 @@ declare global {
 
 export const evnNotForGoogleTag =
   !process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID ||
-  typeof window === 'undefined' ||
+  !haveWindow() ||
   !window?.dataLayer ||
   process.env.NODE_ENV !== 'production';
 

@@ -23,23 +23,34 @@ export default function Modal({
   width = 'w-96',
   submit: { label = 'Submit', action = () => {} },
 }: IModalProps & HTMLAttributes<HTMLDivElement>) {
-  const ref = useRef<HTMLInputElement>(null);
+  const checkboxRef = useRef<HTMLInputElement>(null);
 
   const modalClassNames = clsx('modal', { 'backdrop-blur': blur });
   const modalBoxClassNames = clsx('modal-box', 'm-4', 'w-max', 'bg-slate-900', 'md:m-6', width);
 
-  const inputId = `${id}-modal`;
+  const checkboxId = `${id}-modal`;
+
+  const handleAction = () => {
+    try {
+      action();
+    } catch (error) {
+      console.error(
+        '[Modal]/[handleAction] An error occurred while executing the modal action: ',
+        error,
+      );
+    }
+  };
 
   return (
     <>
       <input
-        ref={ref}
+        ref={checkboxRef}
         checked={opened}
         className="modal-toggle"
-        id={inputId}
+        id={checkboxId}
         tabIndex={0}
         type="checkbox"
-        onChange={action}
+        onChange={handleAction}
         onKeyDown={() => {}}
       />
       <div className={modalClassNames} id={id}>
@@ -52,7 +63,7 @@ export default function Modal({
               className="btn bg-accent hover:bg-primary text-black hover:text-white"
               role="radio"
               tabIndex={0}
-              onClick={action}
+              onClick={handleAction}
             >
               {label}
             </button>

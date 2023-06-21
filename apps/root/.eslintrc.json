@@ -2,9 +2,13 @@
   "extends": [
     "../../.eslintrc.json",
     "plugin:@next/next/recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended"
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:cypress/recommended"
   ],
   "ignorePatterns": ["!**/*"],
+  "env": {
+    "cypress/globals": true
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -44,6 +48,14 @@
     {
       "files": ["*.js", "*.jsx"],
       "rules": {}
+    },
+    {
+      "files": ["*.test.js", "*.spec.js", "*.test.ts", "*.spec.ts", "*.cy.js", "*.cy.ts"],
+      "rules": {
+        "no-unused-expressions": "off",
+        "cypress/unsafe-to-chain-command": "off",
+        "cypress/no-unnecessary-waiting": "off"
+      }
     }
   ]
 }

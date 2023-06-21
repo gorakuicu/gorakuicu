@@ -9,18 +9,28 @@ import { IconContext } from 'react-icons';
 import ScrollProgress from '@/features/common/ScrollProgress';
 import useQueryClient from '@/hooks/useQueryClient';
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+interface ProviderProps {
+  children: React.ReactNode;
+}
+
+const IconContextProvider: React.FC<ProviderProps> = ({ children }) => {
+  const iconContextValue = useMemo(() => ({ color: 'white' }), []);
+
+  return <IconContext.Provider value={iconContextValue}>{children}</IconContext.Provider>;
+};
+
+export default function Providers({ children }: ProviderProps) {
   const client = useQueryClient();
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
-      <IconContext.Provider value={useMemo(() => ({ color: 'white' }), [])}>
+      <IconContextProvider>
         <QueryClientProvider client={client}>
           <ScrollProgress />
           {children}
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
-      </IconContext.Provider>
+      </IconContextProvider>
     </ThemeProvider>
   );
 }

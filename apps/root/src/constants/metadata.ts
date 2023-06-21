@@ -3,16 +3,16 @@ import type { Metadata } from 'next';
 const domain = 'aiko.icu';
 const url = `https://${domain}`;
 
-const metadataBase: Metadata = {
+const mt: Metadata = {
   title: {
-    template: '%s — aiko.icu',
-    default: 'aiko.icu',
-    absolute: 'aiko.icu',
+    template: '%s — aikoicu',
+    default: 'aikoicu',
+    absolute: 'aikoicu — NSFW 18+ arts',
   },
   description:
     'Not Safe For Work 18+ content (images, videos, etc.) from aikoicu for the aikoicu community and sell them as NFTs. or just enjoy them.',
-  generator: 'aiko.icu',
-  applicationName: 'aiko.icu',
+  generator: 'aikoicu',
+  applicationName: 'aikoicu',
   category: 'NSFW',
   referrer: 'origin-when-cross-origin',
   keywords: ['aikoicu', 'aiko.icu', 'nsfw', 'aiko', 'aiko icu'],
@@ -94,5 +94,4 @@ const metadataBase: Metadata = {
   manifest: 'https://aiko.icu/manifest.json',
 };
 
-export default metadataBase;
-export { domain, url };
+export { domain, mt, url };

@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: '../../.env' });
-
 import { createAuth } from '@keystone-6/auth';
 import { statelessSessions } from '@keystone-6/core/session';
 import { randomBytes } from 'crypto';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../.env' });
 
 const { withAuth } = createAuth({
   listKey: 'User',

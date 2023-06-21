@@ -1,37 +1,42 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
+import { throttle } from '@/utils/throttle';
+
 export default function ScrollProgress() {
-  const [percent, setPercent] = useState(0);
+  const [scrollProgressPercent, setScrollProgressPercent] = useState(0);
 
   useEffect(() => {
-    const updateScrollPercent = () => {
+    const updateScrollProgressBar = throttle(() => {
       if (!document) return;
 
-      const winScroll = document?.body?.scrollTop || document?.documentElement?.scrollTop || 0;
-      const height =
+      const scrollPosition = document?.body?.scrollTop || document?.documentElement?.scrollTop || 0;
+      const scrollableHeight =
         document?.documentElement?.scrollHeight - document?.documentElement?.clientHeight || 1;
-      const scrolled = winScroll / height;
+      const scrollProgress = scrollPosition / scrollableHeight;
 
-      setPercent(Math.round(scrolled * 100));
-    };
+      setScrollProgressPercent(Math.round(scrollProgress * 100));
+    }, 60);
 
-    if (window) window.addEventListener('scroll', updateScrollPercent);
+    if (window) window.addEventListener('scroll', updateScrollProgressBar);
 
     return () => {
-      if (window) window.removeEventListener('scroll', updateScrollPercent);
+      if (window) window.removeEventListener('scroll', updateScrollProgressBar);
     };
   }, []);
 
   return (
-    <motion.div
-      animate={{ width: `${percent || 0}%` }}
-      className="bg-primary-focus fixed inset-x-0 top-0 z-50 h-0.5"
-      initial={{ width: '0%' }}
-      style={{
-        backgroundImage: 'linear-gradient(to right, #4F46E577, #D53CF577)',
-      }}
-      transition={{ duration: 0.1 }}
-    />
+    <AnimatePresence>
+      <motion.div
+        key="scroll-progress"
+        animate={{ width: `${scrollProgressPercent || 0}%` }}
+        className="bg-primary-focus fixed inset-x-0 top-0 z-50 h-0.5"
+        initial={{ width: '0%' }}
+        style={{
+          backgroundImage: 'linear-gradient(to right, #4F46E577, #D53CF577)',
+        }}
+        transition={{ duration: 0.1 }}
+      />
+    </AnimatePresence>
   );
 }

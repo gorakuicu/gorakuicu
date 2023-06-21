@@ -23,29 +23,16 @@ export function useScript(
       return;
     }
 
-    let script = document.querySelector(`script[src="${src}"]`) as HTMLScriptElement;
+    let script: HTMLScriptElement | null = document.querySelector(
+      `script[src="${src}"]`,
+    ) as HTMLScriptElement;
     let timeout: NodeJS.Timeout;
-
-    if (!script) {
-      if (delay) {
-        timeout = setTimeout(() => {
-          injectScript();
-          // Add event listener after the script is added
-          script.addEventListener('load', setStateStatus);
-          script.addEventListener('error', setStateStatus);
-        }, delay);
-      } else {
-        injectScript();
-      }
-    } else {
-      setStatus(script.getAttribute('data-status') as ScriptStatus[keyof ScriptStatus]);
-    }
 
     const setStateStatus = (event: Event) => {
       setStatus(event.type === 'load' ? 'ready' : 'error');
     };
 
-    //code to inject script
+    // code to inject script
     function injectScript() {
       script = document.createElement('script');
       script.src = src;
@@ -54,17 +41,28 @@ export function useScript(
       document.body.appendChild(script);
 
       const setDataStatus = (event: Event) => {
-        script.setAttribute('data-status', event.type === 'load' ? 'ready' : 'error');
+        script?.setAttribute('data-status', event.type === 'load' ? 'ready' : 'error');
       };
 
       script.addEventListener('load', setDataStatus);
       script.addEventListener('error', setDataStatus);
     }
 
-    if (script) {
-      //script will be be undefined available when its delayed hence check it before adding listener
-      script.addEventListener('load', setStateStatus);
-      script.addEventListener('error', setStateStatus);
+    if (!script) {
+      if (delay) {
+        timeout = setTimeout(() => {
+          injectScript();
+          script?.addEventListener('load', setStateStatus);
+          script?.addEventListener('error', setStateStatus);
+        }, delay);
+      } else {
+        injectScript();
+        const script = document.querySelector(`script[src="${src}"]`) as HTMLScriptElement;
+
+        script?.addEventListener('error', setStateStatus);
+      }
+    } else {
+      setStatus(script.getAttribute('data-status') as ScriptStatus[keyof ScriptStatus]);
     }
 
     return () => {

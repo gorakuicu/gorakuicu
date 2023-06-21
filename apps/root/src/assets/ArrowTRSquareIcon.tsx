@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ArrowTRSquare(props: React.SVGProps<SVGSVGElement>) {
+export default function ArrowTRSquareIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       className="h-6 w-6"

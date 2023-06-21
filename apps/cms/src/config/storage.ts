@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: '../../.env' });
-
 import { StorageConfig } from '@keystone-6/core/types';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../.env' });
 
 const S3_ACCESS_KEY = process?.env?.S3_ACCESS_KEY;
 const S3_SECRET_KEY = process?.env?.S3_SECRET_KEY;
