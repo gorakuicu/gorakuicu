@@ -22,10 +22,12 @@ export default function ScrollProgress() {
   );
 
   useEffect(() => {
-    if (checkHasWindow()) window.addEventListener('scroll', updateScrollProgressBar);
+    const hasWindow = checkHasWindow();
+
+    if (hasWindow) window.addEventListener('scroll', updateScrollProgressBar);
 
     return () => {
-      if (checkHasWindow()) window.removeEventListener('scroll', updateScrollProgressBar);
+      if (hasWindow) window.removeEventListener('scroll', updateScrollProgressBar);
     };
   }, []);
 

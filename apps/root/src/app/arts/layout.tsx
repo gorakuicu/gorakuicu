@@ -8,6 +8,9 @@ export const metadata = {
   title: 'Arts, crafts, NFT and other NSFW works',
   description:
     'Arts, crafts, NFT and other NSFW works by aiko.icu, including but not limited to: photography, drawings, paintings, sculptures, and other works of art.',
+  alternates: {
+    canonical: 'https://aiko.icu/arts',
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

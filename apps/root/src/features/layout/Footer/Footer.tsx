@@ -4,6 +4,7 @@ import { externalLinks } from '@/constants/links';
 import { IContactIcon } from '@/features/contacts/ContactIcon';
 import LinkIconList from '@/features/contacts/LinkIconList';
 import { keygen } from '@/utils/keygen';
+import { addGlassStyle } from '@/utils/styles';
 
 import LinkList from './components/LinkList';
 
@@ -38,11 +39,11 @@ export default function Footer({
   const years = currentYear === 2023 ? currentYear : `${currentYear} - 2023`;
 
   return (
-    <footer className="border-t-1 border-base-100 sticky bottom-0 border-opacity-20 bg-white bg-opacity-20 pb-6 pt-8 backdrop-blur-md backdrop-saturate-100 backdrop-filter">
+    <footer className={addGlassStyle('border-t-1 sticky bottom-0  pb-6 pt-8', false)}>
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full px-4 lg:w-6/12">
-            <h4 className="text-blueGray-700 text-3xl font-semibold">{title}</h4>
+            <h6 className="text-blueGray-700 text-3xl font-semibold">{title}</h6>
             <div className="mb-6 mt-6 lg:mb-0">
               <LinkIconList animateWhenVisible className="h-24 w-3/5" contacts={social} />
             </div>

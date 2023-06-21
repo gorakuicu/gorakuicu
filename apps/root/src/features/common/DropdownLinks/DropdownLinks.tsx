@@ -1,9 +1,9 @@
 import { Menu, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import Link from 'next/link';
 import React, { useCallback, useRef, useState } from 'react';
 
 import ChevronIcon from '@/assets/ChevronIcon';
+import Href from '@/features/common/Href';
 import Tooltip from '@/features/common/Tooltip';
 import { useActivePath } from '@/hooks/useActivePath';
 import { addGlassStyle } from '@/utils/styles';
@@ -73,29 +73,25 @@ export default function DropdownLinks({
           )}
         >
           {links.map(({ href = '#', title = '', disabled = false, tooltip = '' }) => {
-            const activeLink = checkActivePath(href);
+            const strong = href.includes('?');
+
+            const activeLink = checkActivePath(href, strong);
 
             return (
               <Menu.Item key={href}>
                 {() => {
-                  const Tag: React.ElementType = disabled ? 'div' : Link;
                   const Component = () => (
-                    <Tag
-                      className={clsx(
-                        'hover:text-secondary flex w-full rounded-2xl p-2 bg-blend-difference',
-                        {
-                          'text-primary': activeLink,
-                          'hover:bg-black': !disabled,
-                          'hover:bg-opacity-30': !disabled,
-                          'cursor-not-allowed': disabled,
-                          'text-gray-500': disabled,
-                          'hover:text-gray-500': disabled,
-                        },
-                      )}
-                      {...(disabled ? {} : { href })}
+                    <Href
+                      active={activeLink}
+                      className={clsx('flex w-full rounded-2xl p-2 bg-blend-difference', {
+                        'hover:bg-white': !disabled,
+                        'hover:bg-opacity-10': !disabled,
+                      })}
+                      disabled={disabled}
+                      href={href}
                     >
                       {title}
-                    </Tag>
+                    </Href>
                   );
 
                   if (tooltip) {

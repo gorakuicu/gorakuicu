@@ -21,14 +21,18 @@ export default function ScrollBack() {
   }, []);
 
   const scrollToTop = useCallback(() => {
-    if (checkHasWindow()) window.scrollTo(scrollToTopOptions);
+    const hasWindow = checkHasWindow();
+
+    if (hasWindow) window.scrollTo(scrollToTopOptions);
   }, []);
 
   useEffect(() => {
-    if (checkHasWindow()) window.addEventListener('scroll', toggleVisible);
+    const hasWindow = checkHasWindow();
+
+    if (hasWindow) window.addEventListener('scroll', toggleVisible);
 
     return () => {
-      if (checkHasWindow()) window.removeEventListener('scroll', toggleVisible);
+      if (hasWindow) window.removeEventListener('scroll', toggleVisible);
     };
   }, [toggleVisible]);
 

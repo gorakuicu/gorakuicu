@@ -1,10 +1,14 @@
 import { usePathname } from 'next/navigation';
-import { useCallback } from 'react';
+
+import { checkHasWindow } from '@/utils/checkEnv';
 
 type TActivePath = (href: string | undefined, strong?: boolean) => boolean;
 
 export function useActivePath(): TActivePath {
   const currentPathname = usePathname();
+  const hasWindow = checkHasWindow();
+
+  if (!hasWindow) return () => false;
   const currentHash = window.location.hash;
 
   const checkActivePath = (href: string | undefined, strong = false): boolean => {
@@ -13,11 +17,9 @@ export function useActivePath(): TActivePath {
 
     // Normalize href by removing query and hash fragments
     const normalizedHref = (() => {
-      const [pathname] = href.split('?');
+      if (strong) return href.split('?')[0].split('#')[0];
 
-      if (strong) return pathname.split('#')[0];
-
-      return pathname;
+      return href;
     })();
 
     // Return false if href is not valid or is an empty anchor
@@ -33,5 +35,5 @@ export function useActivePath(): TActivePath {
   };
 
   // Use useCallback to memoize the function, so it doesn't get recreated on every render
-  return useCallback(checkActivePath, [currentPathname, currentHash]);
+  return checkActivePath;
 }

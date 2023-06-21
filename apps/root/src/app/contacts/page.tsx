@@ -10,7 +10,6 @@ import {
   socialLinks,
   supportLinks,
 } from '@/constants/links';
-import { useScrollToHash } from '@/hooks/useScrollToHash';
 
 import LinkGroup from './components/LinkGroup';
 
@@ -22,8 +21,6 @@ export interface ILinkGroup {
 }
 
 export default function Contacts() {
-  useScrollToHash();
-
   const linkGroups = useMemo<ILinkGroup[]>(
     () => [
       {

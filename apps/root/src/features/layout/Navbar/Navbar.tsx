@@ -22,7 +22,7 @@ interface INavbarProps {
 
 const navbarAnimation = { animate: { opacity: 1, y: 0 }, initial: { opacity: 0, y: -16 } };
 const navbarClass = addGlassStyle(
-  'fixed left-0 right-0 top-4 z-10 mx-auto flex w-4/6 items-center justify-between rounded-3xl bg-white px-20 py-4 shadow-sm',
+  'fixed left-0 right-0 top-4 z-10 mx-auto flex w-4/6 items-center justify-between rounded-3xl px-20 py-4 shadow-sm',
 );
 
 export default function Navbar({ menu = [] }: INavbarProps) {

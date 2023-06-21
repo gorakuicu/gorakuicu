@@ -9,7 +9,9 @@ export const useMediaQuery = (widthProp: number | string) => {
   const updateTarget = useCallback((e: MediaQueryListEvent) => setTargetReached(!!e.matches), []);
 
   useEffect(() => {
-    if (!checkHasWindow()) return;
+    const hasWindow = checkHasWindow();
+
+    if (!hasWindow) return;
 
     const media = window.matchMedia(`(max-width: ${width})`);
 
@@ -17,7 +19,7 @@ export const useMediaQuery = (widthProp: number | string) => {
     if (media.matches) setTargetReached(true);
 
     return () => {
-      if (checkHasWindow()) media.removeEventListener('change', updateTarget);
+      if (hasWindow) media.removeEventListener('change', updateTarget);
     };
   }, []);
 
