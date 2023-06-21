@@ -18,7 +18,7 @@ export interface IHrefProps {
 
 export const getHrefClassName = (active: boolean) =>
   `hover:text-accent inline-flex transition-colors duration-300 ${
-    active ? 'text-accent' : 'text-base-200 hover:text-primary'
+    active ? 'text-primary' : 'text-base-200 hover:text-secondary'
   }`;
 
 const Href = ({

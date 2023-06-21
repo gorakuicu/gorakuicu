@@ -5,6 +5,7 @@ import React, { useCallback, useRef, useState } from 'react';
 
 import ChevronIcon from '@/assets/ChevronIcon';
 import Tooltip from '@/features/common/Tooltip';
+import { useActivePath } from '@/hooks/useActivePath';
 import { addGlassStyle } from '@/utils/styles';
 
 export interface ILink {
@@ -16,6 +17,7 @@ export interface ILink {
 }
 
 export interface IDropdownLinksProps {
+  className?: string;
   hover?: boolean;
   active?: boolean;
   title?: string;
@@ -23,12 +25,14 @@ export interface IDropdownLinksProps {
 }
 
 export default function DropdownLinks({
+  className = '',
   hover = false,
   active = false,
   title = '',
   links = [],
 }: IDropdownLinksProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const checkActivePath = useActivePath();
 
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -39,14 +43,19 @@ export default function DropdownLinks({
     <Menu
       ref={ref}
       as="div"
-      className="z-101 relative inline-block text-left"
+      className={clsx('z-101 relative inline-block text-left', className)}
       onMouseEnter={open}
       onMouseLeave={close}
     >
       <div>
-        <Menu.Button as="button" className="inline-flex w-full items-center justify-center gap-x-1">
+        <Menu.Button
+          as="button"
+          className={clsx('inline-flex w-full items-center justify-center gap-x-1', {
+            'text-primary': active,
+          })}
+        >
           {title}
-          <ChevronIcon color="rgba(255, 255, 255, 0.5)" direction="down" />
+          <ChevronIcon direction="down" />
         </Menu.Button>
       </div>
       <Transition
@@ -63,20 +72,26 @@ export default function DropdownLinks({
             'absolute left-2/4 w-56  -translate-x-1/2 transform rounded-3xl p-2 shadow-sm',
           )}
         >
-          {links.map(
-            ({ href = '#', title = '', disabled = false, tooltip = '', active = false }) => (
+          {links.map(({ href = '#', title = '', disabled = false, tooltip = '' }) => {
+            const activeLink = checkActivePath(href);
+
+            return (
               <Menu.Item key={href}>
                 {() => {
                   const Tag: React.ElementType = disabled ? 'div' : Link;
                   const Component = () => (
                     <Tag
-                      className={clsx('flex w-full rounded-2xl p-2 bg-blend-difference', {
-                        'hover:bg-gray-100': !disabled,
-                        'hover:bg-opacity-30': !disabled,
-                        'cursor-not-allowed': disabled,
-                        'text-gray-500': disabled,
-                        'hover:text-gray-500': disabled,
-                      })}
+                      className={clsx(
+                        'hover:text-secondary flex w-full rounded-2xl p-2 bg-blend-difference',
+                        {
+                          'text-primary': activeLink,
+                          'hover:bg-black': !disabled,
+                          'hover:bg-opacity-30': !disabled,
+                          'cursor-not-allowed': disabled,
+                          'text-gray-500': disabled,
+                          'hover:text-gray-500': disabled,
+                        },
+                      )}
                       {...(disabled ? {} : { href })}
                     >
                       {title}
@@ -94,8 +109,8 @@ export default function DropdownLinks({
                   return <Component />;
                 }}
               </Menu.Item>
-            ),
-          )}
+            );
+          })}
         </Menu.Items>
       </Transition>
     </Menu>

@@ -7,6 +7,7 @@ import type { ILink } from '@/features/common/DropdownLinks';
 import DropdownLinks from '@/features/common/DropdownLinks';
 import Href from '@/features/common/Href';
 import GradientText from '@/features/single/GradientText';
+import { useActivePath } from '@/hooks/useActivePath';
 import { keygen } from '@/utils/keygen';
 import { addGlassStyle } from '@/utils/styles';
 
@@ -26,6 +27,7 @@ const navbarClass = addGlassStyle(
 
 export default function Navbar({ menu = [] }: INavbarProps) {
   const pathname = usePathname();
+  const checkActivePath = useActivePath();
   const animate = useMemo(() => ['/'].includes(pathname), [pathname]);
 
   return (
@@ -37,15 +39,24 @@ export default function Navbar({ menu = [] }: INavbarProps) {
           </Link>
 
           <ul className="hidden items-center space-x-8 lg:flex">
-            {menu.map(({ href = '#', title, active = false, children }) => {
+            {menu.map(({ href = '#', title, children }) => {
               const key = keygen(href, title, children?.length);
+              const activeLink = children?.length
+                ? children.some(({ href }) => checkActivePath(href))
+                : checkActivePath(href);
 
               return (
                 <li key={key}>
                   {children ? (
-                    <DropdownLinks hover active={active} links={children} title={title} />
+                    <DropdownLinks
+                      hover
+                      active={activeLink}
+                      className="text-base-200"
+                      links={children}
+                      title={title}
+                    />
                   ) : (
-                    <Href active={active} href={href}>
+                    <Href active={activeLink} href={href}>
                       {title}
                     </Href>
                   )}
