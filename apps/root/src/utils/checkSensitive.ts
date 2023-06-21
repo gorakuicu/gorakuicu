@@ -1,15 +1,15 @@
 'use client';
 
-import { haveLocalStorage } from '@/utils/checkEnv';
+import { checkHasLocalStorage } from '@/utils/checkEnv';
 
 export function acceptSensitive() {
-  if (haveLocalStorage()) {
+  if (checkHasLocalStorage()) {
     localStorage.setItem('acceptedSensitiveContent', 'true');
   }
 }
 
 export function checkSensitive() {
-  if (haveLocalStorage()) {
+  if (checkHasLocalStorage()) {
     return Boolean(localStorage.getItem('acceptedSensitiveContent'));
   }
 

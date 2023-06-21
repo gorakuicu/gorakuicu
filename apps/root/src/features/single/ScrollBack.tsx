@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import ChevronIcon from '@/assets/ChevronIcon';
-import { haveWindow } from '@/utils/checkEnv';
+import { checkHasWindow } from '@/utils/checkEnv';
 
 // Move constants outside of the component to avoid unnecessary re-renders
 const scrollThreshold = 300;
@@ -21,14 +21,14 @@ export default function ScrollBack() {
   }, []);
 
   const scrollToTop = useCallback(() => {
-    if (haveWindow()) window.scrollTo(scrollToTopOptions);
+    if (checkHasWindow()) window.scrollTo(scrollToTopOptions);
   }, []);
 
   useEffect(() => {
-    if (haveWindow()) window.addEventListener('scroll', toggleVisible);
+    if (checkHasWindow()) window.addEventListener('scroll', toggleVisible);
 
     return () => {
-      if (haveWindow()) window.removeEventListener('scroll', toggleVisible);
+      if (checkHasWindow()) window.removeEventListener('scroll', toggleVisible);
     };
   }, [toggleVisible]);
 

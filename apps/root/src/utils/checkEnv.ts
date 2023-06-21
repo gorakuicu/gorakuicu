@@ -1,7 +1,7 @@
-export function haveWindow() {
+export function checkHasWindow() {
   return typeof window !== 'undefined';
 }
 
-export function haveLocalStorage() {
-  return haveWindow() && typeof window?.localStorage !== 'undefined';
+export function checkHasLocalStorage() {
+  return checkHasWindow() && typeof window?.localStorage !== 'undefined';
 }
