@@ -7,7 +7,7 @@ import Href from '@/features/common/Href';
 
 const Structure = dynamic(() => import('@/features/layout/Structure'));
 
-export default function License() {
+export default function LicenseCC() {
   return (
     <Structure className="flex w-full flex-grow flex-col items-center justify-center">
       <small className="mb-8 text-center">License for aiko.icu products</small>

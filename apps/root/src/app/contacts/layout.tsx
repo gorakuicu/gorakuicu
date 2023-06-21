@@ -9,6 +9,6 @@ export const metadata = {
   description: 'Links, social media, and other contact information for aiko.icu',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <SSRLayout>{children}</SSRLayout>;
 }

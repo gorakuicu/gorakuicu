@@ -5,7 +5,7 @@ import Linkify from '@/features/common/Linkify';
 
 const Structure = dynamic(() => import('@/features/layout/Structure'));
 
-export default function License() {
+export default function LicenseGNU() {
   return (
     <Structure className="gap-4">
       <small className="mb-8 text-center">

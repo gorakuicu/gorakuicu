@@ -34,7 +34,7 @@ const inter = Inter({
 
 export const metadata = mt;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       suppressHydrationWarning

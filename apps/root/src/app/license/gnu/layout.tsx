@@ -9,6 +9,6 @@ export const metadata = {
   description: 'License for aiko.icu code — GNU General Public License v3.0',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <SSRLayout>{children}</SSRLayout>;
 }

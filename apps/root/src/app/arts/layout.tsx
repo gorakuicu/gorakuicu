@@ -5,8 +5,9 @@ import React from 'react';
 import SSRLayout from '@/features/layout/SSRLayout';
 
 export const metadata = {
-  title: 'Terms and Conditions',
-  description: 'Terms and Conditions for aiko.icu',
+  title: 'Arts, crafts, NFT and other NSFW works',
+  description:
+    'Arts, crafts, NFT and other NSFW works by aiko.icu, including but not limited to: photography, drawings, paintings, sculptures, and other works of art.',
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

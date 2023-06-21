@@ -10,6 +10,6 @@ export const metadata = {
     'License for aiko.icu products — Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <SSRLayout>{children}</SSRLayout>;
 }

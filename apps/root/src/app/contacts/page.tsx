@@ -21,7 +21,7 @@ export interface ILinkGroup {
   links: IExternalLink[];
 }
 
-export default function Cookie() {
+export default function Contacts() {
   useScrollToHash();
 
   const linkGroups = useMemo<ILinkGroup[]>(
