@@ -64,7 +64,13 @@ export default function Cookie() {
                 and{' '}
               </p>
             </div>
-            <button className="btn btn-xs text-accent ml-2 font-bold" onClick={accept}>
+            <button
+              aria-controls="cookie"
+              aria-expanded="false"
+              aria-label="Accept cookie"
+              className="btn btn-xs text-accent ml-2 font-bold"
+              onClick={accept}
+            >
               Accept
             </button>
           </div>

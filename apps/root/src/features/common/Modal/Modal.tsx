@@ -45,6 +45,8 @@ export default function Modal({
     <>
       <input
         ref={checkboxRef}
+        aria-checked={opened ? 'true' : 'false'}
+        aria-label={label}
         checked={opened}
         className="modal-toggle"
         id={checkboxId}
@@ -60,6 +62,7 @@ export default function Modal({
           <div className="modal-action">
             <button
               aria-checked={opened ? 'true' : 'false'}
+              aria-label={label}
               className="btn bg-accent hover:bg-primary text-black hover:text-white"
               role="radio"
               tabIndex={0}

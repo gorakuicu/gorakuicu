@@ -4,7 +4,7 @@ const pathsForIgnore = ['/admin'];
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.DOMAIN + process.env.SUBDOMAIN,
+  siteUrl: 'https://aiko.icu',
   generateRobotsTxt: true,
   generateIndexSitemap: true,
   sitemapSize: 4000,
