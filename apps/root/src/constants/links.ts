@@ -77,7 +77,7 @@ export const contactLinks: IExternalLink[] = [
   {
     name: 'Email',
     svg: '/assets/icons/links/email.svg',
-    href: 'mailto:aikoicu@yahoo.com',
+    href: 'mailto:contact@aiko.icu',
   },
 ];
 
