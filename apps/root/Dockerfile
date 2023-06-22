@@ -12,7 +12,7 @@ RUN npm install --global pnpm@${PNPM_VERSION} && pnpm config set store-dir /.pnp
 FROM base AS builder
 WORKDIR /app
 COPY . .
-RUN pnpm add -g turbo@1.10.3
+RUN pnpm add -g turbo@1.10.4
 RUN --mount=type=cache,id=turbo_prune_root,target=/app/.turbo \
   turbo prune --scope=root --docker --no-update-notifier
 
