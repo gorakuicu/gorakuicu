@@ -3,10 +3,9 @@ import clsx from 'clsx';
 import React, { useCallback, useRef, useState } from 'react';
 
 import ChevronIcon from '@/assets/ChevronIcon';
-import Href from '@/features/common/Href';
-import Tooltip from '@/features/common/Tooltip';
-import { useActivePath } from '@/hooks/useActivePath';
 import { addGlassStyle } from '@/utils/styles';
+
+import Item from './components/Item';
 
 export interface ILink {
   title?: string;
@@ -32,7 +31,6 @@ export default function DropdownLinks({
   links = [],
 }: IDropdownLinksProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const checkActivePath = useActivePath();
 
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -72,41 +70,9 @@ export default function DropdownLinks({
             'absolute left-2/4 w-56  -translate-x-1/2 transform rounded-3xl p-2 shadow-sm',
           )}
         >
-          {links.map(({ href = '#', title = '', disabled = false, tooltip = '' }) => {
-            const strong = href.includes('?');
-
-            const activeLink = checkActivePath(href, strong);
-
-            return (
-              <Menu.Item key={href}>
-                {() => {
-                  const Component = () => (
-                    <Href
-                      active={activeLink}
-                      className={clsx('flex w-full rounded-2xl p-2 bg-blend-difference', {
-                        'hover:bg-white': !disabled,
-                        'hover:bg-opacity-10': !disabled,
-                      })}
-                      disabled={disabled}
-                      href={href}
-                    >
-                      {title}
-                    </Href>
-                  );
-
-                  if (tooltip) {
-                    return (
-                      <Tooltip content={tooltip}>
-                        <Component />
-                      </Tooltip>
-                    );
-                  }
-
-                  return <Component />;
-                }}
-              </Menu.Item>
-            );
-          })}
+          {links.map((link) => (
+            <Item key={link.href} {...link} />
+          ))}
         </Menu.Items>
       </Transition>
     </Menu>

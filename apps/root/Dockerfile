@@ -2,8 +2,7 @@ FROM node:18.16.0-alpine3.17 AS base
 ARG PNPM_VERSION
 WORKDIR /app
 ENV PNPM_HOME=/.pnpm-store PATH=:/.pnpm-store:/.pnpm-store/bin:/.pnpm-store/global/5:$PATH NODE_ENV=production FORCE_COLOR=1 CI=1
-RUN --mount=type=cache,target=/usr/src/app/.npm \
-  npm config set cache /usr/src/app/.npm && \
+RUN npm config set cache /usr/src/app/.npm && \
   npm --global cache verify && \
   npm install -g npm && \
   npm cache clean --force
@@ -44,8 +43,6 @@ ENV PNPM_HOME=/.pnpm-store PATH=:/.pnpm-store:/.pnpm-store/bin:/.pnpm-store/glob
 RUN addgroup --system --gid 1001 nodejs && \
   adduser --system --uid 1001 nodejs && \
   npm install --global pnpm@${PNPM_VERSION} && npm cache clean --force
-# COPY --from=installer --chown=nodejs:nodejs /app .
-# COPY --from=installer --chown=nodejs:nodejs --chmod=700 /app/node_modules /app/node_modules
 COPY --from=installer /app .
 RUN chown -R nodejs:nodejs /app && chmod -R 700 /app/node_modules
 ENV PATH=/app/node_modules/.bin:$PATH
