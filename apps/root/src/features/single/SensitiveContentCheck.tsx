@@ -6,6 +6,7 @@ import { Suspense, useState } from 'react';
 import Spinner from '@/features/common/Spinner';
 import { useInterval } from '@/hooks/useInterval';
 import { acceptSensitive, checkSensitive } from '@/utils/checkSensitive';
+import { isBot } from '@/utils/isBot';
 
 const Modal = dynamic(() => import('@/features/common/Modal'));
 
@@ -26,7 +27,7 @@ export default function SensitiveContentCheck() {
         Check Sensitive
       </label>
       <Modal
-        blur
+        blur={!isBot()}
         description={
           <>
             🍓 This resource contains sensitive content.
