@@ -34,7 +34,7 @@ const mt: Metadata = {
   },
   icons: {
     icon: '/favicon-128x128.png',
-    shortcut: '/favicon.ico',
+    shortcut: '/favicon-32x32.png?v=2',
     apple: '/apple-touch-icon.png',
     other: {
       rel: 'apple-touch-icon-precomposed',

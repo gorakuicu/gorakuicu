@@ -6,10 +6,11 @@ import { usePathname } from 'next/navigation';
 import React, { memo } from 'react';
 
 import ArrowTRSquareIcon from '@/assets/ArrowTRSquareIcon';
+import { url } from '@/constants/metadata';
 
 export interface IHrefProps {
-  ref?: React.Ref<HTMLAnchorElement>;
   id?: string;
+  base?: boolean;
   disabled?: boolean;
   active?: boolean;
   showIcon?: boolean;
@@ -20,22 +21,9 @@ export interface IHrefProps {
   style?: React.CSSProperties;
 }
 
-export const getHrefClassName = (active?: boolean, disabled?: boolean) =>
-  clsx(
-    'hover:text-accent text-base-200 inline-flex transition-colors duration-300',
-    {
-      'text-primary': active,
-    },
-    {
-      'cursor-not-allowed': disabled,
-      'pointer-events-none': disabled,
-      'text-neutral': disabled,
-      'hover:text-neutral': disabled,
-    },
-  );
-
 const Href = ({
   id = '',
+  base = false,
   disabled = false,
   active = false,
   showIcon = true,
@@ -49,9 +37,30 @@ const Href = ({
 
   const isHrefString = typeof hrefProp === 'string';
   const href = isHrefString && !disabled ? hrefProp : pathname;
-  const externalReference = isHrefString && (href.startsWith('http') || href.startsWith('mailto'));
 
-  const cn = clsx(getHrefClassName(active, disabled), className);
+  const externalReference =
+    isHrefString && (href.startsWith('http') || href.startsWith('mailto')) && !href.startsWith(url);
+
+  const cn = clsx(
+    'hover:text-accent inline-flex transition-colors duration-300',
+    {
+      'text-secondary': !base,
+    },
+    {
+      'text-base-300': base,
+    },
+    {
+      '!text-primary': active,
+    },
+    {
+      '!cursor-not-allowed': disabled,
+      '!pointer-events-none': disabled,
+      '!text-neutral': disabled,
+      '!hover:text-neutral': disabled,
+    },
+    className,
+  );
+
   const cnIcon = clsx('ml-1', iconProps.className);
 
   const Tag: React.ElementType = externalReference ? 'a' : Link;
@@ -59,11 +68,11 @@ const Href = ({
   return (
     <Tag
       aria-label={href}
-      className={cn}
       href={href}
       id={id + href}
       {...(externalReference ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       {...props}
+      className={cn}
     >
       {children}
       {externalReference && showIcon && (

@@ -18,29 +18,15 @@ export default function LinkList({ title, nested }: ILinkWithNested) {
         {nested &&
           nested?.length > 0 &&
           nested.map(({ href, title, disabled, tooltip }) => {
-            const Tag = disabled ? 'span' : Href;
-            const Component = () => (
-              <Tag
-                className={clsx('text-blueGray-600 hover:text-accent block pb-2 text-sm', {
-                  'cursor-not-allowed': disabled,
-                  'text-gray-500': disabled,
-                  'hover:text-gray-500': disabled,
-                })}
-                {...(disabled ? {} : { href })}
-              >
+            const link = (
+              <Href base className={clsx('block pb-2 text-sm')} disabled={disabled} href={href}>
                 {title}
-              </Tag>
+              </Href>
             );
 
             return (
               <li key={keygen(href, title, href, title, disabled, tooltip)}>
-                {tooltip ? (
-                  <Tooltip content={tooltip}>
-                    <Component />
-                  </Tooltip>
-                ) : (
-                  <Component />
-                )}
+                {tooltip ? <Tooltip content={tooltip}>{link}</Tooltip> : link}
               </li>
             );
           })}

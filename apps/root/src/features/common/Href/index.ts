@@ -1,2 +1,2 @@
 export type { IHrefProps } from './Href';
-export { default, getHrefClassName } from './Href';
+export { default } from './Href';

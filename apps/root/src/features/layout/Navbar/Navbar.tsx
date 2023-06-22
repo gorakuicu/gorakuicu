@@ -56,7 +56,7 @@ export default function Navbar({ menu = [] }: INavbarProps) {
                       title={title}
                     />
                   ) : (
-                    <Href active={activeLink} href={href}>
+                    <Href base active={activeLink} href={href}>
                       {title}
                     </Href>
                   )}

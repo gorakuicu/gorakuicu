@@ -62,7 +62,7 @@ const ContactIcon: React.FC<IContactIcon> = ({
 
   const Component = href
     ? ({ children }: IChildren) => (
-        <Href href={href} showIcon={false} {...commonProps}>
+        <Href base href={href} showIcon={false} {...commonProps}>
           {children}
         </Href>
       )

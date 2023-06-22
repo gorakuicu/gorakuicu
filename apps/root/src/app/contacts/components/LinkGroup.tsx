@@ -29,7 +29,7 @@ export default function LinkGroup({ title = '', links = [] }: ILinkGroup) {
                     <h3 className="text-md font-semibold">{name}</h3>
                   </span>
                 ) : (
-                  <Href href={href}>
+                  <Href base href={href}>
                     <h3 className="text-md font-semibold">{name}</h3>
                   </Href>
                 )}
