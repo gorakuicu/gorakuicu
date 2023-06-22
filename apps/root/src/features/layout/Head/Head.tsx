@@ -1,7 +1,10 @@
 import { domain, url } from '@/constants/metadata';
+import Metrics from '@/features/layout/Metrics';
 import colors from '@/styles/theme/colors.json';
 
 export default function Head() {
+  const setThemeScript = 'document.documentElement.setAttribute("data-fr-theme", "dark")';
+
   return (
     // eslint-disable-next-line @next/next/no-head-element
     <head>
@@ -44,6 +47,12 @@ export default function Head() {
       />
       <meta content={colors['base-content']} name="theme-color" />
       <meta key="apple-mobile-web-app-title" content={domain} name="apple-mobile-web-app-title" />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: setThemeScript,
+        }}
+      />
+      <Metrics />
     </head>
   );
 }

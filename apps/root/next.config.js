@@ -34,6 +34,7 @@ const next = {
     appDir: true,
     swcTraceProfiling: true,
   },
+  transpilePackages: ['react-hotjar'],
   compiler: {
     ...(process.env.NODE_ENV === 'development'
       ? {}
@@ -77,12 +78,6 @@ const next = {
     }
 
     return config;
-  },
-  env: {
-    NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID:
-      process.env.NODE_ENV === 'production'
-        ? process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID
-        : 'GTM-XXXXXXX',
   },
 };
 

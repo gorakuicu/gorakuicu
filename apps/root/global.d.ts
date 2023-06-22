@@ -4,9 +4,15 @@ interface RefObject<T> {
 
 declare global {
   namespace NodeJS {
-    interface ProcessEnv {
-      CMS_TOKEN?: string;
-    }
+    // interface ProcessEnv {
+    //   CMS_TOKEN?: string;
+    // }
+  }
+  interface Window {
+    gtag: (...args: any[]) => void;
+    dataLayer: any[];
+    hj: any;
+    _hjSettings: any;
   }
 }
 

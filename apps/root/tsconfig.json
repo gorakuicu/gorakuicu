@@ -27,8 +27,7 @@
       "next/image-types/global",
       "@types/node",
       "@types/react",
-      "node",
-      "./src/types"
+      "node"
     ]
   },
   "include": [

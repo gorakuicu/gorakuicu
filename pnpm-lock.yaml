@@ -309,6 +309,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hotjar:
+        specifier: 6.1.0
+        version: 6.1.0
       react-icons:
         specifier: 4.9.0
         version: 4.9.0(react@18.2.0)
@@ -13252,6 +13255,10 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.13)(react@18.2.0)
     dev: false
 
+  /react-hotjar@6.1.0:
+    resolution: {integrity: sha512-V1UJixDMspAIrbGIFG282U7mH2aK1JBid0YR8F9oscb6lTkjMga+gst2gesxJDsqsax+k+lM1LqRXYzmUu8izA==}
+    dev: false
+
   /react-icons@4.9.0(react@18.2.0):
     resolution: {integrity: sha512-ijUnFr//ycebOqujtqtV9PFS7JjhWg0QU6ykURVHuL4cbofvRCf3f6GMn9+fBktEFQOIVZnuAYLZdiyadRQRFg==}
     peerDependencies:
@@ -16401,6 +16408,7 @@ time:
   /prettier@2.8.8: '2023-04-23T07:26:12.772Z'
   /prisma@4.15.0: '2023-05-30T14:19:28.857Z'
   /react-dom@18.2.0: '2022-06-14T19:46:48.370Z'
+  /react-hotjar@6.1.0: '2023-04-11T12:09:20.993Z'
   /react-icons@4.9.0: '2023-05-28T14:32:49.882Z'
   /react@18.2.0: '2022-06-14T19:46:38.369Z'
   /start-server-and-test@2.0.0: '2023-02-27T12:57:17.443Z'

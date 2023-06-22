@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export interface ScriptStatus {
+export interface IScriptStatus {
   idle: 'idle';
   loading: 'loading';
   ready: 'ready';
@@ -11,8 +11,10 @@ export function useScript(
   src: string,
   delay?: number,
   doNotRun?: boolean,
-): ScriptStatus[keyof ScriptStatus] {
-  const [status, setStatus] = useState<ScriptStatus[keyof ScriptStatus]>(src ? 'loading' : 'idle');
+): IScriptStatus[keyof IScriptStatus] {
+  const [status, setStatus] = useState<IScriptStatus[keyof IScriptStatus]>(
+    src ? 'loading' : 'idle',
+  );
 
   useEffect(() => {
     if (doNotRun) return;
@@ -62,7 +64,7 @@ export function useScript(
         script?.addEventListener('error', setStateStatus);
       }
     } else {
-      setStatus(script.getAttribute('data-status') as ScriptStatus[keyof ScriptStatus]);
+      setStatus(script.getAttribute('data-status') as IScriptStatus[keyof IScriptStatus]);
     }
 
     return () => {

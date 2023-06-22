@@ -8,7 +8,6 @@ import { internalLinks, navbarLinks } from '@/constants/links';
 import Spinner from '@/features/common/Spinner/Spinner';
 import Footer from '@/features/layout/Footer';
 import Navbar from '@/features/layout/Navbar';
-import { useGoogleTag } from '@/hooks/useGoogleTag';
 
 const Cookie = dynamic(() => import('@/features/common/Cookie'));
 const SensitiveContentCheck = dynamic(() => import('@/features/single/SensitiveContentCheck'));
@@ -20,8 +19,6 @@ export interface StructureProps {
 }
 
 export default function Structure({ children, className }: StructureProps) {
-  useGoogleTag();
-
   return (
     <Suspense fallback={<Spinner />}>
       <Navbar {...navbarLinks} />
