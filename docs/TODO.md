@@ -4,7 +4,7 @@
 - [x] tests
 - [x] commitizen + commitlint
 - [x] lefthook
-- [x] nginx cms
+- [x] nginx admin
 - [x] docker-compose
 - [x] ci
 - [x] pnpm cache in docker

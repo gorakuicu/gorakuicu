@@ -19,20 +19,13 @@
     "stylelint-high-performance-animation",
     "stylelint-selector-bem-pattern"
   ],
-  "ignoreFiles": [
-    "**/*",
-    "apps/cms/.keystone",
-    "!**/*.css"
-  ],
+  "ignoreFiles": ["**/*", "apps/admin/.keystone", "!**/*.css"],
   "rules": {
     "selector-class-pattern": "^[a-z]+(_[a-z]+)*(__[a-z]+(_[a-z]+)*)?(_--[a-z]+(_[a-z]+)*)?$",
     "css-modules/no-global-scoped-selector": [
       true,
       {
-        "fileExtensions": [
-          ".module.css",
-          ".module.scss"
-        ]
+        "fileExtensions": [".module.css", ".module.scss"]
       }
     ],
     "css-modules/composed-class-names": true,

@@ -51,29 +51,29 @@ services:
   #     - traefik.tcp.routers.aikoicu-redis.service=redis
   #     - traefik.tcp.services.aikoicu-redis.loadbalancer.server.port=6379
 
-  aikoicu-root:
-    image: aikoicu-root
-    container_name: aikoicu-root
+  aikoicu-site:
+    image: aikoicu-site
+    container_name: aikoicu-site
     build:
-      dockerfile: ./apps/root/Dockerfile
+      dockerfile: ./apps/site/Dockerfile
       context: .
       args:
         PNPM_VERSION: ${PNPM_VERSION:-latest}
       cache_from:
-        - aikoicu-root
+        - aikoicu-site
     networks:
       - proxy
       - aikoicu
     restart: unless-stopped
 
-  aikoicu-root-proxy:
-    image: aikoicu-root-proxy
-    container_name: aikoicu-root-proxy
+  aikoicu-site-proxy:
+    image: aikoicu-site-proxy
+    container_name: aikoicu-site-proxy
     build:
       dockerfile: Dockerfile
-      context: ./apps/root/nginx
+      context: ./apps/site/nginx
       cache_from:
-        - aikoicu-root-proxy
+        - aikoicu-site-proxy
     environment:
       - DOMAIN
       - SUBDOMAIN
@@ -81,7 +81,7 @@ services:
       - proxy
       - aikoicu
     depends_on:
-      - aikoicu-root
+      - aikoicu-site
     restart: always
     labels:
       - traefik.http.routers.registry.middlewares=traefik-compress
@@ -94,30 +94,30 @@ services:
       - traefik.http.routers.aikoicu.tls.certresolver=${CERT_RESOLVER}
       - traefik.docker.network=proxy
 
-  aikoicu-cms:
-    image: aikoicu-cms
-    container_name: aikoicu-cms
+  aikoicu-admin:
+    image: aikoicu-admin
+    container_name: aikoicu-admin
     env_file: .env
     build:
-      dockerfile: ./apps/cms/Dockerfile
+      dockerfile: ./apps/admin/Dockerfile
       context: .
       args:
         PNPM_VERSION: ${PNPM_VERSION:-latest}
       cache_from:
-        - aikoicu-cms
+        - aikoicu-admin
     networks:
       - proxy
       - aikoicu
     restart: unless-stopped
 
-  aikoicu-cms-proxy:
-    image: aikoicu-cms-proxy
-    container_name: aikoicu-cms-proxy
+  aikoicu-admin-proxy:
+    image: aikoicu-admin-proxy
+    container_name: aikoicu-admin-proxy
     build:
       dockerfile: Dockerfile
-      context: ./apps/cms/nginx
+      context: ./apps/admin/nginx
       cache_from:
-        - aikoicu-cms-proxy
+        - aikoicu-admin-proxy
     environment:
       - DOMAIN
       - CMS_SUBDOMAIN
@@ -125,15 +125,15 @@ services:
       - proxy
       - aikoicu
     depends_on:
-      - aikoicu-cms
+      - aikoicu-admin
     restart: always
     labels:
       - traefik.http.routers.registry.middlewares=traefik-compress
-      - traefik.http.routers.aikoicu-cms.rule=Host("${CMS_SUBDOMAIN}${DOMAIN}")
-      - traefik.http.middlewares.aikoicu-cms-redirect.redirectregex.regex=^(https?://)www.(.*)$$
-      - traefik.http.middlewares.aikoicu-cms-redirect.redirectregex.replacement=$${1}$${2}
-      - traefik.http.routers.aikoicu-cms.middlewares=aikoicu-cms-redirect
-      - traefik.http.routers.aikoicu-cms.entrypoints=https
-      - traefik.http.routers.aikoicu-cms.tls=true
-      - traefik.http.routers.aikoicu-cms.tls.certresolver=${CERT_RESOLVER}
+      - traefik.http.routers.aikoicu-admin.rule=Host("${CMS_SUBDOMAIN}${DOMAIN}")
+      - traefik.http.middlewares.aikoicu-admin-redirect.redirectregex.regex=^(https?://)www.(.*)$$
+      - traefik.http.middlewares.aikoicu-admin-redirect.redirectregex.replacement=$${1}$${2}
+      - traefik.http.routers.aikoicu-admin.middlewares=aikoicu-admin-redirect
+      - traefik.http.routers.aikoicu-admin.entrypoints=https
+      - traefik.http.routers.aikoicu-admin.tls=true
+      - traefik.http.routers.aikoicu-admin.tls.certresolver=${CERT_RESOLVER}
       - traefik.docker.network=proxy

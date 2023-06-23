@@ -24,7 +24,7 @@
 **/.turbo
 **/.keystone/admin
 **/keystone.db
-**/apps/cms/.keystone/**
+**/apps/admin/.keystone/**
 .keystone/**
 !**/*.{js,jsx,ts,tsx,json,css,md}
 .env*.example

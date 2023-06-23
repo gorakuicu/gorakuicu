@@ -63,11 +63,11 @@ const next = {
   rewrites: async function proxy() {
     return [
       {
-        source: '/cms/:path*',
+        source: '/admin/:path*',
         destination:
           process.env.NODE_ENV === 'development'
             ? 'http://localhost:7777/api/:path*'
-            : 'https://cms.aiko.icu/api/:path*',
+            : 'https://admin.aiko.icu/api/:path*',
       },
     ];
   },

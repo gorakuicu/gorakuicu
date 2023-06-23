@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "site",
   "version": "1.0.2",
   "private": true,
   "scripts": {
@@ -19,7 +19,7 @@
     "lint:css:fix": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\" --fix",
     "lint:fix": "pnpm formatter && pnpm lint:es:fix && pnpm lint:css:fix",
     "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
-    "turbo:prune": "turbo prune --scope=root --docker",
+    "turbo:prune": "turbo prune --scope=site --docker",
     "analyze": "cross-env ANALYZE=true pnpm build"
   },
   "dependencies": {

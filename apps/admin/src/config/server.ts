@@ -9,7 +9,7 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> | undefined = {
       'http://localhost:7777',
       'http://localhost',
       'https://aiko.icu',
-      'https://cms.aiko.icu',
+      'https://admin.aiko.icu',
       'https://aiko.icu:7777',
     ],
     credentials: true,

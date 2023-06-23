@@ -1,7 +1,7 @@
 proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off;
 
-upstream aikoicu-root {
-  server aikoicu-root:3000;
+upstream aikoicu-site {
+  server aikoicu-site:3000;
 }
 
 server {
@@ -46,7 +46,7 @@ server {
     proxy_cache_lock on;
     add_header X-Cache-Status $upstream_cache_status;
     proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
-    proxy_pass http://aikoicu-root;
+    proxy_pass http://aikoicu-site;
   }
 
   location ^~ /? {
@@ -58,20 +58,20 @@ server {
     proxy_cache_lock on;
     add_header X-Cache-Status $upstream_cache_status;
     proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
-    proxy_pass http://aikoicu-root;
+    proxy_pass http://aikoicu-site;
   }
 
   location ^~ /static/ {
     proxy_cache STATIC;
     proxy_cache_valid 1m;
-    proxy_pass http://aikoicu-root;
+    proxy_pass http://aikoicu-site;
     add_header X-Cache-Status $upstream_cache_status;
   }
 
   location ~ ^/_next {
     proxy_cache STATIC;
     proxy_cache_valid 1m;
-    proxy_pass http://aikoicu-root;
+    proxy_pass http://aikoicu-site;
     add_header X-Cache-Status $upstream_cache_status;
   }
 
@@ -82,14 +82,14 @@ server {
     add_header Cache-Control "public";
     proxy_cache STATIC;
     proxy_cache_valid 1m;
-    proxy_pass http://aikoicu-root;
+    proxy_pass http://aikoicu-site;
     add_header X-Cache-Status $upstream_cache_status;
   }
 
   location ~* \.(html|htm|txt)$ {
     expires 30m;
     proxy_cache STATIC;
-    proxy_pass http://aikoicu-root;
+    proxy_pass http://aikoicu-site;
     add_header X-Cache-Status $upstream_cache_status;
   }
 }

@@ -12,8 +12,8 @@ FROM base AS builder
 WORKDIR /app
 COPY . .
 RUN pnpm add -g turbo@1.10.5
-RUN --mount=type=cache,id=turbo_prune_root,target=/app/.turbo \
-  turbo prune --scope=root --docker --no-update-notifier
+RUN --mount=type=cache,id=turbo_prune_cms,target=/app/.turbo \
+  turbo prune --scope=admin --docker --no-update-notifier
 
 FROM base AS installer
 WORKDIR /app
@@ -24,13 +24,8 @@ COPY --from=builder /app/scripts/ci/is.js ./scripts/ci/is.js
 RUN --mount=type=cache,id=pnpm_deps,target=/.pnpm-store \
   pnpm install --frozen-lockfile --prod
 COPY --from=builder /app/out/full/ .
-RUN (rm -rf ./**/root/*cypress* || true) && \
-  (rm -rf ./**/root/*test* || true) && \
-  (rm -rf ./**/root/*tests* || true) && \
-  (rm -rf ./**/root/*spec* || true) && \
-  (rm -rf ./**/root/*specs* || true)
 RUN --mount=type=cache,id=turbo_build,target=/app/.turbo \
-  pnpm build --filter=root... --no-update-notifier
+  pnpm build --filter=admin... --no-update-notifier
 COPY --from=builder /app/scripts/ci/node_prune.sh ./scripts/ci/node_prune.sh
 RUN chmod +x /app/scripts/ci/node_prune.sh && \
   /app/scripts/ci/node_prune.sh && node-prune && \
@@ -48,4 +43,4 @@ RUN chown -R nodejs:nodejs /app && chmod -R 700 /app/node_modules
 ENV PATH=/app/node_modules/.bin:$PATH
 USER nodejs
 
-CMD ["pm2-runtime", "start", "--", "pnpm", "start", "--filter=root..."]
+CMD ["pm2-runtime", "start", "--", "pnpm", "start", "--filter=admin..."]

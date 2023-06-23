@@ -2,10 +2,10 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "references": [
     {
-      "path": "./apps/root/tsconfig.json"
+      "path": "./apps/site/tsconfig.json"
     },
     {
-      "path": "./apps/cms/tsconfig.json"
+      "path": "./apps/admin/tsconfig.json"
     }
   ],
   "compilerOptions": {
