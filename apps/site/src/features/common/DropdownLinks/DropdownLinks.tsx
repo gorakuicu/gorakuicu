@@ -2,8 +2,8 @@ import { Menu, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import React, { useCallback, useRef, useState } from 'react';
 
-import ChevronIcon from '@/assets/ChevronIcon';
-import { addGlassStyle } from '@/utils/styles';
+import ChevronIcon from '~/assets/ChevronIcon';
+import { addGlassStyle } from '~/utils/styles';
 
 import Item from './components/Item';
 

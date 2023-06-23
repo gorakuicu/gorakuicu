@@ -1,7 +1,7 @@
 import { usePathname } from 'next/navigation';
 import { useCallback } from 'react';
 
-import { checkHasWindow } from '@/utils/checkEnv';
+import { checkHasWindow } from '~/utils/checkEnv';
 
 type TActivePath = (href: string | undefined, strong?: boolean) => boolean;
 

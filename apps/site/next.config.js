@@ -1,6 +1,10 @@
 require('dotenv').config({ path: '../../.env' });
 require('module-alias/register');
 
+const dns = require('dns');
+
+dns.setDefaultResultOrder('ipv4first');
+
 // const Stylelint =
 //   process.env.NODE_ENV === 'development' ? require('stylelint-webpack-plugin') : () => {};
 const StatoscopeWebpackPlugin =

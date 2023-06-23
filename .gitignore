@@ -12,8 +12,6 @@
 **/build
 **/.vercel
 **/.turbo
-**/.keystone/admin
-**/keystone.db
 
 # misc
 **/.DS_Store

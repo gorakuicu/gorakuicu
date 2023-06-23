@@ -1,12 +1,18 @@
 {
   "name": "admin",
-  "version": "1.0.2",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
-    "dev": "keystone dev",
-    "build": "keystone build",
-    "start": "keystone start --with-migrations",
-    "test": "jest --runInBand",
+    "dev": "pnpm start",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
     "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint:css",
     "lint:ts": "tsc --pretty --project tsconfig.json --noEmit",
     "lint:es": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" .",
@@ -15,24 +21,59 @@
     "lint:css:fix": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\" --fix",
     "lint:fix": "pnpm formatter && pnpm lint:ts && pnpm lint:es:fix && pnpm lint:css:fix",
     "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
-    "turbo:prune": "turbo prune --scope=admin --docker",
-    "analyze": "cross-env ANALYZE=true pnpm build",
-    "postinstall": "node ../../scripts/ci/is.js || keystone build --no-ui --frozen"
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "turbo:prune": "turbo prune --scope=admin --docker"
   },
   "dependencies": {
-    "@keystone-6/auth": "7.0.1",
-    "@keystone-6/core": "5.3.2",
-    "@keystone-6/fields-document": "8.0.0",
-    "@prisma/client": "4.16.1",
-    "@types/ws": "8.5.5",
-    "graphql-ws": "5.14.0",
-    "next": "13.4.7",
-    "prisma": "4.16.1",
-    "ws": "8.13.0",
-    "typescript": "5.1.3"
+    "@adminjs/express": "6.0.0",
+    "@adminjs/nestjs": "6.0.1",
+    "@nestjs/common": "10.0.0",
+    "@nestjs/core": "10.0.0",
+    "@nestjs/platform-express": "10.0.0",
+    "adminjs": "7.0.6",
+    "express-formidable": "1.2.0",
+    "express-session": "1.17.3",
+    "reflect-metadata": "0.1.13",
+    "rxjs": "7.8.1",
+    "typescript": "5.1.3",
+    "ws": "8.13.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "10.0.0",
+    "@nestjs/schematics": "10.0.0",
+    "@nestjs/testing": "10.0.0",
+    "@types/express": "4.17.17",
+    "@types/supertest": "2.0.12",
+    "source-map-support": "0.5.21",
+    "supertest": "6.3.3",
+    "ts-jest": "29.1.0",
+    "ts-loader": "9.4.3",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "4.2.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      ".+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   },
   "_moduleAliases": {
-    "@/": "./src/"
+    "~/": "./src/"
   },
   "packageManager": "pnpm@8.6.0"
 }

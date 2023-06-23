@@ -1,6 +1,6 @@
 'use client';
 
-import { checkHasLocalStorage } from '@/utils/checkEnv';
+import { checkHasLocalStorage } from '~/utils/checkEnv';
 
 export function acceptSensitive() {
   if (checkHasLocalStorage()) {

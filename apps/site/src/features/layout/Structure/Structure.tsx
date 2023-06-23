@@ -4,14 +4,14 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import React, { Suspense } from 'react';
 
-import { internalLinks, navbarLinks } from '@/constants/links';
-import Spinner from '@/features/common/Spinner/Spinner';
-import Footer from '@/features/layout/Footer';
-import Navbar from '@/features/layout/Navbar';
+import { internalLinks, navbarLinks } from '~/constants/links';
+import Spinner from '~/features/common/Spinner/Spinner';
+import Footer from '~/features/layout/Footer';
+import Navbar from '~/features/layout/Navbar';
 
-const Cookie = dynamic(() => import('@/features/common/Cookie'));
-const SensitiveContentCheck = dynamic(() => import('@/features/single/SensitiveContentCheck'));
-const ScrollBack = dynamic(() => import('@/features/single/ScrollBack'));
+const Cookie = dynamic(() => import('~/features/common/Cookie'));
+const SensitiveContentCheck = dynamic(() => import('~/features/single/SensitiveContentCheck'));
+const ScrollBack = dynamic(() => import('~/features/single/ScrollBack'));
 
 export interface StructureProps {
   children?: React.ReactNode;

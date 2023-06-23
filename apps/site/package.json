@@ -43,7 +43,6 @@
     "daisyui": "3.1.5",
     "eslint-plugin-cypress": "2.13.3",
     "framer-motion": "10.12.16",
-    "graphql-ws": "5.14.0",
     "inline-style-prefixer": "7.0.0",
     "next": "13.4.7",
     "next-pwa": "5.6.0",
@@ -66,17 +65,13 @@
     "cypress": "12.15.0",
     "jsdom": "22.1.0"
   },
-  "peerDependencies": {
-    "next": "*"
-  },
   "browserslist": [
     ">0.2%",
     "last 2 versions",
     "not dead"
   ],
   "_moduleAliases": {
-    "@/": "./src/",
-    "public": "./public"
+    "~/": "./src/"
   },
   "packageManager": "pnpm@8.6.0"
 }

@@ -3,12 +3,12 @@
 import dynamic from 'next/dynamic';
 import { Suspense, useState } from 'react';
 
-import Spinner from '@/features/common/Spinner';
-import { useInterval } from '@/hooks/useInterval';
-import { acceptSensitive, checkSensitive } from '@/utils/checkSensitive';
-import { isBot } from '@/utils/isBot';
+import Spinner from '~/features/common/Spinner';
+import { useInterval } from '~/hooks/useInterval';
+import { acceptSensitive, checkSensitive } from '~/utils/checkSensitive';
+import { isBot } from '~/utils/isBot';
 
-const Modal = dynamic(() => import('@/features/common/Modal'));
+const Modal = dynamic(() => import('~/features/common/Modal'));
 
 export default function SensitiveContentCheck() {
   const [acceptedSensitive, setAcceptedSensitive] = useState<boolean>(checkSensitive() || false);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Href from '@/features/common/Href';
+import Href from '~/features/common/Href';
 
 const urlPattern = /(https?:\/\/[^\s]+)/g;
 

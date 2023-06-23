@@ -1,8 +1,8 @@
 import { Menu } from '@headlessui/react';
 import clsx from 'clsx';
 
-import Href from '@/features/common/Href';
-import Tooltip from '@/features/common/Tooltip';
+import Href from '~/features/common/Href';
+import Tooltip from '~/features/common/Tooltip';
 
 import { ILink } from '../DropdownLinks';
 

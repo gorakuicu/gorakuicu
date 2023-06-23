@@ -19,7 +19,7 @@
     "stylelint-high-performance-animation",
     "stylelint-selector-bem-pattern"
   ],
-  "ignoreFiles": ["**/*", "apps/admin/.keystone", "!**/*.css"],
+  "ignoreFiles": ["**/*", "**/__deprecated", "!**/*.css"],
   "rules": {
     "selector-class-pattern": "^[a-z]+(_[a-z]+)*(__[a-z]+(_[a-z]+)*)?(_--[a-z]+(_[a-z]+)*)?$",
     "css-modules/no-global-scoped-selector": [

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { checkHasWindow } from '@/utils/checkEnv';
+import { checkHasWindow } from '~/utils/checkEnv';
 
 export const useMediaQuery = (widthProp: number | string) => {
   const width = typeof widthProp === 'number' ? `${widthProp}px` : widthProp;

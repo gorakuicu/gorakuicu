@@ -1,8 +1,8 @@
-import '@/styles/globals.css';
+import '~/styles/globals.css';
 
 import React from 'react';
 
-import SSRLayout from '@/features/layout/SSRLayout';
+import SSRLayout from '~/features/layout/SSRLayout';
 
 export const metadata = {
   title: 'License Creative Commons',

@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useCallback, useState } from 'react';
 
-import TriangleIcon from '@/assets/TriangleIcon';
-import { keygen } from '@/utils/keygen';
+import TriangleIcon from '~/assets/TriangleIcon';
+import { keygen } from '~/utils/keygen';
 
 export interface ITooltipProps {
   ref?: React.RefObject<HTMLDivElement> | null;

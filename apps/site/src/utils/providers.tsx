@@ -7,9 +7,9 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ThemeProvider } from 'next-themes';
 import React from 'react';
 
-import Href from '@/features/common/Href';
-import ScrollProgress from '@/features/common/ScrollProgress';
-import useQueryClient from '@/hooks/useQueryClient';
+import Href from '~/features/common/Href';
+import ScrollProgress from '~/features/common/ScrollProgress';
+import useQueryClient from '~/hooks/useQueryClient';
 
 interface ProviderProps {
   children: React.ReactNode;

@@ -1,3 +1,4 @@
+**/__deprecated
 **/build
 **/public
 **/.cache
@@ -22,9 +23,5 @@
 **/!.storybook
 /**/.storybook/**
 **/.turbo
-**/.keystone/admin
-**/keystone.db
-**/apps/admin/.keystone/**
-.keystone/**
 !**/*.{js,jsx,ts,tsx,json,css,md}
 .env*.example

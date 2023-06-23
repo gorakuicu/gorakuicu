@@ -3,7 +3,8 @@
   "env": {
     "browser": true,
     "es2022": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "globals": {
     "NodeJS": true,
@@ -44,6 +45,7 @@
   "rules": {
     "no-loops/no-loops": 2,
     "semi": "off",
+    "no-useless-constructor": "off",
     "space-before-function-paren": "off",
     "comma-dangle": "off",
     "multiline-ternary": "off",

@@ -1,8 +1,8 @@
 import { Partytown } from '@builder.io/partytown/react';
 
-import { domain, url } from '@/constants/metadata';
-import Metrics from '@/features/layout/Metrics';
-import colors from '@/styles/theme/colors.json';
+import { domain, url } from '~/constants/metadata';
+import Metrics from '~/features/layout/Metrics';
+import colors from '~/styles/theme/colors.json';
 
 export default function Head() {
   const setThemeScript = 'document.documentElement.setAttribute("data-fr-theme", "dark")';
@@ -17,16 +17,16 @@ export default function Head() {
         title={domain}
         type="application/search+xml"
       />
-      <link href="/apple-touch-icon.png?v=2" rel="apple-touch-icon" sizes="180x180" />
-      <link href="/favicon-32x32.png?v=2" rel="icon" sizes="32x32" type="image/png" />
+      <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+      <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
       <link href="/android-chrome-192x192.png" rel="icon" sizes="192x192" type="image/png" />
       <link href="/favicon-196x196.png" rel="icon" sizes="196x196" type="image/png" />
       <link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png" />
       <link href="/favicon-128x128.png" rel="icon" sizes="128x128" type="image/png" />
-      <link href="/favicon-16x16.png?v=2" rel="icon" sizes="16x16" type="image/png" />
+      <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
       <link href="/manifest.json" rel="manifest" />
-      <link color={colors.primary} href="/safari-pinned-tab.svg?v=2" rel="mask-icon" />
-      <link href="/favicon.ico?v=2" rel="shortcut icon" />
+      <link color={colors.primary} href="/safari-pinned-tab.svg" rel="mask-icon" />
+      <link href="/favicon.ico" rel="shortcut icon" type="image/svg+xml" />
       <meta content={colors.primary} name="msapplication-TileColor" />
       <meta content="/mstile-144x144.png" name="msapplication-TileImage" />
       <meta content="/mstile-310x310.png" name="msapplication-square310x310logo" />

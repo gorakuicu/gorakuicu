@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import ChevronIcon from '@/assets/ChevronIcon';
-import { checkHasWindow } from '@/utils/checkEnv';
+import ChevronIcon from '~/assets/ChevronIcon';
+import { checkHasWindow } from '~/utils/checkEnv';
 
 // Move constants outside of the component to avoid unnecessary re-renders
 const scrollThreshold = 300;

@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 
-import { checkHasWindow } from '@/utils/checkEnv';
-import { throttle } from '@/utils/throttle';
+import { checkHasWindow } from '~/utils/checkEnv';
+import { throttle } from '~/utils/throttle';
 
 export default function ScrollProgress() {
   const [scrollProgressPercent, setScrollProgressPercent] = useState(0);

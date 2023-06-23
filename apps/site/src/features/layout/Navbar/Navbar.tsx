@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
-import type { ILink } from '@/features/common/DropdownLinks';
-import DropdownLinks from '@/features/common/DropdownLinks';
-import Href from '@/features/common/Href';
-import GradientText from '@/features/single/GradientText';
-import { useActivePath } from '@/hooks/useActivePath';
-import { keygen } from '@/utils/keygen';
-import { addGlassStyle } from '@/utils/styles';
+import type { ILink } from '~/features/common/DropdownLinks';
+import DropdownLinks from '~/features/common/DropdownLinks';
+import Href from '~/features/common/Href';
+import GradientText from '~/features/single/GradientText';
+import { useActivePath } from '~/hooks/useActivePath';
+import { keygen } from '~/utils/keygen';
+import { addGlassStyle } from '~/utils/styles';
 
 export interface IMenuItem extends ILink {
   children?: ILink[];

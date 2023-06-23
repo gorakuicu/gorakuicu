@@ -2,23 +2,28 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["./*"]
-    },
     "composite": true,
     "module": "commonjs",
-    "moduleResolution": "node",
-    "strict": true,
-    "noEmit": true,
+    "target": "es6",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "moduleResolution": "node16",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "noEmit": false,
+    "noFallthroughCasesInSwitch": false,
+    "types": ["@types/node", "node"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.json", "./keystone.ts"],
-  "exclude": ["node_modules", "./.keystone/**/*"]
+  "assets": [
+    {
+      "include": "./src",
+      "outDir": "dist/src",
+      "watchAssets": true
+    }
+  ],
+  "include": ["**/*.ts", "**/*.spec.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

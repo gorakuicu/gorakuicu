@@ -3,8 +3,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-import { useInterval } from '@/hooks/useInterval';
-import { keygen } from '@/utils/keygen';
+import { useInterval } from '~/hooks/useInterval';
+import { keygen } from '~/utils/keygen';
 
 export interface IIridescentText {
   strings: string[];

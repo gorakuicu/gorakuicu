@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { memo } from 'react';
 
-import ArrowTRSquareIcon from '@/assets/ArrowTRSquareIcon';
-import { url } from '@/constants/metadata';
+import ArrowTRSquareIcon from '~/assets/ArrowTRSquareIcon';
+import { url } from '~/constants/metadata';
 
 export interface IHrefProps {
   id?: string;

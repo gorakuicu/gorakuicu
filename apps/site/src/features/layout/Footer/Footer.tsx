@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { externalLinks } from '@/constants/links';
-import { IContactIcon } from '@/features/contacts/ContactIcon';
-import LinkIconList from '@/features/contacts/LinkIconList';
-import { keygen } from '@/utils/keygen';
-import { addGlassStyle } from '@/utils/styles';
+import { externalLinks } from '~/constants/links';
+import { IContactIcon } from '~/features/contacts/ContactIcon';
+import LinkIconList from '~/features/contacts/LinkIconList';
+import { keygen } from '~/utils/keygen';
+import { addGlassStyle } from '~/utils/styles';
 
 import LinkList from './components/LinkList';
 

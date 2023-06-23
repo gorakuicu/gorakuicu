@@ -1,4 +1,4 @@
-import uuid from '@/utils/uuid';
+import uuid from '~/utils/uuid';
 
 export function keygen(...args: unknown[]): string {
   if (args.length === 0) return uuid();

@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { prefix } from 'inline-style-prefixer';
 import { useCallback, useRef, useState } from 'react';
 
-import Href from '@/features/common/Href';
-import { useInterval } from '@/hooks/useInterval';
-import { acceptCookie, checkCookie } from '@/utils/checkCookie';
+import Href from '~/features/common/Href';
+import { useInterval } from '~/hooks/useInterval';
+import { acceptCookie, checkCookie } from '~/utils/checkCookie';
 
 export default function Cookie() {
   const ref = useRef<HTMLDivElement>(null);

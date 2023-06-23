@@ -3,9 +3,9 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-import Href from '@/features/common/Href';
+import Href from '~/features/common/Href';
 
-const Structure = dynamic(() => import('@/features/layout/Structure'));
+const Structure = dynamic(() => import('~/features/layout/Structure'));
 
 export default function LicenseCC() {
   return (

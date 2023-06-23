@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { memo } from 'react';
 
-import ContactIcon, { IContactIcon } from '@/features/contacts/ContactIcon';
-import { useOnScreen } from '@/hooks/useOnScreen';
-import { keygen } from '@/utils/keygen';
+import ContactIcon, { IContactIcon } from '~/features/contacts/ContactIcon';
+import { useOnScreen } from '~/hooks/useOnScreen';
+import { keygen } from '~/utils/keygen';
 
 export interface ILinkIconList {
   ref?: React.Ref<HTMLUListElement>;

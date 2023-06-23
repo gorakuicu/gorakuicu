@@ -1,8 +1,8 @@
-import CopyToClipboard from '@/features/common/CopyToClipboard';
-import Href from '@/features/common/Href';
-import Tooltip from '@/features/common/Tooltip';
-import ContactIcon from '@/features/contacts/ContactIcon';
-import { keygen } from '@/utils/keygen';
+import CopyToClipboard from '~/features/common/CopyToClipboard';
+import Href from '~/features/common/Href';
+import Tooltip from '~/features/common/Tooltip';
+import ContactIcon from '~/features/contacts/ContactIcon';
+import { keygen } from '~/utils/keygen';
 
 import { ILinkGroup } from '../page';
 

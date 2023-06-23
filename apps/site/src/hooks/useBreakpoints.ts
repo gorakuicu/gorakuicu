@@ -1,5 +1,5 @@
-import { useMediaQuery } from '@/hooks/useMediaQuery';
-import theme from '@/styles/theme';
+import { useMediaQuery } from '~/hooks/useMediaQuery';
+import theme from '~/styles/theme';
 
 export default function useBreakpoints(): {
   isSM: boolean;

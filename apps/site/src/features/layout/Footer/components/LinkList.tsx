@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
-import Href from '@/features/common/Href';
-import Tooltip from '@/features/common/Tooltip';
-import { keygen } from '@/utils/keygen';
+import Href from '~/features/common/Href';
+import Tooltip from '~/features/common/Tooltip';
+import { keygen } from '~/utils/keygen';
 
 import { ILinkGroup } from '../Footer';
 

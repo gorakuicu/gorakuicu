@@ -2,20 +2,15 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "src/",
-    "paths": {
-      "@/*": ["./*"],
-      "public/*": ["../public/*"]
-    },
     "composite": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"]
+    },
     "allowJs": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
-    "experimentalDecorators": true,
     "sourceMap": false,
-    "jsx": "preserve",
     "plugins": [
       {
         "name": "next"

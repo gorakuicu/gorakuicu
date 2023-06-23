@@ -9,11 +9,11 @@ import {
   IExternalLink,
   socialLinks,
   supportLinks,
-} from '@/constants/links';
+} from '~/constants/links';
 
 import LinkGroup from './components/LinkGroup';
 
-const Structure = dynamic(() => import('@/features/layout/Structure'));
+const Structure = dynamic(() => import('~/features/layout/Structure'));
 
 export interface ILinkGroup {
   title: string;

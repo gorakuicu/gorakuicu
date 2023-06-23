@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 
-const Structure = dynamic(() => import('@/features/layout/Structure'));
+const Structure = dynamic(() => import('~/features/layout/Structure'));
 
 export default function Home() {
   return (

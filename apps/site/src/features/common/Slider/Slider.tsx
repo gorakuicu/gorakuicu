@@ -6,8 +6,8 @@ import { prefix } from 'inline-style-prefixer';
 import Image from 'next/image';
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { useInterval } from '@/hooks/useInterval';
-import { keygen } from '@/utils/keygen';
+import { useInterval } from '~/hooks/useInterval';
+import { keygen } from '~/utils/keygen';
 
 import css from './Slider.module.css';
 

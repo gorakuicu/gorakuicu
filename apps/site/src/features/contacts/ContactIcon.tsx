@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { prefix } from 'inline-style-prefixer';
 import React, { memo } from 'react';
 
-import Href from '@/features/common/Href';
+import Href from '~/features/common/Href';
 
 export interface IContactIcon {
   svg: string;

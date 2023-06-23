@@ -15,9 +15,11 @@
     "(?:enter|leave)(?:From|To)?=\\s*(?:\"|')([^(?:\"|')]*)"
   ],
   "cSpell.words": [
+    "adminjs",
     "aiko",
     "aikoicu",
     "Boosty",
+    "BUILDKIT",
     "clsx",
     "codeguide",
     "commitlint",
@@ -36,6 +38,7 @@
     "Maxx",
     "msapplication",
     "mstile",
+    "nestjs",
     "nextui",
     "noimageindex",
     "normy",

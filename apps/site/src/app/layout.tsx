@@ -1,12 +1,12 @@
-import '@/styles/globals.css';
+import '~/styles/globals.css';
 
 import clsx from 'clsx';
 import { Fira_Sans, Inter, Lekton } from 'next/font/google';
 import React from 'react';
 
-import { mt } from '@/constants/metadata';
-import Head from '@/features/layout/Head';
-import SSRLayout from '@/features/layout/SSRLayout';
+import { mt } from '~/constants/metadata';
+import Head from '~/features/layout/Head';
+import SSRLayout from '~/features/layout/SSRLayout';
 
 const firaCode = Fira_Sans({
   weight: ['400', '700'],
