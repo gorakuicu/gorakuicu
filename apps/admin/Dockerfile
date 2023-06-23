@@ -12,8 +12,8 @@ FROM base AS builder
 WORKDIR /app
 COPY . .
 RUN pnpm add -g turbo@1.10.5
-RUN --mount=type=cache,id=turbo_prune_cms,target=/app/.turbo \
-  turbo prune --scope=admin --docker --no-update-notifier
+# RUN --mount=type=cache,id=turbo_prune_cms,target=/app/.turbo \
+RUN  turbo prune --scope=admin --docker --no-update-notifier
 
 FROM base AS installer
 WORKDIR /app
@@ -21,11 +21,11 @@ COPY tsconfig.json turbo.json .env package.json pnpm-lock.yaml ./
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=builder /app/scripts/ci/is.js ./scripts/ci/is.js
-RUN --mount=type=cache,id=pnpm_deps,target=/.pnpm-store \
-  pnpm install --frozen-lockfile --prod
+# RUN --mount=type=cache,id=pnpm_deps,target=/.pnpm-store \
+RUN pnpm install --frozen-lockfile --prod
 COPY --from=builder /app/out/full/ .
-RUN --mount=type=cache,id=turbo_build,target=/app/.turbo \
-  pnpm build --filter=admin... --no-update-notifier
+# RUN --mount=type=cache,id=turbo_build,target=/app/.turbo \
+RUN pnpm build --filter=admin... --no-update-notifier
 COPY --from=builder /app/scripts/ci/node_prune.sh ./scripts/ci/node_prune.sh
 RUN chmod +x /app/scripts/ci/node_prune.sh && \
   /app/scripts/ci/node_prune.sh && node-prune && \
