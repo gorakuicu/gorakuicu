@@ -15,7 +15,7 @@
     "esModuleInterop": true,
     "noEmit": false,
     "noFallthroughCasesInSwitch": false,
-    "types": ["@types/node", "node"]
+    "types": ["@types/node", "@types/jest", "node"]
   },
   "assets": [
     {

@@ -1,6 +1,6 @@
 require('dotenv').config({ path: '../../.env' });
 
-const pathsForIgnore = ['/admin'];
+const pathsForIgnore = ['/admin', '/favicon.ico', '/api', '/_next', '/404', '/500'];
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
