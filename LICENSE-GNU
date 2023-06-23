@@ -1,18 +1,4 @@
-# LICENSES
-
-## Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
-
-Artistic images created for the [aikoicu](https://aiko.icu/) project and its subprojects are distributed under the license [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
-
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
-
-[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
-[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
-
----
-
-## GNU Affero General Public License
+# License: GNU Affero General Public License
 
 _Version 3, 19 November 2007_
 _Copyright © 2007 Free Software Foundation, Inc. &lt;<http://fsf.org/>&gt;_
@@ -662,19 +648,3 @@ You should also get your employer (if you work as a programmer) or school,
 if any, to sign a “copyright disclaimer” for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
 &lt;<http://www.gnu.org/licenses/>&gt;.
-
-<!-- # LIMITED IMPLEMENTATION LICENSE
-
-1. Subject of the License. This document is an agreement between the "Licensor" (you, the owner of the product) and the "Licensee" (the user). The Licensor grants the Licensee a non-exclusive right to use the Product under the terms set forth in this agreement.
-
-2. Restrictions. The Licensee may not: (a) sublicense, sell, rent, or otherwise transfer rights to the Product; (b) modify or create derivative works based on the Product; (c) decompile, reverse engineer, or attempt to extract the source code of the Product; (d) reuse or repurpose the code for other projects.
-
-3. Term and Termination. This License becomes effective from the date of acceptance by the Licensee and continues until its termination. The Licensee can terminate this License at any time, by notifying the Licensor in advance. This License automatically terminates if the Licensee violates the terms of this License.
-
-4. Disclaimer of Warranties. The Product is provided "as is", without any warranties, either express or implied.
-
-5. Limitation of Liability. The Licensor is not liable for any direct, indirect, incidental, special, or consequential damages related to the use of the Product.
-
-6. Acceptance. By using the Product, the Licensee agrees to the terms of this License.
-
-7. Contact. If you have any questions about this License, please contact the Licensor at: [aikoicu@yahoo.com](mailto:aikoicu@yahoo.com) -->
