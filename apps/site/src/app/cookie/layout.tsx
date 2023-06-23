@@ -2,13 +2,14 @@ import '~/styles/globals.css';
 
 import React from 'react';
 
+import { url } from '~/constants/metadata';
 import SSRLayout from '~/features/layout/SSRLayout';
 
 export const metadata = {
   title: 'Cookie Policy',
   description: 'Cookie Policy for aiko.icu',
   alternates: {
-    canonical: 'https://aiko.icu/cookie',
+    canonical: `${url}/cookie`,
   },
 };
 

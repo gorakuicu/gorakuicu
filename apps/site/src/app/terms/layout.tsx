@@ -2,13 +2,14 @@ import '~/styles/globals.css';
 
 import React from 'react';
 
+import { url } from '~/constants/metadata';
 import SSRLayout from '~/features/layout/SSRLayout';
 
 export const metadata = {
   title: 'Terms and Conditions',
   description: 'Terms and Conditions for aiko.icu',
   alternates: {
-    canonical: 'https://aiko.icu/terms',
+    canonical: `${url}/terms`,
   },
 };
 

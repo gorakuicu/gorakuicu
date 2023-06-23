@@ -2,13 +2,14 @@ import '~/styles/globals.css';
 
 import React from 'react';
 
+import { url } from '~/constants/metadata';
 import SSRLayout from '~/features/layout/SSRLayout';
 
 export const metadata = {
   title: 'License GNU',
   description: 'License for aiko.icu code — GNU General Public License v3.0',
   alternates: {
-    canonical: 'https://aiko.icu/license/gnu',
+    canonical: `${url}/license/gnu`,
   },
 };
 

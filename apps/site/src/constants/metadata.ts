@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 const domain = 'aiko.icu';
-const url = `https://${domain}`;
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : `https://${domain}`;
 
 const mt: Metadata = {
   title: {
@@ -25,7 +25,7 @@ const mt: Metadata = {
     address: true,
     telephone: true,
   },
-  metadataBase: new URL('https://aiko.icu'),
+  metadataBase: new URL(url),
   alternates: {
     canonical: '/',
     languages: {
@@ -45,11 +45,11 @@ const mt: Metadata = {
     title: 'aiko.icu',
     description:
       'Not Safe For Work 18+ content (images, videos, etc.) from aikoicu for the aikoicu community and sell them as NFTs. or just enjoy them.',
-    url: 'https://aiko.icu',
+    url,
     siteName: 'aiko.icu',
     images: [
       {
-        url: 'https://aiko.icu/social.jpg',
+        url: `${url}/social.jpg`,
         width: 1000,
         height: 1000,
       },
@@ -62,7 +62,7 @@ const mt: Metadata = {
     title: 'aiko.icu',
     description:
       'Not Safe For Work 18+ content (images, videos, etc.) from aikoicu for the aikoicu community and sell them as NFTs. or just enjoy them.',
-    images: ['https://aiko.icu/social.jpg'],
+    images: [`${url}/social.jpg`],
   },
   appleWebApp: {
     title: 'aiko.icu',
@@ -86,7 +86,7 @@ const mt: Metadata = {
       'max-image-preview': 'large',
     },
   },
-  manifest: 'https://aiko.icu/manifest.json',
+  manifest: `${url}/manifest.json`,
 };
 
 export { domain, mt, url };

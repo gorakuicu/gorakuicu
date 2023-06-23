@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
+import { url } from '~/constants/metadata';
 import Href from '~/features/common/Href';
 
 const Structure = dynamic(() => import('~/features/layout/Structure'));
@@ -18,7 +19,7 @@ export default function LicenseCC() {
       </Href>
       <p className="mb-12 text-center">
         Artistic images created for the{' '}
-        <Href href="https://aiko.icu/">
+        <Href href={`${url}`}>
           <b>aikoicu</b>
         </Href>{' '}
         project and its subprojects are distributed under the license.

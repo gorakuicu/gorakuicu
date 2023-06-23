@@ -2,6 +2,7 @@ import '~/styles/globals.css';
 
 import React from 'react';
 
+import { url } from '~/constants/metadata';
 import SSRLayout from '~/features/layout/SSRLayout';
 
 export const metadata = {
@@ -9,7 +10,7 @@ export const metadata = {
   description:
     'Arts, crafts, NFT and other NSFW works by aiko.icu, including but not limited to: photography, drawings, paintings, sculptures, and other works of art.',
   alternates: {
-    canonical: 'https://aiko.icu/arts',
+    canonical: `${url}/arts`,
   },
 };
 
