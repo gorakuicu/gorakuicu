@@ -23,11 +23,11 @@ export default function Structure({ children, className }: StructureProps) {
     <Suspense fallback={<Spinner />}>
       <Navbar {...navbarLinks} />
       <main className={clsx('mx-auto flex w-4/6 flex-grow flex-col p-4 sm:p-6 md:p-8', className)}>
-        <SensitiveContentCheck />
         <Suspense fallback={<Spinner />}>{children}</Suspense>
       </main>
       <Footer links={internalLinks} />
       <ScrollBack />
+      <SensitiveContentCheck />
       <Cookie />
     </Suspense>
   );

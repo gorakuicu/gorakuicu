@@ -36,7 +36,7 @@ The project uses GitLab CI/CD for automated builds, testing, and deployment. Che
 
 The project includes the following main directories:
 
-- `apps`: Each sub-application of the project. Currently includes `admin` and `root` as well as shares in `shared`.
+- `apps`: Each sub-application of the project. Currently includes `admin` and `site` as well as shares in `shared`.
 - `scripts`: Scripts used in the project, including CI/CD scripts and Git scripts.
 
 ## License

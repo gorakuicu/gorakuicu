@@ -55,8 +55,8 @@ export default function Tooltip({
     left: 'top-1/2 left-full transform -translate-y-1/2 -translate-x-1/2',
   };
 
-  const cn = clsx(className, 'group relative inline-block cursor-pointer');
-  const tooltipClass = `tooltip-content z-100 bg-primary pointer-events-none absolute w-max rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 ${positionClasses[position]}`;
+  const cn = clsx(className, 'group relative inline-block');
+  const tooltipClass = `tooltip-content z-100 bg-primary absolute w-max rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 ${positionClasses[position]}`;
 
   return (
     <span className={cn} onMouseEnter={handleShow} onMouseLeave={handleHide}>

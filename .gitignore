@@ -90,6 +90,6 @@
 **/nbproject
 
 .husky
-sw.js
-workbox-*.js
+sw.js*
+workbox-*.js*
 !.env*.example
