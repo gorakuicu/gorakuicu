@@ -67,13 +67,11 @@ var import_dotenv2 = __toESM(require("dotenv"));
 import_dotenv2.default.config({ path: "../../.env" });
 var DATABASE_LOCAL = process?.env?.DATABASE_LOCAL === "1";
 var DATABASE_URL = DATABASE_LOCAL ? process?.env?.DATABASE_LOCAL_URL : process?.env?.DATABASE_URL;
-var DATABASE_SHADOW_URL = DATABASE_LOCAL ? process?.env?.DATABASE_LOCAL_SHADOW_URL : process?.env?.DATABASE_SHADOW_URL;
 process.env.DATABASE_URL = DATABASE_URL;
-process.env.DATABASE_SHADOW_URL = DATABASE_SHADOW_URL;
 var db = {
   provider: "postgresql",
   url: process.env.DATABASE_URL || "",
-  shadowDatabaseUrl: DATABASE_SHADOW_URL || "",
+  // shadowDatabaseUrl: DATABASE_SHADOW_URL || '',
   idField: { kind: "uuid" },
   enableLogging: true
   // useMigrations: true,
@@ -173,6 +171,9 @@ function User() {
     //     delete: isAdmin,
     //   },
     // },
+    db: {
+      idField: { kind: "uuid" }
+    },
     access: import_access.allowAll,
     fields: {
       email: (0, import_fields.text)({

@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { prefix } from 'inline-style-prefixer';
 import Image from 'next/image';
-import { wrap } from 'popmotion';
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { useInterval } from '@/hooks/useInterval';
@@ -19,6 +18,12 @@ export interface ISlider {
   autoplay?: boolean;
   delay?: number;
   objectFit?: CSSStyleDeclaration['objectFit'];
+}
+
+function wrap(min: number, max: number, value: number) {
+  const rangeSize = max - min;
+
+  return ((((value - min) % rangeSize) + rangeSize) % rangeSize) + min;
 }
 
 // Move out functions that do not need to be recreated on each render

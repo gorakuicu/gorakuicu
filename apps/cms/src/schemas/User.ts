@@ -13,6 +13,9 @@ export function User(): ListConfig<any, BaseFields<BaseListTypeInfo>> {
     //     delete: isAdmin,
     //   },
     // },
+    db: {
+      idField: { kind: 'uuid' },
+    },
     access: allowAll,
     fields: {
       email: text({

@@ -10,18 +10,23 @@ export default function GoogleAnalytics({ run }: { run: boolean }) {
   return (
     <>
       <Script
+        crossOrigin="anonymous"
         src={`https://www.googletagmanager.com/gtag/js?id=${tag}`}
         strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-          gtag('config', '${tag}');
-        `}
-      </Script>
+            gtag('config', '${tag}');
+          `,
+        }}
+        crossOrigin="anonymous"
+        type="text/partytown"
+      />
     </>
   );
 }

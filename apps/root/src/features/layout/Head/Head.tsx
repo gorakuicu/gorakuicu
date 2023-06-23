@@ -1,3 +1,5 @@
+import { Partytown } from '@builder.io/partytown/react';
+
 import { domain, url } from '@/constants/metadata';
 import Metrics from '@/features/layout/Metrics';
 import colors from '@/styles/theme/colors.json';
@@ -54,6 +56,22 @@ export default function Head() {
         dangerouslySetInnerHTML={{
           __html: setThemeScript,
         }}
+      />
+      <Partytown
+        debug={process.env.NODE_ENV === 'development'}
+        forward={[
+          'dataLayer.push',
+          'hj',
+          '_hjSettings',
+          'fbq',
+          '_hsq.push',
+          'Intercom',
+          '_learnq.push',
+          'ttq.track',
+          'ttq.page',
+          'ttq.load',
+          'mixpanel.track',
+        ]}
       />
       <Metrics />
     </head>
