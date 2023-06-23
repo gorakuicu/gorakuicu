@@ -38,7 +38,7 @@ export default function Navbar({ menu = [] }: INavbarProps) {
             <GradientText animate={false} as="h3" size="text-3xl" />
           </Link>
 
-          <ul className="hidden items-center space-x-8 lg:flex">
+          <ul className="hidden items-center space-x-8 xl:flex">
             {menu.map(({ href = '#', title, children }) => {
               const key = keygen(href, title, children?.length);
               const activeLink = children?.length

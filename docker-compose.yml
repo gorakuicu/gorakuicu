@@ -33,24 +33,6 @@ services:
       - traefik.tcp.services.aikoicu-db.loadbalancer.server.port=5432
       - traefik.docker.network=proxy
 
-  # aikoicu-redis:
-  #   image: redis:7.2-rc1-alpine3.18
-  #   container_name: aikoicu-redis
-  #   depends_on:
-  #     - aikoicu-db
-  #   restart: always
-  #   ports:
-  #     - 6379
-  #   volumes:
-  #     - aikoicu-redis:/data
-  #   networks:
-  #     - aikoicu
-  #   labels:
-  #     - traefik.tcp.routers.aikoicu-redis.rule=HostSNI(`${CMS_SUBDOMAIN}${DOMAIN}`)
-  #     - traefik.tcp.routers.aikoicu-redis.entryPoints=redis
-  #     - traefik.tcp.routers.aikoicu-redis.service=redis
-  #     - traefik.tcp.services.aikoicu-redis.loadbalancer.server.port=6379
-
   aikoicu-site:
     image: aikoicu-site
     container_name: aikoicu-site

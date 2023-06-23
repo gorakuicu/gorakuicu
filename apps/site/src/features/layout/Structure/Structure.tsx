@@ -22,7 +22,7 @@ export default function Structure({ children, className }: StructureProps) {
   return (
     <Suspense fallback={<Spinner />}>
       <Navbar {...navbarLinks} />
-      <main className={clsx('mx-auto flex w-4/6 flex-grow flex-col p-4 sm:p-6 md:p-8', className)}>
+      <main className={clsx('mx-auto flex w-4/6 flex-grow flex-col p-4 md:p-6 lg:p-8', className)}>
         <Suspense fallback={<Spinner />}>{children}</Suspense>
       </main>
       <Footer links={internalLinks} />

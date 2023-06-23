@@ -11,6 +11,8 @@ import Href from '~/features/common/Href';
 import ScrollProgress from '~/features/common/ScrollProgress';
 import useQueryClient from '~/hooks/useQueryClient';
 
+import { MediaQueryProvider } from './MediaQueryProvider';
+
 interface ProviderProps {
   children: React.ReactNode;
 }
@@ -25,8 +27,12 @@ export default function Providers({ children }: ProviderProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <QueryClientProvider client={client}>
-        <ScrollProgress />
-        <MDXProvider components={components}>{children}</MDXProvider>
+        <MediaQueryProvider>
+          <MDXProvider components={components}>
+            <ScrollProgress />
+            {children}
+          </MDXProvider>
+        </MediaQueryProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>

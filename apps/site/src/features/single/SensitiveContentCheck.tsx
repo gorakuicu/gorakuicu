@@ -30,9 +30,9 @@ export default function SensitiveContentCheck() {
         blur={!isBot()}
         description={
           <>
-            🍓 This resource contains sensitive content.
+            This resource contains sensitive content.
             <br />
-            Do you want to continue?
+            18+ only, do you want to continue?
           </>
         }
         id="check-sensitive"
@@ -44,7 +44,7 @@ export default function SensitiveContentCheck() {
             setAcceptedSensitive(true);
           },
         }}
-        title="Sensitive"
+        title="🍓 Sensitive content"
       />
     </Suspense>
   );

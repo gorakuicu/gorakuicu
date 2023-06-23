@@ -12,7 +12,7 @@ interface ILinkWithNested extends Omit<ILinkGroup, 'children'> {
 
 export default function LinkList({ title, nested }: ILinkWithNested) {
   return (
-    <div className="ml-auto w-full px-4 lg:w-4/12">
+    <div className="mt-6 w-full lg:mt-0 lg:w-4/12">
       <span className="text-blueGray-500 mb-2 block text-sm font-bold uppercase">{title}</span>
       <ul className="list-unstyled">
         {nested &&

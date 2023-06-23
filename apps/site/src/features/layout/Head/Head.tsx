@@ -43,15 +43,15 @@ export default function Head() {
       <meta content={`${url}`} property="og:url" />
       <meta content="website" property="og:type" />
       <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-      <meta
-        content="width=device-width, initial-scale=1, minimum-scale=5, shrink-to-fit=no, viewport-fit=cover"
-        name="viewport"
-      />
       <meta content="adult" name="rating" />
       <meta content="aikoicu" name="author" />
       <meta content="aikoicu" name="copyright" />
       <meta content={colors['base-content']} name="theme-color" />
       <meta key="apple-mobile-web-app-title" content={domain} name="apple-mobile-web-app-title" />
+      <meta
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        name="viewport"
+      />
       <script
         dangerouslySetInnerHTML={{
           __html: setThemeScript,

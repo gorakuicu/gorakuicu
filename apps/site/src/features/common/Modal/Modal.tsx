@@ -26,7 +26,7 @@ export default function Modal({
   const checkboxRef = useRef<HTMLInputElement>(null);
 
   const modalClassNames = clsx('modal', { 'backdrop-blur': blur });
-  const modalBoxClassNames = clsx('modal-box', 'm-4', 'w-max', 'bg-slate-900', 'md:m-6', width);
+  const modalBoxClassNames = clsx('modal-box m-3 w-fit bg-slate-900 p-6 lg:m-6', width);
 
   const checkboxId = `${id}-modal`;
 

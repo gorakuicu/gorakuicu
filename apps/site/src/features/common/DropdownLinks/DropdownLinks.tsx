@@ -67,7 +67,7 @@ export default function DropdownLinks({
       >
         <Menu.Items
           className={addGlassStyle(
-            'absolute left-2/4 w-56  -translate-x-1/2 transform rounded-3xl px-3 py-2 shadow-sm',
+            'absolute left-2/4 w-56 -translate-x-1/2 transform rounded-3xl bg-opacity-100 px-3 py-2 shadow-sm backdrop-blur-none',
           )}
         >
           {links.map((link) => (

@@ -41,7 +41,7 @@ const variants = {
 };
 
 function ContactIcon({ svg, href = '', className = '', notList = false, ...props }: IContactIcon) {
-  const classNames = clsx(className, 'group', 'relative', 'w-14');
+  const classNames = clsx(className, 'group relative w-14');
   const Tag = notList ? motion.span : motion.li;
 
   const iconStyle = prefix({
@@ -64,7 +64,7 @@ function ContactIcon({ svg, href = '', className = '', notList = false, ...props
 
   return (
     <Tag key="contact-icon" className={classNames} variants={variants} {...props}>
-      <span className="animate-tilt absolute -inset-px rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-20 blur-lg transition-opacity duration-1000 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200" />
+      <span className="absolute -inset-px rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-20 blur-lg transition-opacity duration-500 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200" />
       <Component>
         <span style={iconStyle} />
       </Component>
