@@ -25,11 +25,7 @@ const variants = {
   },
 };
 
-const LinkIconList: React.FC<ILinkIconList> = ({
-  contacts,
-  className = '',
-  animateWhenVisible,
-}) => {
+function LinkIconList({ contacts, className = '', animateWhenVisible }: ILinkIconList) {
   const [ref, visible] = useOnScreen<HTMLUListElement>(true);
 
   const animate = animateWhenVisible && visible ? 'visible' : 'hidden';
@@ -63,6 +59,6 @@ const LinkIconList: React.FC<ILinkIconList> = ({
       </motion.ul>
     </AnimatePresence>
   );
-};
+}
 
 export default memo(LinkIconList);

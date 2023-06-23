@@ -4,7 +4,7 @@ import Href from '~/features/common/Href';
 
 const urlPattern = /(https?:\/\/[^\s]+)/g;
 
-function Linkify({ children }: { children: React.ReactNode }) {
+export default function Linkify({ children }: { children: React.ReactNode }) {
   if (React.Children.count(children) !== 1) {
     throw new Error('[Linkify] expects exactly one child node.');
   }
@@ -31,5 +31,3 @@ function Linkify({ children }: { children: React.ReactNode }) {
 
   return <>{linkedTextElements}</>;
 }
-
-export default Linkify;

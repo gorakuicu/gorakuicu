@@ -40,13 +40,7 @@ const variants = {
   },
 };
 
-const ContactIcon: React.FC<IContactIcon> = ({
-  svg,
-  href = '',
-  className = '',
-  notList = false,
-  ...props
-}) => {
+function ContactIcon({ svg, href = '', className = '', notList = false, ...props }: IContactIcon) {
   const classNames = clsx(className, 'group', 'relative', 'w-14');
   const Tag = notList ? motion.span : motion.li;
 
@@ -76,6 +70,6 @@ const ContactIcon: React.FC<IContactIcon> = ({
       </Component>
     </Tag>
   );
-};
+}
 
 export default memo(ContactIcon);

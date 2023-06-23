@@ -21,7 +21,7 @@ export interface IHrefProps {
   style?: React.CSSProperties;
 }
 
-const Href = ({
+function Href({
   id = '',
   base = false,
   disabled = false,
@@ -32,7 +32,7 @@ const Href = ({
   href: hrefProp = '#',
   children = null,
   ...props
-}: IHrefProps) => {
+}: IHrefProps) {
   const pathname = usePathname();
 
   const isHrefString = typeof hrefProp === 'string';
@@ -80,6 +80,6 @@ const Href = ({
       )}
     </Tag>
   );
-};
+}
 
 export default memo(Href);

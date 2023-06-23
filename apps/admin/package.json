@@ -9,7 +9,7 @@
     "dev": "nest start --watch --debug",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "node dist/main",
+    "start": "node dist/src/main",
     "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint:css",
     "lint:ts": "tsc --pretty --project tsconfig.json --noEmit",
     "lint:es": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" .",
