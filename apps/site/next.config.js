@@ -7,8 +7,6 @@ if (process.env.NODE_ENV === 'development') {
   dns.setDefaultResultOrder('ipv4first');
 }
 
-// const Stylelint =
-//   process.env.NODE_ENV === 'development' ? require('stylelint-webpack-plugin') : () => {};
 const StatoscopeWebpackPlugin =
   process.env.NODE_ENV === 'development' && process.env.ANALYZE
     ? require('@statoscope/webpack-plugin').default
@@ -79,7 +77,6 @@ const next = {
   },
   webpack: function webpack(config) {
     if (process.env.NODE_ENV === 'development') {
-      // config.plugins.push(new Stylelint());
       if (process.env.ANALYZE) config.plugins.push(new StatoscopeWebpackPlugin());
     }
 

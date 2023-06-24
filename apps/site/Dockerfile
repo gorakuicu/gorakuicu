@@ -48,4 +48,5 @@ RUN chown -R nodejs:nodejs /app && chmod -R 700 /app/node_modules
 ENV PATH=/app/node_modules/.bin:$PATH
 USER nodejs
 
-CMD ["pm2-runtime", "start", "--", "pnpm", "start", "--filter=site..."]
+# CMD ["pm2-runtime", "start", "--", "pnpm", "start", "--filter=site..."]
+CMD ["pnpm", "start", "--filter=site..."]
