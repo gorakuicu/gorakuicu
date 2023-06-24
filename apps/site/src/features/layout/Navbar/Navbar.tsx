@@ -1,19 +1,13 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
-import type { ILink } from '~/features/common/DropdownLinks';
-import DropdownLinks from '~/features/common/DropdownLinks';
 import Href from '~/features/common/Href';
 import GradientText from '~/features/single/GradientText';
-import { useActivePath } from '~/hooks/useActivePath';
+import { glassStyle } from '~/styles';
 import { keygen } from '~/utils/keygen';
-import { addGlassStyle } from '~/utils/styles';
 
-export interface IMenuItem extends ILink {
-  children?: ILink[];
-}
+import MenuItem, { IMenuItem } from './components/MenuItem';
 
 interface INavbarProps {
   title?: string;
@@ -21,48 +15,28 @@ interface INavbarProps {
 }
 
 const navbarAnimation = { animate: { opacity: 1, y: 0 }, initial: { opacity: 0, y: -16 } };
-const navbarClass = addGlassStyle(
+const navbarClass = glassStyle([
   'fixed left-0 right-0 top-4 z-10 mx-auto flex w-4/6 items-center justify-between rounded-3xl px-20 py-4 shadow-sm',
-);
+]);
 
 export default function Navbar({ menu = [] }: INavbarProps) {
   const pathname = usePathname();
-  const checkActivePath = useActivePath();
   const animate = useMemo(() => ['/'].includes(pathname), [pathname]);
 
   return (
     <AnimatePresence initial={animate} mode="wait">
       <motion.div key="navbar" layout {...navbarAnimation}>
         <nav className={navbarClass}>
-          <Link className="cursor-pointer" href="/">
+          <Href href="/">
             <GradientText animate={false} as="h3" size="text-3xl" />
-          </Link>
+          </Href>
 
           <ul className="hidden items-center space-x-8 xl:flex">
-            {menu.map(({ href = '#', title, children }) => {
-              const key = keygen(href, title, children?.length);
-              const activeLink = children?.length
-                ? children.some(({ href }) => checkActivePath(href))
-                : checkActivePath(href);
-
-              return (
-                <li key={key}>
-                  {children ? (
-                    <DropdownLinks
-                      hover
-                      active={activeLink}
-                      className="text-base-200"
-                      links={children}
-                      title={title}
-                    />
-                  ) : (
-                    <Href base active={activeLink} href={href}>
-                      {title}
-                    </Href>
-                  )}
-                </li>
-              );
-            })}
+            {menu.map(({ href = '#', title, children }) => (
+              <MenuItem key={keygen(href, title, children?.length)} href={href} title={title}>
+                {children}
+              </MenuItem>
+            ))}
           </ul>
         </nav>
       </motion.div>

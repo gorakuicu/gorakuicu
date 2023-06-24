@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React, { useCallback, useRef, useState } from 'react';
 
 import ChevronIcon from '~/assets/ChevronIcon';
-import { addGlassStyle } from '~/utils/styles';
+import { glassStyle } from '~/styles';
 
 import Item from './components/Item';
 
@@ -66,9 +66,9 @@ export default function DropdownLinks({
         show={hover ? opened : undefined}
       >
         <Menu.Items
-          className={addGlassStyle(
+          className={glassStyle([
             'absolute left-2/4 w-56 -translate-x-1/2 transform rounded-3xl bg-opacity-100 px-3 py-2 shadow-sm backdrop-blur-none',
-          )}
+          ])}
         >
           {links.map((link) => (
             <Item key={link.href} {...link} />

@@ -6,8 +6,8 @@ import { externalLinks } from '~/constants/links';
 import { IContactIcon } from '~/features/contacts/ContactIcon';
 import LinkIconList from '~/features/contacts/LinkIconList';
 import { useMediaQuery } from '~/hooks/useMediaQuery';
+import { glassStyle } from '~/styles';
 import { keygen } from '~/utils/keygen';
-import { addGlassStyle } from '~/utils/styles';
 
 import LinkList from './components/LinkList';
 
@@ -50,7 +50,7 @@ export default function Footer({
   const years = currentYear === 2023 ? currentYear : `${currentYear} - 2023`;
 
   return (
-    <footer className={addGlassStyle('border-t-1 sticky bottom-0 pb-6 pt-8', false)}>
+    <footer className={glassStyle(['border-t-1 sticky bottom-0 pb-6 pt-8'], false)}>
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between text-left">
           <div className="w-max px-4">

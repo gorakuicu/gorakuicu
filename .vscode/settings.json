@@ -9,7 +9,7 @@
   "tailwindCSS.experimental.classRegex": [
     [
       "clsx\\(([^)]*\\n*[^)]*)\\)",
-      "addGlassStyle\\(([^)]*\\n*[^)]*)\\)",
+      "glassStyle\\(([^)]*\\n*[^)]*)\\)",
       "(?:'|\"|`)([^']*)(?:'|\"|`)"
     ],
     "(?:enter|leave)(?:From|To)?=\\s*(?:\"|')([^(?:\"|')]*)"
@@ -20,11 +20,13 @@
     "aikoicu",
     "Boosty",
     "BUILDKIT",
+    "certresolver",
     "clsx",
     "codeguide",
     "commitlint",
     "csstree",
     "daisyui",
+    "entrypoints",
     "evilmartians",
     "Fira",
     "gtag",
@@ -35,7 +37,9 @@
     "learnq",
     "lefthook",
     "Lekton",
+    "loadbalancer",
     "Maxx",
+    "middlewares",
     "msapplication",
     "mstile",
     "nestjs",
@@ -43,16 +47,19 @@
     "noimageindex",
     "normy",
     "onlyfans",
+    "Parens",
     "Partytown",
     "postbuild",
     "precomposed",
     "prefixer",
     "preinstall",
+    "redirectregex",
     "stylelint",
     "stylelintignore",
     "stylelintrc",
     "tailwindcss",
-    "tanstack"
+    "tanstack",
+    "traefik"
   ],
   "svg.preview.background": "dark-transparent",
 }

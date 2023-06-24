@@ -1,6 +1,6 @@
 import { IContactIcon } from '~/features/contacts/ContactIcon';
 import { ILinkGroup } from '~/features/layout/Footer';
-import { IMenuItem } from '~/features/layout/Navbar';
+import { IMenuItem } from '~/features/layout/Navbar/components/MenuItem';
 
 export interface IExternalLink extends IContactIcon {
   name?: string;
