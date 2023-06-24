@@ -23,7 +23,7 @@ export const MediaQueryProvider = ({ children }) => {
     '2xl': false,
   });
 
-  const dispatchSet = (key, value) => dispatch({ type: 'SET', key, value });
+  const set = (key, value) => dispatch({ type: 'SET', key, value });
 
   useEffect(() => {
     if (!checkHasWindow()) {
@@ -35,13 +35,13 @@ export const MediaQueryProvider = ({ children }) => {
     Object.entries(theme.screens).forEach(([key, value]) => {
       const mediaQuery = window.matchMedia(`(max-width: ${value})`);
 
-      const listener = (e) => dispatchSet(key, e.matches);
+      const listener = (e) => set(key, e.matches);
 
       listeners[key] = listener;
 
       mediaQuery.addEventListener('change', listener);
 
-      dispatchSet(key, mediaQuery.matches);
+      set(key, mediaQuery.matches);
     });
 
     return () => {

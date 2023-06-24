@@ -1,9 +1,7 @@
 import clsx from 'clsx';
-import { HTMLAttributes, useRef } from 'react';
+import React, { HTMLAttributes, useRef } from 'react';
 
-export interface IModalProps {
-  id?: string;
-  title?: string;
+export interface IModalProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string | JSX.Element;
   opened?: boolean;
   blur?: boolean;

@@ -8,17 +8,13 @@ import React, { memo } from 'react';
 import ArrowTRSquareIcon from '~/assets/ArrowTRSquareIcon';
 import { url } from '~/constants/metadata';
 
-export interface IHrefProps {
-  id?: string;
+export interface IHrefProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   base?: boolean;
   disabled?: boolean;
   active?: boolean;
   showIcon?: boolean;
   iconProps?: React.SVGProps<SVGSVGElement>;
-  className?: string;
-  href?: string | boolean | undefined;
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
+  as?: React.ElementType;
 }
 
 function Href({
@@ -31,6 +27,7 @@ function Href({
   className = '',
   href: hrefProp = '#',
   children = null,
+  as = null,
   ...props
 }: IHrefProps) {
   const pathname = usePathname();
@@ -63,7 +60,7 @@ function Href({
 
   const cnIcon = clsx('ml-1', iconProps.className);
 
-  const Tag: React.ElementType = externalReference ? 'a' : Link;
+  const Tag: React.ElementType = as || (externalReference ? 'a' : Link);
 
   return (
     <Tag

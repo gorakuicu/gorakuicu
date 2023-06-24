@@ -24,7 +24,7 @@ export interface ILinkGroup {
   children?: ILink[];
 }
 
-export interface IFooterProps {
+export interface IFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   brand?: string;
   title?: string;
   currentYear?: number;

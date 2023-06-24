@@ -1,20 +1,14 @@
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion';
 import { prefix } from 'inline-style-prefixer';
-import React, { memo } from 'react';
+import React, { HTMLAttributes, memo } from 'react';
 
 import Href from '~/features/common/Href';
 
-export interface IContactIcon {
+export interface IContactIcon extends React.HTMLAttributes<HTMLAllCollection> {
   svg: string;
   href?: string | undefined | boolean;
-  className?: string;
-  name?: string;
   notList?: boolean;
-}
-
-interface IChildren {
-  children: React.ReactNode;
 }
 
 const style = prefix({
@@ -40,7 +34,13 @@ const variants = {
   },
 };
 
-function ContactIcon({ svg, href = '', className = '', notList = false, ...props }: IContactIcon) {
+function ContactIcon({
+  svg,
+  href = '',
+  className = '',
+  notList = false,
+  ...props
+}: IContactIcon & MotionProps & HTMLAttributes<HTMLLIElement>) {
   const classNames = clsx(className, 'group relative w-14');
   const Tag = notList ? motion.span : motion.li;
 
@@ -54,20 +54,12 @@ function ContactIcon({ svg, href = '', className = '', notList = false, ...props
     backgroundRepeat: 'no-repeat',
   });
 
-  const Component = href
-    ? ({ children }: IChildren) => (
-        <Href base href={href} showIcon={false} {...commonProps}>
-          {children}
-        </Href>
-      )
-    : ({ children }: IChildren) => <span {...commonProps}>{children}</span>;
-
   return (
     <Tag key="contact-icon" className={classNames} variants={variants} {...props}>
       <span className="absolute -inset-px rounded-xl bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-20 blur-lg transition-opacity duration-500 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200" />
-      <Component>
+      <Href base href={typeof href === 'string' ? href : ''} showIcon={false} {...commonProps}>
         <span style={iconStyle} />
-      </Component>
+      </Href>
     </Tag>
   );
 }

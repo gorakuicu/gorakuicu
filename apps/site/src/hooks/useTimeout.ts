@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 type TVoid = () => void;
 
-export function useTimeout(callback: TVoid, delay: number, deps?: any[]) {
-  const savedCallback = useRef(function () {});
+export function useTimeout(callback: TVoid, delay: number, deps: React.DependencyList = []) {
+  const savedCallback = useRef<TVoid>(() => {});
 
   useEffect(() => {
     savedCallback.current = callback;
@@ -16,5 +16,5 @@ export function useTimeout(callback: TVoid, delay: number, deps?: any[]) {
     const id = setTimeout(tick, delay);
 
     return () => clearTimeout(id);
-  }, [delay, ...(deps || [])]);
+  }, [delay, ...deps]);
 }

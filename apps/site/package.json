@@ -17,7 +17,7 @@
     "lint:es:fix": "eslint -c ./.eslintrc.json --ignore-path \"../../.eslintignore\" . --fix",
     "lint:css": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\"",
     "lint:css:fix": "stylelint --config \"../../.stylelintrc.json\" -i \"../../.stylelintignore\" --fix",
-    "lint:fix": "pnpm formatter && pnpm lint:es:fix && pnpm lint:css:fix",
+    "lint:fix": "pnpm lint:es:fix && pnpm lint:css:fix",
     "formatter": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./src/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "turbo:prune": "turbo prune --scope=site --docker",
     "analyze": "cross-env ANALYZE=true pnpm build"

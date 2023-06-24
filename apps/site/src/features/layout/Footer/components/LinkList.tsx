@@ -26,7 +26,7 @@ export default function LinkList({ title, nested }: ILinkWithNested) {
 
             return (
               <li key={keygen(href, title, href, title, disabled, tooltip)}>
-                {tooltip ? <Tooltip content={tooltip}>{link}</Tooltip> : link}
+                <Tooltip tooltip={tooltip}>{link}</Tooltip>
               </li>
             );
           })}

@@ -27,7 +27,7 @@ export default function Item(link: ILink) {
 
         if (tooltip) {
           return (
-            <Tooltip content={tooltip}>
+            <Tooltip tooltip={tooltip}>
               <Component />
             </Tooltip>
           );

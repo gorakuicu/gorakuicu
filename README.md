@@ -2,7 +2,7 @@
 
 > NSFW for all
 
-AIKOYCU is a multi-module NSFW content artist and illustrator project written in TypeScript and designed to be deployed in a Docker environment. It includes applications such as the CMS and the site web application, as well as shares.
+AIKOICU is a multi-module NSFW content artist and illustrator project written in TypeScript and designed to be deployed in a Docker environment. It includes applications such as the CMS and the site web application, as well as shares.
 
 ## Installation and use
 

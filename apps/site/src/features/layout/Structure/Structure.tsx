@@ -13,12 +13,12 @@ const Cookie = dynamic(() => import('~/features/common/Cookie'));
 const SensitiveContentCheck = dynamic(() => import('~/features/single/SensitiveContentCheck'));
 const ScrollBack = dynamic(() => import('~/features/single/ScrollBack'));
 
-export interface StructureProps {
+export interface IStructureProps {
   children?: React.ReactNode;
   className?: string;
 }
 
-export default function Structure({ children, className }: StructureProps) {
+export default function Structure({ children, className }: IStructureProps) {
   return (
     <Suspense fallback={<Spinner />}>
       <Navbar {...navbarLinks} />

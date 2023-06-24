@@ -18,21 +18,15 @@ export default function LinkGroup({ title = '', links = [] }: ILinkGroup) {
       {links?.length > 0 &&
         links.map(({ href = '#', svg = '', name = '', tooltip, copy }) => (
           <CopyToClipboard key={keygen(href, name, tooltip, copy)} data={copy}>
-            <Tooltip content={tooltip}>
+            <Tooltip tooltip={tooltip}>
               <div
-                className="flex items-center gap-4"
+                className="group-hover:text-accent group relative flex items-center gap-4"
                 id={name ? name?.replace(' ', '-').toLowerCase() : ''}
               >
                 <ContactIcon notList href={!copy && href} svg={svg} />
-                {copy ? (
-                  <span>
-                    <h3 className="text-md font-semibold">{name}</h3>
-                  </span>
-                ) : (
-                  <Href base href={href}>
-                    <h3 className="text-md font-semibold">{name}</h3>
-                  </Href>
-                )}
+                <Href base href={typeof href === 'string' ? href : ''}>
+                  <h3 className="text-md ml-6 font-semibold">{name}</h3>
+                </Href>
               </div>
             </Tooltip>
           </CopyToClipboard>

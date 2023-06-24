@@ -41,7 +41,7 @@ export default function DropdownLinks({
     <Menu
       ref={ref}
       as="div"
-      className={clsx('z-101 relative inline-block text-left', className)}
+      className={clsx('relative z-40 inline-block text-left', className)}
       onMouseEnter={open}
       onMouseLeave={close}
     >

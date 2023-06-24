@@ -9,10 +9,10 @@ declare global {
     // }
   }
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
-    hj: any;
-    _hjSettings: any;
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
+    hj: unknown;
+    _hjSettings: unknown;
   }
 }
 
@@ -22,6 +22,6 @@ declare module '*.svg' {
 }
 
 declare module '*.mdx' {
-  const content: string;
-  export default content;
+  let MDXComponent: (props: unknown) => JSX.Element;
+  export default MDXComponent;
 }

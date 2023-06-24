@@ -1,50 +1,26 @@
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { useCallback, useMemo, useState } from 'react';
+import React from 'react';
 
 import TriangleIcon from '~/assets/TriangleIcon';
-import { keygen } from '~/utils/keygen';
 
-export interface ITooltipProps {
-  ref?: React.RefObject<HTMLDivElement> | null;
-  className?: string;
+export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: 'top' | 'bottom' | 'left' | 'right';
-  content?: React.ReactNode;
-  children?: React.ReactNode;
+  tooltip?: React.ReactNode;
 }
 
 export default function Tooltip({
   className = '',
   position = 'top',
-  content = null,
+  tooltip = null,
   children = null,
 }: ITooltipProps) {
-  const [show, setShow] = useState<boolean>(false);
+  if (!tooltip) return <>{children}</>;
 
-  const handleShow = useCallback(() => setShow(true), []);
-  const handleHide = useCallback(() => setShow(false), []);
-
-  const processContent = (content: React.ReactNode) => {
-    if (Array.isArray(content)) {
-      return (
-        <ul className="list-unstyled">
-          {content.map((item, index) => (
-            <li key={keygen(item, index)}>{item}</li>
-          ))}
-        </ul>
-      );
-    } else {
-      return content;
-    }
-  };
-
-  const processedContent = useMemo(() => processContent(content), [content]);
-
-  if (!content) return <>{children}</>;
   const positionClasses = {
-    top: 'bottom-full left-1/2 transform -translate-x-1/2 mb-1',
+    top: 'bottom-full left-1/2 transform -translate-x-1/2 mb-1 translate-y-2 group-hover:translate-y-0',
     right: 'top-1/2 left-full transform -translate-y-1/2 ml-1',
-    bottom: 'top-full left-1/2 transform -translate-x-1/2 mt-1',
+    bottom:
+      'top-full left-1/2 transform -translate-x-1/2 mt-1 translate-y-2 group-hover:translate-y-0',
     left: 'top-1/2 right-full transform -translate-y-1/2 mr-1',
   };
 
@@ -56,31 +32,25 @@ export default function Tooltip({
   };
 
   const cn = clsx(className, 'group relative inline-block');
-  const tooltipClass = `z-100 bg-primary absolute w-max rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 ${positionClasses[position]}`;
+  const tooltipClass = `z-40 bg-primary absolute w-max rounded-lg px-3 py-2 text-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-all duration-200 ${positionClasses[position]}`;
 
   return (
-    <span className={cn} onMouseEnter={handleShow} onMouseLeave={handleHide}>
+    <span className={cn}>
       {children}
-      {content && (
-        <AnimatePresence>
-          {show && (
-            <motion.div
-              key="tooltip"
-              animate={{ opacity: 1, y: 0, x: '-50%' }}
-              className={tooltipClass}
-              exit={{ opacity: 0, y: 4, x: '-50%' }}
-              initial={{ opacity: 0, y: 4, x: '-50%' }}
-              transition={{
-                duration: 0.2,
-              }}
-            >
-              {processedContent}
-              <TriangleIcon
-                className={`absolute ${svgPositionClasses[position]} text-primary h-3 w-3`}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+      {tooltip && (
+        <span className={tooltipClass}>
+          {Array.isArray(tooltip)
+            ? tooltip.map((item, index) => (
+                <React.Fragment key={index}>
+                  {item}
+                  <br />
+                </React.Fragment>
+              ))
+            : tooltip}
+          <TriangleIcon
+            className={`absolute ${svgPositionClasses[position]} text-primary h-3 w-3`}
+          />
+        </span>
       )}
     </span>
   );

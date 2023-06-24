@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 export function useOnScreen<T extends Element>(
-  destroyOnVisible: boolean = false,
+  destroyOnVisible = false,
 ): [React.RefObject<T>, boolean] {
   const ref = useRef<T>(null);
 

@@ -35,7 +35,7 @@ export default function ScrollProgress() {
     <motion.div
       key="scroll-progress"
       animate={{ width: `${scrollProgressPercent || 0}%` }}
-      className="bg-primary-focus fixed inset-x-0 top-0 z-50 h-0.5 opacity-40"
+      className="bg-primary-focus fixed inset-x-0 top-0 z-40 h-0.5 opacity-40"
       initial={{ width: '0%' }}
       style={{
         backgroundImage: 'linear-gradient(to right, #4F46E5, #D53CF5)',

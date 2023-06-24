@@ -1,8 +1,8 @@
-export function throttle(func: (...args: any[]) => void, wait: number) {
+export function throttle(func: () => void, wait: number): () => void {
   let timeout: NodeJS.Timeout | null = null;
   let previous = 0;
 
-  const throttled = function (this: any, ...args: any[]) {
+  return function throttled(this: unknown, ...args: unknown[]): void {
     const now = Date.now();
     const remaining = wait - (now - previous);
 
@@ -12,15 +12,15 @@ export function throttle(func: (...args: any[]) => void, wait: number) {
         timeout = null;
       }
       previous = now;
-      func.apply(this, args);
+
+      return func.apply(this, args);
     } else if (!timeout) {
       timeout = setTimeout(() => {
         previous = Date.now();
         timeout = null;
-        func.apply(this, args);
+
+        return func.apply(this, args);
       }, remaining);
     }
   };
-
-  return throttled;
 }

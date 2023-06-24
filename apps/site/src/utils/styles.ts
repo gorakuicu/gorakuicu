@@ -6,6 +6,6 @@ export const glassClassName = clsx(
 
 export const borderClassName = clsx('border-1');
 
-export function addGlassStyle(classes: string, haveBorder: boolean = true): string {
+export function addGlassStyle(classes: string, haveBorder = true): string {
   return clsx(glassClassName, haveBorder ? borderClassName : '', classes);
 }

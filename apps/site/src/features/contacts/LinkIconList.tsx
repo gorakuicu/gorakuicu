@@ -6,11 +6,9 @@ import ContactIcon, { IContactIcon } from '~/features/contacts/ContactIcon';
 import { useOnScreen } from '~/hooks/useOnScreen';
 import { keygen } from '~/utils/keygen';
 
-export interface ILinkIconList {
-  ref?: React.Ref<HTMLUListElement>;
+export interface ILinkIconList extends React.HTMLAttributes<HTMLUListElement> {
   animateWhenVisible?: boolean;
   contacts: IContactIcon[];
-  className?: string;
 }
 
 const variants = {
@@ -52,8 +50,8 @@ function LinkIconList({ contacts, className = '', animateWhenVisible }: ILinkIco
       initial="hidden"
       variants={variants}
     >
-      {contacts.map(({ href = '#', svg = '', ...icon }) => (
-        <ContactIcon key={keygen(href, svg)} href={href} svg={svg} {...icon} />
+      {contacts.map(({ href = '#', svg = '' }) => (
+        <ContactIcon key={keygen(href, svg)} href={href} svg={svg} />
       ))}
     </motion.ul>
   );

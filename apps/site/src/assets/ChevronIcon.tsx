@@ -3,8 +3,6 @@ import React from 'react';
 
 interface IProps extends React.SVGProps<SVGSVGElement> {
   direction?: 'up' | 'down' | 'left' | 'right';
-  className?: string;
-  [key: string]: any;
 }
 
 export default function ChevronIcon({ direction = 'up', className = '', ...props }: IProps) {

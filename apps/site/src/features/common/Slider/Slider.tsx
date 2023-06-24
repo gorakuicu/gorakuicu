@@ -11,7 +11,7 @@ import { keygen } from '~/utils/keygen';
 
 import css from './Slider.module.css';
 
-export interface ISlider {
+export interface ISlider extends React.HTMLAttributes<HTMLDivElement> {
   images: string[];
   width?: number | string;
   height?: number | string;

@@ -3,6 +3,7 @@ import { ILinkGroup } from '~/features/layout/Footer';
 import { IMenuItem } from '~/features/layout/Navbar';
 
 export interface IExternalLink extends IContactIcon {
+  name?: string;
   copy?: string;
   tooltip?: string[] | string;
 }

@@ -1,51 +1,38 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-export interface CopyToClipboardProps {
+export interface ICopyToClipboardProps extends React.HTMLAttributes<HTMLDivElement> {
   data?: string;
-  children?: React.ReactNode;
 }
 
-export default function CopyToClipboard({ data = '', children = null }: CopyToClipboardProps) {
-  const isUnmounted = useRef(false);
+const messages = {
+  copied: 'Copied',
+  error: 'Failed to copy',
+};
 
-  const [copied, setCopied] = useState(false);
-  const [error, setError] = useState(false);
-
-  const message = useMemo(() => {
-    if (copied) return 'Copied';
-    if (error) return 'Failed to copy';
-
-    return '';
-  }, [copied, error]);
+export default function CopyToClipboard({ data = '', children = null }: ICopyToClipboardProps) {
+  const [status, setStatus] = useState<'copied' | 'error' | 'idle'>('idle');
 
   const copyToClipboard = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(data);
-      setCopied(true);
+      setStatus('copied');
     } catch (err) {
       console.error('Failed to copy text: ', err);
-      setError(true);
+      setStatus('error');
     }
   }, [data]);
 
   useEffect(() => {
-    return () => {
-      isUnmounted.current = true;
-    };
-  }, []);
-
-  useEffect(() => {
     let timeout: NodeJS.Timeout;
 
-    if (copied || error) {
-      timeout = setTimeout(() => {
-        setCopied(false);
-        setError(false);
-      }, 2000);
+    if (status !== 'idle') {
+      timeout = setTimeout(() => setStatus('idle'), 2000);
     }
 
-    return () => clearTimeout(timeout);
-  }, [copied]);
+    return () => {
+      timeout && clearTimeout(timeout);
+    };
+  }, [status]);
 
   if (!data) return <div className="inline-flex items-center">{children}</div>;
 
@@ -54,8 +41,8 @@ export default function CopyToClipboard({ data = '', children = null }: CopyToCl
       <span role="button" tabIndex={0} onClick={copyToClipboard} onKeyDown={() => {}}>
         {children}
       </span>
-      {(error || copied) && (
-        <p className="text-base-400 ml-4 w-full text-xs font-bold opacity-50">{message}</p>
+      {status !== 'idle' && (
+        <p className="text-base-400 ml-4 w-full text-xs font-bold opacity-50">{messages[status]}</p>
       )}
     </div>
   );

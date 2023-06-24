@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc.json",
+  "root": true,
   "env": {
     "browser": true,
     "es2022": true,
@@ -11,6 +12,7 @@
     "JSX": true
   },
   "extends": [
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
@@ -63,6 +65,9 @@
     "prettier/prettier": "warn",
     "no-unused-vars": "off",
     "unused-imports/no-unused-vars": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-namespace": "off",
     "unused-imports/no-unused-imports": "warn",
     "@typescript-eslint/no-unused-vars": [
       "warn",

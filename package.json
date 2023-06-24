@@ -17,7 +17,7 @@
     "lint:css": "FORCE_COLOR=1 turbo lint:css --filter site --cache-dir=./.turbo",
     "lint:css:fix": "FORCE_COLOR=1 turbo lint:css --filter site --cache-dir=./.turbo -- --fix",
     "lint:cm": "commitlint --config commitlint.config.cjs --from HEAD",
-    "lint:fix": "pnpm formatter && pnpm lint:css:fix && pnpm lint:es:fix && pnpm formatter",
+    "lint:fix": "pnpm formatter && pnpm lint:css:fix && pnpm lint:es:fix",
     "formatter": "prettier --config \"./.prettierrc.json\" --ignore-path \"./.prettierignore\" --write \"./apps/**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "cm": "cz",
     "cm:all": "git add . && cz && node ./scripts/git/push.js",
