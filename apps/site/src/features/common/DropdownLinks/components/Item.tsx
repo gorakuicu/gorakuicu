@@ -6,9 +6,7 @@ import Tooltip from '~/features/common/Tooltip';
 
 import { ILink } from '../DropdownLinks';
 
-export default function Item(link: ILink) {
-  const { href = '#', title = '', disabled = false, tooltip = '' } = link;
-
+export default function Item({ href = '#', title = '', disabled = false, tooltip = '' }: ILink) {
   return (
     <Menu.Item key={href}>
       {() => {
@@ -16,7 +14,7 @@ export default function Item(link: ILink) {
           <Href
             base
             className={clsx(
-              'flex w-full rounded-2xl p-2 bg-blend-difference hover:bg-white hover:bg-opacity-10',
+              'flex w-full rounded-2xl p-2 bg-blend-difference hover:bg-white hover:bg-opacity-20',
             )}
             disabled={disabled}
             href={href}
