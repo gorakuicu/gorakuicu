@@ -1,4 +1,4 @@
-FROM nginx:1.25.0-alpine3.17-slim
+FROM nginx:1.25.1-alpine3.17-slim
 
 COPY ./config /etc/nginx/config
 COPY ./config/html/error.html /var/www/default/error.html

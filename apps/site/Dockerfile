@@ -1,4 +1,4 @@
-FROM node:18.16.0-alpine3.17 AS base
+FROM node:18.16.1-alpine3.18 AS base
 ARG PNPM_VERSION
 WORKDIR /app
 ENV PNPM_HOME=/.pnpm-store PATH=:/.pnpm-store:/.pnpm-store/bin:/.pnpm-store/global/5:$PATH NODE_ENV=production FORCE_COLOR=1 CI=1
@@ -11,7 +11,7 @@ RUN npm install --global pnpm@${PNPM_VERSION} && pnpm config set store-dir /.pnp
 FROM base AS builder
 WORKDIR /app
 COPY . .
-RUN pnpm add -g turbo@1.10.5
+RUN pnpm add -g turbo@1.10.7
 # RUN --mount=type=cache,id=turbo_prune_root,target=/app/.turbo \
 RUN turbo prune --scope=site --docker --no-update-notifier
 
@@ -36,7 +36,7 @@ RUN chmod +x /app/scripts/ci/node_prune.sh && \
   /app/scripts/ci/node_prune.sh && node-prune && \
   rm -rf /.pnpm-store || true
 
-FROM node:18.16.0-alpine3.17 as production_runner
+FROM node:18.16.1-alpine3.18 as production_runner
 ARG PNPM_VERSION
 WORKDIR /app
 ENV PNPM_HOME=/.pnpm-store PATH=:/.pnpm-store:/.pnpm-store/bin:/.pnpm-store/global/5:$PATH NODE_ENV=production FORCE_COLOR=1 CI=1
