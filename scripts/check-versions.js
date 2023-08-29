@@ -4,9 +4,9 @@
 // Error stack: Error: Command failed: pnpm outdated
 //     at checkExecSyncError (node:child_process:885:11)
 //     at execSync (node:child_process:957:15)
-//     at check (/aikoicu/scripts/check-versions.js:17:32)
-//     at checkVersions (/aikoicu/scripts/check-versions.js:24:5)
-//     at Object.<anonymous> (/aikoicu/scripts/check-versions.js:38:1)
+//     at check (/gorakuicu/scripts/check-versions.js:17:32)
+//     at checkVersions (/gorakuicu/scripts/check-versions.js:24:5)
+//     at Object.<anonymous> (/gorakuicu/scripts/check-versions.js:38:1)
 //     at Module._compile (node:internal/modules/cjs/loader:1254:14)
 //     at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
 //     at Module.load (node:internal/modules/cjs/loader:1117:32)

@@ -1,121 +1,121 @@
-version: '3.7'
+# version: '3.7'
 
-networks:
-  aikoicu:
-    driver: bridge
-  proxy:
-    external: true
+# networks:
+#   gorakuicu:
+#     driver: bridge
+#   proxy:
+#     external: true
 
-volumes:
-  aikoicu-db:
+# volumes:
+#   gorakuicu-db:
 
-services:
-  aikoicu-db:
-    image: postgres:15.3-alpine
-    container_name: aikoicu-db
-    restart: always
-    environment:
-      POSTGRES_USER: $POSTGRES_USER
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-      POSTGRES_DB: $POSTGRES_DB
-    ports:
-      - ${POSTGRES_PORT}:5432
-    volumes:
-      - aikoicu-db:/var/lib/postgresql/data
-    networks:
-      - aikoicu
-    labels:
-      - traefik.tcp.routers.aikoicu-db.entrypoints=postgres
-      - traefik.tcp.routers.aikoicu-db.rule=HostSNI(`${CMS_SUBDOMAIN}${DOMAIN}`)
-      - traefik.tcp.routers.aikoicu-db.tls=true
-      - traefik.tcp.routers.aikoicu-db.tls.certresolver=${CERT_RESOLVER}
-      - traefik.tcp.routers.aikoicu-db.service=aikoicu-db
-      - traefik.tcp.services.aikoicu-db.loadbalancer.server.port=5432
-      - traefik.docker.network=proxy
+# services:
+#   gorakuicu-db:
+#     image: postgres:15.3-alpine
+#     container_name: gorakuicu-db
+#     restart: always
+#     environment:
+#       POSTGRES_USER: $POSTGRES_USER
+#       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+#       POSTGRES_DB: $POSTGRES_DB
+#     ports:
+#       - ${POSTGRES_PORT}:5432
+#     volumes:
+#       - gorakuicu-db:/var/lib/postgresql/data
+#     networks:
+#       - gorakuicu
+#     labels:
+#       - traefik.tcp.routers.gorakuicu-db.entrypoints=postgres
+#       - traefik.tcp.routers.gorakuicu-db.rule=HostSNI(`${CMS_SUBDOMAIN}${DOMAIN}`)
+#       - traefik.tcp.routers.gorakuicu-db.tls=true
+#       - traefik.tcp.routers.gorakuicu-db.tls.certresolver=${CERT_RESOLVER}
+#       - traefik.tcp.routers.gorakuicu-db.service=gorakuicu-db
+#       - traefik.tcp.services.gorakuicu-db.loadbalancer.server.port=5432
+#       - traefik.docker.network=proxy
 
-  aikoicu-site:
-    image: aikoicu-site
-    container_name: aikoicu-site
-    build:
-      dockerfile: ./apps/site/Dockerfile
-      context: .
-      args:
-        PNPM_VERSION: ${PNPM_VERSION:-latest}
-      cache_from:
-        - aikoicu-site
-    networks:
-      - proxy
-      - aikoicu
-    restart: unless-stopped
+#   gorakuicu-site:
+#     image: gorakuicu-site
+#     container_name: gorakuicu-site
+#     build:
+#       dockerfile: ./apps/site/Dockerfile
+#       context: .
+#       args:
+#         PNPM_VERSION: ${PNPM_VERSION:-latest}
+#       cache_from:
+#         - gorakuicu-site
+#     networks:
+#       - proxy
+#       - gorakuicu
+#     restart: unless-stopped
 
-  aikoicu-site-proxy:
-    image: aikoicu-site-proxy
-    container_name: aikoicu-site-proxy
-    build:
-      dockerfile: Dockerfile
-      context: ./apps/site/nginx
-      cache_from:
-        - aikoicu-site-proxy
-    environment:
-      - DOMAIN
-      - SUBDOMAIN
-    networks:
-      - proxy
-      - aikoicu
-    depends_on:
-      - aikoicu-site
-    restart: always
-    labels:
-      - traefik.http.routers.registry.middlewares=traefik-compress
-      - traefik.http.routers.aikoicu.rule=Host("${SUBDOMAIN}${DOMAIN}")
-      - traefik.http.middlewares.aikoicu-redirect.redirectregex.regex=^(https?://)www.(.*)$$
-      - traefik.http.middlewares.aikoicu-redirect.redirectregex.replacement=$${1}$${2}
-      - traefik.http.routers.aikoicu.middlewares=aikoicu-redirect
-      - traefik.http.routers.aikoicu.entrypoints=https
-      - traefik.http.routers.aikoicu.tls=true
-      - traefik.http.routers.aikoicu.tls.certresolver=${CERT_RESOLVER}
-      - traefik.docker.network=proxy
+#   gorakuicu-site-proxy:
+#     image: gorakuicu-site-proxy
+#     container_name: gorakuicu-site-proxy
+#     build:
+#       dockerfile: Dockerfile
+#       context: ./apps/site/nginx
+#       cache_from:
+#         - gorakuicu-site-proxy
+#     environment:
+#       - DOMAIN
+#       - SUBDOMAIN
+#     networks:
+#       - proxy
+#       - gorakuicu
+#     depends_on:
+#       - gorakuicu-site
+#     restart: always
+#     labels:
+#       - traefik.http.routers.registry.middlewares=traefik-compress
+#       - traefik.http.routers.gorakuicu.rule=Host("${SUBDOMAIN}${DOMAIN}")
+#       - traefik.http.middlewares.gorakuicu-redirect.redirectregex.regex=^(https?://)www.(.*)$$
+#       - traefik.http.middlewares.gorakuicu-redirect.redirectregex.replacement=$${1}$${2}
+#       - traefik.http.routers.gorakuicu.middlewares=gorakuicu-redirect
+#       - traefik.http.routers.gorakuicu.entrypoints=https
+#       - traefik.http.routers.gorakuicu.tls=true
+#       - traefik.http.routers.gorakuicu.tls.certresolver=${CERT_RESOLVER}
+#       - traefik.docker.network=proxy
 
-  aikoicu-admin:
-    image: aikoicu-admin
-    container_name: aikoicu-admin
-    env_file: .env
-    build:
-      dockerfile: ./apps/admin/Dockerfile
-      context: .
-      args:
-        PNPM_VERSION: ${PNPM_VERSION:-latest}
-      cache_from:
-        - aikoicu-admin
-    networks:
-      - proxy
-      - aikoicu
-    restart: unless-stopped
+#   gorakuicu-admin:
+#     image: gorakuicu-admin
+#     container_name: gorakuicu-admin
+#     env_file: .env
+#     build:
+#       dockerfile: ./apps/admin/Dockerfile
+#       context: .
+#       args:
+#         PNPM_VERSION: ${PNPM_VERSION:-latest}
+#       cache_from:
+#         - gorakuicu-admin
+#     networks:
+#       - proxy
+#       - gorakuicu
+#     restart: unless-stopped
 
-  aikoicu-admin-proxy:
-    image: aikoicu-admin-proxy
-    container_name: aikoicu-admin-proxy
-    build:
-      dockerfile: Dockerfile
-      context: ./apps/admin/nginx
-      cache_from:
-        - aikoicu-admin-proxy
-    environment:
-      - DOMAIN
-      - CMS_SUBDOMAIN
-    networks:
-      - proxy
-      - aikoicu
-    depends_on:
-      - aikoicu-admin
-    restart: always
-    labels:
-      - traefik.http.routers.registry.middlewares=traefik-compress
-      - traefik.http.routers.aikoicu-admin.rule=Host("${CMS_SUBDOMAIN}${DOMAIN}")
-      - traefik.http.middlewares.aikoicu-admin-redirect.redirectregex.regex=^(https?://)www.(.*)$$
-      - traefik.http.middlewares.aikoicu-admin-redirect.redirectregex.replacement=$${1}$${2}
-      - traefik.http.routers.aikoicu-admin.middlewares=aikoicu-admin-redirect
-      - traefik.http.routers.aikoicu-admin.entrypoints=https
-      - traefik.http.routers.aikoicu-admin.tls=true
-      - traefik.http.routers.aikoicu-admin.tls.certresolver=${CERT_RESOLVER}
-      - traefik.docker.network=proxy
+#   gorakuicu-admin-proxy:
+#     image: gorakuicu-admin-proxy
+#     container_name: gorakuicu-admin-proxy
+#     build:
+#       dockerfile: Dockerfile
+#       context: ./apps/admin/nginx
+#       cache_from:
+#         - gorakuicu-admin-proxy
+#     environment:
+#       - DOMAIN
+#       - CMS_SUBDOMAIN
+#     networks:
+#       - proxy
+#       - gorakuicu
+#     depends_on:
+#       - gorakuicu-admin
+#     restart: always
+#     labels:
+#       - traefik.http.routers.registry.middlewares=traefik-compress
+#       - traefik.http.routers.gorakuicu-admin.rule=Host("${CMS_SUBDOMAIN}${DOMAIN}")
+#       - traefik.http.middlewares.gorakuicu-admin-redirect.redirectregex.regex=^(https?://)www.(.*)$$
+#       - traefik.http.middlewares.gorakuicu-admin-redirect.redirectregex.replacement=$${1}$${2}
+#       - traefik.http.routers.gorakuicu-admin.middlewares=gorakuicu-admin-redirect
+#       - traefik.http.routers.gorakuicu-admin.entrypoints=https
+#       - traefik.http.routers.gorakuicu-admin.tls=true
+#       - traefik.http.routers.gorakuicu-admin.tls.certresolver=${CERT_RESOLVER}
+#       - traefik.docker.network=proxy

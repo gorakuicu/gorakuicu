@@ -10,7 +10,7 @@ const { execSync } = require('child_process');
 const open = require('open');
 
 const GITLAB_URL = 'https://gitlab.com';
-const PROJECT_PATH = 'aiko.icu/aikoicu';
+const PROJECT_PATH = 'goraku.icu/gorakuicu';
 let SOURCE_BRANCH = 'develop';
 let TARGET_BRANCH = 'main';
 

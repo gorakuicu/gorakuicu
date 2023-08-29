@@ -1,109 +1,109 @@
-{
-  "$schema": "https://json.schemastore.org/eslintrc.json",
-  "root": true,
-  "env": {
-    "browser": true,
-    "es2022": true,
-    "node": true,
-    "jest": true
-  },
-  "globals": {
-    "NodeJS": true,
-    "JSX": true
-  },
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended",
-    "standard"
-  ],
-  "plugins": [
-    "react",
-    "unused-imports",
-    "import",
-    "@typescript-eslint",
-    "jsx-a11y",
-    "simple-import-sort",
-    "no-loops",
-    "prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true,
-      "experimentalObjectRestSpread": true
-    },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "rules": {
-    "no-loops/no-loops": 2,
-    "semi": "off",
-    "no-useless-constructor": "off",
-    "space-before-function-paren": "off",
-    "comma-dangle": "off",
-    "multiline-ternary": "off",
-    "camelcase": "off",
-    "indent": "off",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
-    "react/prop-types": "off",
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "jsx-a11y/click-events-have-key-events": "warn",
-    "jsx-a11y/interactive-supports-focus": "warn",
-    "prettier/prettier": "warn",
-    "no-unused-vars": "off",
-    "unused-imports/no-unused-vars": "off",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "unused-imports/no-unused-imports": "warn",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "args": "after-used",
-        "ignoreRestSiblings": false,
-        "argsIgnorePattern": "^_.*?$"
-      }
-    ],
-    "react/self-closing-comp": "warn",
-    "react/jsx-sort-props": [
-      "warn",
-      {
-        "callbacksLast": true,
-        "shorthandFirst": true,
-        "noSortAlphabetically": false,
-        "reservedFirst": true
-      }
-    ],
-    "padding-line-between-statements": [
-      "warn",
-      {
-        "blankLine": "always",
-        "prev": "*",
-        "next": "return"
-      },
-      {
-        "blankLine": "always",
-        "prev": ["const", "let", "var"],
-        "next": "*"
-      },
-      {
-        "blankLine": "any",
-        "prev": ["const", "let", "var"],
-        "next": ["const", "let", "var"]
-      }
-    ]
-  }
-}
+// {
+//   "$schema": "https://json.schemastore.org/eslintrc.json",
+//   "root": true,
+//   "env": {
+//     "browser": true,
+//     "es2022": true,
+//     "node": true,
+//     "jest": true
+//   },
+//   "globals": {
+//     "NodeJS": true,
+//     "JSX": true
+//   },
+//   "extends": [
+//     "plugin:@typescript-eslint/recommended",
+//     "plugin:react/recommended",
+//     "plugin:react-hooks/recommended",
+//     "plugin:jsx-a11y/recommended",
+//     "plugin:prettier/recommended",
+//     "standard"
+//   ],
+//   "plugins": [
+//     "react",
+//     "unused-imports",
+//     "import",
+//     "@typescript-eslint",
+//     "jsx-a11y",
+//     "simple-import-sort",
+//     "no-loops",
+//     "prettier"
+//   ],
+//   "parser": "@typescript-eslint/parser",
+//   "parserOptions": {
+//     "ecmaFeatures": {
+//       "jsx": true,
+//       "modules": true,
+//       "experimentalObjectRestSpread": true
+//     },
+//     "ecmaVersion": "latest",
+//     "sourceType": "module"
+//   },
+//   "settings": {
+//     "react": {
+//       "version": "detect"
+//     }
+//   },
+//   "rules": {
+//     "no-loops/no-loops": 2,
+//     "semi": "off",
+//     "no-useless-constructor": "off",
+//     "space-before-function-paren": "off",
+//     "comma-dangle": "off",
+//     "multiline-ternary": "off",
+//     "camelcase": "off",
+//     "indent": "off",
+//     "simple-import-sort/imports": "error",
+//     "simple-import-sort/exports": "error",
+//     "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
+//     "react/prop-types": "off",
+//     "react/jsx-uses-react": "off",
+//     "react/react-in-jsx-scope": "off",
+//     "react-hooks/exhaustive-deps": "off",
+//     "jsx-a11y/click-events-have-key-events": "warn",
+//     "jsx-a11y/interactive-supports-focus": "warn",
+//     "prettier/prettier": "warn",
+//     "no-unused-vars": "off",
+//     "unused-imports/no-unused-vars": "off",
+//     "@typescript-eslint/no-empty-function": "off",
+//     "@typescript-eslint/no-var-requires": "off",
+//     "@typescript-eslint/no-namespace": "off",
+//     "unused-imports/no-unused-imports": "warn",
+//     "@typescript-eslint/no-unused-vars": [
+//       "warn",
+//       {
+//         "args": "after-used",
+//         "ignoreRestSiblings": false,
+//         "argsIgnorePattern": "^_.*?$"
+//       }
+//     ],
+//     "react/self-closing-comp": "warn",
+//     "react/jsx-sort-props": [
+//       "warn",
+//       {
+//         "callbacksLast": true,
+//         "shorthandFirst": true,
+//         "noSortAlphabetically": false,
+//         "reservedFirst": true
+//       }
+//     ],
+//     "padding-line-between-statements": [
+//       "warn",
+//       {
+//         "blankLine": "always",
+//         "prev": "*",
+//         "next": "return"
+//       },
+//       {
+//         "blankLine": "always",
+//         "prev": ["const", "let", "var"],
+//         "next": "*"
+//       },
+//       {
+//         "blankLine": "any",
+//         "prev": ["const", "let", "var"],
+//         "next": ["const", "let", "var"]
+//       }
+//     ]
+//   }
+// }
