@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "extends": [
+    "@remix-run/eslint-config",
+    "@remix-run/eslint-config/node",
+    "plugin:unicorn/recommended",
+    "plugin:boundaries/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "boundaries",
+    "unused-imports",
+    "simple-import-sort"
+  ],
+  "env": {
+    "es2024": true
+  },
+  "globals": {
+    "React": true,
+    "JSX": true
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/"
+  ],
+  "settings": {
+    "boundaries/elements": [
+      {
+        "type": "1.application",
+        "pattern": "1.application/*"
+      },
+      {
+        "type": "2.pages",
+        "pattern": "2.pages/*"
+      },
+      {
+        "type": "3.widgets",
+        "pattern": "3.widgets/*"
+      },
+      {
+        "type": "4.features",
+        "pattern": "4.features/*"
+      },
+      {
+        "type": "5.entities",
+        "pattern": "5.entities/*"
+      },
+      {
+        "type": "6.shared",
+        "pattern": "6.shared/*"
+      }
+    ]
+  },
+  "rules": {
+    "import/no-default-export": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "sort-imports": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "boundaries/element-types": [
+      2,
+      {
+        "default": "disallow",
+        "rules": [
+          {
+            "from": "1.application",
+            "allow": [
+              "1.application",
+              "2.pages",
+              "3.widgets",
+              "4.features",
+              "5.entities",
+              "6.shared"
+            ]
+          },
+          {
+            "from": "2.pages",
+            "allow": [
+              "2.pages",
+              "3.widgets",
+              "4.features",
+              "5.entities",
+              "6.shared"
+            ]
+          },
+          {
+            "from": "3.widgets",
+            "allow": [
+              "3.widgets",
+              "4.features",
+              "5.entities",
+              "6.shared"
+            ]
+          },
+          {
+            "from": "4.features",
+            "allow": [
+              "4.features",
+              "5.entities",
+              "6.shared"
+            ]
+          },
+          {
+            "from": "5.entities",
+            "allow": [
+              "5.entities",
+              "6.shared"
+            ]
+          },
+          {
+            "from": "6.shared",
+            "allow": [
+              "6.shared"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

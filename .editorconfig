@@ -1,9 +1,47 @@
+# EDITORCONFIG
+# https://editorconfig.org
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+# indicate top-most editorconfig file
 root = true
 
+# universal rules
 [*]
-end_of_line = lf
-insert_final_newline = true
-indent_style = space
-indent_size = 2
 charset = utf-8
+continuation_indent_size = 2
+curly_bracket_next_line = false
+end_of_line = lf
+indent_brace_style = BSD
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 80
+quote_type = single
+spaces_around_brackets = inside
+spaces_around_operators = true
+tab_width = 2
 trim_trailing_whitespace = true
+
+# handlebars
+[*.hbs]
+max_line_length = 100
+
+# markdown
+[*.md]
+max_line_length = 120
+
+# shellscript
+[*.sh]
+max_line_length = 100
+
+# snapshots
+[*.snap]
+max_line_length = 130
+
+# xml
+[*.xml]
+max_line_length = 100
+
+# yaml
+[*.yml]
+max_line_length = 100

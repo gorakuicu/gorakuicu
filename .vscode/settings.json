@@ -1,23 +1,16 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
+  "npm.packageManager": "pnpm",
+  "explorer.fileNesting.patterns":{
+    "package.json": "pnpm-workspace.yaml, pnpm-lock.yaml"
+  },
   "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "tailwindCSS.experimental.classRegex": [
-    [
-      "clsx\\(([^)]*\\n*[^)]*)\\)",
-      "glassStyle\\(([^)]*\\n*[^)]*)\\)",
-      "(?:'|\"|`)([^']*)(?:'|\"|`)"
-    ],
-    "(?:enter|leave)(?:From|To)?=\\s*(?:\"|')([^(?:\"|')]*)"
+    "./packages/*",
+    "./apps/*"
   ],
   "cSpell.words": [
     "adminjs",
-    "goraku",
-    "gorakuicu",
     "Boosty",
     "BUILDKIT",
     "certresolver",
@@ -30,11 +23,15 @@
     "entrypoints",
     "evilmartians",
     "Fira",
+    "goraku",
+    "gorakuicu",
     "gtag",
     "headlessui",
     "hjid",
     "hjsv",
     "Hotjar",
+    "isbot",
+    "isci",
     "learnq",
     "lefthook",
     "Lekton",
@@ -61,7 +58,7 @@
     "stylelintrc",
     "tailwindcss",
     "tanstack",
-    "traefik"
-  ],
-  "svg.preview.background": "dark-transparent",
+    "traefik",
+    "typecheck"
+  ]
 }

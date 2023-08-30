@@ -1,0 +1,74 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "nx:dev",
+          "nx:build",
+          "nx:start",
+          "nx:typecheck",
+          "nx:coverage",
+          "nx:test",
+          "nx:lint",
+          "nx:check",
+          "nx:format",
+          "nx:lint",
+          "nx:ladle"
+        ]
+      }
+    }
+  },
+  "targetDefaults": {
+    "nx:dev": {
+      "dependsOn": [
+        "dev"
+      ]
+    },
+    "nx:build": {
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "nx:start": {
+      "dependsOn": [
+        "start"
+      ]
+    },
+    "nx:typecheck": {
+      "dependsOn": [
+        "typecheck"
+      ]
+    },
+    "nx:coverage": {
+      "dependsOn": [
+        "coverage"
+      ]
+    },
+    "nx:test": {
+      "dependsOn": [
+        "test"
+      ]
+    },
+    "nx:lint": {
+      "dependsOn": [
+        "lint"
+      ]
+    },
+    "nx:check": {
+      "dependsOn": [
+        "check"
+      ]
+    },
+    "nx:format": {
+      "dependsOn": [
+        "format"
+      ]
+    },
+    "nx:ladle": {
+      "dependsOn": [
+        "ladle"
+      ]
+    }
+  }
+}

@@ -20,8 +20,7 @@
 **/node_modules
 **/coverage
 **/build
-**/!.storybook
-/**/.storybook/**
-**/.turbo
+**/cosmos.imports.*
 !**/*.{js,jsx,ts,tsx,json,css,md}
-.env*.example
+**/.env*
+**/public/build

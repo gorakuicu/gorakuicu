@@ -1,0 +1,52 @@
+{
+  "name": "gorakuicu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "nx:dev": "FORCE_COLOR=1 nx run-many -t dev --all --output-style=stream",
+    "nx:build": "FORCE_COLOR=1 nx run-many -t build --all --output-style=stream",
+    "nx:start": "FORCE_COLOR=1 nx run-many -t start --all --output-style=stream",
+    "nx:typecheck": "FORCE_COLOR=1 nx run-many -t typecheck --all --output-style=stream",
+    "nx:coverage": "FORCE_COLOR=1 nx run-many -t coverage --all --output-style=stream",
+    "nx:test": "FORCE_COLOR=1 nx run-many -t test --all --output-style=stream",
+    "nx:lint": "FORCE_COLOR=1 nx run-many -t lint --all --output-style=stream",
+    "nx:check": "FORCE_COLOR=1 pnpm nx:format && pnpm nx:lint && pnpm nx:typecheck && pnpm nx:test",
+    "nx:format": "FORCE_COLOR=1 nx run-many -t format --all --output-style=stream",
+    "nx:lint:fix": "FORCE_COLOR=1 pnpm nx:format && nx run-many -t lint --all -- --fix --output-style=stream",
+    "nx:ladle": "FORCE_COLOR=1 nx run-many -t ladle --all --output-style=stream",
+    "cm": "cz",
+    "cm:all": "git add . && cz && node ./scripts/git/push.js",
+    "cm:stage": "pnpm cm:all && pnpm stage",
+    "release": "node ./scripts/git/release.js",
+    "release:prod": "node ./scripts/git/release.js production",
+    "lint:cm": "commitlint --config commitlint.config.cjs --from HEAD",
+    "is:ci": "node scripts/ci/is.js",
+    "postinstall": "npm run is:ci || husky install; npm run is:ci || npx @evilmartians/lefthook install; npm run is:ci || npx @evilmartians/lefthook add pre-commit"
+  },
+  "devDependencies": {
+    "eslint": "8.48.0",
+    "nx": "16.7.4",
+    "nx-cloud": "latest",
+    "prettier": "3.0.3",
+    "typescript": "5.0.4",
+    "@commitlint/cli": "17.6.6",
+    "@commitlint/config-conventional": "17.6.6",
+    "commitizen": "4.3.0",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "8.0.3"
+  },
+  "nx": {
+    "targets": {}
+  },
+  "engines": {
+    "node": ">=18.16.0",
+    "npm": "please-use-pnpm",
+    "pnpm": ">=8.6.0"
+  },
+  "packageManager": "pnpm@8.6.0",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
