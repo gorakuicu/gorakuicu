@@ -1,10 +1,6 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
-  ignoredRouteFiles: ["**/.*"],
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // serverBuildPath: "build/index.js",
-  // publicPath: "/build/",
+  ignoredRouteFiles: ["**/.*", "**/__tests__/**", "**/*.{test,spec,e2e,snapshot}.*", "**/*.stories.*", ".ladle"],
   serverModuleFormat: "cjs",
   future: {
     v2_dev: true,
@@ -16,4 +12,6 @@ module.exports = {
   },
   tailwind: true,
   postcss: true,
+  serverMinify: true,
+  watchPaths: ["app", "package.json", "tailwind.config.js", "postcss.config.js", "remix.config.js", "tsconfig.json"],
 };

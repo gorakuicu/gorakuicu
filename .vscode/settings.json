@@ -59,6 +59,7 @@
     "tailwindcss",
     "tanstack",
     "traefik",
-    "typecheck"
+    "typecheck",
+    "webp"
   ]
 }
