@@ -2,10 +2,10 @@ min_version: 1.4.0
 
 pre-commit:
   parallel: true
-  skip:
-    - ref: main
-    - ref: staging
-    - ref: testing
+  # skip:
+  #   - ref: main
+  #   - ref: staging
+  #   - ref: testing
   commands:
     formatter:
       glob: '*.{js,jsx,ts,tsx,css,json,md,yml}'
