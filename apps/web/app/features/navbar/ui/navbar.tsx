@@ -25,6 +25,7 @@ export function Navbar() {
       <div className="h-8" />
       <MotionNavbar
         {...animationProperties}
+        isBordered
         className="bg-gray-800 bg-opacity-50 mx-auto justify-around"
         onScrollPositionChange={onChangeScroll}
       >

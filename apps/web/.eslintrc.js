@@ -2,7 +2,13 @@
 // eslint-disable-next-line unicorn/prefer-module
 module.exports = {
   extends: ['@gorakuicu/eslint-config/remix'],
-  ignorePatterns: ['node_modules/', 'dist/', '!./**/*.ts', '!./**/*.tsx'],
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    '!./**/*.ts',
+    '!./**/*.tsx',
+    '!./.storybook/**/*',
+  ],
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname, // eslint-disable-line unicorn/prefer-module

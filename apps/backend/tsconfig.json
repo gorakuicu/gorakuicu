@@ -8,6 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
+    "allowJs": true,
     "outDir": "./dist",
     "rootDir": "./",
     "baseUrl": "./",
@@ -21,5 +22,6 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+  "include": ["src/**/*", "test/**/*", ".eslintrc.js"],
 }

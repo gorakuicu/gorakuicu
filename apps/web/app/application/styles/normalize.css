@@ -1,138 +1,152 @@
 hr {
-    box-sizing: content-box; /* firefox 57- https://bugzilla.mozilla.org/show_bug.cgi?id=1377188 */
-    height: 0; /* fixed */
-    overflow: visible; /* ie edge 18- */
+  box-sizing: content-box; /* firefox 57- https://bugzilla.mozilla.org/show_bug.cgi?id=1377188 */
+  height: 0; /* fixed */
+  overflow: visible; /* ie edge 18- */
 }
-pre, code, kbd, samp {
-    font-family: monospace, monospace; /* Consolas on windows? Correct the inheritance and scaling of font size in all browsers. */
-    font-size: 1em; /* Correct the odd `em` font sizing in all browsers. */
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* Consolas on windows? Correct the inheritance and scaling of font size in all browsers. */
+  font-size: 1em; /* Correct the odd `em` font sizing in all browsers. */
 }
 table {
-    text-indent: 0; /* Remove text indentation from table contents in Chrome and Safari. */
+  text-indent: 0; /* Remove text indentation from table contents in Chrome and Safari. */
 }
-select, button {
-    text-transform: none; /* Remove the inheritance of text transform in Firefox. */
+select,
+button {
+  text-transform: none; /* Remove the inheritance of text transform in Firefox. */
 }
 progress {
-    vertical-align: baseline; /* needed? (firefox, chrome, safari: vertical-align: -0.2em) */
+  vertical-align: baseline; /* needed? (firefox, chrome, safari: vertical-align: -0.2em) */
 }
-audio:not([controls]) { /* "Add the correct display in iOS 4-7". do we need it? display is inline but its still hidden!? */
-    display: none;
-    height: 0;
+audio:not([controls]) {
+  /* "Add the correct display in iOS 4-7". do we need it? display is inline but its still hidden!? */
+  display: none;
+  height: 0;
 }
-ol ol, ol ul, ul ol, ul ul {
-  margin: 0;  /* ie edge18- */
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin: 0; /* ie edge18- */
 }
 main {
-    display: block; /* ie */
+  display: block; /* ie */
 }
 a {
-    background-color: transparent; /* ie 10 */
+  background-color: transparent; /* ie 10 */
 }
 svg:not(:root) {
-    overflow: hidden; /* ie */
+  overflow: hidden; /* ie */
 }
 button {
-    overflow: visible; /* ie */
-    text-transform: none; /* edge 18- ff? ie */
+  overflow: visible; /* ie */
+  text-transform: none; /* edge 18- ff? ie */
 }
 input {
-    overflow: visible; /* edge18- ie */
+  overflow: visible; /* edge18- ie */
 }
 legend {
-    box-sizing: border-box; /* ie edge18- */
-    color: inherit; /* ie */
-    display: table; /* ie edge18- */
-    max-width: 100%; /* ie edge18- */
-    white-space: normal; /* ie edge18- */
+  box-sizing: border-box; /* ie edge18- */
+  color: inherit; /* ie */
+  display: table; /* ie edge18- */
+  max-width: 100%; /* ie edge18- */
+  white-space: normal; /* ie edge18- */
 }
 progress {
-    display: inline-block; /* ie edge18- */
+  display: inline-block; /* ie edge18- */
 }
 textarea {
-    overflow: auto; /* ie */
+  overflow: auto; /* ie */
 }
 details {
-    display: block; /* ie edge18- */
+  display: block; /* ie edge18- */
 }
 template {
-    display: none; /* ie */
+  display: none; /* ie */
 }
 
 :where(html) {
-	/* Chrome rounds computed line-height:
+  /* Chrome rounds computed line-height:
 	16px (font-size) * 1.15 (line-height) = 18.4px (line-height);
 	But chrome uses 18px. So use a number that gives full pixels. (1.124 or 1.1875) */
-	line-height: 1.1875;
-	-webkit-text-size-adjust: none;
-	text-size-adjust: none;
+  line-height: 1.1875;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 :where(h1) {
-	font-size: 2em; /* Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari. */
-	margin: 0.67em 0;
+  font-size: 2em; /* Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari. */
+  margin: 0.67em 0;
 }
 :where(dl, ol, ul) :where(dl, ol, ul) {
-	margin: 0; /* Remove the margin on nested lists in Chrome and Safari. */
+  margin: 0; /* Remove the margin on nested lists in Chrome and Safari. */
 }
 :where(hr) {
-	color: inherit; /* Correct the inheritance of border color in Firefox. */
+  color: inherit; /* Correct the inheritance of border color in Firefox. */
 }
 :where(abbr[title]) {
-	-webkit-text-decoration: underline dotted; /* safari (does not support unprefixed shorthand) */
-    text-decoration-thickness: .08em; /* safari, chrome to match firefox */
-	text-underline-offset: 0.1em; /* safari, chrome to match firefox */
+  -webkit-text-decoration: underline dotted; /* safari (does not support unprefixed shorthand) */
+  text-decoration-thickness: 0.08em; /* safari, chrome to match firefox */
+  text-underline-offset: 0.1em; /* safari, chrome to match firefox */
 }
 :where(b, strong) {
-	font-weight: bolder; /* Add the correct font weight in Chrome and Safari. */
+  font-weight: bolder; /* Add the correct font weight in Chrome and Safari. */
 }
 :where(small) {
-	font-size: 80%; /* Add the correct font size in all browsers. */
+  font-size: 80%; /* Add the correct font size in all browsers. */
 }
 :where(table) {
-	border-color: currentColor; /* Correct table border color in Chrome and Safari. */
-	/* text-indent: 0; will enable it if someone has a need for it */
+  border-color: currentColor; /* Correct table border color in Chrome and Safari. */
+  /* text-indent: 0; will enable it if someone has a need for it */
 }
-:where(textarea, button, input, select) { /* textarea: Firefox, all:Safari */
-	margin: 0;
+:where(textarea, button, input, select) {
+  /* textarea: Firefox, all:Safari */
+  margin: 0;
 }
-:where(textarea) { /* behave like in firefox */
-	baseline-source: first; /* available in chrome 111, safari no */
+:where(textarea) {
+  /* behave like in firefox */
+  baseline-source: first; /* available in chrome 111, safari no */
 }
-:where(button, input:is([type="button"], [type="reset"], [type="submit"])) {
-	-webkit-appearance: button; /* Correct the inability to style buttons in iOS and Safari. */
+:where(button, input:is([type='button'], [type='reset'], [type='submit'])) {
+  -webkit-appearance: button; /* Correct the inability to style buttons in iOS and Safari. */
 }
-:where([type="search"]) {
-	-webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari. */
-	/* outline-offset: -2px; /* Correct the outline style in Safari. Get worse in chrome... */
+:where([type='search']) {
+  -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari. */
+  /* outline-offset: -2px; /* Correct the outline style in Safari. Get worse in chrome... */
 }
 :where(::-webkit-search-decoration) {
-	-webkit-appearance: none; /* Remove the inner padding in Chrome and Safari on macOS. */
+  -webkit-appearance: none; /* Remove the inner padding in Chrome and Safari on macOS. */
 }
-:where(::placeholder) { /* Correct the text style of placeholders in Chrome and Safari. */
-	color: inherit;
-	opacity: .54;
+:where(::placeholder) {
+  /* Correct the text style of placeholders in Chrome and Safari. */
+  color: inherit;
+  opacity: 0.54;
 }
 :where(::-webkit-file-upload-button) {
-	-webkit-appearance: button; /* Correct the inability to style upload buttons in iOS and Safari. */
-	font: inherit; /* Change font properties to `inherit` in Safari. */
+  -webkit-appearance: button; /* Correct the inability to style upload buttons in iOS and Safari. */
+  font: inherit; /* Change font properties to `inherit` in Safari. */
 }
-:where(:-moz-ui-invalid) { /* Remove the additional :invalid styles in Firefox. */
-	box-shadow: none;
+:where(:-moz-ui-invalid) {
+  /* Remove the additional :invalid styles in Firefox. */
+  box-shadow: none;
 }
-:where(summary) { /* Add the correct display in safari 14 */
-	display: list-item;
+:where(summary) {
+  /* Add the correct display in safari 14 */
+  display: list-item;
 }
 :where(search) {
-	display:block;
+  display: block;
 }
-:where([inert]) { /* chrome < 102 safari < 15.5 firefox < x */
-	pointer-events: none;
-	cursor: default;
+:where([inert]) {
+  /* chrome < 102 safari < 15.5 firefox < x */
+  pointer-events: none;
+  cursor: default;
 }
 :where([inert], [inert] *) {
-	/* user-modify: read-only !important; no effect? */
-	-webkit-user-select: none;
-	user-select: none;
+  /* user-modify: read-only !important; no effect? */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* performance? ~7% faster? is it worth it?
@@ -146,8 +160,11 @@ chrome uses "Consolas"
 Can not reproduce need of bug fix "monospace, monospace"
 needed? font-size: 1em; /* Correct the odd `em` font sizing in all browsers.
 */
-pre, code, kbd, samp {
-    font-family: "Courier New", monospace;
+pre,
+code,
+kbd,
+samp {
+  font-family: 'Courier New', monospace;
 }
 
 /*

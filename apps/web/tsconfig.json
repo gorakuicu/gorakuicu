@@ -1,11 +1,12 @@
 {
   "extends": "@gorakuicu/tsconfig/remix",
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx", ".ladle"],
+  "include": ["remix.environment.d.ts", "**/*.ts", "**/*.tsx", ".storybook/*"],
   "compilerOptions": {
     "types": ["vitest/globals"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"]
     },
+    "skipLibCheck": true
   }
 }

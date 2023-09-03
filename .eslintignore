@@ -20,6 +20,5 @@
 **/node_modules
 **/coverage
 **/build
-**/cosmos.imports.*
 !**/*.{js,jsx,ts,tsx,md}
 .env*.example

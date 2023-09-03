@@ -93,4 +93,5 @@
 sw.js*
 workbox-*.js*
 !.env*.example
-**/cosmos.imports.*
+
+storybook-static

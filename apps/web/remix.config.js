@@ -1,6 +1,6 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
-  ignoredRouteFiles: ["**/.*", "**/__tests__/**", "**/*.{test,spec,e2e,snapshot}.*", "**/*.stories.*", ".ladle"],
+  ignoredRouteFiles: ["**/.*", "**/__tests__/**", "**/*.{test,spec,e2e,snapshot}.*", "**/*.stories.*"],
   serverModuleFormat: "cjs",
   future: {
     v2_dev: true,

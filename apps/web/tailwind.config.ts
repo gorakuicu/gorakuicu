@@ -15,23 +15,23 @@ export const blue = {
 };
 
 export const primary = {
-  50: '#FDF2FB',
-  100: '#FAC7EE',
-  200: '#F6A2E3',
-  300: '#F37CD7',
-  400: '#EF57CC',
-  500: '#EC32C0',
-  600: '#D214A6',
-  700: '#9F0F7D',
-  800: '#6B0A55',
-  900: '#38052C',
+  '50': '#faf5ff',
+  '100': '#f2e9fe',
+  '200': '#e8d7fd',
+  '300': '#d6b7fb',
+  '400': '#bd89f7',
+  '500': '#9b4eef',
+  '600': '#8429e0',
+  '700': '#7a29c7',
+  '800': '#6727a2',
+  '900': '#542083',
 };
 
 export default {
   darkMode: 'class',
   content: [
     './app/**/*.{js,jsx,ts,tsx}',
-    './.ladle/**/*.{js,jsx,ts,tsx}',
+    './.storybook/**/*.{js,jsx,ts,tsx}',
     '../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
@@ -42,7 +42,7 @@ export default {
           ...Object.fromEntries(
             Object.entries(primary).map(([key, value]) => [key, value]),
           ),
-          DEFAULT: primary[600],
+          DEFAULT: primary[500],
         },
         secondary: {
           ...Object.fromEntries(

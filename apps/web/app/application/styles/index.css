@@ -1,10 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.ladle-main {
-  padding: 0;
-}
+@import url('remixicon/fonts/remixicon.css');
+@import url('./normalize.css');
+@import url('./tailwind.css');
 
 body {
   background-color: #000 !important;

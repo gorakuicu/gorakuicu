@@ -1,4 +1,3 @@
-import { NextUIProvider } from '@nextui-org/react';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import type { LinksFunction } from '@remix-run/node';
 import type { V2_MetaFunction } from '@remix-run/react';
@@ -12,11 +11,11 @@ import {
 } from '@remix-run/react';
 
 import styles from '~/application/styles/index.css';
-import normalize from '~/application/styles/normalize.css';
+
+import { Providers } from './application/providers';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
-  { rel: 'stylesheet', href: normalize },
   { rel: 'stylesheet', href: styles },
 ];
 
@@ -40,14 +39,14 @@ export default function App() {
         <Links />
       </head>
       <body className="min-h-screen">
-        <NextUIProvider>
+        <Providers>
           <main className="dark text-foreground bg-background">
             <Outlet />
             <ScrollRestoration />
             <Scripts />
             <LiveReload />
           </main>
-        </NextUIProvider>
+        </Providers>
       </body>
     </html>
   );
