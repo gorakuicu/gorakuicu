@@ -1,4 +1,5 @@
 import type { NavbarProps } from '@nextui-org/react';
+
 import { Navbar } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import { forwardRef } from 'react';

@@ -7,7 +7,7 @@ import SiteLabel from '~/shared/ui/brand/site-label';
 export function NavbarBrand() {
   return (
     <NavbarBrandBase>
-      <Link color="primary" to="/" className="flex">
+      <Link className="flex items-center" color="primary" to="/">
         <Logo />
         <Spacer x={2} />
         <SiteLabel />

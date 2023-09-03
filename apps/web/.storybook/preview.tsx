@@ -62,10 +62,6 @@ export const parameters = {
     // defaultViewport: '2xl',
   },
   layout: 'fullscreen',
-  locale: 'en',
-  locales: {
-    en: 'English',
-  },
 };
 
 export const globalTypes = {

@@ -1,5 +1,6 @@
-import { nextui } from '@nextui-org/react';
 import type { Config } from 'tailwindcss';
+
+import { nextui } from '@nextui-org/react';
 
 export const blue = {
   50: '#e6f1fe',
@@ -28,11 +29,18 @@ export const primary = {
 };
 
 export default {
-  darkMode: 'class',
   content: [
     './app/**/*.{js,jsx,ts,tsx}',
     './.storybook/**/*.{js,jsx,ts,tsx}',
     '../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+  ],
+  darkMode: 'class',
+  plugins: [
+    nextui({
+      addCommonColors: true,
+      defaultExtendTheme: 'dark',
+      defaultTheme: 'dark',
+    }),
   ],
   theme: {
     extend: {
@@ -53,11 +61,4 @@ export default {
       },
     },
   },
-  plugins: [
-    nextui({
-      defaultTheme: 'dark',
-      defaultExtendTheme: 'dark',
-      addCommonColors: true,
-    }),
-  ],
 } satisfies Config;

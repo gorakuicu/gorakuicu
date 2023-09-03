@@ -1,20 +1,20 @@
 import {
   type ComponentType,
-  createElement,
   Fragment,
   type ReactNode,
+  createElement,
 } from 'react';
 
 import { list } from './list';
 
 type ProvidersProperties = {
-  providers?: ComponentType[];
   children: ReactNode;
+  providers?: ComponentType[];
 };
 
 export function Providers({
-  providers = list as ComponentType[],
   children,
+  providers = list as ComponentType[],
 }: ProvidersProperties) {
   return createElement(Fragment, {}, wrapWithProviders(children, providers));
 }

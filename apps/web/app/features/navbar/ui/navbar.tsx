@@ -10,14 +10,14 @@ export function Navbar() {
   const { isScrolled = false, onChangeScroll = () => {} } = useScrollPosition();
 
   const animationProperties = {
-    initial: true,
     animate: {
-      width: isScrolled ? 'auto' : 'max-content',
       borderRadius: isScrolled ? 0 : '1.5rem',
       transition: {
         duration: 0.2,
       },
+      width: isScrolled ? 'auto' : 'max-content',
     },
+    initial: true,
   };
 
   return (
@@ -25,8 +25,8 @@ export function Navbar() {
       <div className="h-8" />
       <MotionNavbar
         {...animationProperties}
+        className="mx-auto justify-around bg-zinc-900/60"
         isBordered
-        className="bg-gray-800 bg-opacity-50 mx-auto justify-around"
         onScrollPositionChange={onChangeScroll}
       >
         <NavbarBrand />

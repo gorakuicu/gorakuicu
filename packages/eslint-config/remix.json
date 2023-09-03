@@ -3,14 +3,15 @@
   "extends": [
     "@remix-run/eslint-config",
     "@remix-run/eslint-config/node",
+    "plugin:perfectionist/recommended-natural",
     "plugin:unicorn/recommended",
     "plugin:boundaries/recommended",
+    "plugin:tailwindcss/recommended",
     "plugin:prettier/recommended"
   ],
   "plugins": [
     "boundaries",
-    "unused-imports",
-    "simple-import-sort"
+    "unused-imports"
   ],
   "env": {
     "es2024": true
@@ -67,8 +68,6 @@
       }
     ],
     "sort-imports": "off",
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
     "boundaries/element-types": [
       2,
       {

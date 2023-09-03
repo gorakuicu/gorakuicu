@@ -48,6 +48,8 @@ const config: StorybookConfig = {
           '@remix-run/testing',
           '@storybook/theming',
           'storybook-dark-mode',
+          'react-icons',
+          '@ngneat/falso',
         ],
       },
     });

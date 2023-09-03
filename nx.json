@@ -14,7 +14,7 @@
           "nx:check",
           "nx:format",
           "nx:lint",
-          "nx:ladle"
+          "nx:storybook"
         ]
       }
     }
@@ -65,9 +65,9 @@
         "format"
       ]
     },
-    "nx:ladle": {
+    "nx:storybook": {
       "dependsOn": [
-        "ladle"
+        "storybook"
       ]
     }
   }

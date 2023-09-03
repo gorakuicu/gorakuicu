@@ -10,13 +10,16 @@ module.exports = {
     '!./.storybook/**/*',
   ],
   parserOptions: {
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname, // eslint-disable-line unicorn/prefer-module
-    ecmaVersion: 'latest',
-    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
+    ecmaVersion: 'latest',
+    project: './tsconfig.json',
+    sourceType: 'module',
+    tsconfigRootDir: __dirname, // eslint-disable-line unicorn/prefer-module
+  },
+  rules: {
+    'tailwindcss/no-custom-classname': 'off',
   },
   settings: {
     'import/resolver': {
@@ -24,6 +27,11 @@ module.exports = {
         project: './tsconfig.json',
       },
     },
+    tailwindcss: {
+      callees: ['classnames', 'clsx'],
+      config: './tailwind.config.js', // returned from `loadConfig()` utility if not provided
+      cssFilesRefreshRate: 5000,
+      removeDuplicates: true,
+    },
   },
-  rules: {},
 };

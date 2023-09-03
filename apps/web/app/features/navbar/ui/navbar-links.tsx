@@ -7,6 +7,7 @@ import {
   PopoverTrigger,
 } from '@nextui-org/react';
 import { Link } from '@remix-run/react';
+import { TiThMenu } from 'react-icons/ti';
 
 import { links } from '../model';
 
@@ -14,15 +15,17 @@ export function NavbarLinks() {
   return (
     <>
       {/* md lg xl 2xl */}
-      <NavbarContent justify="center" className="gap-4 hidden md:flex">
+      <NavbarContent className="hidden gap-2 md:flex" justify="center">
         {links.map((link) => (
           <NavbarItem key={link.href}>
             <Link
+              className="font-normal tracking-wider"
               color="primary"
               to={link.href}
-              className="font-normal tracking-wider"
             >
-              {link.label}
+              <Button color="primary" variant="light">
+                {link.label}
+              </Button>
             </Link>
           </NavbarItem>
         ))}
@@ -31,33 +34,38 @@ export function NavbarLinks() {
       {/* xs sm */}
       <div className="flex md:hidden">
         <Popover
+          containerPadding={100}
+          offset={10}
           placement="bottom"
           showArrow
-          offset={10}
-          containerPadding={100}
           size="sm"
         >
           <PopoverTrigger>
-            <Button color="primary" variant="flat" className="capitalize">
-              <i className="ri-menu-line"></i>
+            <Button
+              className="capitalize"
+              color="primary"
+              isIconOnly
+              variant="flat"
+            >
+              <TiThMenu />
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[200px]">
             {() => (
-              <div className="px-1 py-2 w-full">
-                <div className="mt-2 flex flex-col gap-2 w-full">
+              <div className="w-full px-1 py-2">
+                <div className="mt-2 flex w-full flex-col gap-2">
                   {links.map((link) => (
                     <Link
-                      key={link.href}
-                      color="primary"
-                      to={link.href}
                       className="font-normal tracking-wider"
+                      color="primary"
+                      key={link.href}
+                      to={link.href}
                     >
                       <Button
-                        variant="flat"
+                        className="w-full"
                         color="primary"
                         size="lg"
-                        className="w-full"
+                        variant="flat"
                       >
                         {link.label}
                       </Button>

@@ -16,5 +16,9 @@
     "forceConsistentCasingInFileNames": true,
 
     "noEmit": true
-  }
+  },
+  "moduleResolution": [
+    "node_modules",
+    "node"
+  ]
 }
