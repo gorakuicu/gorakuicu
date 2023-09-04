@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useDeferredValue, useState } from 'react';
 
 export function useScrollPosition() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,5 +18,5 @@ export function useScrollPosition() {
     [isScrolled],
   );
 
-  return { isScrolled, onChangeScroll };
+  return useDeferredValue({ isScrolled, onChangeScroll });
 }

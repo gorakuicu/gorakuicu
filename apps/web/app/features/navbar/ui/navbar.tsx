@@ -7,7 +7,7 @@ import { MotionNavbar } from './motion-navbar';
 import { NavbarLinks } from './navbar-links';
 
 export function Navbar() {
-  const { isScrolled = false, onChangeScroll = () => {} } = useScrollPosition();
+  const { isScrolled, onChangeScroll } = useScrollPosition();
 
   const animationProperties = {
     animate: {
@@ -17,15 +17,19 @@ export function Navbar() {
       },
       width: isScrolled ? 'auto' : 'max-content',
     },
-    initial: true,
+    initial: {
+      borderRadius: '1.5rem',
+      width: 'max-content',
+    },
   };
 
   return (
     <>
       <div className="h-8" />
       <MotionNavbar
+        key="navbar"
         {...animationProperties}
-        className="mx-auto justify-around bg-zinc-900/60"
+        className="mx-auto w-max justify-around rounded-3xl bg-zinc-900/60"
         isBordered
         onScrollPositionChange={onChangeScroll}
       >
