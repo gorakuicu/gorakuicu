@@ -17,8 +17,5 @@
 
     "noEmit": true
   },
-  "moduleResolution": [
-    "node_modules",
-    "node"
-  ]
+  "moduleResolution": "node"
 }

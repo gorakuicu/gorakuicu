@@ -14,4 +14,5 @@ module.exports = {
   postcss: true,
   serverMinify: true,
   watchPaths: ["app", "package.json", "tailwind.config.js", "postcss.config.js", "remix.config.js", "tsconfig.json"],
+  serverDependenciesToBundle: ["@remix-pwa/sw", "@remix-pwa/push"]
 };

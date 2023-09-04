@@ -2,5 +2,9 @@
 @import url('./tailwind.css');
 
 body {
-  background-color: #000 !important;
+  background-color: #333333 !important;
+}
+
+body > div {
+  height: 100vh;
 }

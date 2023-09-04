@@ -45,7 +45,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#000',
+        background: '#333333',
         primary: {
           ...Object.fromEntries(
             Object.entries(primary).map(([key, value]) => [key, value]),

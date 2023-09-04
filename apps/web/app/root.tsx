@@ -1,6 +1,7 @@
 import type { LinksFunction } from '@remix-run/node';
 import type { V2_MetaFunction } from '@remix-run/react';
 
+import { useSWEffect } from '@remix-pwa/sw';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import {
   Links,
@@ -31,11 +32,14 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export default function App() {
+  useSWEffect();
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width,initial-scale=1" name="viewport" />
+        <link href="/site.webmanifest" rel="manifest" />
         <Meta />
         <Links />
       </head>

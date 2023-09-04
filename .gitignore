@@ -11,9 +11,9 @@
 **/out/
 **/build
 **/.vercel
-**/.turbo
 **/robots.txt
 **/sitemap*.xml
+**/entry.workbox.js
 
 # misc
 **/.DS_Store

@@ -10,46 +10,6 @@ export const meta: V2_MetaFunction = () => {
     { content: '#f1f0ef', name: 'msapplication-TileColor' },
     { content: '#9750dd', name: 'theme-color' },
 
-    // favicon and icon specific
-    {
-      href: '/apple-touch-icon.png',
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      tagName: 'link',
-    },
-    {
-      href: '/favicon-32x32.png',
-      rel: 'icon',
-      sizes: '32x32',
-      tagName: 'link',
-      type: 'image/png',
-    },
-    {
-      href: '/android-chrome-192x192.png',
-      rel: 'icon',
-      sizes: '192x192',
-      tagName: 'link',
-      type: 'image/png',
-    },
-    {
-      href: '/favicon-16x16.png',
-      rel: 'icon',
-      sizes: '16x16',
-      tagName: 'link',
-      type: 'image/png',
-    },
-    {
-      href: '/site.webmanifest',
-      rel: 'manifest',
-      tagName: 'link',
-    },
-    {
-      color: '#9750dd',
-      href: '/safari-pinned-tab.svg',
-      rel: 'mask-icon',
-      tagName: 'link',
-    },
-
     // open graph tags
     {
       content: "gorakuicu - 🥵 NSFW author's marketplace",
