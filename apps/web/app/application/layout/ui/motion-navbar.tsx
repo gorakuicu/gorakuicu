@@ -4,7 +4,7 @@ import { Navbar } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import { forwardRef, memo } from 'react';
 
-const MotionNavbarBase = memo(
+const MotionHeaderBase = memo(
   forwardRef<HTMLElement, Readonly<NavbarProps>>(
     (
       properties: Readonly<NavbarProps>,
@@ -15,10 +15,10 @@ const MotionNavbarBase = memo(
   ),
 );
 
-MotionNavbarBase.displayName = 'MotionNavbarBase';
+MotionHeaderBase.displayName = 'MotionHeaderBase';
 
-const MotionNavbar = motion(MotionNavbarBase);
+const MotionHeader = motion(MotionHeaderBase);
 
-MotionNavbar.displayName = 'MotionNavbar';
+MotionHeader.displayName = 'MotionHeader';
 
-export { MotionNavbar };
+export { MotionHeader };
