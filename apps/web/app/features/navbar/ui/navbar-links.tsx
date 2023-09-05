@@ -42,6 +42,7 @@ export function NavbarLinks() {
         >
           <PopoverTrigger>
             <Button
+              aria-label="menu-button"
               className="capitalize"
               color="primary"
               isIconOnly
