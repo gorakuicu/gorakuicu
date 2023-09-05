@@ -1,27 +1,23 @@
-import {
-  type ComponentType,
-  Fragment,
-  type ReactNode,
-  createElement,
-} from 'react';
+import type { NextUIProviderProps } from '@nextui-org/react';
+import type { ComponentType, ReactNode } from 'react';
 
-import { list } from './list';
+import { NextUIProvider } from '@nextui-org/react';
+import { Fragment, createElement } from 'react';
 
 type ProvidersProperties = {
   children: ReactNode;
-  providers?: ComponentType[];
+  providers?: ComponentType<NextUIProviderProps>[];
 };
 
-export function Providers({
-  children,
-  providers = list as ComponentType[],
-}: ProvidersProperties) {
+export const list: ComponentType<NextUIProviderProps>[] = [NextUIProvider];
+
+export function Providers({ children, providers = list }: ProvidersProperties) {
   return createElement(Fragment, {}, wrapWithProviders(children, providers));
 }
 
 function wrapWithProviders(
   children: ReactNode,
-  providers: ComponentType[],
+  providers: ComponentType<NextUIProviderProps>[],
 ): ReactNode {
   if (providers.length === 0) {
     return children;
@@ -29,7 +25,11 @@ function wrapWithProviders(
 
   const [Provider, ...rest] = providers;
 
+  if (!Provider) {
+    return children;
+  }
+
   const element = wrapWithProviders(children, rest);
 
-  return createElement(Provider as React.ElementType, {}, element);
+  return createElement(Provider, { children: element });
 }

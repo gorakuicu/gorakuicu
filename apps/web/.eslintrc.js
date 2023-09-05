@@ -5,8 +5,12 @@ module.exports = {
   ignorePatterns: [
     'node_modules/',
     'dist/',
+    '.eslintrc.js',
     '!./**/*.ts',
     '!./**/*.tsx',
+    '!./**/*.js',
+    '!./**/*.jsx',
+    '!./**/*.json',
     '!./.storybook/**/*',
   ],
   parserOptions: {

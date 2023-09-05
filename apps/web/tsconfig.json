@@ -1,12 +1,20 @@
 {
   "extends": "@gorakuicu/tsconfig/remix",
-  "include": ["remix.environment.d.ts", "**/*.ts", "**/*.tsx", ".storybook/*"],
+  "include": [
+    "remix.environment.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    ".storybook/*"
+  ],
   "compilerOptions": {
     "types": ["vitest/globals"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"]
     },
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true
   }
 }

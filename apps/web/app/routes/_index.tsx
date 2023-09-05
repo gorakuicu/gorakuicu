@@ -1,7 +1,7 @@
 import { CommonLayout } from '~/application/layout';
 
 export default function Index() {
-  return <CommonLayout children={undefined} />;
+  return <CommonLayout />;
 }
 
 export { meta } from './_metadata';

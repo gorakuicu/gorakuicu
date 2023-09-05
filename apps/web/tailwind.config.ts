@@ -16,11 +16,11 @@ export const blue = {
 };
 
 export const primary = {
-  '50': '#faf5ff',
-  '100': '#f2e9fe',
-  '200': '#e8d7fd',
-  '300': '#d6b7fb',
-  '400': '#bd89f7',
+  '50': '#f2e9fe',
+  '100': '#e8d7fd',
+  '200': '#d6b7fb',
+  '300': '#bd89f7',
+  '400': '#b46bf4',
   '500': '#9b4eef',
   '600': '#8429e0',
   '700': '#7a29c7',
@@ -50,7 +50,7 @@ export default {
           ...Object.fromEntries(
             Object.entries(primary).map(([key, value]) => [key, value]),
           ),
-          DEFAULT: primary[500],
+          DEFAULT: primary[400],
         },
         secondary: {
           ...Object.fromEntries(

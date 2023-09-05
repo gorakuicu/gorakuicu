@@ -3,13 +3,29 @@
   "extends": [
     "@remix-run/eslint-config",
     "@remix-run/eslint-config/node",
+    "plugin:total-functions/recommended",
+    "plugin:boundaries/recommended",
     "plugin:perfectionist/recommended-natural",
     "plugin:unicorn/recommended",
-    "plugin:boundaries/recommended",
+    "plugin:sonar/recommended",
+    "plugin:promise/recommended",
+    "plugin:security/recommended",
+    "plugin:array-func/recommended",
+    "plugin:react-perf/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:ssr-friendly/recommended",
+    "plugin:json/recommended",
     "plugin:tailwindcss/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "eslint:recommended"
   ],
   "plugins": [
+    "total-functions",
+    "eslint-plugin-no-explicit-type-exports",
+    "ssr-friendly",
+    "validate-jsx-nesting",
+    "react",
     "boundaries",
     "unused-imports"
   ],
@@ -24,39 +40,35 @@
     "node_modules/",
     "dist/"
   ],
-  "settings": {
-    "boundaries/elements": [
-      {
-        "type": "1.application",
-        "pattern": "1.application/*"
-      },
-      {
-        "type": "2.pages",
-        "pattern": "2.pages/*"
-      },
-      {
-        "type": "3.widgets",
-        "pattern": "3.widgets/*"
-      },
-      {
-        "type": "4.features",
-        "pattern": "4.features/*"
-      },
-      {
-        "type": "5.entities",
-        "pattern": "5.entities/*"
-      },
-      {
-        "type": "6.shared",
-        "pattern": "6.shared/*"
-      }
-    ]
-  },
+  "overrides": [
+    {
+      "files": [
+        "**/(__tests__|__e2e__)/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test|e2e).[jt]s?(x)"
+      ],
+      "extends": [
+        "plugin:testing-library/react",
+        "plugin:jest-formatting/recommended"
+      ]
+    }
+  ],
   "rules": {
     "import/no-default-export": "off",
-    "@typescript-eslint/restrict-plus-operands": "off",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "off",
+    "array-func/prefer-array-from": "off",
+    "total-functions/no-unsafe-readonly-mutable-assignment": "off",
+    "react/no-children-prop": "off",
+    "unicorn/no-keyword-prefix": "warn",
+    "unicorn/string-content": "warn",
+    "no-explicit-type-exports/no-explicit-type-exports": "error",
+    "validate-jsx-nesting/no-invalid-jsx-nesting": "error",
+    "react/jsx-no-target-blank": [
+      "error",
+      {
+        "allowReferrer": false,
+        "enforceDynamicLinks": "always",
+        "warnOnSpreadAttributes": true
+      }
+    ],
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
@@ -67,64 +79,91 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "sort-imports": "off",
     "boundaries/element-types": [
       2,
       {
         "default": "disallow",
         "rules": [
           {
-            "from": "1.application",
+            "from": "application",
             "allow": [
-              "1.application",
-              "2.pages",
-              "3.widgets",
-              "4.features",
-              "5.entities",
-              "6.shared"
+              "application",
+              "pages",
+              "widgets",
+              "features",
+              "entities",
+              "shared"
             ]
           },
           {
-            "from": "2.pages",
+            "from": "pages",
             "allow": [
-              "2.pages",
-              "3.widgets",
-              "4.features",
-              "5.entities",
-              "6.shared"
+              "pages",
+              "widgets",
+              "features",
+              "entities",
+              "shared"
             ]
           },
           {
-            "from": "3.widgets",
+            "from": "widgets",
             "allow": [
-              "3.widgets",
-              "4.features",
-              "5.entities",
-              "6.shared"
+              "widgets",
+              "features",
+              "entities",
+              "shared"
             ]
           },
           {
-            "from": "4.features",
+            "from": "features",
             "allow": [
-              "4.features",
-              "5.entities",
-              "6.shared"
+              "features",
+              "entities",
+              "shared"
             ]
           },
           {
-            "from": "5.entities",
+            "from": "entities",
             "allow": [
-              "5.entities",
-              "6.shared"
+              "entities",
+              "shared"
             ]
           },
           {
-            "from": "6.shared",
+            "from": "shared",
             "allow": [
-              "6.shared"
+              "shared"
             ]
           }
         ]
+      }
+    ]
+  },
+  "settings": {
+    "boundaries/elements": [
+      {
+        "type": "application",
+        "pattern": "application/*"
+      },
+      {
+        "type": "pages",
+        "pattern": "pages/*"
+      },
+      {
+        "type": "widgets",
+        "pattern": "widgets/*"
+      },
+      {
+        "type": "features",
+        "pattern": "features/*"
+      },
+      {
+        "type": "entities",
+        "pattern": "entities/*"
+      },
+      {
+        "type": "shared",
+        "pattern": "shared/*"
       }
     ]
   }

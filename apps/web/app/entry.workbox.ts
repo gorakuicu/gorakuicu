@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /// <reference lib="WebWorker" />
 
 import { Push } from '@remix-pwa/push';
