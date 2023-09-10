@@ -14,7 +14,7 @@
           "nx:check",
           "nx:format",
           "nx:lint",
-          "nx:storybook"
+          "nx:sb"
         ]
       }
     }
@@ -65,9 +65,9 @@
         "format"
       ]
     },
-    "nx:storybook": {
+    "nx:sb": {
       "dependsOn": [
-        "storybook"
+        "sb"
       ]
     }
   }

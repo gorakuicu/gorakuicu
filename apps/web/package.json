@@ -18,8 +18,8 @@
     "format": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "lint:fix": "npm run lint -- --fix",
     "clean:basics": "rimraf .cache storybook-static reports",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "sb": "storybook dev -p 6006",
+    "sb:build": "storybook build"
   },
   "dependencies": {
     "@nextui-org/react": "2.1.10",
@@ -28,17 +28,17 @@
     "@remix-run/react": "1.19.3",
     "@remix-run/serve": "1.19.3",
     "clsx": "2.0.0",
-    "framer-motion": "10.16.3",
+    "framer-motion": "10.16.4",
     "isbot": "3.6.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "4.10.1",
+    "react-icons": "4.11.0",
     "remix-utils": "6.6.0",
     "npm-run-all": "4.1.5",
     "cross-env": "7.0.3",
     "dotenv": "16.3.1",
     "web-push": "3.6.5",
-    "@remix-pwa/sw": "1.1.4",
+    "@remix-pwa/sw": "1.1.5",
     "@remix-pwa/push": "1.0.2",
     "workbox-background-sync": "7.0.0",
     "workbox-routing": "7.0.0",
@@ -71,10 +71,10 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
-    "eslint-plugin-perfectionist": "1.5.1",
+    "eslint-plugin-perfectionist": "2.0.1",
     "eslint-plugin-storybook": "0.6.13",
     "eslint-plugin-tailwindcss": "3.13.0",
-    "happy-dom": "10.11.2",
+    "happy-dom": "11.0.2",
     "postcss": "8.4.29",
     "storybook": "7.4.0",
     "storybook-addon-themes": "6.1.0",
@@ -82,7 +82,7 @@
     "storybook-mobile": "1.0.1",
     "tailwindcss": "3.3.3",
     "vite": "4.4.9",
-    "vite-tsconfig-paths": "4.2.0",
-    "vitest": "0.34.3"
+    "vite-tsconfig-paths": "4.2.1",
+    "vitest": "0.34.4"
   }
 }

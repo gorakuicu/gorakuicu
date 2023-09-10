@@ -88,7 +88,7 @@
             "from": "application",
             "allow": [
               "application",
-              "pages",
+              "routes",
               "widgets",
               "features",
               "entities",
@@ -96,9 +96,9 @@
             ]
           },
           {
-            "from": "pages",
+            "from": "routes",
             "allow": [
-              "pages",
+              "routes",
               "widgets",
               "features",
               "entities",
@@ -146,8 +146,8 @@
         "pattern": "application/*"
       },
       {
-        "type": "pages",
-        "pattern": "pages/*"
+        "type": "routes",
+        "pattern": "routes/*"
       },
       {
         "type": "widgets",
