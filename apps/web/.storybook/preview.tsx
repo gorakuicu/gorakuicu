@@ -69,9 +69,9 @@ const preview: Preview = {
           path: '/*',
           action: () => ({ redirect: '/' }),
           loader: () => ({ redirect: '/' }),
-          Component() { // <-- here
+          Component() {
             return <Story />;
-          }
+          },
         },
       ]);
 
@@ -79,7 +79,7 @@ const preview: Preview = {
         <Providers>
           <RemixStub />
         </Providers>
-      )
+      );
     },
   ],
 };
