@@ -2,29 +2,10 @@ import '~/application/styles/index.css';
 import './storybook.css';
 
 import { createRemixStub } from '@remix-run/testing/dist/create-remix-stub';
-import { StoryFn } from '@storybook/react';
+import { Preview, StoryFn } from '@storybook/react';
 import { Providers } from '~/application/providers';
 import theme from './theme';
 import { viewports } from './viewports';
-
-const withAllTheThings = (Story: StoryFn) => {
-  const RemixStub = createRemixStub([
-    {
-      path: '/*',
-      element: <Story />,
-      action: () => ({ redirect: '/' }),
-      loader: () => ({ redirect: '/' }),
-    },
-  ]);
-
-  return (
-    <Providers>
-      <RemixStub />
-    </Providers>
-  );
-};
-
-export const decorators = [withAllTheThings];
 
 /** @type { import('@storybook/react').Preview } */
 export const parameters = {
@@ -79,3 +60,28 @@ export const globalTypes = {
     },
   },
 };
+
+const preview: Preview = {
+  decorators: [
+    (Story) => {
+      const RemixStub = createRemixStub([
+        {
+          path: '/*',
+          action: () => ({ redirect: '/' }),
+          loader: () => ({ redirect: '/' }),
+          Component() { // <-- here
+            return <Story />;
+          }
+        },
+      ]);
+
+      return (
+        <Providers>
+          <RemixStub />
+        </Providers>
+      )
+    },
+  ],
+};
+
+export default preview;

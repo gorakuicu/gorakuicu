@@ -1,5 +1,5 @@
 import type { LinksFunction } from '@remix-run/node';
-import type { V2_MetaFunction } from '@remix-run/react';
+import type { MetaFunction } from '@remix-run/react';
 
 import { useSWEffect } from '@remix-pwa/sw';
 import { cssBundleHref } from '@remix-run/css-bundle';
@@ -21,7 +21,7 @@ export const links: LinksFunction = () => [
   { href: styles, rel: 'stylesheet' },
 ];
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     {
       content: 'width=device-width,initial-scale=1',

@@ -1,6 +1,6 @@
-import type { V2_MetaFunction } from '@remix-run/react';
+import type { MetaFunction } from '@remix-run/react';
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [
     // general meta tags
     { title: "gorakuicu - 🥵 NSFW author's marketplace" },

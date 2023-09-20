@@ -20,5 +20,5 @@ startTransition(() => {
 
 // loadServiceWorker();
 loadServiceWorker({
-  serviceWorkerUrl: '/entry.workbox.js',
+  serviceWorkerUrl: '/entry.worker.js',
 });

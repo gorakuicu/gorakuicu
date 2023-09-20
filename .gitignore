@@ -14,6 +14,7 @@
 **/robots.txt
 **/sitemap*.xml
 **/entry.workbox.js
+**/entry.worker.js
 
 # misc
 **/.DS_Store
@@ -95,3 +96,6 @@ workbox-*.js*
 !.env*.example
 
 storybook-static
+
+# bun.sh
+yarn.lock

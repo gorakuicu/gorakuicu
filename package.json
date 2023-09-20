@@ -1,33 +1,50 @@
 {
   "name": "gorakuicu",
   "version": "1.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "nx:dev": "FORCE_COLOR=1 nx run-many --output-style stream -t dev --all",
-    "nx:build": "FORCE_COLOR=1 nx run-many --output-style stream -t build --all",
-    "nx:start": "FORCE_COLOR=1 nx run-many --output-style stream -t start --all",
-    "nx:typecheck": "FORCE_COLOR=1 nx run-many --output-style stream -t typecheck --all",
-    "nx:coverage": "FORCE_COLOR=1 nx run-many --output-style stream -t coverage --all",
-    "nx:test": "FORCE_COLOR=1 nx run-many --output-style stream -t test --all",
-    "nx:lint": "FORCE_COLOR=1 nx run-many --output-style stream -t lint --all",
-    "nx:check": "FORCE_COLOR=1 pnpm nx:format && pnpm nx:lint && pnpm nx:typecheck && pnpm nx:test",
-    "nx:format": "FORCE_COLOR=1 nx run-many --output-style stream -t format --all",
-    "nx:lint:fix": "FORCE_COLOR=1 pnpm nx:format && nx run-many -t lint  --output-style stream--all -- --fix",
-    "nx:sb": "FORCE_COLOR=1 nx run-many --output-style stream -t sb --all",
+    "build": "bun scripts/run.js build",
+    "check": "bun format && bun lint && bun typecheck && bun test",
     "cm": "cz",
-    "cm:all": "git add . && cz && node ./scripts/git/push.js",
-    "cm:stage": "pnpm cm:all && pnpm stage",
-    "release": "node ./scripts/git/release.js",
-    "release:prod": "node ./scripts/git/release.js production",
+    "cm:all": "git add . && cz && bun ./scripts/git/push.js",
+    "cm:stage": "bun cm:all && bun stage",
+    "coverage": "bun scripts/run.js coverage",
+    "dev": "bun scripts/run.js dev",
+    "format": "bun scripts/run.js format",
+    "is:ci": "bun scripts/ci/is.js",
+    "lint": "bun scripts/run.js lint",
     "lint:cm": "commitlint --config commitlint.config.cjs --from HEAD",
-    "is:ci": "node scripts/ci/is.js",
-    "postinstall": "npm run is:ci || (husky install && npx @evilmartians/lefthook install && npx @evilmartians/lefthook add pre-commit)"
+    "lint:fix": "bun format && nx run-many -t lint --output-style stream--all -- --fix",
+    "sb": "bun scripts/run.js sb",
+    "start": "bun scripts/run.js start",
+    "test": "bun scripts/run.js test",
+    "typecheck": "bun scripts/run.js typecheck",
+    "updates": "ncu -u && ncu --workspaces -u && bun i",
+    "postinstall": "bun is:ci || (husky install && npx @evilmartians/lefthook install && npx @evilmartians/lefthook add pre-commit)"
+  },
+  "trustedDependencies": [
+    "@evilmartians/lefthook",
+    "husky",
+    "prisma",
+    "@prisma/client"
+  ],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "superjson": "1.13.1"
   },
   "devDependencies": {
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
+    "@happy-dom/global-registrator": "^12.1.2",
+    "bun-types": "latest",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.49.0",
+    "happy-dom": "12.1.2",
     "husky": "8.0.3",
     "nx": "16.8.1",
     "nx-cloud": "latest",
@@ -35,18 +52,15 @@
     "prettier-plugin-tailwindcss": "0.5.4",
     "typescript": "5.2.2"
   },
-  "engines": {
-    "node": ">=18.16.0",
-    "npm": "please-use-pnpm",
-    "pnpm": ">=8.6.0"
-  },
-  "packageManager": "pnpm@8.6.0",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "superjson": "1.13.1"
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=18.16.0",
+    "npm": "please-use-bun",
+    "pnpm": "please-use-bun"
   }
 }

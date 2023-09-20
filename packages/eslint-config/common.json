@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "extends": [
+    "plugin:perfectionist/recommended-natural",
+    "plugin:unicorn/recommended",
+    "plugin:sonar/recommended",
+    "plugin:promise/recommended",
+    "plugin:security/recommended",
+    "plugin:array-func/recommended",
+    "plugin:json/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "eslint-plugin-no-explicit-type-exports",
+    "unused-imports"
+  ],
+  "env": {
+    "es2024": true
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/(__tests__|__e2e__)/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test|e2e).[jt]s?(x)"
+      ],
+      "extends": [
+        "plugin:jest-formatting/recommended"
+      ]
+    }
+  ],
+  "rules": {
+    "import/no-default-export": "off",
+    "array-func/prefer-array-from": "off",
+    "unicorn/no-keyword-prefix": "warn",
+    "unicorn/string-content": "warn",
+    "no-explicit-type-exports/no-explicit-type-exports": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  }
+}

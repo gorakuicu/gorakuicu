@@ -1,0 +1,166 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Currencies {
+  USD
+  EUR
+  RUB
+  BTC
+  ETH
+  USDT
+}
+
+model Payment {
+  id             String     @id @default(cuid()) @map("_id")
+  user_id        String
+  product_id     String
+  amount         Float
+  currency       Currencies
+  payment_method String
+  date           DateTime   @default(now())
+  Product        Product[]
+  User           User?      @relation(fields: [userId], references: [id])
+  userId         String?
+  Admin          Admin?     @relation(fields: [adminId], references: [id])
+  adminId        String?
+}
+
+model Metadata {
+  id         String    @id @default(cuid()) @map("_id")
+  product_id String
+  dimensions String
+  format     String
+  resolution String
+  Product    Product[]
+}
+
+model OpenGraph {
+  id          String   @id @default(cuid()) @map("_id")
+  product_id  String
+  title       String
+  description String
+  keywords    String[]
+  url         String
+  alt         String
+  type        String
+  image       String
+  site_name   String
+  locale      String
+  Seo         Seo[]
+}
+
+model TwitterCard {
+  id          String @id @default(cuid()) @map("_id")
+  card        String
+  site        String
+  creator     String
+  title       String
+  description String
+  image       String
+  Seo         Seo[]
+}
+
+model Seo {
+  id            String      @id @default(cuid()) @map("_id")
+  product_id    String
+  title         String
+  description   String
+  keywords      String[]
+  canonical     String
+  alt           String
+  open_graph    OpenGraph   @relation(fields: [openGraphId], references: [id])
+  twitter_card  TwitterCard @relation(fields: [twitterCardId], references: [id])
+  openGraphId   String
+  twitterCardId String
+  Product       Product[]
+}
+
+model Product {
+  id           String     @id @default(cuid()) @map("_id")
+  title        String
+  description  String
+  price        Float
+  currency     Currencies
+  buy_link     String
+  payment      Payment    @relation(fields: [paymentId], references: [id])
+  tags         String[]
+  metadata     Metadata   @relation(fields: [metadataId], references: [id])
+  seo          Seo        @relation(fields: [seoId], references: [id])
+  created_at   DateTime   @default(now())
+  edited_at    DateTime   @updatedAt
+  hidden_until DateTime?
+  paymentId    String
+  metadataId   String
+  seoId        String
+}
+
+type Page {
+  current Int
+  size    Int
+  total   Int
+}
+
+type Sort {
+  created_at String
+  price      String
+  rate       String
+  views      String
+}
+
+type ProductFilters {
+  page         Page
+  perPage      Int
+  keywords     String
+  price        Float
+  views        Int
+  rate         Float
+  created_at   DateTime
+  paid_at      DateTime
+  isPaid       Boolean
+  platted_at   DateTime
+  isPlanned    Boolean
+  hidden_at    DateTime
+  hidden_until DateTime
+  isHidden     Boolean
+}
+
+type Search {
+  query   String
+  filters ProductFilters
+  sort    Sort
+}
+
+model User {
+  id             String    @id @default(cuid()) @map("_id")
+  email          String    @unique
+  password       String
+  hasTotp        Boolean   @default(false)
+  created_at     DateTime  @default(now())
+  visited_at     DateTime  @default(now())
+  edited_at      DateTime  @updatedAt
+  last_action_at DateTime  @default(now())
+  role           String    @default("user")
+  payments       Payment[]
+}
+
+model Admin {
+  id             String    @id @default(cuid()) @map("_id")
+  email          String    @unique
+  password       String
+  hasTotp        Boolean   @default(false)
+  created_at     DateTime  @default(now())
+  visited_at     DateTime  @default(now())
+  edited_at      DateTime  @updatedAt
+  last_action_at DateTime  @default(now())
+  role           String    @default("admin")
+  payments       Payment[]
+}

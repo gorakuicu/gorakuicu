@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@gorakuicu/tsconfig/remix",
   "include": [
     "remix.environment.d.ts",
@@ -9,8 +10,8 @@
     ".storybook/*"
   ],
   "compilerOptions": {
-    "types": ["vitest/globals"],
     "baseUrl": ".",
+    "types": ["bun-types"],
     "paths": {
       "~/*": ["./app/*"]
     },

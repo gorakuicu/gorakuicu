@@ -1,7 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-# export $(grep -v '^#' .env | xargs)
 . .env
 
 ENV_URL="${CI_ENVIRONMENT_URL:-}"

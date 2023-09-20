@@ -9,17 +9,17 @@ pre-commit:
   commands:
     formatter:
       glob: '*.{js,jsx,ts,tsx,css,json,md,yml}'
-      run: pnpm nx:format && git add
+      run: bun format && git add
     lint:
       glob: '*.{js,jsx,ts,tsx}'
-      run: pnpm nx:lint --no-error-on-unmatched-pattern --quiet
+      run: bun lint --no-error-on-unmatched-pattern --quiet
     typecheck:
       glob: '*.{ts,tsx}'
-      run: pnpm nx:typecheck
+      run: bun typecheck
     # tests:
     #   glob: '*.{js,jsx,ts,tsx}'
-    #   run: pnpm nx:test
+    #   run: bun test
     # coverage:
-    #   run: pnpm nx:coverage
+    #   run: bun coverage
     commitlint:
-      run: pnpm lint:cm
+      run: bun lint:cm

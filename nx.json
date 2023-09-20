@@ -4,70 +4,83 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
-          "nx:dev",
-          "nx:build",
-          "nx:start",
-          "nx:typecheck",
-          "nx:coverage",
-          "nx:test",
-          "nx:lint",
-          "nx:check",
-          "nx:format",
-          "nx:lint",
-          "nx:sb"
+          "build",
+          "typecheck",
+          "coverage",
+          "test",
+          "lint",
+          "check",
+          "format",
+          "sb:build"
         ]
       }
     }
   },
   "targetDefaults": {
-    "nx:dev": {
+    "dev": {
+      "color": true,
       "dependsOn": [
         "dev"
       ]
     },
-    "nx:build": {
+    "build": {
+      "color": true,
       "dependsOn": [
         "build"
       ]
     },
-    "nx:start": {
+    "start": {
+      "color": true,
       "dependsOn": [
         "start"
       ]
     },
-    "nx:typecheck": {
+    "typecheck": {
+      "color": true,
       "dependsOn": [
         "typecheck"
       ]
     },
-    "nx:coverage": {
+    "coverage": {
+      "color": true,
       "dependsOn": [
         "coverage"
       ]
     },
-    "nx:test": {
+    "test": {
+      "color": true,
       "dependsOn": [
         "test"
       ]
     },
-    "nx:lint": {
+    "lint": {
+      "color": true,
       "dependsOn": [
         "lint"
       ]
     },
-    "nx:check": {
+    "check": {
+      "color": true,
       "dependsOn": [
         "check"
       ]
     },
-    "nx:format": {
+    "format": {
+      "color": true,
       "dependsOn": [
         "format"
       ]
     },
-    "nx:sb": {
+    "sb": {
+      "color": true,
       "dependsOn": [
         "sb"
+      ]
+    },
+    "sb:build": {
+      "color": true,
+      "dependsOn": [
+        "sb:build"
       ]
     }
   }
