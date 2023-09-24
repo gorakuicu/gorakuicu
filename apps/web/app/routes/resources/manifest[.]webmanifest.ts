@@ -2,6 +2,8 @@ import type { LoaderFunction } from '@remix-run/node';
 
 import { json } from '@remix-run/node';
 
+import { BRAND_NAME } from '~/shared/constants/common';
+
 export let loader: LoaderFunction = async () => {
   return json(
     {
@@ -83,8 +85,8 @@ export let loader: LoaderFunction = async () => {
           type: 'image/png',
         },
       ],
-      name: 'gorakuicu',
-      short_name: 'gorakuicu',
+      name: BRAND_NAME,
+      short_name: BRAND_NAME,
       shortcuts: [
         {
           icons: [

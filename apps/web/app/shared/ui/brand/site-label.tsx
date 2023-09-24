@@ -1,11 +1,33 @@
+import clsx from 'clsx';
+
+import { BRAND_NAME, BRAND_TAGS } from '~/shared/constants/common';
 import { FlashingDot } from '~/shared/ui/flashing-dot';
 
-export default function SiteLabel() {
+export interface ISiteLabelProperties {
+  className?: string;
+  hideDot?: boolean;
+}
+
+const BrandNameWithDot = (
+  <>
+    {BRAND_TAGS[0]}
+    <FlashingDot />
+    {BRAND_TAGS[1]}
+  </>
+);
+
+export default function SiteLabel({
+  className = '',
+  hideDot = false,
+}: ISiteLabelProperties) {
   return (
-    <h2 className="text-gradient bg-gradient-to-r from-[#EC32C0] to-purple-500 bg-clip-text text-xl font-black text-transparent md:text-2xl">
-      goraku
-      <FlashingDot />
-      icu
+    <h2
+      className={clsx(
+        'bg-gradient-to-r from-fuchsia-600 to-violet-600 bg-clip-text text-xl font-black text-transparent md:text-2xl',
+        className,
+      )}
+    >
+      {hideDot ? BRAND_NAME : BrandNameWithDot}
     </h2>
   );
 }

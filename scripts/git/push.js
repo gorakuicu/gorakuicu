@@ -1,5 +1,5 @@
 // git push or git push --set-upstream current branch
-const { execSync } = require('child_process');
+import { execSync } from 'child_process';
 
 const output = execSync('git branch').toString().trim();
 

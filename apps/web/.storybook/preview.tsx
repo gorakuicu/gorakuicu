@@ -2,7 +2,7 @@ import '~/application/styles/index.css';
 import './storybook.css';
 
 import { createRemixStub } from '@remix-run/testing/dist/create-remix-stub';
-import { Preview, StoryFn } from '@storybook/react';
+import { Preview } from '@storybook/react';
 import { Providers } from '~/application/providers';
 import theme from './theme';
 import { viewports } from './viewports';

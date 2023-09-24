@@ -10,7 +10,6 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-mobile',
   ],
   core: {
     builder: '@storybook/builder-vite',

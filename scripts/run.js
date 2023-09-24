@@ -1,8 +1,8 @@
 // alias: nx run-many --output-style stream -t ${script} --all
 // usage: bun scripts/run.js lint
 
-const { execSync } = require('child_process');
-const { join } = require('path');
+import { execSync } from 'child_process';
+import { join } from 'path';
 
 const script = process.argv[2];
 const nx = join('node_modules', '.bin', 'nx');

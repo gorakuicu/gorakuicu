@@ -17,11 +17,11 @@ export function Navbar() {
       {/* md lg xl 2xl */}
       <NavbarContent className="hidden gap-2 md:flex" justify="center">
         {links.map((link) => (
-          <NavbarItem key={link.href}>
+          <NavbarItem key={link.url}>
             <Link
               className="font-normal tracking-wider"
               color="primary"
-              to={link.href}
+              to={link.url}
             >
               <Button color="primary" variant="light">
                 {link.label}
@@ -59,8 +59,8 @@ export function Navbar() {
                     <Link
                       className="font-normal tracking-wider"
                       color="primary"
-                      key={link.href}
-                      to={link.href}
+                      key={link.url}
+                      to={link.url}
                     >
                       <Button
                         className="w-full"

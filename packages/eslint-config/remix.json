@@ -50,13 +50,14 @@
     }
   ],
   "rules": {
+    "tailwindcss/migration-from-tailwind-2": "off",
     "import/no-default-export": "off",
     "array-func/prefer-array-from": "off",
     "react/no-children-prop": "off",
-    "unicorn/no-keyword-prefix": "warn",
     "unicorn/string-content": "warn",
     "no-explicit-type-exports/no-explicit-type-exports": "error",
     "validate-jsx-nesting/no-invalid-jsx-nesting": "error",
+    "unicorn/no-keyword-prefix": ["error", {"disallowedPrefixes": ["new", "for"]}],
     "react/jsx-no-target-blank": [
       "error",
       {

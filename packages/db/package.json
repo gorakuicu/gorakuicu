@@ -11,7 +11,7 @@
     "prebuild": "bun generate",
     "predev": "bun generate",
     "format": "prisma format",
-    "lint": "eslint \"src/**/*.ts\""
+    "lint": "eslint -c ./.eslintrc.cjs \"src/**/*.ts\""
   },
   "dependencies": {
     "@prisma/client": "5.3.1"
