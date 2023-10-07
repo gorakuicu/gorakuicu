@@ -1,10 +1,11 @@
 import { NavbarBrand as NavbarBrandBase, Spacer } from '@nextui-org/react';
 import { Link } from '@remix-run/react';
+import { memo } from 'react';
 
-import Logo from '~/shared/ui/brand/logo';
-import SiteLabel from '~/shared/ui/brand/site-label';
+import { Logo } from '~/shared/ui/brand/logo';
+import { SiteLabel } from '~/shared/ui/brand/site-label';
 
-export function NavbarBrand() {
+export const NavbarBrand = memo(() => {
   return (
     <NavbarBrandBase>
       <Link className="flex items-center" color="primary" to="/">
@@ -14,4 +15,6 @@ export function NavbarBrand() {
       </Link>
     </NavbarBrandBase>
   );
-}
+});
+
+NavbarBrand.displayName = 'NavbarBrand';

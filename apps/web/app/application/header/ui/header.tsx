@@ -1,4 +1,5 @@
 import { Spacer } from '@nextui-org/react';
+import { memo } from 'react';
 
 import { useScrollPosition } from '~/features/navbar/lib/use-scroll-position';
 import { Navbar } from '~/features/navbar/ui/navbar';
@@ -6,7 +7,7 @@ import { NavbarBrand } from '~/shared/ui/brand/brand';
 
 import { MotionHeader } from './motion-navbar';
 
-export function Header() {
+export const Header = memo(() => {
   const { isScrolled, onChangeScroll } = useScrollPosition();
 
   const animationProperties = {
@@ -40,4 +41,6 @@ export function Header() {
       <div className="h-8" />
     </>
   );
-}
+});
+
+Header.displayName = 'Header';

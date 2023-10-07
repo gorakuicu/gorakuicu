@@ -1,8 +1,9 @@
 import { Image } from '@nextui-org/react';
+import { memo } from 'react';
 
 import { BRAND_NAME } from '~/shared/constants/common';
 
-export default function Logo() {
+export const Logo = memo(() => {
   return (
     <Image
       alt={`Logo ${BRAND_NAME}`}
@@ -11,4 +12,6 @@ export default function Logo() {
       width={42}
     />
   );
-}
+});
+
+Logo.displayName = 'Logo';

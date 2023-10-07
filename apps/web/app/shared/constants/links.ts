@@ -1,4 +1,4 @@
-import type { IPlatformLink } from '../types/platform-links';
+import type { IPlatformLink } from '~/shared/types/platform-links';
 
 export const ArtStationLink = {
   icon: '/icons/artstation.svg',
@@ -160,8 +160,8 @@ export const LINKS: IPlatformLink[] = [
   },
   {
     disabled: true,
-    label: 'Order Artwork',
+    label: 'Commission Artwork',
     tooltip: 'Coming soon',
-    url: '/contacts#order',
+    url: '/contacts#commission',
   },
 ];

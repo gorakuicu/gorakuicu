@@ -7,25 +7,20 @@ import {
   PopoverTrigger,
 } from '@nextui-org/react';
 import { Link } from '@remix-run/react';
+import { memo } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 
 import { links } from '../model';
 
-export function Navbar() {
+export const Navbar = memo(() => {
   return (
     <>
       {/* md lg xl 2xl */}
       <NavbarContent className="hidden gap-2 md:flex" justify="center">
         {links.map((link) => (
           <NavbarItem key={link.url}>
-            <Link
-              className="font-normal tracking-wider"
-              color="primary"
-              to={link.url}
-            >
-              <Button color="primary" variant="light">
-                {link.label}
-              </Button>
+            <Link className="font-normal tracking-wider" to={link.url}>
+              <Button variant="light">{link.label}</Button>
             </Link>
           </NavbarItem>
         ))}
@@ -44,7 +39,6 @@ export function Navbar() {
             <Button
               aria-label="menu-button"
               className="capitalize"
-              color="primary"
               isIconOnly
               variant="flat"
             >
@@ -58,16 +52,10 @@ export function Navbar() {
                   {links.map((link) => (
                     <Link
                       className="font-normal tracking-wider"
-                      color="primary"
                       key={link.url}
                       to={link.url}
                     >
-                      <Button
-                        className="w-full"
-                        color="primary"
-                        size="lg"
-                        variant="flat"
-                      >
+                      <Button className="w-full" size="lg" variant="flat">
                         {link.label}
                       </Button>
                     </Link>
@@ -80,4 +68,6 @@ export function Navbar() {
       </div>
     </>
   );
-}
+});
+
+Navbar.displayName = 'Navbar';

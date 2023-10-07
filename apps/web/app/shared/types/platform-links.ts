@@ -6,3 +6,9 @@ export interface IPlatformLink {
   tooltip?: string;
   url: string;
 }
+
+export type LinksListProperties = {
+  className?: string;
+  label: string;
+  list: IPlatformLink[];
+};
