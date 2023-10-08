@@ -34,22 +34,22 @@
     "packages/*"
   ],
   "dependencies": {
-    "superjson": "1.13.1"
+    "superjson": "1.13.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.7.1",
+    "@commitlint/cli": "17.7.2",
     "@commitlint/config-conventional": "17.7.0",
-    "@happy-dom/global-registrator": "12.1.6",
+    "@happy-dom/global-registrator": "12.9.0",
     "bun-types": "latest",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.49.0",
-    "happy-dom": "12.1.6",
+    "eslint": "8.51.0",
+    "happy-dom": "12.9.0",
     "husky": "8.0.3",
-    "nx": "16.8.1",
+    "nx": "16.10.0",
     "nx-cloud": "latest",
     "prettier": "3.0.3",
-    "prettier-plugin-tailwindcss": "0.5.4",
+    "prettier-plugin-tailwindcss": "0.5.5",
     "typescript": "5.2.2"
   },
   "config": {

@@ -1,5 +1,6 @@
 @import url('./normalize.css');
 @import url('./tailwind.css');
+@import url('./mdx.css');
 
 body {
   background-color: #000913 !important;

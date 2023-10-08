@@ -1,0 +1,59 @@
+.mdx h1 {
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.mdx h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.mdx p {
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.mdx ul,
+.mdx ol {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-left: 1em;
+}
+
+.mdx li {
+  margin-bottom: 0.5em;
+}
+
+.mdx blockquote {
+  margin: 0;
+  padding-left: 1em;
+  border-left: 4px solid #ddd;
+  font-style: italic;
+}
+
+.mdx pre {
+  background-color: #f0f0f0;
+  padding: 1em;
+  overflow-x: auto;
+}
+
+.mdx code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+}
+
+.mdx table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+.mdx th,
+.mdx td {
+  padding: 0.5em;
+  border: 1px solid #ddd;
+}

@@ -20,5 +20,5 @@
 **/node_modules
 **/coverage
 **/build
-!**/*.{js,jsx,ts,tsx,md}
+!**/*.{js,jsx,ts,tsx,md,mdx}
 .env*.example

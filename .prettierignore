@@ -21,6 +21,6 @@
 **/coverage
 **/build
 **/cosmos.imports.*
-!**/*.{js,jsx,ts,tsx,json,css,md}
+!**/*.{js,jsx,ts,tsx,json,css,md,mdx}
 **/.env*
 **/public/build

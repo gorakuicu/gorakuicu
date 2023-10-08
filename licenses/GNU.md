@@ -110,9 +110,9 @@ interfaces specified for a particular programming language, one that
 is widely used among developers working in that language.
 
 The “System Libraries” of an executable work include anything, other
-than the work as a whole, that **(a)** is included in the normal form of
+than the work as a whole, that **ⓐ** is included in the normal form of
 packaging a Major Component, but which is not part of that Major
-Component, and **(b)** serves only to enable use of the work with that
+Component, and **ⓑ** serves only to enable use of the work with that
 Major Component, or to implement a Standard Interface for which an
 implementation is available to the public in source code form.  A
 “Major Component”, in this context, means a major essential component
@@ -390,9 +390,9 @@ this License (including any patent licenses granted under the third
 paragraph of section 11).
 
 However, if you cease all violation of this License, then your
-license from a particular copyright holder is reinstated **(a)**
+license from a particular copyright holder is reinstated **ⓐ**
 provisionally, unless and until the copyright holder explicitly and
-finally terminates your license, and **(b)** permanently, if the copyright
+finally terminates your license, and **ⓑ** permanently, if the copyright
 holder fails to notify you of the violation by some reasonable means
 prior to 60 days after the cessation.
 
@@ -504,8 +504,8 @@ in the business of distributing software, under which you make payment
 to the third party based on the extent of your activity of conveying
 the work, and under which the third party grants, to any of the
 parties who would receive the covered work from you, a discriminatory
-patent license **(a)** in connection with copies of the covered work
-conveyed by you (or copies made from those copies), or **(b)** primarily
+patent license **ⓐ** in connection with copies of the covered work
+conveyed by you (or copies made from those copies), or **ⓑ** primarily
 for and in connection with specific products or compilations that
 contain the covered work, unless you entered into that arrangement,
 or that patent license was granted, prior to 28 March 2007.

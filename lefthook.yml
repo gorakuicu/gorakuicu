@@ -8,7 +8,7 @@ pre-commit:
   #   - ref: testing
   commands:
     formatter:
-      glob: '*.{js,jsx,ts,tsx,css,json,md,yml}'
+      glob: '*.{js,jsx,ts,tsx,css,json,md,mdx,yml}'
       run: bun format && git add
     lint:
       glob: '*.{js,jsx,ts,tsx}'

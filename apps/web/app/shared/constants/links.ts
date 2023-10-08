@@ -81,35 +81,59 @@ export const MAIN_EXTERNAL_LINKS: IPlatformLink[] = [
   DiscordLink,
 ];
 
-export const TermsOfServiceLink = {
-  label: 'Terms of Service',
-  url: '/terms-of-service',
-};
-
 export const PrivacyPolicyLink = {
-  label: 'Privacy Policy',
-  url: '/privacy-policy',
+  label: 'Privacy Notice',
+  url: '/legal/privacy',
 };
 
 export const CookiePolicyLink = {
   label: 'Cookie Policy',
-  url: '/cookie-policy',
+  url: '/legal/cookie',
+};
+
+export const TermsOfUseLink = {
+  label: 'Terms of Use',
+  url: '/legal/terms',
+};
+
+export const EULALink = {
+  label: 'EULA',
+  url: '/legal/eula',
+};
+
+export const DisclaimerLink = {
+  label: 'Disclaimer',
+  url: '/legal/disclaimer',
+};
+
+export const ShippingPolicyLink = {
+  label: 'Shipping Policy',
+  url: '/legal/shipping',
+};
+
+export const AcceptableUsePolicyLink = {
+  label: 'Acceptable Use Policy',
+  url: '/legal/acceptable',
 };
 
 export const GNULicenseLink = {
   label: 'GNU License',
-  url: '/license/gnu',
+  url: '/legal/gnu',
 };
 
 export const CCLicenseLink = {
   label: 'Creative Commons License',
-  url: '/license/creative-commons',
+  url: '/legal/cc',
 };
 
 export const LEGAL_LINKS: IPlatformLink[] = [
-  TermsOfServiceLink,
   PrivacyPolicyLink,
   CookiePolicyLink,
+  TermsOfUseLink,
+  EULALink,
+  DisclaimerLink,
+  ShippingPolicyLink,
+  AcceptableUsePolicyLink,
   GNULicenseLink,
   CCLicenseLink,
 ];

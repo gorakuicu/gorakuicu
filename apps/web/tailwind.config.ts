@@ -30,9 +30,9 @@ export const primary = {
 
 export default {
   content: [
-    './app/**/*.{js,jsx,ts,tsx}',
-    './.storybook/**/*.{js,jsx,ts,tsx}',
-    '../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,jsx,ts,tsx,mdx}',
+    './.storybook/**/*.{js,jsx,ts,tsx,mdx}',
+    '../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: 'class',
   plugins: [
