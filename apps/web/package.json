@@ -42,7 +42,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.11.0",
-    "remix-utils": "7.0.2",
+    "remix-utils": "7.1.0",
     "web-push": "3.6.6",
     "workbox-background-sync": "7.0.0",
     "workbox-routing": "7.0.0",

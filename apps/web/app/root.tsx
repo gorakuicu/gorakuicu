@@ -16,6 +16,7 @@ import styles from '~/application/styles/index.css';
 
 import { Providers } from './application/providers';
 import { defaultMeta } from './shared/constants/default-meta';
+import { useNextuiFixes } from './shared/lib/hooks/use-nextui-fixes';
 import { ScrollToTop } from './shared/ui/common/scroll-to-top';
 
 export const links: LinksFunction = () => [
@@ -27,6 +28,7 @@ export const meta: MetaFunction = () => defaultMeta;
 
 export default function App() {
   useSWEffect();
+  useNextuiFixes();
 
   return (
     <html lang="en">
@@ -37,15 +39,13 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="min-h-screen">
+      <body className="bg-background text-foreground dark min-h-screen">
+        <LiveReload />
         <Providers>
-          <main className="bg-background text-foreground dark">
-            <Outlet />
-            <ScrollRestoration />
-            <Scripts />
-            <LiveReload />
-            <ScrollToTop />
-          </main>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <ScrollToTop />
         </Providers>
       </body>
     </html>

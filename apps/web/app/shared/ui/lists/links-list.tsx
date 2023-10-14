@@ -1,14 +1,10 @@
-import type { TooltipProps } from '@nextui-org/react';
-
-import { Button } from '@nextui-org/react';
+import { Button, Tooltip } from '@nextui-org/react';
 import { Link } from '@remix-run/react';
 import { memo } from 'react';
 
 import type { LinksListProperties } from '~/shared/types/platform-links';
 
-import { WithTooltip } from '~/shared/ui/common/with-tooltip';
-
-const getTooltipObject = (tooltip: TooltipProps = {}): TooltipProps => tooltip;
+import { VariableWrap } from '~/shared/ui/common/variable-wrap';
 
 export const LinksList = memo(
   ({ className = '', label, list }: LinksListProperties) => {
@@ -21,27 +17,35 @@ export const LinksList = memo(
           {list.map((link) => {
             return (
               <li key={link.url}>
-                <WithTooltip
-                  tooltip={getTooltipObject({
-                    color: 'primary',
-                    content: link.tooltip,
-                    showArrow: true,
-                  })}
-                >
-                  <Button
-                    className="pointer-events-auto w-full text-sm"
-                    isDisabled={link.disabled}
-                    radius="full"
-                    size="sm"
-                    variant="light"
-                  >
-                    {link.disabled ? (
-                      link.label
-                    ) : (
-                      <Link to={link.url}>{link.label}</Link>
+                <VariableWrap wrap={!!link?.tooltip}>
+                  <VariableWrap.Wrapper>
+                    {(children) => (
+                      <Tooltip color="primary" content={link.tooltip} showArrow>
+                        {children}
+                      </Tooltip>
                     )}
-                  </Button>
-                </WithTooltip>
+                  </VariableWrap.Wrapper>
+                  <VariableWrap.Content>
+                    <span>
+                      <VariableWrap wrap={!link.disabled}>
+                        <VariableWrap.Wrapper>
+                          {(children) => <Link to={link.url}>{children}</Link>}
+                        </VariableWrap.Wrapper>
+                        <VariableWrap.Content>
+                          <Button
+                            className="pointer-events-auto w-full text-sm"
+                            isDisabled={link.disabled}
+                            radius="full"
+                            size="sm"
+                            variant="light"
+                          >
+                            {link.label}
+                          </Button>
+                        </VariableWrap.Content>
+                      </VariableWrap>
+                    </span>
+                  </VariableWrap.Content>
+                </VariableWrap>
               </li>
             );
           })}
