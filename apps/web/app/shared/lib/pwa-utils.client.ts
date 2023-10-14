@@ -18,6 +18,8 @@ interface ResponseObject {
   status: 'bad' | 'success';
 }
 
+const WEBSHARE_NOT_SOPPORTED = 'Web Share API not supported';
+
 // Clipboard Copy API
 
 /**
@@ -381,7 +383,7 @@ export async function WebShare(data: any): Promise<ResponseObject> {
       };
     } else {
       return {
-        message: 'Web Share API not supported',
+        message: WEBSHARE_NOT_SOPPORTED,
         status: 'bad',
       };
     }
@@ -418,7 +420,7 @@ export async function WebShareLink(
       };
     } else {
       return {
-        message: 'Web Share API not supported',
+        message: WEBSHARE_NOT_SOPPORTED,
         status: 'bad',
       };
     }
@@ -456,7 +458,7 @@ export async function WebShareFile(
       };
     } else {
       return {
-        message: 'Web Share API not supported',
+        message: WEBSHARE_NOT_SOPPORTED,
         status: 'bad',
       };
     }

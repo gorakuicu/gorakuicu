@@ -2,12 +2,13 @@ import type { LoaderFunction } from '@remix-run/node';
 
 import { json } from '@remix-run/node';
 
-import { BRAND_NAME } from '~/shared/constants/common';
+import { BRAND_NAME, DESCRIPTION } from '~/shared/constants/common';
 
 export let loader: LoaderFunction = async () => {
   return json(
     {
       background_color: '#232325',
+      description: DESCRIPTION,
       display: 'standalone',
       icons: [
         {

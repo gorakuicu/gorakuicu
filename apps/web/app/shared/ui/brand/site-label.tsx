@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { memo } from 'react';
 
 import { BRAND_NAME, BRAND_TAGS } from '~/shared/constants/common';
-import { FlashingDot } from '~/shared/ui/flashing-dot';
+import { FlashingDot } from '~/shared/ui/common/flashing-dot';
 
 export interface ISiteLabelProperties {
   className?: string;
@@ -22,7 +22,7 @@ export const SiteLabel = memo(
     return (
       <h2
         className={clsx(
-          'bg-gradient-to-r from-fuchsia-600 to-violet-600 bg-clip-text text-xl font-black text-transparent md:text-2xl',
+          'bg-gradient-to-r from-fuchsia-600 to-violet-600 bg-clip-text text-2xl font-black text-transparent',
           className,
         )}
       >

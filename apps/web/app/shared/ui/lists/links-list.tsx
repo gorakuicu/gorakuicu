@@ -6,7 +6,7 @@ import { memo } from 'react';
 
 import type { LinksListProperties } from '~/shared/types/platform-links';
 
-import { WithTooltip } from '~/shared/ui/with-tooltip';
+import { WithTooltip } from '~/shared/ui/common/with-tooltip';
 
 const getTooltipObject = (tooltip: TooltipProps = {}): TooltipProps => tooltip;
 

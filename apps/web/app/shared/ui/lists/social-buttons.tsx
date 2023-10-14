@@ -40,7 +40,12 @@ export const SocialButtons = memo(() => {
             rel="noreferrer"
             target="_blank"
           >
-            <Button color="primary" isIconOnly variant="faded">
+            <Button
+              className="hover:bg-gradient-to-tr hover:from-fuchsia-600 hover:to-violet-600 hover:shadow-lg"
+              color="primary"
+              isIconOnly
+              variant="faded"
+            >
               <Image
                 alt={link.label}
                 className="p-2 invert"

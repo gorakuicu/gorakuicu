@@ -1,5 +1,6 @@
 import { DOMAIN } from './common';
 
 export const EMAILS = {
-  CONTACT: `contact@${DOMAIN}`,
+  HELP: `help@${DOMAIN}`,
+  ORDER: `order@${DOMAIN}`,
 };

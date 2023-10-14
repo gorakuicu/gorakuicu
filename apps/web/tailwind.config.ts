@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 import { nextui } from '@nextui-org/react';
+import typography from '@tailwindcss/typography';
 
 export const blue = {
   50: '#e6f1fe',
@@ -41,6 +42,7 @@ export default {
       defaultExtendTheme: 'dark',
       defaultTheme: 'dark',
     }),
+    typography,
   ],
   theme: {
     extend: {

@@ -9,6 +9,6 @@ export interface IPlatformLink {
 
 export type LinksListProperties = {
   className?: string;
-  label: string;
+  label?: string;
   list: IPlatformLink[];
 };

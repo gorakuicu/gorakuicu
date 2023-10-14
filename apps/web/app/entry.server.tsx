@@ -101,7 +101,6 @@ function handleBrowserRequest(
       />,
       {
         onError(error: unknown) {
-          // eslint-disable-next-line sonar/no-parameter-reassignment
           responseStatusCode = 500;
           // Log streaming rendering errors from inside the shell.  Don't log
           // errors encountered during initial shell rendering since they'll

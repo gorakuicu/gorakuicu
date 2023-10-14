@@ -1,11 +1,18 @@
-import { Spacer } from '@nextui-org/react';
+import { Chip, Spacer } from '@nextui-org/react';
+import clsx from 'clsx';
 import { memo } from 'react';
 
-import { useScrollPosition } from '~/features/navbar/lib/use-scroll-position';
 import { Navbar } from '~/features/navbar/ui/navbar';
+import { useScrollPosition } from '~/shared/lib/hooks/use-scroll-position';
 import { NavbarBrand } from '~/shared/ui/brand/brand';
+import { Description } from '~/shared/ui/brand/description';
 
 import { MotionHeader } from './motion-navbar';
+
+const descriptionClassNames = {
+  container: '!m-0',
+  text: '!text-inherit',
+};
 
 export const Header = memo(() => {
   const { isScrolled, onChangeScroll } = useScrollPosition();
@@ -30,13 +37,23 @@ export const Header = memo(() => {
       <MotionHeader
         key="navbar"
         {...animationProperties}
-        className="mx-auto w-max justify-around rounded-3xl bg-zinc-900/60"
+        className="mx-auto w-max rounded-3xl bg-zinc-900/60"
         isBordered
         onScrollPositionChange={onChangeScroll}
       >
-        <NavbarBrand />
-        <Spacer x={2} />
-        <Navbar />
+        <div className="flex w-full justify-between">
+          <NavbarBrand />
+          <Spacer x={4} />
+          <Chip
+            className={clsx('my-auto hidden md:flex', {
+              '!hidden': !isScrolled,
+            })}
+          >
+            <Description classNames={descriptionClassNames} />
+          </Chip>
+          <Spacer x={2} />
+          <Navbar />
+        </div>
       </MotionHeader>
       <div className="h-8" />
     </>

@@ -20,7 +20,12 @@ export const Navbar = memo(() => {
         {links.map((link) => (
           <NavbarItem key={link.url}>
             <Link className="font-normal tracking-wider" to={link.url}>
-              <Button variant="light">{link.label}</Button>
+              <Button
+                variant={link?.standOut ? 'flat' : 'light'}
+                {...(link?.standOut ? { color: 'primary' } : {})}
+              >
+                {link.label}
+              </Button>
             </Link>
           </NavbarItem>
         ))}
@@ -55,7 +60,12 @@ export const Navbar = memo(() => {
                       key={link.url}
                       to={link.url}
                     >
-                      <Button className="w-full" size="lg" variant="flat">
+                      <Button
+                        className="w-full"
+                        size="lg"
+                        variant="flat"
+                        {...(link?.standOut ? { color: 'primary' } : {})}
+                      >
                         {link.label}
                       </Button>
                     </Link>

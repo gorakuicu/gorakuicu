@@ -1,6 +1,5 @@
 export const links = [
-  { label: 'Home', url: '#1' },
-  { label: 'Catalog', url: '#2' },
-  { label: 'About', url: '#3' },
-  { label: 'Contacts', url: '#4' },
+  { label: 'Arts', url: '/arts' },
+  { label: 'Contacts', url: '/contacts' },
+  { label: 'Subscribe', standOut: true, url: '/contacts#social-media' },
 ];

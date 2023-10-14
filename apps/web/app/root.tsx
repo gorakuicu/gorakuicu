@@ -15,21 +15,15 @@ import {
 import styles from '~/application/styles/index.css';
 
 import { Providers } from './application/providers';
+import { defaultMeta } from './shared/constants/default-meta';
+import { ScrollToTop } from './shared/ui/common/scroll-to-top';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ href: cssBundleHref, rel: 'stylesheet' }] : []),
   { href: styles, rel: 'stylesheet' },
 ];
 
-export const meta: MetaFunction = () => {
-  return [
-    {
-      content: 'width=device-width,initial-scale=1',
-      name: 'viewport',
-    },
-    { title: 'New Remix App' },
-  ];
-};
+export const meta: MetaFunction = () => defaultMeta;
 
 export default function App() {
   useSWEffect();
@@ -50,6 +44,7 @@ export default function App() {
             <ScrollRestoration />
             <Scripts />
             <LiveReload />
+            <ScrollToTop />
           </main>
         </Providers>
       </body>

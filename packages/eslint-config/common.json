@@ -3,7 +3,7 @@
   "extends": [
     "plugin:perfectionist/recommended-natural",
     "plugin:unicorn/recommended",
-    "plugin:sonar/recommended",
+    "plugin:sonarjs/recommended",
     "plugin:promise/recommended",
     "plugin:security/recommended",
     "plugin:array-func/recommended",

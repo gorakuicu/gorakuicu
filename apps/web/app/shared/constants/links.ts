@@ -1,5 +1,7 @@
 import type { IPlatformLink } from '~/shared/types/platform-links';
 
+import { COMING_SOON } from './common';
+
 export const ArtStationLink = {
   icon: '/icons/artstation.svg',
   isExternal: true,
@@ -130,15 +132,15 @@ export const LEGAL_LINKS: IPlatformLink[] = [
   PrivacyPolicyLink,
   CookiePolicyLink,
   TermsOfUseLink,
+  CCLicenseLink,
+  GNULicenseLink,
   EULALink,
   DisclaimerLink,
-  ShippingPolicyLink,
   AcceptableUsePolicyLink,
-  GNULicenseLink,
-  CCLicenseLink,
+  ShippingPolicyLink,
 ];
 
-export const MARKETPLACE_LINKS: IPlatformLink[] = [
+export const PROJECT_LINKS: IPlatformLink[] = [
   {
     label: 'Arts',
     url: '/arts',
@@ -148,19 +150,21 @@ export const MARKETPLACE_LINKS: IPlatformLink[] = [
     url: '/arts?free=true',
   },
   {
+    disabled: true,
     label: 'Paid',
+    tooltip: COMING_SOON,
     url: '/arts?paid=true',
   },
   {
     disabled: true,
     label: 'NFT',
-    tooltip: 'Coming soon',
+    tooltip: COMING_SOON,
     url: '/arts?nft=true',
   },
   {
     disabled: true,
     label: 'Commissions',
-    tooltip: 'Coming soon',
+    tooltip: COMING_SOON,
     url: '/commissions',
   },
 ];
@@ -185,7 +189,7 @@ export const LINKS: IPlatformLink[] = [
   {
     disabled: true,
     label: 'Commission Artwork',
-    tooltip: 'Coming soon',
+    tooltip: COMING_SOON,
     url: '/contacts#commission',
   },
 ];

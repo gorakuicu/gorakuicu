@@ -79,6 +79,8 @@
     "Rakuten",
     "redirectregex",
     "signup",
+    "sonarjs",
+    "SOPPORTED",
     "stylelint",
     "stylelintignore",
     "stylelintrc",
@@ -91,6 +93,7 @@
     "unauthorizedly",
     "VCDPA",
     "Verifone",
-    "webp"
+    "webp",
+    "WEBSHARE"
   ]
 }
