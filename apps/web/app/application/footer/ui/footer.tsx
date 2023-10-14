@@ -76,6 +76,12 @@ export const Footer = memo(() => {
                   </DropdownMenu>
                 </div>
               </Dropdown>
+              {/* only for screen readers */}
+              <LinksList
+                className="sr-only mt-4 md:mt-0"
+                label="Legal 2"
+                list={MORE_LEGAL_LINKS}
+              />
             </div>
           </div>
         </div>
