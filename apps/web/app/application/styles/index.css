@@ -5,20 +5,17 @@ body {
   background-color: #000 !important;
 }
 
-body > div {
-  min-height: 100vh;
-}
-
 footer {
-  background-image: url('/backgrounds/blurry-gradients/4.webp');
-  background-position: 90% 50%;
-  background-repeat: no-repeat;
-  background-size: 70%;
+  background-image: url('/backgrounds/blurry-gradients/4.webp'),
+    url('/backgrounds/texture.png');
+  background-position:
+    90% 50%,
+    0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: 70%, 5%;
 }
 
-article a[href^="http"]::after,
-article a[href^="https://"]::after
-{
+article a[href^='http']:not(:has(img))::after {
   content: '';
   width: 14px;
   height: 14px;
@@ -76,4 +73,10 @@ article a[href^="https://"]::after
       -50% 4750px,
       150% 5250px;
   }
+}
+
+.add-texture {
+  background-image: url('/backgrounds/texture.png');
+  background-repeat: repeat;
+  background-size: 5%;
 }

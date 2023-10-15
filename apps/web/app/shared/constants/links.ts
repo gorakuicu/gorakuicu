@@ -16,12 +16,12 @@ export const DeviantArtLink = {
   url: 'https://www.deviantart.com/gorakuicu',
 };
 
-export const OpenSeaLink = {
-  icon: '/icons/opensea.svg',
-  isExternal: true,
-  label: 'OpenSea',
-  url: 'https://opensea.io/gorakuicu',
-};
+// export const OpenSeaLink = {
+//   icon: '/icons/opensea.svg',
+//   isExternal: true,
+//   label: 'OpenSea',
+//   url: 'https://opensea.io/gorakuicu',
+// };
 
 export const RaribleLink = {
   icon: '/icons/rarible.svg',
@@ -34,7 +34,7 @@ export const DiscordLink = {
   icon: '/icons/discord.svg',
   isExternal: true,
   label: 'Discord',
-  url: 'https://discord.gg/sshkAaWWRr',
+  url: 'https://discord.gg/xyDGqrT7Cb',
 };
 
 export const RedditLink = {
@@ -44,12 +44,12 @@ export const RedditLink = {
   url: 'https://new.reddit.com/r/gorakuicu/',
 };
 
-export const OnlyFansLink = {
-  icon: '/icons/onlyfans.svg',
-  isExternal: true,
-  label: 'OnlyFans',
-  url: 'https://onlyfans.com/gorakuicu',
-};
+// export const OnlyFansLink = {
+//   icon: '/icons/onlyfans.svg',
+//   isExternal: true,
+//   label: 'OnlyFans',
+//   url: 'https://onlyfans.com/gorakuicu',
+// };
 
 export const InstagramLink = {
   icon: '/icons/instagram.svg',
@@ -61,7 +61,7 @@ export const InstagramLink = {
 export const XLink = {
   icon: '/icons/x.svg',
   isExternal: true,
-  label: 'X',
+  label: 'X/Twitter',
   url: 'https://twitter.com/gorakuicu',
 };
 
@@ -75,10 +75,10 @@ export const TelegramLink = {
 export const MAIN_EXTERNAL_LINKS: IPlatformLink[] = [
   DeviantArtLink,
   ArtStationLink,
-  OnlyFansLink,
   InstagramLink,
-  RedditLink,
   XLink,
+  RaribleLink,
+  RedditLink,
   TelegramLink,
   DiscordLink,
 ];

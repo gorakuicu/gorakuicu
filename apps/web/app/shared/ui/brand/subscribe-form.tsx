@@ -16,7 +16,7 @@ export const SubscribeForm = memo(() => {
         size="lg"
         variant="shadow"
       >
-        Get updates
+        Subscribe
       </Button>
     </div>
   );

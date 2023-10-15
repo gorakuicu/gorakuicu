@@ -1,4 +1,4 @@
-import { Button, Image } from '@nextui-org/react';
+import { Button, Image, Tooltip } from '@nextui-org/react';
 import { motion } from 'framer-motion';
 import { memo } from 'react';
 
@@ -40,19 +40,21 @@ export const SocialButtons = memo(() => {
             rel="noreferrer"
             target="_blank"
           >
-            <Button
-              className="hover:bg-gradient-to-tr hover:from-fuchsia-600 hover:to-violet-600 hover:shadow-lg"
-              color="primary"
-              isIconOnly
-              variant="faded"
-            >
-              <Image
-                alt={link.label}
-                className="p-2 invert"
-                src={link.icon}
-                width={300}
-              />
-            </Button>
+            <Tooltip color="primary" content={link.label}>
+              <Button
+                className="hover:bg-gradient-to-tr hover:from-fuchsia-600 hover:to-violet-600 hover:shadow-lg"
+                color="primary"
+                isIconOnly
+                variant="faded"
+              >
+                <Image
+                  alt={link.label}
+                  className="p-2 invert"
+                  src={link.icon}
+                  width={300}
+                />
+              </Button>
+            </Tooltip>
           </a>
         </motion.li>
       ))}

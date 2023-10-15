@@ -37,7 +37,7 @@ export const Header = memo(() => {
       <MotionHeader
         key="navbar"
         {...animationProperties}
-        className="mx-auto w-max rounded-3xl bg-[#1A1A1A]/50 backdrop-blur-md"
+        className="add-texture mx-auto w-max rounded-3xl bg-[#1A1A1A]/50 backdrop-blur-md"
         isBordered
         onScrollPositionChange={onChangeScroll}
       >

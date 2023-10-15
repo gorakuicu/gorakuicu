@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/react';
 import clsx from 'clsx';
 import { memo, useCallback, useEffect } from 'react';
-import { TiArrowUpThick } from 'react-icons/ti';
+import { AiFillCaretUp } from 'react-icons/ai';
 
 import { useScrollPosition } from '~/shared/lib/hooks/use-scroll-position';
 
@@ -32,10 +32,9 @@ export const ScrollToTop = memo(() => {
       color="primary"
       isIconOnly
       onClick={handleScroll}
-      size="sm"
       variant="shadow"
     >
-      <TiArrowUpThick />
+      <AiFillCaretUp />
     </Button>
   );
 });
