@@ -81,6 +81,7 @@ export let loader: LoaderFunction = async () => {
         },
         {
           density: '5.0',
+          purpose: 'any maskable',
           sizes: '512x512',
           src: '/android-icon-512x512.png',
           type: 'image/png',

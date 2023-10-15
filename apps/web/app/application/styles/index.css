@@ -2,9 +2,78 @@
 @import url('./tailwind.css');
 
 body {
-  background-color: #000913 !important;
+  background-color: #000 !important;
 }
 
 body > div {
-  height: 100vh;
+  min-height: 100vh;
+}
+
+footer {
+  background-image: url('/backgrounds/blurry-gradients/4.webp');
+  background-position: 90% 50%;
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+
+article a[href^="http"]::after,
+article a[href^="https://"]::after
+{
+  content: '';
+  width: 14px;
+  height: 14px;
+  margin-left: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg stroke=' rgb(180, 107, 244)' fill=' rgb(180, 107, 244)' stroke-width='0' viewBox='0 0 20 20' aria-hidden='true' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z'%3E%3C/path%3E%3Cpath d='M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z'%3E%3C/path%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+}
+
+.bg-blurry-gradients {
+  background-image: url('/backgrounds/blurry-gradients/1.webp'),
+    url('/backgrounds/blurry-gradients/2.webp'),
+    url('/backgrounds/blurry-gradients/3.webp'),
+    url('/backgrounds/blurry-gradients/4.webp'),
+    url('/backgrounds/blurry-gradients/5.webp'),
+    url('/backgrounds/blurry-gradients/6.webp'),
+    url('/backgrounds/blurry-gradients/1.webp'),
+    url('/backgrounds/blurry-gradients/2.webp'),
+    url('/backgrounds/blurry-gradients/3.webp'),
+    url('/backgrounds/blurry-gradients/4.webp'),
+    url('/backgrounds/blurry-gradients/5.webp'),
+    url('/backgrounds/blurry-gradients/6.webp');
+  background-position:
+    -35% -500px,
+    135% 100px,
+    -35% 700px,
+    135% 1300px,
+    -35% 1900px,
+    135% 2500px,
+    -35% 3100px,
+    135% 3700px,
+    -35% 4300px,
+    135% 4900px,
+    -35% 5500px,
+    135% 6100px;
+  background-size: 44%;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 640px) {
+  .bg-blurry-gradients {
+    background-position:
+      -50% -200px,
+      150% 250px,
+      -50% 750px,
+      150% 1250px,
+      -50% 1750px,
+      150% 2250px,
+      -50% 2750px,
+      150% 3250px,
+      -50% 3750px,
+      150% 4250px,
+      -50% 4750px,
+      150% 5250px;
+  }
 }

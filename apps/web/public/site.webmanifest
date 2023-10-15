@@ -79,7 +79,8 @@
       "density": "5.0",
       "sizes": "512x512",
       "src": "/android-icon-512x512.png",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "shortcuts": [

@@ -27,7 +27,6 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
-  // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',

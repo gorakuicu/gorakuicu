@@ -28,7 +28,7 @@ export const Footer = memo(() => {
   }));
 
   return (
-    <footer className="mt-auto flex flex-col bg-black p-10 backdrop-blur-sm">
+    <footer className="mt-auto flex flex-col bg-[#1A1A1A]/80 p-10 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-row flex-wrap justify-between gap-16">
         <div className="mx-auto flex max-w-max flex-grow flex-col xl:mx-0">
           <SiteLabel
@@ -57,9 +57,10 @@ export const Footer = memo(() => {
                 <DropdownTrigger>
                   <Button
                     className="mt-2 w-full text-sm"
+                    color="primary"
                     radius="full"
                     size="sm"
-                    variant="bordered"
+                    variant="flat"
                   >
                     Show more
                   </Button>
