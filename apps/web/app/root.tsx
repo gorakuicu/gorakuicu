@@ -33,14 +33,14 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width,initial-scale=1" name="viewport" />
-        <meta content="#ffffff" name="theme-color" />
+        <meta content="#9750dd" name="theme-color" />
         <link href="/site.webmanifest" rel="manifest" />
         <Meta />
         <Links />
       </head>
-      <body className="text-foreground bg-background dark">
+      <body className="text-foreground bg-background dark min-h-screen">
         <Providers>
-          <div className="bg-blurry-gradients">
+          <div className="bg-blurry-gradients min-h-screen">
             <Outlet />
             <ScrollToTop />
             <ScrollRestoration />

@@ -23,7 +23,7 @@ export const Header = memo(() => {
       transition: {
         duration: 0.2,
       },
-      width: isScrolled ? 'auto' : 'max-content',
+      width: isScrolled ? '100%' : 'max-content',
     },
     initial: {
       borderRadius: '1.5rem',
