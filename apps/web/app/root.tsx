@@ -38,15 +38,13 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="text-foreground bg-background dark min-h-screen">
+      <body className="text-foreground bg-blurry-gradients bg-background dark min-h-screen">
         <Providers>
-          <div className="bg-blurry-gradients min-h-screen">
-            <Outlet />
-            <ScrollToTop />
-            <ScrollRestoration />
-            <LiveReload />
-            <Scripts />
-          </div>
+          <Outlet />
+          <ScrollToTop />
+          <ScrollRestoration />
+          <LiveReload />
+          <Scripts />
         </Providers>
       </body>
     </html>

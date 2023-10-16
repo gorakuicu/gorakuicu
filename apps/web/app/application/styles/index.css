@@ -15,6 +15,10 @@ footer {
   background-size: 70%, 5%;
 }
 
+article a {
+  line-break: anywhere;
+}
+
 article a[href^='http']:not(:has(img))::after {
   content: '';
   width: 14px;

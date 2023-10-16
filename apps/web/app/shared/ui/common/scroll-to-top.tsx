@@ -32,6 +32,7 @@ export const ScrollToTop = memo(() => {
       color="primary"
       isIconOnly
       onClick={handleScroll}
+      size="sm"
       variant="shadow"
     >
       <AiFillCaretUp />
