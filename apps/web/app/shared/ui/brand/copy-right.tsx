@@ -14,7 +14,7 @@ export const CopyRight = memo(({ className }: { className?: string }) => {
 
   return (
     <Chip
-      className={clsx('mx-auto mt-10', className)}
+      className={clsx('mx-auto mt-10 font-serif', className)}
       isDisabled
       variant="faded"
     >

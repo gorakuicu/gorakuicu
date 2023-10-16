@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'OpticianSans';
+  src: url('./Optiker-K.woff') format('woff'), url('./Optiker-K.ttf') format('truetype');
+  src: url('./Optiker-K.woff2') format('woff2'), url('./Optiker-K.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}

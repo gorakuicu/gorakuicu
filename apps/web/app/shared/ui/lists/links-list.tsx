@@ -10,7 +10,7 @@ export const LinksList = memo(
   ({ className = '', label, list }: LinksListProperties) => {
     return (
       <figure className={className}>
-        <figcaption className="mb-2 text-center text-lg font-bold text-white">
+        <figcaption className="mb-2 text-center font-serif text-lg font-bold text-white">
           {label}
         </figcaption>
         <ul className="flex flex-col gap-2">

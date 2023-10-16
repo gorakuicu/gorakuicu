@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 
 import { nextui } from '@nextui-org/react';
 import typography from '@tailwindcss/typography';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export const blue = {
   50: '#e6f1fe',
@@ -61,6 +62,11 @@ export default {
           DEFAULT: blue[500],
         },
       },
+    },
+    fontFamily: {
+      mono: ['monospace', ...defaultTheme.fontFamily.mono],
+      sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      serif: ['OpticianSans', ...defaultTheme.fontFamily.serif],
     },
   },
 } satisfies Config;

@@ -35,6 +35,7 @@ export default function App() {
         <meta content="width=device-width,initial-scale=1" name="viewport" />
         <meta content="#9750dd" name="theme-color" />
         <link href="/site.webmanifest" rel="manifest" />
+        <link href="/fonts/index.css" rel="stylesheet" type="text/css" />
         <Meta />
         <Links />
       </head>

@@ -18,7 +18,7 @@ export const Description = memo(({ classNames }: IDescriptionProperties) => {
   return (
     <div
       className={clsx(
-        'mt-1 flex flex-row items-center justify-center gap-1 md:justify-start',
+        'mt-1 flex flex-row items-center justify-center gap-1 font-serif md:justify-start',
         container,
       )}
     >
