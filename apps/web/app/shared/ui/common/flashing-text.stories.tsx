@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { FlashingDot } from './flashing-dot';
+import { FlashingText } from './flashing-text';
 
-const meta: Meta<typeof FlashingDot> = {
+const meta: Meta<typeof FlashingText> = {
   component: () => (
     <h2 className="color-red-500 text-5xl text-red-500">
-      Hello..
-      <FlashingDot />
+      Hello
+      <FlashingText />
     </h2>
   ),
 };
 
 export default meta;
 
-type Story = StoryObj<typeof FlashingDot>;
+type Story = StoryObj<typeof FlashingText>;
 
 export const Basic: Story = {};

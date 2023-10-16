@@ -66,7 +66,7 @@ export default {
     fontFamily: {
       mono: ['monospace', ...defaultTheme.fontFamily.mono],
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
-      serif: ['OpticianSans', ...defaultTheme.fontFamily.serif],
+      serif: ['OpticianSans', 'Inter', ...defaultTheme.fontFamily.serif],
     },
   },
 } satisfies Config;

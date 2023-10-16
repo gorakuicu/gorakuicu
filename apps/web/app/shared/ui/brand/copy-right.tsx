@@ -14,11 +14,14 @@ export const CopyRight = memo(({ className }: { className?: string }) => {
 
   return (
     <Chip
-      className={clsx('mx-auto mt-10 font-serif', className)}
+      className={clsx('mx-auto mt-10', className)}
       isDisabled
       variant="faded"
     >
-      © {yearsRange} {BRAND_NAME}. All rights reserved.
+      <span className="text-[11px]">©</span>{' '}
+      <span className="font-serif">
+        {yearsRange} {BRAND_NAME}. All rights reserved.
+      </span>
     </Chip>
   );
 });

@@ -11,7 +11,7 @@ export const NavbarBrand = memo(() => {
       <Link className="flex items-center" color="primary" to="/">
         <Logo />
         <Spacer x={2} />
-        <SiteLabel className="-mt-1" />
+        <SiteLabel className="mb-1" />
       </Link>
     </NavbarBrandBase>
   );

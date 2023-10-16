@@ -32,7 +32,7 @@ export const Footer = memo(() => {
       <div className="mx-auto flex max-w-6xl flex-row flex-wrap justify-between gap-16">
         <div className="mx-auto flex max-w-max flex-grow flex-col xl:mx-0">
           <SiteLabel
-            className="mx-auto w-min text-center !text-4xl md:mx-0 xl:text-left"
+            className="mx-auto w-min text-center !text-4xl !leading-[2.6rem] md:mx-0 xl:text-left"
             hideDot
           />
           <Description />
@@ -56,8 +56,7 @@ export const Footer = memo(() => {
               <Dropdown>
                 <DropdownTrigger>
                   <Button
-                    className="mt-2 w-full text-sm"
-                    color="primary"
+                    className="mt-2 w-full font-serif text-sm"
                     radius="full"
                     size="sm"
                     variant="flat"
@@ -69,7 +68,11 @@ export const Footer = memo(() => {
                   <DropdownMenu aria-label="More legal links">
                     {MORE_LEGAL_DROPDOWN.map((link) => {
                       return (
-                        <DropdownItem key={link?.label} onPress={link?.onPress}>
+                        <DropdownItem
+                          className="font-serif"
+                          key={link?.label}
+                          onPress={link?.onPress}
+                        >
                           {link?.label}
                         </DropdownItem>
                       );

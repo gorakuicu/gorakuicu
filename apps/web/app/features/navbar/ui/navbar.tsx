@@ -1,18 +1,27 @@
 import {
   Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
   NavbarContent,
   NavbarItem,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
 } from '@nextui-org/react';
-import { Link } from '@remix-run/react';
+import { Link, useNavigate } from '@remix-run/react';
+import clsx from 'clsx';
 import { memo } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 
 import { links } from '../model';
 
 export const Navbar = memo(() => {
+  const navigate = useNavigate();
+
+  const LINKS_FOR_DROPDOWN = links.map((link) => ({
+    ...link,
+    onPress: () => navigate(link.url),
+  }));
+
   return (
     <>
       {/* md lg xl 2xl */}
@@ -21,8 +30,10 @@ export const Navbar = memo(() => {
           <NavbarItem key={link.url}>
             <Link className="font-normal tracking-wider" to={link.url}>
               <Button
-                variant={link?.standOut ? 'flat' : 'light'}
-                {...(link?.standOut ? { color: 'primary' } : {})}
+                className={clsx('font-serif', {
+                  'text-primary': link?.standOut,
+                })}
+                variant="light"
               >
                 {link.label}
               </Button>
@@ -33,48 +44,35 @@ export const Navbar = memo(() => {
 
       {/* xs sm */}
       <div className="flex md:hidden">
-        <Popover
-          containerPadding={100}
-          offset={10}
-          placement="bottom"
-          showArrow
-          size="sm"
-        >
-          <PopoverTrigger>
+        <Dropdown>
+          <DropdownTrigger>
             <Button
               aria-label="menu-button"
-              className="capitalize"
+              className="font-serif capitalize"
               isIconOnly
               variant="flat"
             >
               <TiThMenu />
             </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-[200px]">
-            {() => (
-              <div className="w-full px-1 py-2">
-                <div className="mt-2 flex w-full flex-col gap-2">
-                  {links.map((link) => (
-                    <Link
-                      className="font-normal tracking-wider"
-                      key={link.url}
-                      to={link.url}
-                    >
-                      <Button
-                        className="w-full"
-                        size="lg"
-                        variant="flat"
-                        {...(link?.standOut ? { color: 'primary' } : {})}
-                      >
-                        {link.label}
-                      </Button>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </PopoverContent>
-        </Popover>
+          </DropdownTrigger>
+          <div>
+            <DropdownMenu aria-label="Mobile menu">
+              {LINKS_FOR_DROPDOWN.map((link) => {
+                return (
+                  <DropdownItem
+                    className={clsx('font-serif', {
+                      'text-primary': link?.standOut,
+                    })}
+                    key={link?.label}
+                    onPress={link?.onPress}
+                  >
+                    {link.label}
+                  </DropdownItem>
+                );
+              })}
+            </DropdownMenu>
+          </div>
+        </Dropdown>
       </div>
     </>
   );

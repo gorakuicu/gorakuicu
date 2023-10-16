@@ -33,7 +33,7 @@ export const LinksList = memo(
                         </VariableWrap.Wrapper>
                         <VariableWrap.Content>
                           <Button
-                            className="pointer-events-auto w-full text-sm"
+                            className="pointer-events-auto w-full font-serif text-sm"
                             isDisabled={link.disabled}
                             radius="full"
                             size="sm"

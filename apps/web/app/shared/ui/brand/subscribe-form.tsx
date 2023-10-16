@@ -11,7 +11,7 @@ export const SubscribeForm = memo(() => {
         variant="faded"
       />
       <Button
-        className="h-14 w-full sm:w-fit"
+        className="h-14 w-full font-serif sm:w-fit"
         color="primary"
         size="lg"
         variant="shadow"
