@@ -24,7 +24,10 @@ export const defaultMeta = [
     property: 'og:description',
   },
   { content: CANONICAL_URL, property: 'og:url' },
-  { content: `${CANONICAL_URL}/meta/opengraph.png`, property: 'og:image' },
+  {
+    content: `${CANONICAL_URL}/images/meta/opengraph.png`,
+    property: 'og:image',
+  },
 
   // twitter
   { content: 'summary_large_image', name: 'twitter:card' },
@@ -37,7 +40,7 @@ export const defaultMeta = [
     name: 'twitter:description',
   },
   {
-    content: `${CANONICAL_URL}/meta/twitter.png`,
+    content: `${CANONICAL_URL}/images/meta/twitter.png`,
     name: 'twitter:image',
   },
 ];

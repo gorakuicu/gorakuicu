@@ -8,7 +8,7 @@ export const Logo = memo(() => {
     <Image
       alt={`Logo ${BRAND_NAME}`}
       radius="lg"
-      src="/logo/512.webp"
+      src="/images/logo/512.webp"
       width={42}
     />
   );

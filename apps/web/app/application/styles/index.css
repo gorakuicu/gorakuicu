@@ -7,8 +7,8 @@ body {
 }
 
 footer {
-  background-image: url('/backgrounds/blurry-gradients/4.webp'),
-    url('/backgrounds/texture.png');
+  background-image: url('/images/backgrounds/blurry-gradients/4.webp'),
+    url('/images/backgrounds/texture.png');
   background-position:
     90% 50%,
     0 0;
@@ -33,18 +33,18 @@ article a[href^='http']:not(:has(img))::after {
 }
 
 .bg-blurry-gradients {
-  background-image: url('/backgrounds/blurry-gradients/1.webp'),
-    url('/backgrounds/blurry-gradients/2.webp'),
-    url('/backgrounds/blurry-gradients/3.webp'),
-    url('/backgrounds/blurry-gradients/4.webp'),
-    url('/backgrounds/blurry-gradients/5.webp'),
-    url('/backgrounds/blurry-gradients/6.webp'),
-    url('/backgrounds/blurry-gradients/1.webp'),
-    url('/backgrounds/blurry-gradients/2.webp'),
-    url('/backgrounds/blurry-gradients/3.webp'),
-    url('/backgrounds/blurry-gradients/4.webp'),
-    url('/backgrounds/blurry-gradients/5.webp'),
-    url('/backgrounds/blurry-gradients/6.webp');
+  background-image: url('/images/backgrounds/blurry-gradients/1.webp'),
+    url('/images/backgrounds/blurry-gradients/2.webp'),
+    url('/images/backgrounds/blurry-gradients/3.webp'),
+    url('/images/backgrounds/blurry-gradients/4.webp'),
+    url('/images/backgrounds/blurry-gradients/5.webp'),
+    url('/images/backgrounds/blurry-gradients/6.webp'),
+    url('/images/backgrounds/blurry-gradients/1.webp'),
+    url('/images/backgrounds/blurry-gradients/2.webp'),
+    url('/images/backgrounds/blurry-gradients/3.webp'),
+    url('/images/backgrounds/blurry-gradients/4.webp'),
+    url('/images/backgrounds/blurry-gradients/5.webp'),
+    url('/images/backgrounds/blurry-gradients/6.webp');
   background-position:
     -35% -500px,
     135% 100px,
@@ -81,7 +81,7 @@ article a[href^='http']:not(:has(img))::after {
 }
 
 .add-texture {
-  background-image: url('/backgrounds/texture.png');
+  background-image: url('/images/backgrounds/texture.png');
   background-repeat: repeat;
   background-size: 5%;
 }

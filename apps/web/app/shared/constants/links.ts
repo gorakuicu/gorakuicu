@@ -3,70 +3,70 @@ import type { IPlatformLink } from '~/shared/types/platform-links';
 import { COMING_SOON } from './common';
 
 export const ArtStationLink = {
-  icon: '/icons/artstation.svg',
+  icon: '/images/icons/artstation.svg',
   isExternal: true,
   label: 'ArtStation',
   url: 'https://www.artstation.com/gorakuicu',
 };
 
 export const DeviantArtLink = {
-  icon: '/icons/deviantart.svg',
+  icon: '/images/icons/deviantart.svg',
   isExternal: true,
   label: 'DeviantArt',
   url: 'https://www.deviantart.com/gorakuicu',
 };
 
 // export const OpenSeaLink = {
-//   icon: '/icons/opensea.svg',
+//   icon: '/images/icons/opensea.svg',
 //   isExternal: true,
 //   label: 'OpenSea',
 //   url: 'https://opensea.io/gorakuicu',
 // };
 
 export const RaribleLink = {
-  icon: '/icons/rarible.svg',
+  icon: '/images/icons/rarible.svg',
   isExternal: true,
   label: 'Rarible',
   url: 'https://rarible.com/user/0xe6bc81f20c66c6babe127e7e80b89832dddf5c02/owned',
 };
 
 export const DiscordLink = {
-  icon: '/icons/discord.svg',
+  icon: '/images/icons/discord.svg',
   isExternal: true,
   label: 'Discord',
   url: 'https://discord.gg/xyDGqrT7Cb',
 };
 
 export const RedditLink = {
-  icon: '/icons/reddit.svg',
+  icon: '/images/icons/reddit.svg',
   isExternal: true,
   label: 'Reddit',
   url: 'https://new.reddit.com/r/gorakuicu/',
 };
 
 // export const OnlyFansLink = {
-//   icon: '/icons/onlyfans.svg',
+//   icon: '/images/icons/onlyfans.svg',
 //   isExternal: true,
 //   label: 'OnlyFans',
 //   url: 'https://onlyfans.com/gorakuicu',
 // };
 
 export const InstagramLink = {
-  icon: '/icons/instagram.svg',
+  icon: '/images/icons/instagram.svg',
   isExternal: true,
   label: 'Instagram',
   url: 'https://www.instagram.com/gorakuicu/',
 };
 
 export const XLink = {
-  icon: '/icons/x.svg',
+  icon: '/images/icons/x.svg',
   isExternal: true,
   label: 'X/Twitter',
   url: 'https://twitter.com/gorakuicu',
 };
 
 export const TelegramLink = {
-  icon: '/icons/telegram.svg',
+  icon: '/images/icons/telegram.svg',
   isExternal: true,
   label: 'Telegram',
   url: 'https://t.me/gorakuicu',

@@ -26,7 +26,7 @@ export const Description = memo(({ classNames }: IDescriptionProperties) => {
         alt="hot-face"
         className={image}
         height={18}
-        src="/logo/hot-face.png"
+        src="/images/logo/hot-face.png"
         width={18}
       />
       <p

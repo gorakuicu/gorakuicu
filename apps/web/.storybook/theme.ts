@@ -4,6 +4,6 @@ export default create({
   base: 'dark',
   brandTitle: 'gorakuicu',
   brandUrl: 'goraku.icu',
-  brandImage: '/meta/twitter.png',
+  brandImage: '/images/meta/twitter.png',
   brandTarget: '_self',
 });
