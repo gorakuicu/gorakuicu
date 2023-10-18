@@ -5,7 +5,6 @@ import { useSWEffect } from '@remix-pwa/sw';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -95,9 +94,9 @@ export default function App() {
           <Outlet />
           <ScrollToTop />
           <ScrollRestoration />
-          <LiveReload />
           <Scripts />
         </Providers>
+        {/* <LiveReload /> */}
       </body>
     </html>
   );

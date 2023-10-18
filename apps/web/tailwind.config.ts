@@ -23,7 +23,7 @@ export const primary = {
   '200': '#d6b7fb',
   '300': '#bd89f7',
   '400': '#b46bf4',
-  '500': '#9b4eef',
+  '500': '#9139ef',
   '600': '#8429e0',
   '700': '#7a29c7',
   '800': '#6727a2',
@@ -53,7 +53,7 @@ export default {
           ...Object.fromEntries(
             Object.entries(primary).map(([key, value]) => [key, value]),
           ),
-          DEFAULT: primary[400],
+          DEFAULT: primary[500],
         },
         secondary: {
           ...Object.fromEntries(

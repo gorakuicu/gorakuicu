@@ -8,7 +8,7 @@ body {
 
 footer {
   background-image: url('/images/backgrounds/blurry-gradients/4.webp'),
-    url('/images/backgrounds/texture.png');
+    url('/images/backgrounds/texture.webp');
   background-position:
     90% 50%,
     0 0;
@@ -37,14 +37,10 @@ article a[href^='http']:not(:has(img))::after {
     url('/images/backgrounds/blurry-gradients/2.webp'),
     url('/images/backgrounds/blurry-gradients/3.webp'),
     url('/images/backgrounds/blurry-gradients/4.webp'),
-    url('/images/backgrounds/blurry-gradients/5.webp'),
-    url('/images/backgrounds/blurry-gradients/6.webp'),
     url('/images/backgrounds/blurry-gradients/1.webp'),
     url('/images/backgrounds/blurry-gradients/2.webp'),
     url('/images/backgrounds/blurry-gradients/3.webp'),
-    url('/images/backgrounds/blurry-gradients/4.webp'),
-    url('/images/backgrounds/blurry-gradients/5.webp'),
-    url('/images/backgrounds/blurry-gradients/6.webp');
+    url('/images/backgrounds/blurry-gradients/4.webp');
   background-position:
     -35% -500px,
     135% 100px,
@@ -53,11 +49,7 @@ article a[href^='http']:not(:has(img))::after {
     -35% 1900px,
     135% 2500px,
     -35% 3100px,
-    135% 3700px,
-    -35% 4300px,
-    135% 4900px,
-    -35% 5500px,
-    135% 6100px;
+    135% 3700px;
   background-size: 44%;
   background-repeat: no-repeat;
 }
@@ -72,16 +64,12 @@ article a[href^='http']:not(:has(img))::after {
       -50% 1750px,
       150% 2250px,
       -50% 2750px,
-      150% 3250px,
-      -50% 3750px,
-      150% 4250px,
-      -50% 4750px,
-      150% 5250px;
+      150% 3250px;
   }
 }
 
 .add-texture {
-  background-image: url('/images/backgrounds/texture.png');
+  background-image: url('/images/backgrounds/texture.webp');
   background-repeat: repeat;
   background-size: 5%;
 }

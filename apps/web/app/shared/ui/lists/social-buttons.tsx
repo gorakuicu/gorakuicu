@@ -50,8 +50,9 @@ export const SocialButtons = memo(() => {
                 <Image
                   alt={link.label}
                   className="p-2 invert"
+                  height={64}
                   src={link.icon}
-                  width={300}
+                  width={64}
                 />
               </Button>
             </Tooltip>

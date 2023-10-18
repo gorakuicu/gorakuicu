@@ -12,7 +12,7 @@ export interface ISiteLabelProperties {
 const BrandNameWithDot = (
   <>
     {BRAND_TAGS[0]}
-    <FlashingText />
+    <FlashingText className="text-violet-600" />
     {BRAND_TAGS[1]}
   </>
 );
