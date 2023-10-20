@@ -72,6 +72,62 @@ export const TelegramLink = {
   url: 'https://t.me/gorakuicu',
 };
 
+export const MastodonLink = {
+  icon: '/images/icons/mastodon.svg',
+  isExternal: true,
+  label: 'Mastodon',
+  url: 'https://mastodon.social/@gorakuicu',
+};
+
+export const NewgroundsLink = {
+  icon: '/images/icons/newgrounds.svg',
+  isExternal: true,
+  label: 'Newgrounds',
+  url: 'https://gorakuicu.newgrounds.com/',
+};
+
+export const PinterestLink = {
+  icon: '/images/icons/pinterest.svg',
+  isExternal: true,
+  label: 'Pinterest',
+  url: 'https://www.pinterest.com/gorakuicu/',
+};
+
+export const TumblrLink = {
+  icon: '/images/icons/tumblr.svg',
+  isExternal: true,
+  label: 'Tumblr',
+  url: 'https://gorakuicu.tumblr.com/',
+};
+
+export const PatreonLink = {
+  icon: '/images/icons/patreon.svg',
+  isExternal: true,
+  label: 'Patreon',
+  url: 'https://www.patreon.com/gorakuicu',
+};
+
+export const BoostyLink = {
+  icon: '/images/icons/boosty.svg',
+  isExternal: true,
+  label: 'Boosty',
+  url: 'https://boosty.to/gorakuicu',
+};
+
+export const BuyMeACoffeeLink = {
+  icon: '/images/icons/buymeacoffee.svg',
+  isExternal: true,
+  label: 'Buy Me A Coffee',
+  url: 'https://www.buymeacoffee.com/gorakuicu',
+};
+
+export const HelloEmailLink = {
+  icon: '/images/icons/email.svg',
+  isEmail: true,
+  label: 'hello@goraku.icu',
+  url: 'mailto:hello@goraku.icu',
+};
+
 export const MAIN_EXTERNAL_LINKS: IPlatformLink[] = [
   DeviantArtLink,
   ArtStationLink,
@@ -82,6 +138,35 @@ export const MAIN_EXTERNAL_LINKS: IPlatformLink[] = [
   TelegramLink,
   DiscordLink,
 ];
+
+export const SOCIAL_MEDIA_LINKS: IPlatformLink[] = [
+  DeviantArtLink,
+  ArtStationLink,
+  NewgroundsLink,
+  TumblrLink,
+  MastodonLink,
+  InstagramLink,
+  XLink,
+];
+
+export const COMMUNITY_LINKS: IPlatformLink[] = [
+  RedditLink,
+  TelegramLink,
+  DiscordLink,
+];
+
+export const NFT_LINKS: IPlatformLink[] = [
+  // OpenSeaLink,
+  RaribleLink,
+];
+
+export const SUPPORT_US_LINKS: IPlatformLink[] = [
+  PatreonLink,
+  BoostyLink,
+  BuyMeACoffeeLink,
+];
+
+export const CONTACT_LINKS: IPlatformLink[] = [HelloEmailLink];
 
 export const PrivacyPolicyLink = {
   label: 'Privacy Notice',
@@ -172,24 +257,24 @@ export const PROJECT_LINKS: IPlatformLink[] = [
 export const LINKS: IPlatformLink[] = [
   {
     label: 'Social Media',
-    url: '/contacts#social-media',
+    url: '/links#social-media',
   },
   {
     label: 'Community',
-    url: '/contacts#community',
+    url: '/links#community',
   },
   {
     label: 'Support Us',
-    url: '/contacts#support',
+    url: '/links#support-us',
   },
   {
     label: 'Contacts',
-    url: '/contacts#contact',
+    url: '/links#contact',
   },
   {
     disabled: true,
     label: 'Commission Artwork',
     tooltip: COMING_SOON,
-    url: '/contacts#commission',
+    url: '/links#commission',
   },
 ];

@@ -1,6 +1,7 @@
 export interface IPlatformLink {
   disabled?: boolean;
   icon?: string;
+  isEmail?: boolean;
   isExternal?: boolean;
   label: string;
   tooltip?: string;

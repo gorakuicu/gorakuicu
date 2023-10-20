@@ -9,7 +9,7 @@ export const ScrollToTop = memo(() => {
   const { isScrolled, onChangeScroll } = useScrollPosition();
 
   const handleScroll = useCallback(() => {
-    window.scrollTo({ behavior: 'smooth', top: 0 });
+    window.scrollTo({ top: 0 });
   }, []);
 
   useEffect(() => {

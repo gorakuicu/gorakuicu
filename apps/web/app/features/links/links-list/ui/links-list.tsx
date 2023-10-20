@@ -1,5 +1,5 @@
 import { Button, Tooltip } from '@nextui-org/react';
-import { Link } from '@remix-run/react';
+import { NavLink } from '@remix-run/react';
 import { memo } from 'react';
 
 import type { LinksListProperties } from '~/shared/types/platform-links';
@@ -29,7 +29,20 @@ export const LinksList = memo(
                     <span>
                       <VariableWrap wrap={!link.disabled}>
                         <VariableWrap.Wrapper>
-                          {(children) => <Link to={link.url}>{children}</Link>}
+                          {(children) => {
+                            if (link?.isExternal) {
+                              return (
+                                <a
+                                  href={link.url}
+                                  rel="noreferrer"
+                                  target="_blank"
+                                >
+                                  {children}
+                                </a>
+                              );
+                            }
+                            return <NavLink to={link.url}>{children}</NavLink>;
+                          }}
                         </VariableWrap.Wrapper>
                         <VariableWrap.Content>
                           <Button

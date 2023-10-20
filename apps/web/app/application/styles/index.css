@@ -5,6 +5,12 @@
   --black: #000;
 }
 
+html {
+  scroll-margin-top: 100px;
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--black);
 }

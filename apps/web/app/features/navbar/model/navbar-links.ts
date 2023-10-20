@@ -1,5 +1,5 @@
 export const links = [
   { label: 'Arts', url: '/arts' },
-  { label: 'Contacts', url: '/contacts' },
-  { label: 'Follow Us', standOut: true, url: '/contacts#social-media' },
+  { label: 'Contacts', url: '/links' },
+  { label: 'Follow Us', standOut: true, url: '/links#social-media' },
 ];

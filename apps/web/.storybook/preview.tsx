@@ -83,6 +83,8 @@ const preview: Preview = {
 
       return (
         <Providers>
+          <link rel="stylesheet" href="/fonts/index.css" />
+          <link rel="stylesheet" href="/fonts/OpticianSans/index.css" />
           <RemixStub />
         </Providers>
       );

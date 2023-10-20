@@ -8,13 +8,13 @@ import {
 import { useNavigate } from '@remix-run/react';
 import { memo } from 'react';
 
+import { LinksList } from '~/features/links/links-list';
+import { SocialButtons } from '~/features/links/social-buttons';
 import { LEGAL_LINKS, LINKS, PROJECT_LINKS } from '~/shared/constants/links';
 import { CopyRight } from '~/shared/ui/brand/copy-right';
 import { Description } from '~/shared/ui/brand/description';
 import { SiteLabel } from '~/shared/ui/brand/site-label';
 import { SubscribeForm } from '~/shared/ui/brand/subscribe-form';
-import { LinksList } from '~/shared/ui/lists/links-list';
-import { SocialButtons } from '~/shared/ui/lists/social-buttons';
 
 const BASE_LEGAL_LINKS = LEGAL_LINKS.slice(0, 4);
 const MORE_LEGAL_LINKS = LEGAL_LINKS.slice(4);
