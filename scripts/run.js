@@ -11,13 +11,13 @@ process.env.FORCE_COLOR = 1;
 
 const command = `${nx} run-many --output-style stream -t ${script} --all`;
 
-console.log('\x1b[33m%s\x1b[0m', `[Running] ${command}`);
+console.info('\x1b[33m%s\x1b[0m', `[Running] ${command}`);
 
 execSync(command, { stdio: 'inherit' });
 
 function onExit() {
-  console.log('\x1b[31m%s\x1b[0m', 'Exiting');
+  console.info('\x1b[31m%s\x1b[0m', 'Exiting');
   process.exit(0);
 }
 
-console.log('\x1b[32m%s\x1b[0m', `[Done] ${command}`);
+console.info('\x1b[32m%s\x1b[0m', `[Done] ${command}`);

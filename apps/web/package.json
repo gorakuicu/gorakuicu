@@ -10,7 +10,7 @@
     "check": "npm run typecheck && npm run lint",
     "clean:basics": "rimraf .cache storybook-static reports",
     "dev": "run-p dev:*",
-    "dev:remix": "cross-env NODE_ENV=development REMIX_DEV_SERVER_WS_PORT=8002 remix dev",
+    "dev:remix": "cross-env NODE_ENV=development REMIX_DEV_SERVER_WS_PORT=8002 remix dev --manual",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --bundle --define:process.env.NODE_ENV='\"development\"' --watch",
     "format": "prettier --config \"../../.prettierrc.json\" --ignore-path \"../../.prettierignore\" --write \"./**/*.{js,ts,tsx,json,css,md,yml,html,mdx}\"",
     "lint": "eslint -c ./.eslintrc.cjs --ignore-path \"../../.eslintignore\" .",
@@ -46,7 +46,8 @@
     "@remix-pwa/strategy": "2.1.9",
     "@remix-pwa/push": "1.0.9",
     "@remix-pwa/client": "2.0.1",
-    "@remix-pwa/sync": "2.0.1"
+    "@remix-pwa/sync": "2.0.1",
+    "@nasa-gcn/remix-seo": "2.0.0"
   },
   "devDependencies": {
     "@gorakuicu/eslint-config": "workspace:*",

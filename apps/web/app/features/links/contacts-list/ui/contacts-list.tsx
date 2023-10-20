@@ -57,10 +57,15 @@ export const ContactsList = memo(
 
     return (
       <div>
-        <h2 className="text-2xl font-bold" id={anchor}>
+        <h2
+          className="text-center text-2xl font-bold md:text-start"
+          id={anchor}
+        >
           {label}
         </h2>
-        <ul className="mt-4 flex max-w-fit flex-col gap-4">{contactItems}</ul>
+        <ul className="mx-auto mt-4 flex min-w-[240px] max-w-fit flex-col gap-4 md:mx-0">
+          {contactItems}
+        </ul>
       </div>
     );
   },

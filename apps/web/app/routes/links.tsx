@@ -14,17 +14,17 @@ export default function LinksPage() {
   return (
     <CommonLayout>
       <ContactsList
-        anchor="social-media"
-        label="Social Media"
-        links={SOCIAL_MEDIA_LINKS}
+        anchor="community"
+        label="Community"
+        links={COMMUNITY_LINKS}
       />
 
       <Divider className="my-8" />
 
       <ContactsList
-        anchor="community"
-        label="Community"
-        links={COMMUNITY_LINKS}
+        anchor="social-media"
+        label="Social Media"
+        links={SOCIAL_MEDIA_LINKS}
       />
 
       <Divider className="my-8" />
