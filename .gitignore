@@ -99,3 +99,4 @@ storybook-static
 
 # bun.sh
 yarn.lock
+.nx

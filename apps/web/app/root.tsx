@@ -1,7 +1,7 @@
 import type { LinksFunction } from '@remix-run/node';
 import type { MetaFunction } from '@remix-run/react';
 
-import { useSWEffect } from '@remix-pwa/sw';
+import { LiveReload, useSWEffect } from '@remix-pwa/sw';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import {
   Links,
@@ -96,7 +96,7 @@ export default function App() {
           <ScrollRestoration />
           <Scripts />
         </Providers>
-        {/* <LiveReload /> */}
+        <LiveReload port={8002} />
       </body>
     </html>
   );

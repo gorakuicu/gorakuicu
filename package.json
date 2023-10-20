@@ -10,7 +10,7 @@
     "cm:all": "git add . && cz && bun ./scripts/git/push.js",
     "cm:stage": "bun cm:all && bun stage",
     "coverage": "bun scripts/run.js coverage",
-    "dev": "bun scripts/run.js dev",
+    "dev": "bun --hot scripts/run.js dev",
     "format": "bun scripts/run.js format",
     "is:ci": "bun scripts/ci/is.js",
     "lint": "bun scripts/run.js lint",
@@ -34,6 +34,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "cross-env": "7.0.3",
     "superjson": "2.0.0"
   },
   "devDependencies": {
@@ -46,7 +47,7 @@
     "eslint": "8.51.0",
     "happy-dom": "12.9.1",
     "husky": "8.0.3",
-    "nx": "16.10.0",
+    "nx": "17.0.0",
     "nx-cloud": "latest",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.6",
