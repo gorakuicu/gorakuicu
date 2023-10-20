@@ -5,7 +5,7 @@ import { Header } from '~/application/header';
 
 export function CommonLayout({ children }: ChildrenProperties) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="bg-blurry-gradients_2 flex min-h-screen flex-col">
       <Header />
       <main className="mx-auto flex w-full grow flex-col px-6 py-8 md:w-3/5 lg:px-8">
         {children}
