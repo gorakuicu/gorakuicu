@@ -31,7 +31,7 @@ article a[href^='http']:not(:has(img))::after {
   display: inline-block;
 }
 
-footer {
+.footer {
   background-image: url('/images/backgrounds/blurry-gradients/4.webp'),
     url('/images/backgrounds/texture.webp');
   background-position:
