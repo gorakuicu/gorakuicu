@@ -16,10 +16,10 @@ pre-commit:
     typecheck:
       glob: '*.{ts,tsx}'
       run: bun typecheck
-    # tests:
-    #   glob: '*.{js,jsx,ts,tsx}'
-    #   run: bun test
-    # coverage:
-    #   run: bun coverage
+    tests:
+      glob: '*.{js,jsx,ts,tsx}'
+      run: bun test
+    coverage:
+      run: bun test --coverage
     commitlint:
       run: bun lint:cm

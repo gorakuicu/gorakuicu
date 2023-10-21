@@ -257,7 +257,6 @@ export async function SendNotification(
       });
       const permission = permissionBase.state;
 
-      // eslint-disable-next-line unicorn/no-null
       let requestedPermission: NotificationPermission | null = null;
 
       // Send permission request only if the permission is not granted neither denied.

@@ -15,7 +15,6 @@
     "strict": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-
     "noEmit": true
   },
   "moduleResolution": "node"

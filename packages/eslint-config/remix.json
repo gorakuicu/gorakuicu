@@ -58,6 +58,25 @@
     "unicorn/no-array-reduce": "off",
     "unicorn/string-content": "warn",
     "unicorn/prefer-spread": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-array-for-each": "off",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error",
+          "info",
+          "time",
+          "timeEnd",
+          "timeLog",
+          "trace",
+          "group",
+          "groupEnd",
+          "groupCollapsed"
+        ]
+      }
+    ],
     "no-explicit-type-exports/no-explicit-type-exports": "error",
     "validate-jsx-nesting/no-invalid-jsx-nesting": "error",
     "unicorn/no-keyword-prefix": ["error", {"disallowedPrefixes": ["new", "for"]}],
