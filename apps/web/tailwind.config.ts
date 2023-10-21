@@ -30,6 +30,11 @@ export const primary = {
   '900': '#542083',
 };
 
+export const bggr = {
+  from: '#F541A2',
+  to: '#7828C8',
+};
+
 export default {
   content: [
     './app/**/*.{js,jsx,ts,tsx,mdx}',
@@ -49,6 +54,7 @@ export default {
     extend: {
       colors: {
         background: '#000',
+        bggr,
         primary: {
           ...Object.fromEntries(
             Object.entries(primary).map(([key, value]) => [key, value]),

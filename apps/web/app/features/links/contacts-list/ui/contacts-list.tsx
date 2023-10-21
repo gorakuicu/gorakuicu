@@ -10,7 +10,7 @@ export interface IContactsListProperties {
   links?: IPlatformLink[];
 }
 
-const colorsClass = 'group-hover:from-fuchsia-600 group-hover:to-violet-600';
+const colorsClass = 'group-hover:from-bggr-from group-hover:to-bggr-to';
 
 const ContactItem = ({ link }: { link: IPlatformLink }) => (
   <li className="w-full">
@@ -56,17 +56,16 @@ export const ContactsList = memo(
     ));
 
     return (
-      <div>
-        <h2
-          className="text-center text-2xl font-bold md:text-start"
-          id={anchor}
-        >
-          {label}
-        </h2>
+      <>
+        <div className="mx-auto md:mx-0">
+          <h2 className="min-w-[240px] text-2xl font-bold" id={anchor}>
+            {label}
+          </h2>
+        </div>
         <ul className="mx-auto mt-4 flex min-w-[240px] max-w-fit flex-col gap-4 md:mx-0">
           {contactItems}
         </ul>
-      </div>
+      </>
     );
   },
 );

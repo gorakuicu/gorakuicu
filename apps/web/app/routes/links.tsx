@@ -13,13 +13,17 @@ import {
 export default function LinksPage() {
   return (
     <CommonLayout>
+      <h1 className="mb-8 text-center text-4xl md:text-start" id="0">
+        Links and Contacts
+      </h1>
+
       <ContactsList
         anchor="community"
         label="Community"
         links={COMMUNITY_LINKS}
       />
 
-      <Divider className="my-8" />
+      <Divider className="mx-auto my-8 max-w-[240px] md:mx-px md:max-w-full" />
 
       <ContactsList
         anchor="social-media"
@@ -27,11 +31,11 @@ export default function LinksPage() {
         links={SOCIAL_MEDIA_LINKS}
       />
 
-      <Divider className="my-8" />
+      <Divider className="mx-auto my-8 max-w-[240px] md:mx-px md:max-w-full" />
 
       <ContactsList anchor="nft" label="NFT" links={NFT_LINKS} />
 
-      <Divider className="my-8" />
+      <Divider className="mx-auto my-8 max-w-[240px] md:mx-px md:max-w-full" />
 
       <ContactsList
         anchor="support-us"
@@ -39,7 +43,7 @@ export default function LinksPage() {
         links={SUPPORT_US_LINKS}
       />
 
-      <Divider className="my-8" />
+      <Divider className="mx-auto my-8 max-w-[240px] md:mx-px md:max-w-full" />
 
       <ContactsList anchor="contact" label="Emails" links={CONTACT_LINKS} />
 

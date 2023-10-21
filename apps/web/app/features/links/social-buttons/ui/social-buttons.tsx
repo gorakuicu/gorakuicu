@@ -42,7 +42,7 @@ export const SocialButtons = memo(() => {
           >
             <Tooltip color="primary" content={link.label}>
               <Button
-                className="hover:bg-gradient-to-tr hover:from-fuchsia-600 hover:to-violet-600 hover:shadow-lg"
+                className="hover:from-bggr-from hover:to-bggr-to hover:bg-gradient-to-tr hover:shadow-lg"
                 color="primary"
                 isIconOnly
                 variant="faded"
