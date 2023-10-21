@@ -10,7 +10,7 @@ export interface IContactsListProperties {
   links?: IPlatformLink[];
 }
 
-const colorsClass = 'group-hover:from-bggr-from group-hover:to-bggr-to';
+const colorsClass = 'group-hover:from-fuchsia-600 group-hover:to-violet-600';
 
 const ContactItem = ({ link }: { link: IPlatformLink }) => (
   <li className="w-full">

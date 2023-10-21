@@ -12,7 +12,7 @@ export interface ISiteLabelProperties {
 const BrandNameWithDot = (
   <>
     {BRAND_TAGS[0]}
-    <FlashingText className="text-[#9B2FBD]" />
+    <FlashingText className="text-violet-600" />
     {BRAND_TAGS[1]}
   </>
 );
@@ -22,7 +22,7 @@ export const SiteLabel = memo(
     return (
       <h2
         className={clsx(
-          'from-bggr-from to-bggr-to bg-gradient-to-r bg-clip-text font-sans text-2xl font-black text-transparent',
+          'bg-gradient-to-r from-fuchsia-600 to-violet-600 bg-clip-text font-sans text-2xl font-black text-transparent',
           className,
         )}
       >
