@@ -1,7 +1,7 @@
 import type { LinksFunction } from '@remix-run/node';
 import type { MetaFunction } from '@remix-run/react';
 
-import { LiveReload as LiveReloadPWA, useSWEffect } from '@remix-pwa/sw';
+import { LiveReload, useSWEffect } from '@remix-pwa/sw';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import {
   Links,
@@ -11,12 +11,17 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { enableMapSet } from 'immer';
 
 import styles from '~/application/styles/index.css';
 
 import { Providers } from './application/providers';
 import { defaultMeta } from './shared/constants/default-meta';
 import { ScrollToTop } from './shared/ui/common/scroll-to-top';
+import { CookieNotificationCard } from './shared/ui/cookies/cookies-notification-card';
+import { AgeVerificationModal } from './shared/ui/modals/age-verification';
+
+enableMapSet();
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ href: cssBundleHref, rel: 'stylesheet' }] : []),
@@ -34,6 +39,9 @@ export default function App() {
         <meta charSet="utf-8" />
         <meta content="width=device-width,initial-scale=1" name="viewport" />
         <meta content="#9750dd" name="theme-color" />
+        <meta content="RTA-5042-1996-1400-1577-RTA" name="RATING" />
+        <meta content="General" name="rating" />
+        <meta content="Global" name="distribution" />
         <link href="/site.webmanifest" rel="manifest" />
         <link href="/fonts/index.css" rel="stylesheet" type="text/css" />
         <link
@@ -94,11 +102,12 @@ export default function App() {
         <Providers>
           <Outlet />
           <ScrollToTop />
+          <AgeVerificationModal />
+          <CookieNotificationCard />
           <ScrollRestoration />
           <Scripts />
         </Providers>
-        {/* <LiveReload port={8002} /> */}
-        <LiveReloadPWA port={8002} />
+        <LiveReload port={8002} />
       </body>
     </html>
   );
