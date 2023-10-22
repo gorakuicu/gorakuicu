@@ -1,0 +1,1 @@
+export { FullScreenCarousel } from './ui';
