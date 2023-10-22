@@ -1,3 +1,5 @@
+import { DEFAULT_EMPTY_FUNCTION } from '../common';
+
 // Interface for local storage listener with a callback function and a key
 export interface ILsListener {
   callback: (key: null | string, value: any) => void; // Callback function to be invoked when a change occurs
@@ -143,7 +145,7 @@ export class LocalStorageManager {
       console.error(
         '[LocalStorageManager] Invalid key provided for subscription.',
       );
-      return () => {}; // Return a no-op function
+      return DEFAULT_EMPTY_FUNCTION; // Return a no-op function
     }
 
     return this.subscribeInternal(key, callback); // Subscribe a key-specific listener
