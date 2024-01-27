@@ -16,20 +16,6 @@ export const DeviantArtLink = {
   url: 'https://www.deviantart.com/gorakuicu',
 };
 
-// export const OpenSeaLink = {
-//   icon: '/images/icons/opensea.svg',
-//   isExternal: true,
-//   label: 'OpenSea',
-//   url: 'https://opensea.io/gorakuicu',
-// };
-
-export const RaribleLink = {
-  icon: '/images/icons/rarible.svg',
-  isExternal: true,
-  label: 'Rarible',
-  url: 'https://rarible.com/user/0xe6bc81f20c66c6babe127e7e80b89832dddf5c02/owned',
-};
-
 export const DiscordLink = {
   icon: '/images/icons/discord.svg',
   isExternal: true,
@@ -43,13 +29,6 @@ export const RedditLink = {
   label: 'Reddit',
   url: 'https://new.reddit.com/r/gorakuicu/',
 };
-
-// export const OnlyFansLink = {
-//   icon: '/images/icons/onlyfans.svg',
-//   isExternal: true,
-//   label: 'OnlyFans',
-//   url: 'https://onlyfans.com/gorakuicu',
-// };
 
 export const InstagramLink = {
   icon: '/images/icons/instagram.svg',
@@ -114,13 +93,6 @@ export const BoostyLink = {
   url: 'https://boosty.to/gorakuicu',
 };
 
-export const BuyMeACoffeeLink = {
-  icon: '/images/icons/buymeacoffee.svg',
-  isExternal: true,
-  label: 'Buy Me A Coffee',
-  url: 'https://www.buymeacoffee.com/gorakuicu',
-};
-
 export const HelloEmailLink = {
   icon: '/images/icons/email.svg',
   isEmail: true,
@@ -133,7 +105,6 @@ export const MAIN_EXTERNAL_LINKS: IPlatformLink[] = [
   ArtStationLink,
   InstagramLink,
   XLink,
-  RaribleLink,
   RedditLink,
   TelegramLink,
   DiscordLink,
@@ -157,14 +128,9 @@ export const COMMUNITY_LINKS: IPlatformLink[] = [
 
 export const NFT_LINKS: IPlatformLink[] = [
   // OpenSeaLink,
-  RaribleLink,
 ];
 
-export const SUPPORT_US_LINKS: IPlatformLink[] = [
-  PatreonLink,
-  BoostyLink,
-  BuyMeACoffeeLink,
-];
+export const SUPPORT_US_LINKS: IPlatformLink[] = [PatreonLink, BoostyLink];
 
 export const CONTACT_LINKS: IPlatformLink[] = [HelloEmailLink];
 

@@ -14,11 +14,11 @@
     "lint": "eslint -c ./.eslintrc.cjs \"src/**/*.ts\""
   },
   "dependencies": {
-    "@prisma/client": "5.4.2"
+    "@prisma/client": "5.5.2"
   },
   "devDependencies": {
     "eslint": "8.52.0",
-    "prisma": "5.4.2",
+    "prisma": "5.5.2",
     "typescript": "5.2.2"
   }
 }

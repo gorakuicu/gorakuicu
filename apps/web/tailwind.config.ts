@@ -4,30 +4,30 @@ import { nextui } from '@nextui-org/react';
 import typography from '@tailwindcss/typography';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-export const blue = {
-  50: '#e6f1fe',
-  100: '#cce3fd',
-  200: '#99c7fb',
-  300: '#66aaf9',
-  400: '#338ef7',
-  500: '#006FEE',
-  600: '#005bc4',
-  700: '#004493',
-  800: '#002e62',
-  900: '#001731',
+export const secondary = {
+  '50': '#fef1f9',
+  '100': '#ffe4f4',
+  '200': '#ffcaec',
+  '300': '#ff9eda',
+  '400': '#ff62bf',
+  '500': '#ff34a4',
+  '600': '#f11181',
+  '700': '#d70467',
+  '800': '#ad0753',
+  '900': '#900b47',
 };
 
 export const primary = {
-  '50': '#f2e9fe',
-  '100': '#e8d7fd',
-  '200': '#d6b7fb',
-  '300': '#bd89f7',
-  '400': '#b46bf4',
-  '500': '#9139ef',
-  '600': '#8429e0',
-  '700': '#7a29c7',
-  '800': '#6727a2',
-  '900': '#542083',
+  '50': '#faf4ff',
+  '100': '#f4e5ff',
+  '200': '#ebcfff',
+  '300': '#dbaaff',
+  '400': '#c574ff',
+  '500': '#b03fff',
+  '600': '#9d1aff',
+  '700': '#8a0be9',
+  '800': '#730fba',
+  '900': '#5f0e95',
 };
 
 export default {
@@ -57,9 +57,9 @@ export default {
         },
         secondary: {
           ...Object.fromEntries(
-            Object.entries(blue).map(([key, value]) => [key, value]),
+            Object.entries(secondary).map(([key, value]) => [key, value]),
           ),
-          DEFAULT: blue[500],
+          DEFAULT: secondary[500],
         },
       },
     },

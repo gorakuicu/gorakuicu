@@ -26,7 +26,7 @@ export const ScrollToTop = memo(() => {
   return (
     <Button
       aria-label="scroll-to-top-button"
-      className={clsx('fixed bottom-5 right-5 capitalize', {
+      className={clsx('fixed bottom-3 right-3 capitalize opacity-50', {
         hidden: !isScrolled,
       })}
       color="primary"

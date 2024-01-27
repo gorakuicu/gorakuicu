@@ -11,6 +11,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { ClickToComponent } from 'click-to-react-component';
 import { enableMapSet } from 'immer';
 
 import styles from '~/application/styles/index.css';
@@ -100,6 +101,7 @@ export default function App() {
       </head>
       <body className="text-foreground bg-blurry-gradients bg-background dark min-h-screen">
         <Providers>
+          <ClickToComponent />
           <Outlet />
           <ScrollToTop />
           <AgeVerificationModal />
